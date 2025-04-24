@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caridology-Department-System", "Caridology-Department-System\Caridology-Department-System.csproj", "{BECA3C2F-F35F-4F9C-B6E5-06F3D4D74E89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BECA3C2F-F35F-4F9C-B6E5-06F3D4D74E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BECA3C2F-F35F-4F9C-B6E5-06F3D4D74E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BECA3C2F-F35F-4F9C-B6E5-06F3D4D74E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BECA3C2F-F35F-4F9C-B6E5-06F3D4D74E89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DACC518B-80BF-429A-8471-E105FF02975E}
+	EndGlobalSection
+EndGlobal
