@@ -1,11 +1,16 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "D:\\training\\trial 1\\Caridology-Department-System\\",
+=======
+  "WorkspaceRootPath": "C:\\Users\\Muhammad Khaled\\source\\repos\\Caridology-Department-System\\",
+>>>>>>> ef7a264a047dcaa1677f8ff1ed72ce3e3e0f97b0
   "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
+<<<<<<< HEAD
       "DocumentGroups": [
         {
           "DockedWidth": 76,
@@ -26,6 +31,9 @@
           ]
         }
       ]
+=======
+      "DocumentGroups": []
+>>>>>>> ef7a264a047dcaa1677f8ff1ed72ce3e3e0f97b0
     }
   ]
 }
