@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Caridology_Department_System.Models;
 using System;
+using Caridology_Department_System.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container

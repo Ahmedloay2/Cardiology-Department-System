@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\training\\trial 1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {}
+    "D:\\training\\trial_1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {}
   },
   "projects": {
-    "D:\\training\\trial 1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {
+    "D:\\training\\trial_1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\training\\trial 1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
+        "projectUniqueName": "D:\\training\\trial_1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
         "projectName": "Caridology-Department-System",
-        "projectPath": "D:\\training\\trial 1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
+        "projectPath": "D:\\training\\trial_1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
         "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
-        "outputPath": "D:\\training\\trial 1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\",
+        "outputPath": "D:\\training\\trial_1\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.4, )"
@@ -90,9 +94,17 @@
               "target": "Package",
               "version": "[1.1.0, )"
             },
+            "Portable.BouncyCastle": {
+              "target": "Package",
+              "version": "[1.9.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
             }
           },
           "imports": [

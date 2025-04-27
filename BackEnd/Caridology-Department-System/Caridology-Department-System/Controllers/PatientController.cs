@@ -20,16 +20,16 @@ namespace Caridology_Department_System.Controllers
                 return NotFound($"Patient with ID {id} not found or is deleted.");
             return Ok(patient);
         }
-        [HttpPost()]
-        public IActionResult AddPatient([FromBody] PatientRequest patient)
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] PatientRequest patient)
         {
             try
             {
                 if (patient == null || patient.PhoneNumbers == null)
                     return BadRequest("patient Data is required");
                 PatientSL patientSL = new PatientSL();
-                patientSL.AddPatient(patient.Patient, patient.PhoneNumbers);
-                return Ok();
+                patientSL.AddPatient(patient);
+                return Ok(new { Message = "Patient registered successfully" });
             }
             catch (Exception ex)
             {

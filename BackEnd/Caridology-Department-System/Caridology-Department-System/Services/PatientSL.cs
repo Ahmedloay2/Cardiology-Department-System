@@ -1,6 +1,8 @@
 ﻿
 using Caridology_Department_System.Models;
+using Caridology_Department_System.Requests;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Crypto.Generators;
 
 namespace Caridology_Department_System.Services
 {
@@ -23,19 +25,34 @@ namespace Caridology_Department_System.Services
                     .FirstOrDefault();
         
         }
-        public void AddPatient(PatientModel patient,List<string>PhoneNumbers)
+        public void AddPatient(PatientRequest patient)
         {
             PatientPhoneNumberSL phoneNumberSL = new PatientPhoneNumberSL();
             EmailValidator email= new EmailValidator(dbContext);
+            PasswordHasher hasher = new PasswordHasher();
             if (patient == null)
                 throw new ArgumentNullException("Patient cannot be Empty");
             if (!email.IsEmailUnique(patient.Email))
                 throw new ArgumentException("Email already exist");
-
-            dbContext.Patients.Add(patient);
+            PatientModel Createdpatient = new PatientModel
+            {
+                FName = patient.FName,
+                LName = patient.LName,
+                BirthDate = patient.BirthDate,
+                Email = patient.Email,
+                Password = hasher.HashPassword(patient.Password),
+                BloodType = patient.BloodType,
+                MedicalHistory = patient.MedicalHistory,
+                HealthInsuranceNumber = patient.HealthInsuranceNumber,
+                // Default values
+                RoleID = 3, // Assuming 3 is patient role
+                StatusID = 1, // Active status
+                CreatedAt = DateTime.Now
+            };
+            dbContext.Patients.Add(Createdpatient);
             dbContext.SaveChanges();
-            phoneNumberSL.AddPhoneNumbers(PhoneNumbers,patient.ID);      
+            phoneNumberSL.AddPhoneNumbers(patient.PhoneNumbers, Createdpatient.ID);      
         }
-
     }
 }
+

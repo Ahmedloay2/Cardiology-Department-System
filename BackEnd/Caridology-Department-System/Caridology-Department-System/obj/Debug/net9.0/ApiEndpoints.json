@@ -19,22 +19,6 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.PatientController",
-    "Method": "AddPatient",
-    "RelativePath": "api/Patient",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "patient",
-        "Type": "Caridology_Department_System.Requests.PatientRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
     "Method": "GetPatient",
     "RelativePath": "api/Patient/{id}",
     "HttpMethod": "GET",
@@ -44,6 +28,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
+    "Method": "Register",
+    "RelativePath": "api/Patient/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patient",
+        "Type": "Caridology_Department_System.Requests.PatientRequest",
         "IsRequired": true
       }
     ],
