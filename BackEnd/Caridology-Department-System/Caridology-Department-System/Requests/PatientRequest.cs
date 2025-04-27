@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Caridology_Department_System.Models;
 
 namespace Caridology_Department_System.Requests
@@ -8,30 +9,44 @@ namespace Caridology_Department_System.Requests
         public PatientRequest() { }
         [Required]
         [StringLength(50, MinimumLength = 2)]
+        [Display(Name = "First Name")]
         public string FName { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 2)]
+        [Display(Name = "Last Name")]
         public string LName { get; set; }
 
         [Required]
         public DateTime BirthDate { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [StringLength(100)]
-        public string Email { get; set; }
-
         [Required]
         [StringLength(100, MinimumLength = 8)]
+        [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$",
+                   ErrorMessage = "Password must contain at least one uppercase, one lowercase, one number and one special character")]
         public string Password { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string BloodType { get; set; }
+        [StringLength(100)]
+        [DataType(DataType.EmailAddress)]
+        [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+            ErrorMessage = "Invalid email format")]
+        public string Email { get; set; }
 
-        public List<string> PhoneNumbers { get; set; } = new();
+        [StringLength(255)]
+        public string? PhotoPath { get; set; }
+
+        [StringLength(5)]
+        [RegularExpression(@"^(A|B|AB|O)[+-]$",
+             ErrorMessage = "Invalid blood type format (e.g., A+, O-)")]
+        public string? BloodType { get; set; }
+        [StringLength(255)]
+        [Column(TypeName = "text")]
         public string? MedicalHistory { get; set; }
+        [StringLength(255)]
+        [Column(TypeName = "text")]
         public string? HealthInsuranceNumber { get; set; }
+        [Required]
+        public List<string> PhoneNumbers { get; set; }
     }
 }

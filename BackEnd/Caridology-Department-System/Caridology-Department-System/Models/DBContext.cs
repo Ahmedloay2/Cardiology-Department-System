@@ -28,14 +28,15 @@ namespace Caridology_Department_System.Models
         public DbSet<ReportScanModel> ReportScans { get; set; }
         public DbSet<RoleModel> Roles { get; set; }
         public DbSet<StatusModel> Statuses { get; set; }
-        /*  protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           {
               if (!optionsBuilder.IsConfigured)
               {
                   optionsBuilder.UseNpgsql("Host=ep-lively-cake-a2vlwa9y-pooler.eu-central-1.aws.neon.tech;Port=5432;" +
                       "Database=Cardiology_Department_DataBase;Username=postgres;Password=npg_RGBsKnp0ab3U");
               }
-          }*/
+
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PatientModel>().ToTable("Patients");

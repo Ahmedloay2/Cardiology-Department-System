@@ -28,7 +28,7 @@ namespace Caridology_Department_System.Controllers
                 if (patient == null || patient.PhoneNumbers == null)
                     return BadRequest("patient Data is required");
                 PatientSL patientSL = new PatientSL();
-                patientSL.AddPatient(patient);
+                patientSL.AddPatient(patient,patient.PhoneNumbers);
                 return Ok(new { Message = "Patient registered successfully" });
             }
             catch (Exception ex)

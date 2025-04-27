@@ -1,7 +1,10 @@
 ﻿
+using Caridology_Department_System.Dtos;
+using System.Text;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using Org.BouncyCastle.Crypto.Generators;
 
 namespace Caridology_Department_System.Services
@@ -14,44 +17,101 @@ namespace Caridology_Department_System.Services
             dbContext = new DBContext();
         }
 
-        public PatientModel GetPatientByID(int PatientID) {
-            return dbContext.Patients.
-                    FromSqlInterpolated($@"
-                                    SELECT * FROM Patients 
-                                    WHERE ID = {PatientID} 
-                                    AND StatusID != 3") // Soft-delete check
-                    .Include(p => p.PhoneNumbers)    // Load related data
-                    .Include(p => p.Appointments)
-                    .FirstOrDefault();
-        
-        }
-        public void AddPatient(PatientRequest patient)
+        public PatientModel GetPatientByID(int patientID)
         {
-            PatientPhoneNumberSL phoneNumberSL = new PatientPhoneNumberSL();
-            EmailValidator email= new EmailValidator(dbContext);
-            PasswordHasher hasher = new PasswordHasher();
+            return dbContext.Patients
+                .Where(p => p.ID == patientID && p.StatusID != 3) // Soft-delete check
+                .Include(p => p.PhoneNumbers)    // Eager load phone numbers
+                .Include(p => p.Appointments)    // Eager load appointments
+                .AsNoTracking()                  // Recommended for read-only operations
+                .FirstOrDefault();               // Returns null if not found
+        }
+        public void AddPatient(PatientRequest patient, List<string> phoneNumbers)
+        {
+            // Validate input
             if (patient == null)
-                throw new ArgumentNullException("Patient cannot be Empty");
-            if (!email.IsEmailUnique(patient.Email))
-                throw new ArgumentException("Email already exist");
-            PatientModel Createdpatient = new PatientModel
+                throw new ArgumentNullException(nameof(patient), "Patient data cannot be empty");
+
+            if (phoneNumbers == null || !phoneNumbers.Any())
+                throw new ArgumentException("At least one phone number is required", nameof(phoneNumbers));
+
+            // Initialize services with proper DI (assuming they're registered in your DI container)
+            var phoneNumberSL = new PatientPhoneNumberSL();
+            var emailValidator = new EmailValidator(dbContext);
+            var passwordHasher = new PasswordHasher();
+
+            // Validate email uniqueness
+            if (!emailValidator.IsEmailUnique(patient.Email))
+                throw new ArgumentException("Email already exists", nameof(patient.Email));
+
+            // Create patient entity
+            var newPatient = new PatientModel
             {
                 FName = patient.FName,
                 LName = patient.LName,
                 BirthDate = patient.BirthDate,
                 Email = patient.Email,
-                Password = hasher.HashPassword(patient.Password),
+                Password = passwordHasher.HashPassword(patient.Password),
+                PhotoPath = patient.PhotoPath,
                 BloodType = patient.BloodType,
                 MedicalHistory = patient.MedicalHistory,
                 HealthInsuranceNumber = patient.HealthInsuranceNumber,
-                // Default values
-                RoleID = 3, // Assuming 3 is patient role
+                RoleID = 3, // Default patient role
                 StatusID = 1, // Active status
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.UtcNow // Use UTC for consistency
             };
-            dbContext.Patients.Add(Createdpatient);
-            dbContext.SaveChanges();
-            phoneNumberSL.AddPhoneNumbers(patient.PhoneNumbers, Createdpatient.ID);      
+
+            // Use transaction for atomic operations
+            using var transaction = dbContext.Database.BeginTransaction();
+            try
+            {
+                // Add and save patient
+                dbContext.Patients.Add(newPatient);
+                dbContext.SaveChanges(); // This will generate the ID
+
+                // Add phone numbers
+                phoneNumberSL.AddPhoneNumbers(patient.PhoneNumbers, newPatient.ID);
+                dbContext.SaveChanges();
+
+                transaction.Commit();
+            }
+            catch (DbUpdateException dbEx)
+            {
+                transaction.Rollback();
+
+                // Log detailed database errors
+                var errorMessage = new StringBuilder();
+                errorMessage.AppendLine($"Database update failed: {dbEx.Message}");
+
+                if (dbEx.InnerException != null)
+                {
+                    errorMessage.AppendLine($"Inner exception: {dbEx.InnerException.Message}");
+
+                    // Special handling for Postgres exceptions
+                    if (dbEx.InnerException is PostgresException pgEx)
+                    {
+                        errorMessage.AppendLine($"Postgres Error Code: {pgEx.SqlState}");
+                        errorMessage.AppendLine($"Detail: {pgEx.Detail}");
+                        errorMessage.AppendLine($"Table: {pgEx.TableName}");
+                        errorMessage.AppendLine($"Column: {pgEx.ColumnName}");
+                        errorMessage.AppendLine($"Constraint: {pgEx.ConstraintName}");
+                    }
+                }
+
+                // Log to console (for debugging)
+                Console.WriteLine(errorMessage.ToString());
+
+                // Log to file
+                File.AppendAllText("database_errors.log", $"[{DateTime.UtcNow}] {errorMessage}\n");
+
+                throw new Exception("Failed to save patient data. " + errorMessage, dbEx);
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                Console.WriteLine($"General error: {ex.Message}\n{ex.StackTrace}");
+                throw new Exception("An unexpected error occurred while saving patient", ex);
+            }
         }
     }
 }
