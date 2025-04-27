@@ -1,34 +1,38 @@
+using Microsoft.EntityFrameworkCore;
+using Caridology_Department_System.Models;
+using System;
+var builder = WebApplication.CreateBuilder(args);
 
-namespace Caridology_Department_System
+// Add services to the container
+builder.Services.AddControllers();
+builder.Services.AddDbContext<DBContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Configure Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline
+if (app.Environment.IsDevelopment())
 {
-    public class Program
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-
-            app.MapControllers();
-
-            app.Run();
-        }
-    }
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = string.Empty; // Makes Swagger UI available at root
+    });
 }
+
+// Add these critical middleware components
+app.UseHttpsRedirection();
+app.UseRouting();  // This is crucial for endpoint routing
+app.UseAuthorization();
+
+// This maps your controller endpoints
+app.MapControllers();
+
+// Add a default route for testing
+app.MapGet("/", () => "API is running!");
+
+app.Run();

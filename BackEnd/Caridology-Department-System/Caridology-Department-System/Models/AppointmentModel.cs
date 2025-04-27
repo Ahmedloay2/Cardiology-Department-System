@@ -8,6 +8,7 @@ namespace Caridology_Department_System.Models
         [Key]   
         public int APPID { get; set; }
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
         [Required]
         [ForeignKey(nameof(Doctor))]

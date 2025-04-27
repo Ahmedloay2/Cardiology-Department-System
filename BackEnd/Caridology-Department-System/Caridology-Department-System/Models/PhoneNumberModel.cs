@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Caridology_Department_System.Models
 {
-    public abstract class PhoneNumberModel
+    public interface  PhoneNumberModel
     {
         [Key]
         public int ID { get; set; }

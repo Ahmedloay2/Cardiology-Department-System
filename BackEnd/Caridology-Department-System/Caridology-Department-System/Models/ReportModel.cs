@@ -8,7 +8,7 @@ namespace Caridology_Department_System.Models
         [Key]
         public int ReportID { get; set; }
         [Required]
-        [Column(TypeName ="varchar(max)")]
+        [Column(TypeName = "text")]
         public string Prescription { get; set; }
 
         [Required]
@@ -23,10 +23,14 @@ namespace Caridology_Department_System.Models
         [ForeignKey(nameof(Status))]
         public int StatusID { get; set; }
         public StatusModel Status { get; set; }
+        [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        [DataType(DataType.DateTime)]
         public DateTime? UpdatedAt { get; set; }
+
         public ICollection<ReportScanModel> Scans { get; set; } = new List<ReportScanModel>();
     }
 
 }
-}
+

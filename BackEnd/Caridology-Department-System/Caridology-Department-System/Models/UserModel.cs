@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-public class UserModel
+public interface  UserModel
 {
     [Key]
     public int ID { get; set; }
@@ -19,10 +19,8 @@ public class UserModel
 
     [NotMapped]
     public string FullName => $"{FName} {LName}";
-
     [Required]
-    [Range(0, 120, ErrorMessage = "Age must be between 0 and 120.")]
-    public int Age { get; set; }
+    public DateTime BirthDate { get; set; }
 
     [Required]
     [ForeignKey(nameof(Role))]
@@ -50,7 +48,7 @@ public class UserModel
     [ForeignKey(nameof(Status))]
     public int StatusID { get; set; }
     public StatusModel Status { get; set; }
-
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    [DataType(DataType.DateTime)]
+    public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 }

@@ -9,18 +9,12 @@ namespace Caridology_Department_System.Models
         public int ReportScanID { get; set; }
         [Required]
         [StringLength(255)]
-        public string Scan {  get; set; }
+        public string ScanURL {  get; set; }
         [Required]
         [ForeignKey(nameof(Report))]
         public int ReportID { get; set; }
         public ReportModel Report { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime? UpdatedAt { get; set; }
-        [StringLength(100)]
-        public string? OriginalFileName { get; set; } 
-
-        [StringLength(50)]
-        public string? FileType { get; set; }
+        public DateTime ScannedAt{ get; set; } = DateTime.Now;
         [Required]
         [ForeignKey(nameof(Status))]
         public int StatusID { get; set; }

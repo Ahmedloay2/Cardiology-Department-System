@@ -9,12 +9,12 @@ namespace Caridology_Department_System.Models
         public int MessageID { get; set; }
         [Required]
         [StringLength(50)]
-        public string SenderName { get; set; }
+        public string Sender { get; set; }
         [Required]
         [StringLength(50)]
-        public string ReceiverName { get; set; }
+        public string Receiver { get; set; }
         [Required]
-        [Column(TypeName = "nvarchar(max)")]
+        [Column(TypeName = "text")]
         public string Content { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
