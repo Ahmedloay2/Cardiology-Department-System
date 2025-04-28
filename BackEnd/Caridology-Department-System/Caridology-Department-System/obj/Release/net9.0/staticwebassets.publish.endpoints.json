@@ -1,0 +1,520 @@
+{
+  "Version": 1,
+  "ManifestType": "Publish",
+  "Endpoints": [
+    {
+      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
+      "AssetFile": "Caridology-Department-System.styles.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001801801802"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "554"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6r2w4qys8d"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
+        },
+        {
+          "Name": "label",
+          "Value": "Caridology-Department-System.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
+      "AssetFile": "Caridology-Department-System.styles.css.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.002415458937"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "413"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6r2w4qys8d"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
+        },
+        {
+          "Name": "label",
+          "Value": "Caridology-Department-System.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
+      "AssetFile": "Caridology-Department-System.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1146"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6r2w4qys8d"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
+        },
+        {
+          "Name": "label",
+          "Value": "Caridology-Department-System.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css.br",
+      "AssetFile": "Caridology-Department-System.styles.css.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "413"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6r2w4qys8d"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE="
+        },
+        {
+          "Name": "label",
+          "Value": "Caridology-Department-System.styles.css.br"
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css.gz",
+      "AssetFile": "Caridology-Department-System.styles.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "554"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6r2w4qys8d"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y="
+        },
+        {
+          "Name": "label",
+          "Value": "Caridology-Department-System.styles.css.gz"
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.styles.css",
+      "AssetFile": "Caridology-Department-System.styles.css.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001801801802"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "554"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.styles.css",
+      "AssetFile": "Caridology-Department-System.styles.css.br",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "br",
+          "Quality": "0.002415458937"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "413"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.styles.css",
+      "AssetFile": "Caridology-Department-System.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1146"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.styles.css.br",
+      "AssetFile": "Caridology-Department-System.styles.css.br",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "br"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "413"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE="
+        }
+      ]
+    },
+    {
+      "Route": "Caridology-Department-System.styles.css.gz",
+      "AssetFile": "Caridology-Department-System.styles.css.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "554"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y="
+        }
+      ]
+    }
+  ]
+}

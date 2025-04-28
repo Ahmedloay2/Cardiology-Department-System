@@ -45,8 +45,8 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseDeveloperExceptionPage(); // Detailed errors
     app.UseSwagger();
     app.UseSwaggerUI(c =>
@@ -54,7 +54,7 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology Department API V1");
         c.RoutePrefix = ""; // Serve Swagger UI at root
     });
-}
+//}
 
 // No strict security headers in dev
 // But if you want minimal ones for testing, you could still add simple headers
@@ -71,6 +71,6 @@ app.UseSession();
 app.MapControllers();
 
 // Simple health check
-app.MapGet("/health", () => Results.Ok(new { status = "Healthy", timestamp = DateTime.UtcNow }));
+//app.MapGet("/health", () => Results.Ok(new { status = "Healthy", timestamp = DateTime.UtcNow }));
 
 app.Run();
