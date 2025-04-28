@@ -17,7 +17,7 @@ namespace Caridology_Department_System.Models
 
         [Required]
         [ForeignKey(nameof(Status))]
-        public int StatusID { get; set; }
+        public int StatusID { get; set; }   
         public StatusModel Status { get; set; }
 
     }

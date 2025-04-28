@@ -1,0 +1,16 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/Caridology-Department-System.6r2w4qys8d.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Caridology-Department-System.6r2w4qys8d.bundle.scp.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"6r2w4qys8d"},{"Name":"integrity","Value":"sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="},{"Name":"label","Value":"_content/Caridology-Department-System/Caridology-Department-System.bundle.scp.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1146"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Apr 2025 15:34:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/Caridology-Department-System.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Caridology-Department-System.6r2w4qys8d.bundle.scp.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1146"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\u0022"},{"Name":"Last-Modified","Value":"Mon, 28 Apr 2025 15:34:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

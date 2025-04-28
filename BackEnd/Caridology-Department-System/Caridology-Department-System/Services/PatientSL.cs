@@ -80,7 +80,7 @@ namespace Caridology_Department_System.Services
                 PreviousSurgeries = patient.PreviousSurgeries,
                 CurrentMedications = patient.CurrentMedications,
                 PolicyNumber=patient.PolicyNumber,
-                insuranceProvider = patient.PolicyNumber,
+                insuranceProvider = patient.insuranceProvider,
                 PolicyValidDate = patient.PolicyValidDate,
             };
 
@@ -94,7 +94,7 @@ namespace Caridology_Department_System.Services
                 dbContext.SaveChanges(); // This will generate the ID
 
                 // Add phone numbers
-                phoneNumberSL.AddPhoneNumbers(patient.PhoneNumbers, newPatient.ID);
+                phoneNumberSL.AddPhoneNumbers(phoneNumbers, newPatient.ID);
                 dbContext.SaveChanges();
 
                 transaction.Commit();
@@ -164,6 +164,61 @@ namespace Caridology_Department_System.Services
 
             return patient;
         }
+        public void UpdateProfile(int patientId, PatientUpdateRequest request, List<string>? phoneNumbers)
+        {
+            var existingPatient = dbContext.Patients
+                .Include(p => p.PhoneNumbers)
+                .FirstOrDefault(p => p.ID == patientId) ?? throw new KeyNotFoundException("Patient not found");
+
+            // Update string fields
+            if (!string.IsNullOrEmpty(request.FName)) existingPatient.FName = request.FName;
+            if (!string.IsNullOrEmpty(request.LName)) existingPatient.LName = request.LName;
+            if (!string.IsNullOrEmpty(request.Password))
+                existingPatient.Password = new PasswordHasher().HashPassword(request.Password);
+            if (!string.IsNullOrEmpty(request.Email)) existingPatient.Email = request.Email;
+            if (!string.IsNullOrEmpty(request.PhotoPath)) existingPatient.PhotoPath = request.PhotoPath;
+            if (!string.IsNullOrEmpty(request.BloodType)) existingPatient.BloodType = request.BloodType;
+            if (!string.IsNullOrEmpty(request.EmergencyContactName)) existingPatient.EmergencyContactName = request.EmergencyContactName;
+            if (!string.IsNullOrEmpty(request.EmergencyContactPhone)) existingPatient.EmergencyContactPhone = request.EmergencyContactPhone;
+            if (!string.IsNullOrEmpty(request.Gender)) existingPatient.Gender = request.Gender;
+            if (!string.IsNullOrEmpty(request.Link)) existingPatient.Link = request.Link;
+            if (!string.IsNullOrEmpty(request.ParentName)) existingPatient.ParentName = request.ParentName;
+            if (!string.IsNullOrEmpty(request.Address)) existingPatient.Address = request.Address;
+            if (!string.IsNullOrEmpty(request.SpouseName)) existingPatient.SpouseName = request.SpouseName;
+            if (!string.IsNullOrEmpty(request.LandLine)) existingPatient.LandLine = request.LandLine;
+            if (!string.IsNullOrEmpty(request.Allergies)) existingPatient.Allergies = request.Allergies;
+            if (!string.IsNullOrEmpty(request.ChronicConditions)) existingPatient.ChronicConditions = request.ChronicConditions;
+            if (!string.IsNullOrEmpty(request.PreviousSurgeries)) existingPatient.PreviousSurgeries = request.PreviousSurgeries;
+            if (!string.IsNullOrEmpty(request.CurrentMedications)) existingPatient.CurrentMedications = request.CurrentMedications;
+            if (!string.IsNullOrEmpty(request.PolicyNumber)) existingPatient.PolicyNumber = request.PolicyNumber;
+            if (!string.IsNullOrEmpty(request.insuranceProvider)) existingPatient.insuranceProvider = request.insuranceProvider;
+
+            // Update DateTime fields
+            if (request.BirthDate.HasValue) existingPatient.BirthDate = request.BirthDate.Value;
+            if (request.PolicyValidDate.HasValue) existingPatient.PolicyValidDate = request.PolicyValidDate.Value;
+
+            // Update phone numbers (replace existing if provided)
+            if (phoneNumbers != null)
+            {
+                // Remove all existing phone numbers for this patient
+                existingPatient.PhoneNumbers.Clear();
+
+                foreach (var number in phoneNumbers)
+                {
+                    var newPhone = new PatientPhoneNumberModel
+                    {
+                        PhoneNumber = number,
+                        StatusID = 1, // or whatever status you want
+                        PatientID = existingPatient.ID
+                    };
+                    existingPatient.PhoneNumbers.Add(newPhone);
+                }
+            }
+
+            dbContext.SaveChanges();
+        }
+
+
     }
 }
 

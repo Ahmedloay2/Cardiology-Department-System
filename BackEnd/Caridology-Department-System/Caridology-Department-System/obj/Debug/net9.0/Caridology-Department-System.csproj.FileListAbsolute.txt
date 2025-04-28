@@ -535,3 +535,10 @@ D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd
 D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.pdb
 D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.genruntimeconfig.cache
 D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\ref\Caridology-Department-System.dll
+D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Caridology-Department-System.staticwebassets.runtime.json
+D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.RazorAssemblyInfo.cache
+D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.RazorAssemblyInfo.cs
+D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\scopedcss\projectbundle\Caridology-Department-System.bundle.scp.css
+D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\compressed\4czzau3cn4-6r2w4qys8d.gz
+D:\Studies\Second term\Database\Project\GIT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\compressed\tbz775lbb2-6r2w4qys8d.gz

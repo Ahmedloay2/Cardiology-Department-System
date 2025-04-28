@@ -59,12 +59,38 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.PatientController",
+    "Method": "Logout",
+    "RelativePath": "api/Patient/Logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
     "Method": "GetPatientProfile",
     "RelativePath": "api/Patient/Profile",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Patient/Profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Caridology_Department_System.Requests.PatientUpdateRequest",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

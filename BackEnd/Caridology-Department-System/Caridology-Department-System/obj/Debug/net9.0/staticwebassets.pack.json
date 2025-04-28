@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Studies\\Second term\\Database\\Project\\GIT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Caridology-Department-System.6r2w4qys8d.bundle.scp.css"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Caridology-Department-System.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Caridology-Department-System.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.Caridology-Department-System.props",
+      "PackagePath": "build\\Caridology-Department-System.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.Caridology-Department-System.props",
+      "PackagePath": "buildMultiTargeting\\Caridology-Department-System.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.Caridology-Department-System.props",
+      "PackagePath": "buildTransitive\\Caridology-Department-System.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

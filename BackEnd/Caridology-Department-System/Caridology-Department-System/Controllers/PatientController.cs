@@ -56,6 +56,30 @@ namespace Caridology_Department_System.Controllers
                 patient.PolicyValidDate
             });
         }
+        [HttpPut("Profile")]
+        public IActionResult UpdateProfile([FromBody] PatientUpdateRequest request)
+        {
+            try
+            {
+                var patientId = HttpContext.Session.GetInt32("PatientId");
+                if (patientId == null)
+                    return Unauthorized("Not logged in");
+
+                PatientSL patientSL = new PatientSL();
+                patientSL.UpdateProfile(patientId.Value, request, request.PhoneNumbers);
+
+                return Ok(new { Message = "Profile updated successfully" });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost("register")]
         public IActionResult Register([FromBody] PatientRequest patient)
         {
@@ -101,6 +125,30 @@ namespace Caridology_Department_System.Controllers
             {
                 return Unauthorized(new { message = "Invalid email or password" });
             }
+        }/// <summary>
+         /// Logs out the currently authenticated patient by clearing their session.
+         /// </summary>
+         /// <returns>HTTP 200 OK with a logout confirmation message.</returns>
+        [HttpPost("Logout")]
+        public IActionResult Logout()
+        {
+            // Check if the user was logged in
+            bool wasLoggedIn = HttpContext.Session.TryGetValue("PatientId", out _);
+
+            // Clear all session data
+            HttpContext.Session.Clear();
+
+            // If using cookie authentication (uncomment if configured)
+             //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return Ok(new
+            {
+                message = wasLoggedIn
+                    ? "Logout successful"
+                    : "No active session found"
+            });
         }
+
+
     }
 }
