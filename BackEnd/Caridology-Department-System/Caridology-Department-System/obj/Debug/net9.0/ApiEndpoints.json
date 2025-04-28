@@ -77,7 +77,7 @@
     "Parameters": [
       {
         "Name": "patient",
-        "Type": "Caridology_Department_System.Requests.PatientRequest",
+        "Type": "PatientRequest",
         "IsRequired": true
       }
     ],

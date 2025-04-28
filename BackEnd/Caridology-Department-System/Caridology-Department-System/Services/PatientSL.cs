@@ -29,7 +29,7 @@ namespace Caridology_Department_System.Services
                 .Include(p => p.PhoneNumbers)    // Eager load phone numbers
                 .Include(p => p.Appointments)    // Eager load appointments
                 .FirstOrDefault();               // Returns null if not found
-        }
+        } 
         public void AddPatient(PatientRequest patient, List<string> phoneNumbers)
         {
             // Validate input
@@ -58,14 +58,32 @@ namespace Caridology_Department_System.Services
                 Password = passwordHasher.HashPassword(patient.Password),
                 PhotoPath = patient.PhotoPath,
                 BloodType = patient.BloodType,
-                MedicalHistory = patient.MedicalHistory,
-                HealthInsuranceNumber = patient.HealthInsuranceNumber,
+                //MedicalHistory = patient.MedicalHistory,
+                //HealthInsuranceNumber = patient.HealthInsuranceNumber,
                 EmergencyContactName = patient.EmergencyContactName,
                 EmergencyContactPhone = patient.EmergencyContactPhone,
                 RoleID = 3, // Default patient role
                 StatusID = 1, // Active status
-                CreatedAt = DateTime.UtcNow // Use UTC for consistency
+                CreatedAt = DateTime.UtcNow, // Use UTC for consistency
+
+                // Add the following required fields
+                Gender = patient.Gender,
+                Link = patient.Link,
+                ParentName = patient.ParentName,
+                Address = patient.Address,
+
+                // Optional fields (set them if you have values, otherwise they will use default values)
+                SpouseName = patient.SpouseName,
+                LandLine = patient.LandLine,
+                Allergies = patient.Allergies,
+                ChronicConditions = patient.ChronicConditions,
+                PreviousSurgeries = patient.PreviousSurgeries,
+                CurrentMedications = patient.CurrentMedications,
+                PolicyNumber=patient.PolicyNumber,
+                insuranceProvider = patient.PolicyNumber,
+                PolicyValidDate = patient.PolicyValidDate,
             };
+
 
             // Use transaction for atomic operations
             using var transaction = dbContext.Database.BeginTransaction();

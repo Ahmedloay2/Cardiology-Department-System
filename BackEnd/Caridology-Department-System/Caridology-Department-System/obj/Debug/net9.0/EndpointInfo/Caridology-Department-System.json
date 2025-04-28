@@ -287,12 +287,16 @@
       },
       "PatientRequest": {
         "required": [
+          "address",
           "birthDate",
           "email",
           "emergencyContactName",
           "emergencyContactPhone",
           "fName",
+          "gender",
+          "link",
           "lName",
+          "parentName",
           "password",
           "phoneNumbers"
         ],
@@ -322,7 +326,7 @@
           "email": {
             "maxLength": 100,
             "minLength": 0,
-            "pattern": "^[a-zA-Z0-9._%+-]+@gmail\\.com$",
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
             "type": "string",
             "format": "email"
           },
@@ -336,18 +340,6 @@
             "maxLength": 5,
             "minLength": 0,
             "pattern": "^(A|B|AB|O)[+-]$",
-            "type": "string",
-            "nullable": true
-          },
-          "medicalHistory": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "healthInsuranceNumber": {
-            "maxLength": 255,
-            "minLength": 0,
             "type": "string",
             "nullable": true
           },
@@ -366,6 +358,59 @@
             "items": {
               "type": "string"
             }
+          },
+          "gender": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "link": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "parentName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "address": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "spouseName": {
+            "type": "string",
+            "nullable": true
+          },
+          "landLine": {
+            "type": "string",
+            "nullable": true
+          },
+          "allergies": {
+            "type": "string",
+            "nullable": true
+          },
+          "chronicConditions": {
+            "type": "string",
+            "nullable": true
+          },
+          "previousSurgeries": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentMedications": {
+            "type": "string",
+            "nullable": true
+          },
+          "policyNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "insuranceProvider": {
+            "type": "string",
+            "nullable": true
+          },
+          "policyValidDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false

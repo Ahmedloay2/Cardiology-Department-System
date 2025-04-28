@@ -36,7 +36,24 @@ namespace Caridology_Department_System.Controllers
                 patient.Email,
                 patient.BirthDate,
                 patient.BloodType,
-
+                patient.Gender,
+                patient.PhotoPath,
+                patient.Address,
+                patient.PhoneNumbers,
+                patient.EmergencyContactName,
+                patient.EmergencyContactPhone,
+                patient.ParentName,
+                patient.Link,
+                patient.SpouseName,
+                patient.LandLine,
+                patient.Allergies,
+                patient.ChronicConditions,
+                patient.PreviousSurgeries,
+                patient.CurrentMedications,
+                //patient.HealthInsuranceNumber,
+                patient.PolicyNumber,
+                patient.insuranceProvider,
+                patient.PolicyValidDate
             });
         }
         [HttpPost("register")]

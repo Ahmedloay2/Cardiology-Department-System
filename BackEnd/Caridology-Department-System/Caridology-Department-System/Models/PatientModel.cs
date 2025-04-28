@@ -39,11 +39,12 @@ namespace Caridology_Department_System.Models
         [Required]
         [StringLength(100)]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(
-        @"^[a-zA-Z0-9._%+-]+@gmail\.com$",
-        ErrorMessage = "Only Gmail accounts are allowed (@gmail.com)"
-        )]
-        public string Email { get; set; }
+[RegularExpression(
+    @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+    ErrorMessage = "Please enter a valid email address"
+)]
+public string Email { get; set; }
+
 
         [StringLength(255)]
         public string? PhotoPath { get; set; }
@@ -59,12 +60,12 @@ namespace Caridology_Department_System.Models
         [RegularExpression(@"^(A|B|AB|O)[+-]$",
              ErrorMessage = "Invalid blood type format (e.g., A+, O-)")]
         public string? BloodType { get; set; }
+        //[StringLength(255)]
+        //[Column(TypeName = "text")]
+        //public string? MedicalHistory { get; set; }
         [StringLength(255)]
         [Column(TypeName = "text")]
-        public string? MedicalHistory { get; set; }
-        [StringLength(255)]
-        [Column(TypeName = "text")]
-        public string? HealthInsuranceNumber { get; set; }  
+        //public string? HealthInsuranceNumber { get; set; }  
         public ICollection<AppointmentModel> Appointments { get; set; } = new List<AppointmentModel>();
         public ICollection<MessageModel> Messages { get; set; } = new List<MessageModel>();
         public ICollection<ReportModel> Reports { get; set; } = new List<ReportModel>(); 
@@ -74,14 +75,22 @@ namespace Caridology_Department_System.Models
 
         [StringLength(15)]
         [Phone]
-        public string? EmergencyContactPhone { get; set; }        //[Required]
-        //public string Gender { get; set; } = string.Empty;
-        //[Required]
-        //public string Link { get; set; } = string.Empty; [Required]
-        //public string ParentName { get; set; } = string.Empty;
-        //public string? SpouseName { get; set; } = string.Empty;
-        //public string? LandLine { get; set; } = string.Empty;
-        //[Required]
-        //public string Address { get; set; } = string.Empty;
+        public string? EmergencyContactPhone { get; set; }
+        [Required]
+        public string Gender { get; set; } = string.Empty;
+        [Required]
+        public string Link { get; set; } = string.Empty; [Required]
+        public string ParentName { get; set; } = string.Empty;
+        public string? SpouseName { get; set; } = string.Empty;
+        public string? LandLine { get; set; } = string.Empty;
+        [Required]
+        public string Address { get; set; } = string.Empty;
+        public string? Allergies { get; set; } = string.Empty;
+        public string? ChronicConditions { get; set; } = string.Empty;
+        public string? PreviousSurgeries { get; set; } = string.Empty;
+        public string? CurrentMedications { get; set; } = string.Empty;
+        public string? PolicyNumber { get; set; } = string.Empty;
+        public string? insuranceProvider { get; set; } = string.Empty;
+        public DateTime ?PolicyValidDate { get; set; }
     }
 }
