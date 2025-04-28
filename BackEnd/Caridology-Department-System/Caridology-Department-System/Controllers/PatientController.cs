@@ -4,6 +4,7 @@ using Caridology_Department_System.Requests;
 using Caridology_Department_System.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace Caridology_Department_System.Controllers
 {
@@ -11,14 +12,32 @@ namespace Caridology_Department_System.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        [HttpGet("{id}")]
-        public IActionResult GetPatient(int id)
+        [HttpGet("Profile")]
+        public IActionResult GetPatientProfile()
         {
             PatientSL patientSL = new PatientSL();
-            PatientModel patient = patientSL.GetPatientByID(id);
+
+            var patientId = HttpContext.Session.GetInt32("PatientId");
+
+            if (patientId == null)
+                return Unauthorized("Not logged in");
+
+            PatientModel patient = patientSL.GetPatientByID(patientId);
+
             if (patient == null)
-                return NotFound($"Patient with ID {id} not found or is deleted.");
-            return Ok(patient);
+                return NotFound("Patient not found");
+
+            // Return only what the profile page needs
+            return Ok(new
+            {
+                patient.ID,
+                patient.FName,
+                patient.LName,
+                patient.Email,
+                patient.BirthDate,
+                patient.BloodType,
+
+            });
         }
         [HttpPost("register")]
         public IActionResult Register([FromBody] PatientRequest patient)
@@ -34,6 +53,36 @@ namespace Caridology_Department_System.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] LoginRequest request)
+        {
+            PatientSL patientSL= new PatientSL();
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                PatientModel patient = patientSL.GetPatientByEmailAndPassword(request.Email, request.Password);
+
+                // Create session cookie with patient ID
+                HttpContext.Session.SetInt32("PatientId", patient.ID);
+
+                // Return only essential data for immediate client needs
+                var response = new
+                {
+                    patient.ID,
+                    patient.FName,
+                    patient.LName,
+                    patient.Email
+                };
+
+                return Ok(response);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return Unauthorized(new { message = "Invalid email or password" });
             }
         }
     }

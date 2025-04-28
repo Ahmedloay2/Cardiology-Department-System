@@ -5,40 +5,96 @@
     "version": "1.0"
   },
   "paths": {
-    "/": {
+    "/api/Admin/Profile": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Register": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Login": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/health": {
       "get": {
         "tags": [
           "Caridology-Department-System"
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
     },
-    "/api/Patient/{id}": {
+    "/api/Patient/Profile": {
       "get": {
         "tags": [
           "Patient"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -67,6 +123,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/PatientRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/Login": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
               }
             }
           }
@@ -120,10 +207,90 @@
   },
   "components": {
     "schemas": {
+      "AdminRequest": {
+        "required": [
+          "birthDate",
+          "email",
+          "fName",
+          "lName",
+          "password",
+          "phoneNumbers"
+        ],
+        "type": "object",
+        "properties": {
+          "fName": {
+            "maxLength": 50,
+            "minLength": 2,
+            "type": "string"
+          },
+          "lName": {
+            "maxLength": 50,
+            "minLength": 2,
+            "type": "string"
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "pattern": "^[a-zA-Z0-9._%+-]+@gmail\\.com$",
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "maxLength": 100,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
+            "type": "string",
+            "format": "password"
+          },
+          "photoPath": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "pattern": "^[a-zA-Z0-9._%+-]+@gmail\\.com$",
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "maxLength": 100,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "additionalProperties": false
+      },
       "PatientRequest": {
         "required": [
           "birthDate",
           "email",
+          "emergencyContactName",
+          "emergencyContactPhone",
           "fName",
           "lName",
           "password",
@@ -155,7 +322,7 @@
           "email": {
             "maxLength": 100,
             "minLength": 0,
-            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "pattern": "^[a-zA-Z0-9._%+-]+@gmail\\.com$",
             "type": "string",
             "format": "email"
           },
@@ -183,6 +350,16 @@
             "minLength": 0,
             "type": "string",
             "nullable": true
+          },
+          "emergencyContactName": {
+            "maxLength": 50,
+            "minLength": 2,
+            "type": "string"
+          },
+          "emergencyContactPhone": {
+            "minLength": 1,
+            "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
+            "type": "string"
           },
           "phoneNumbers": {
             "type": "array",

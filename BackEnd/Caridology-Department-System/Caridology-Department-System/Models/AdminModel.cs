@@ -39,8 +39,10 @@ namespace Caridology_Department_System.Models
         [Required]
         [StringLength(100)]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-            ErrorMessage = "Invalid email format")]
+        [RegularExpression(
+        @"^[a-zA-Z0-9._%+-]+@gmail\.com$",
+        ErrorMessage = "Only Gmail accounts are allowed (@gmail.com)"
+        )]
         public string Email { get; set; }
 
         [StringLength(255)]
@@ -51,7 +53,7 @@ namespace Caridology_Department_System.Models
         public int StatusID { get; set; }
         public StatusModel Status { get; set; }
         [DataType(DataType.DateTime)]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public ICollection<AdminPhoneNumberModel> PhoneNumbers { get; set; }
            = new List<AdminPhoneNumberModel>();

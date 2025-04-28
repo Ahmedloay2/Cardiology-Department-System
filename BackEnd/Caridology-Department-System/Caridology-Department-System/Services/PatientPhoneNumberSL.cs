@@ -15,13 +15,13 @@ namespace Caridology_Department_System.Services
             if (phoneNumbers == null || !phoneNumbers.Any())
                 throw new ArgumentException("Phone numbers list is empty.");
 
-            List<PatientPhoneNumberModel> entities = phoneNumbers.Select(phone => new PatientPhoneNumberModel
+            List<PatientPhoneNumberModel> PatientPhones = phoneNumbers.Select(phone => new PatientPhoneNumberModel
             {
                 PhoneNumber = phone,
                 PatientID = patientId,
                 StatusID = 1 
             }).ToList();
-            dbContext.PatientPhoneNumbers.AddRange(entities);
+            dbContext.PatientPhoneNumbers.AddRange(PatientPhones);
         }
     }
 

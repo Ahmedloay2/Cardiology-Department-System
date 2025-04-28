@@ -29,8 +29,10 @@ namespace Caridology_Department_System.Requests
         [Required]
         [StringLength(100)]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-            ErrorMessage = "Invalid email format")]
+        [RegularExpression(
+        @"^[a-zA-Z0-9._%+-]+@gmail\.com$",
+        ErrorMessage = "Only Gmail accounts are allowed (@gmail.com)"
+        )]
         public string Email { get; set; }
 
         [StringLength(255)]
@@ -47,6 +49,13 @@ namespace Caridology_Department_System.Requests
         [Column(TypeName = "text")]
         public string? HealthInsuranceNumber { get; set; }
         [Required]
+        [StringLength(50, MinimumLength = 2)]
+        public string EmergencyContactName { get; set; }
+        [Required]
+        [RegularExpression("^(?:\\+20|0)?1[0125]\\d{8}$", ErrorMessage = "Invalid phone number format.")]
+        public string EmergencyContactPhone { get; set; }
+        [Required]
+        [PhoneListValidation]
         public List<string> PhoneNumbers { get; set; }
     }
 }

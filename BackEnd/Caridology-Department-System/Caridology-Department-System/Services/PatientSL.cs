@@ -1,9 +1,10 @@
 ﻿
-using Caridology_Department_System.Dtos;
+
 using System.Text;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Npgsql;
 using Org.BouncyCastle.Crypto.Generators;
 
@@ -17,13 +18,16 @@ namespace Caridology_Department_System.Services
             dbContext = new DBContext();
         }
 
-        public PatientModel GetPatientByID(int patientID)
+        public PatientModel GetPatientByID(int? patientID)
         {
+            if (patientID == null)
+            {
+                throw new ArgumentNullException(nameof(patientID));
+            }
             return dbContext.Patients
                 .Where(p => p.ID == patientID && p.StatusID != 3) // Soft-delete check
                 .Include(p => p.PhoneNumbers)    // Eager load phone numbers
                 .Include(p => p.Appointments)    // Eager load appointments
-                .AsNoTracking()                  // Recommended for read-only operations
                 .FirstOrDefault();               // Returns null if not found
         }
         public void AddPatient(PatientRequest patient, List<string> phoneNumbers)
@@ -45,7 +49,7 @@ namespace Caridology_Department_System.Services
                 throw new ArgumentException("Email already exists", nameof(patient.Email));
 
             // Create patient entity
-            var newPatient = new PatientModel
+            PatientModel newPatient = new PatientModel
             {
                 FName = patient.FName,
                 LName = patient.LName,
@@ -56,6 +60,8 @@ namespace Caridology_Department_System.Services
                 BloodType = patient.BloodType,
                 MedicalHistory = patient.MedicalHistory,
                 HealthInsuranceNumber = patient.HealthInsuranceNumber,
+                EmergencyContactName = patient.EmergencyContactName,
+                EmergencyContactPhone = patient.EmergencyContactPhone,
                 RoleID = 3, // Default patient role
                 StatusID = 1, // Active status
                 CreatedAt = DateTime.UtcNow // Use UTC for consistency
@@ -112,6 +118,33 @@ namespace Caridology_Department_System.Services
                 Console.WriteLine($"General error: {ex.Message}\n{ex.StackTrace}");
                 throw new Exception("An unexpected error occurred while saving patient", ex);
             }
+
+        }
+        public PatientModel GetPatientByEmailAndPassword(string email, string password)
+        {
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                throw new ArgumentException("Email and password are required");
+            }
+
+            // Always hash the password first to prevent timing attacks
+            PasswordHasher hasher = new PasswordHasher();
+            string dummyHash = hasher.HashPassword("dummy_password");
+
+            // Get patient (including inactive ones to prevent enumeration)
+            PatientModel patient = dbContext.Patients.FirstOrDefault(p => p.Email == email);
+            // Verify with constant time comparison
+            bool passwordValid = patient != null &&
+                                hasher.VerifyPassword(password, patient.Password) &&
+                                patient.StatusID != 3;
+
+            if (!passwordValid)
+            {
+                // Always return the same error message to prevent email enumeration
+                throw new UnauthorizedAccessException("Invalid email or password");
+            }
+
+            return patient;
         }
     }
 }
