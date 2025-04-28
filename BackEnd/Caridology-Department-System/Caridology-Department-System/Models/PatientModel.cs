@@ -74,6 +74,14 @@ namespace Caridology_Department_System.Models
 
         [StringLength(15)]
         [Phone]
-        public string? EmergencyContactPhone { get; set; }
+        public string? EmergencyContactPhone { get; set; }        //[Required]
+        //public string Gender { get; set; } = string.Empty;
+        //[Required]
+        //public string Link { get; set; } = string.Empty; [Required]
+        //public string ParentName { get; set; } = string.Empty;
+        //public string? SpouseName { get; set; } = string.Empty;
+        //public string? LandLine { get; set; } = string.Empty;
+        //[Required]
+        //public string Address { get; set; } = string.Empty;
     }
 }
