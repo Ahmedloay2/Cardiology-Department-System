@@ -271,7 +271,7 @@
           "email": {
             "maxLength": 100,
             "minLength": 0,
-            "pattern": "^[a-zA-Z0-9._%+-]+@gmail\\.com$",
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
             "type": "string",
             "format": "email"
           },
