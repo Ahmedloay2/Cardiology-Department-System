@@ -37,5 +37,8 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Patients\" />
   </ItemGroup>
+	<!-- Place the Target here -->
+
+
 
 </Project>

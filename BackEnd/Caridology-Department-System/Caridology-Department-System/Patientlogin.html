@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology Department - Patient Login</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+            .header h1 {
+                color: #1e3a8a;
+                margin: 0;
+                font-size: 24px;
+            }
+
+            .header img {
+                width: 80px;
+                margin-bottom: 15px;
+            }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+            input:focus {
+                border-color: #3b82f6;
+                outline: none;
+            }
+
+        .error-text {
+            color: #dc2626;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        button {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #1e40af;
+            }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #4b5563;
+        }
+
+            .register-link a {
+                color: #2563eb;
+                text-decoration: none;
+            }
+
+                .register-link a:hover {
+                    text-decoration: underline;
+                }
+
+        .success-message, .error-message {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .success-message {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .error-message {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #1e3a8a;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/api/placeholder/80/80" alt="Cardiology Department Logo" />
+            <h1>Patient Login</h1>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Login successful! Redirecting...
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            Invalid email or password. Please try again.
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <p class="error-text" id="emailError">Please enter a valid email address</p>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <p class="error-text" id="passwordError">Password must be at least 8 characters</p>
+            </div>
+
+            <button type="submit" id="loginButton">Login</button>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+            </div>
+        </form>
+
+        <div class="register-link">
+            Don't have an account? <a href="register.html">Register here</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const loadingIndicator = document.getElementById('loading');
+            const loginButton = document.getElementById('loginButton');
+
+            // Email validation pattern from API schema
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // Password validation pattern from API schema
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+
+            // Input validation
+            emailInput.addEventListener('input', function() {
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.style.display = 'block';
+                    emailInput.style.borderColor = '#dc2626';
+                } else {
+                    emailError.style.display = 'none';
+                    emailInput.style.borderColor = '#d1d5db';
+                }
+            });
+
+            passwordInput.addEventListener('input', function() {
+                if (!passwordPattern.test(passwordInput.value)) {
+                    passwordError.style.display = 'block';
+                    passwordError.textContent = 'Password must have at least 8 characters, including uppercase, lowercase, number, and special character';
+                    passwordInput.style.borderColor = '#dc2626';
+                } else {
+                    passwordError.style.display = 'none';
+                    passwordInput.style.borderColor = '#d1d5db';
+                }
+            });
+
+            // Form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Reset messages
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                // Validate inputs
+                let isValid = true;
+
+                if (!emailPattern.test(emailInput.value)) {
+                    emailError.style.display = 'block';
+                    emailInput.style.borderColor = '#dc2626';
+                    isValid = false;
+                }
+
+                if (!passwordPattern.test(passwordInput.value)) {
+                    passwordError.style.display = 'block';
+                    passwordInput.style.borderColor = '#dc2626';
+                    isValid = false;
+                }
+
+                if (!isValid) return;
+
+                // Show loading indicator and disable button
+                loadingIndicator.style.display = 'block';
+                loginButton.disabled = true;
+
+                // Prepare login data
+                const loginData = {
+                    email: emailInput.value,
+                    password: passwordInput.value
+                };
+
+                // First fetch the HIS.json file to check credentials
+                fetch('HIS.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Could not load HIS.json');
+                        }
+                        return response.json();
+                    })
+                    .then(hisData => {
+                        // Check if the user exists in the HIS data
+                        const user = hisData.patients.find(patient =>
+                            patient.email === loginData.email && patient.password === loginData.password);
+
+                        if (user) {
+                            // If credentials match, then proceed with API login
+                            return fetch('/api/Patient/Login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(loginData)
+                            });
+                        } else {
+                            throw new Error('Invalid credentials');
+                        }
+                    })
+                .then(response => {
+                    loadingIndicator.style.display = 'none';
+                    loginButton.disabled = false;
+
+                    if (response.ok) {
+                        // Login successful
+                        successMessage.style.display = 'block';
+                        loginForm.reset();
+
+                        // Redirect to patient dashboard after successful login
+                        setTimeout(() => {
+                            window.location.href = '/patient-dashboard.html';
+                        }, 1500);
+                    } else {
+                        // Login failed
+                        errorMessage.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    loadingIndicator.style.display = 'none';
+                    loginButton.disabled = false;
+                    errorMessage.textContent = 'Connection error. Please try again later.';
+                    errorMessage.style.display = 'block';
+                    console.error('Login error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

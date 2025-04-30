@@ -1,36 +1,36 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Caridology_Department_System.Models;
 using Caridology_Department_System;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+// ===== Services =====
 builder.Services.AddControllers();
 
-// Configure DbContext (development uses same database, but you might enable sensitive data logging)
+// --- DbContext ---
 builder.Services.AddDbContext<DBContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-    options.EnableSensitiveDataLogging(); // Show detailed errors in dev
+    options.EnableSensitiveDataLogging();
 });
 
-// Use simple in-memory cache
+// --- Session ---
 builder.Services.AddDistributedMemoryCache();
-
-// Configure Session (relaxed cookie policy)
 builder.Services.AddSession(options =>
 {
-    options.Cookie.Name = "Cardiology.Session.Dev";
+    options.Cookie.Name = "Cardiology.Session";
     options.Cookie.HttpOnly = true;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.None; // No HTTPS required in dev
-    options.Cookie.SameSite = SameSiteMode.Lax;
     options.Cookie.IsEssential = true;
-    options.IdleTimeout = TimeSpan.FromMinutes(60); // Longer timeout during testing
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
+        ? CookieSecurePolicy.None
+        : CookieSecurePolicy.Always;
+    options.IdleTimeout = TimeSpan.FromMinutes(60);
 });
 
-// Configure Authentication (basic setup)
+// --- Auth (Cookie) ---
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -38,46 +38,76 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Account/AccessDenied";
         options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
         options.SlidingExpiration = true;
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SameSite = SameSiteMode.None;
+        options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
+            ? CookieSecurePolicy.None
+            : CookieSecurePolicy.Always;
     });
 
-// Swagger for API testing
+// --- CORS ---
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:3000", "http://localhost:44312",
+
+                "http://127.0.0.1:3000",
+                "http://cardiology-department-system.runasp.net",
+                "http://127.0.0.1:5501"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
+// --- File Upload Size Limit ---
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 10 * 1024 * 1024; // 10 MB
+});
+
+// --- Swagger ---
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SupportNonNullableReferenceTypes();
     c.UseAllOfToExtendReferenceSchemas();
-    c.SchemaFilter<SwaggerDefaultValuesFilter>(); // Optional: Custom filter
+    c.SchemaFilter<SwaggerDefaultValuesFilter>();
 });
+
+// ===== Build App =====
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseDeveloperExceptionPage(); // Detailed errors
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology Department API V1");
-        c.RoutePrefix = ""; // Serve Swagger UI at root
-    });
-//}
+// ===== Middleware =====
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
 
-// No strict security headers in dev
-// But if you want minimal ones for testing, you could still add simple headers
+// Swagger
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology Department API V1");
+    c.RoutePrefix = "";
+});
 
-app.UseHttpsRedirection(); // Optional in dev, can be removed if localhost without HTTPS
+// HTTPS & Static
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// Middleware ordering
+// Middleware Order Matters:
 app.UseRouting();
+app.UseCors("CorsPolicy");     // ? Must come AFTER UseRouting and BEFORE auth/session
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 
+// Routes
 app.MapControllers();
 
-// Simple health check
-//app.MapGet("/health", () => Results.Ok(new { status = "Healthy", timestamp = DateTime.UtcNow }));
-
+// Start App
 app.Run();

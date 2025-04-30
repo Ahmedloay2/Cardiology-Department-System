@@ -3,6 +3,7 @@ using Azure.Core;                                   // Azure SDK core functional
 using Caridology_Department_System.Models;          // Data models used by the system
 using Caridology_Department_System.Requests;        // Request models for API endpoints
 using Caridology_Department_System.Services;        // Service layer classes
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;                    // HTTP context and session functionality
 using Microsoft.AspNetCore.Mvc;                     // ASP.NET Core MVC components
 using Org.BouncyCastle.Asn1.Ocsp;                   // Cryptography library component (might be unused)
@@ -206,5 +207,34 @@ namespace Caridology_Department_System.Controllers
                     : "No active session found"
             });
         }
+        [HttpPatch("status")]
+        [Authorize(Roles = "Patient")]
+        public IActionResult UpdateOwnStatus([FromBody] int newStatus)
+        {
+            try
+            {
+                var patientId = HttpContext.Session.GetInt32("PatientId");
+                if (patientId == null)
+                    return Unauthorized("Not logged in");
+
+                var patientSL = new PatientSL();
+                patientSL.UpdatePatientStatus(patientId.Value, newStatus);
+
+                return Ok(new { Message = "Status updated successfully", NewStatus = newStatus });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
     }
 }

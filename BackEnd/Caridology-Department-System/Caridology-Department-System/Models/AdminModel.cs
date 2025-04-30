@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Caridology_Department_System.Models
@@ -21,6 +23,7 @@ namespace Caridology_Department_System.Models
 
         [NotMapped]
         public string FullName => $"{FName} {LName}";
+
         [Required]
         public DateTime BirthDate { get; set; }
 
@@ -40,9 +43,9 @@ namespace Caridology_Department_System.Models
         [StringLength(100)]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(
-        @"^[a-zA-Z0-9._%+-]+@gmail\.com$",
-        ErrorMessage = "Only Gmail accounts are allowed (@gmail.com)"
-        )]
+    @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+    ErrorMessage = "Please enter a valid email address"
+)]
         public string Email { get; set; }
 
         [StringLength(255)]
@@ -52,10 +55,15 @@ namespace Caridology_Department_System.Models
         [ForeignKey(nameof(Status))]
         public int StatusID { get; set; }
         public StatusModel Status { get; set; }
+
         [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public ICollection<AdminPhoneNumberModel> PhoneNumbers { get; set; }
-           = new List<AdminPhoneNumberModel>();
+
+        public ICollection<AdminPhoneNumberModel> PhoneNumbers { get; set; } = new List<AdminPhoneNumberModel>();
+
+        // Optional: Address field if you want to match DTOs
+        [StringLength(500)]
+        public string? Address { get; set; }
     }
 }

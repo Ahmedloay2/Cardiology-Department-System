@@ -282,5 +282,22 @@ namespace Caridology_Department_System.Services
             // Save all changes to the database
             dbContext.SaveChanges();
         }
+        public void UpdatePatientStatus(int patientId, int newStatus)
+        {
+            // Validate status value
+            if (newStatus < 1 || newStatus > 3)
+                throw new ArgumentException("Invalid status value. Allowed: 1 (Active), 2 (Inactive), 3 (Deleted)");
+
+            // Find the patient
+            var patient = dbContext.Patients.FirstOrDefault(p => p.ID == patientId)
+                ?? throw new KeyNotFoundException("Patient not found");
+
+            // Update status
+            patient.StatusID = newStatus;
+            patient.UpdatedAt = DateTime.UtcNow; // Optional: for audit
+
+            dbContext.SaveChanges();
+        }
+
     }
 }
