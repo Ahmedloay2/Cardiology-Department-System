@@ -26,17 +26,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AdminRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AdminRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AdminRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/AdminRequest"
+                  }
+                ]
               }
             }
           }
@@ -57,17 +69,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  }
+                ]
               }
             }
           }
@@ -98,17 +122,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatientUpdateRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatientUpdateRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PatientUpdateRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                  }
+                ]
               }
             }
           }
@@ -129,17 +165,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PatientRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PatientRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/PatientRequest"
+                  }
+                ]
               }
             }
           }
@@ -160,17 +208,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/LoginRequest"
+                  }
+                ]
               }
             }
           }
@@ -409,120 +469,163 @@
         "type": "object",
         "properties": {
           "fName": {
-            "maxLength": 50,
-            "minLength": 2,
+            "pattern": "^.{2,50}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "lName": {
-            "maxLength": 50,
-            "minLength": 2,
+            "pattern": "^.{2,50}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "birthDate": {
             "type": "string",
             "format": "date-time",
+            "default": null,
             "nullable": true
           },
           "password": {
-            "maxLength": 100,
-            "minLength": 8,
-            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,100}$",
             "type": "string",
-            "format": "password",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "email": {
-            "maxLength": 100,
-            "minLength": 0,
-            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "pattern": "^(?=.{1,100}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
             "type": "string",
-            "format": "email",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "photoPath": {
-            "maxLength": 255,
-            "minLength": 0,
+            "pattern": "^.{0,255}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "bloodType": {
-            "maxLength": 5,
-            "minLength": 0,
             "pattern": "^(A|B|AB|O)[+-]$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "emergencyContactName": {
-            "maxLength": 50,
-            "minLength": 2,
+            "pattern": "^.{2,50}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "emergencyContactPhone": {
             "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "phoneNumbers": {
             "type": "array",
             "items": {
               "type": "string"
             },
+            "default": null,
             "nullable": true
           },
           "gender": {
+            "pattern": "^.{0,20}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "link": {
+            "pattern": "^.{0,255}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "parentName": {
+            "pattern": "^.{0,100}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "address": {
+            "pattern": "^.{0,500}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "spouseName": {
+            "pattern": "^.{0,100}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "landLine": {
+            "pattern": "^.{0,20}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "allergies": {
+            "pattern": "^.{0,255}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "chronicConditions": {
+            "pattern": "^.{0,255}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "previousSurgeries": {
+            "pattern": "^.{0,255}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "currentMedications": {
+            "pattern": "^.{0,255}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "policyNumber": {
+            "pattern": "^.{0,50}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "insuranceProvider": {
+            "pattern": "^.{0,100}$",
             "type": "string",
-            "nullable": true
+            "default": "",
+            "nullable": true,
+            "example": ""
           },
           "policyValidDate": {
             "type": "string",
             "format": "date-time",
+            "default": null,
             "nullable": true
           }
         },

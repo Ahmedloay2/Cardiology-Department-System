@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Caridology_Department_System.Models;
+using Caridology_Department_System;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,7 +43,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 // Swagger for API testing
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SupportNonNullableReferenceTypes();
+    c.UseAllOfToExtendReferenceSchemas();
+    c.SchemaFilter<SwaggerDefaultValuesFilter>(); // Optional: Custom filter
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
