@@ -114,8 +114,8 @@ namespace Caridology_Department_System.Controllers
 
             try
             {
-                var patientSL = new PatientSL();
-                patientSL.UpdateProfile(id, request, request.PhoneNumbers);
+                //var patientSL = new PatientSL();
+               // patientSL.UpdateProfile(id, request, request.PhoneNumbers);
 
                 return Ok(new { Message = "Patient profile updated successfully" });
             }
@@ -152,8 +152,8 @@ namespace Caridology_Department_System.Controllers
                 if (phoneNumbers == null || !phoneNumbers.Any())
                     return BadRequest("At least one phone number is required");
 
-                PatientSL patientSL = new PatientSL();
-                 patientSL.AddPatientAsync(request, phoneNumbers);
+              //  PatientSL patientSL = new PatientSL();
+                // patientSL.AddPatientAsync(request, phoneNumbers);
 
                 return Ok(new { Message = "Patient added successfully" });
             }
@@ -277,7 +277,7 @@ namespace Caridology_Department_System.Controllers
 
             try
             {
-                var patientSL = new PatientSL();
+                //var patientSL = new PatientSL();
                 //patientSL.UpdatePatientStatus(id, request.NewStatus);
 
                 return Ok(new { Message = "Patient status updated successfully", PatientId = id, NewStatus = request.NewStatus });

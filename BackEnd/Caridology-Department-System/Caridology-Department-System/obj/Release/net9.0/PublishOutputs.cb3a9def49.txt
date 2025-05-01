@@ -8,6 +8,7 @@ D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Cari
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Azure.Core.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Azure.Identity.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\BCrypt.Net-Next.dll
+D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

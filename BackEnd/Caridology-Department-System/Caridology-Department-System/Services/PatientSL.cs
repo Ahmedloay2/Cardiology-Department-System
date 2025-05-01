@@ -21,12 +21,12 @@ namespace Caridology_Department_System.Services
         /// <summary>
         /// Constructor initializes a new database context
         /// </summary>
-        public PatientSL()
+        public PatientSL(DBContext dB,PatientPhoneNumberSL numberSL,EmailValidator validator,PasswordHasher hasher)
         { 
-            dbContext = new DBContext();
-            passwordHasher = new PasswordHasher();
-            emailValidator = new EmailValidator(dbContext);
-            patientPhoneNumberSL = new PatientPhoneNumberSL(dbContext);
+            this.dbContext = dB;
+            this.passwordHasher = hasher;
+            this.emailValidator = validator;
+            this.patientPhoneNumberSL = numberSL;
 
         }
 

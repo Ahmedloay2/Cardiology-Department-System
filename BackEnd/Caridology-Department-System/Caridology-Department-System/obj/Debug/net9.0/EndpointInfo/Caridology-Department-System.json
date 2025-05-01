@@ -25,29 +25,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/AdminUpdateRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/AdminUpdateRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/AdminUpdateRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/AdminUpdateRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/AdminUpdateRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/AdminUpdateRequest"
               }
             }
           }
@@ -79,29 +67,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             }
           }
@@ -134,29 +110,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             }
           }
@@ -177,29 +141,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/LoginRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/LoginRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/LoginRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/LoginRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/LoginRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/LoginRequest"
               }
             }
           }
@@ -299,29 +251,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientStatusUpdateRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientStatusUpdateRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientStatusUpdateRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientStatusUpdateRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientStatusUpdateRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientStatusUpdateRequest"
               }
             }
           }
@@ -364,29 +304,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             }
           }
@@ -407,29 +335,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/PatientRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/PatientRequest"
               }
             }
           }
@@ -450,29 +366,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/LoginRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/LoginRequest"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/LoginRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/LoginRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/LoginRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/LoginRequest"
               }
             }
           }
@@ -748,7 +652,7 @@
       "cookieAuth": {
         "type": "apiKey",
         "description": "Cookie-based authentication",
-        "name": ".AspNetCore.Cookies",
+        "name": "Cardiology.Auth",
         "in": "cookie"
       }
     }
