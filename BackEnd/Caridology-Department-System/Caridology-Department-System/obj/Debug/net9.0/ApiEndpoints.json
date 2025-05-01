@@ -124,7 +124,7 @@
       },
       {
         "Name": "request",
-        "Type": "Caridology_Department_System.Requests.PatientUpdateRequest",
+        "Type": "PatientRequest",
         "IsRequired": true
       }
     ],
@@ -149,6 +149,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
+    "Method": "DeleteAccount",
+    "RelativePath": "api/Patient/Delete",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -197,7 +207,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Caridology_Department_System.Requests.PatientUpdateRequest",
+        "Type": "PatientRequest",
         "IsRequired": true
       }
     ],
@@ -214,22 +224,6 @@
       {
         "Name": "patient",
         "Type": "PatientRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
-    "Method": "UpdateOwnStatus",
-    "RelativePath": "api/Patient/status",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "newStatus",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

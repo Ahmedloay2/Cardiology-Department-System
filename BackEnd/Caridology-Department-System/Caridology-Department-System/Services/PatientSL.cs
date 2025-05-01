@@ -1,10 +1,9 @@
-﻿using System.Text;
+﻿
+using System.Reflection;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
-using Npgsql;
-using Org.BouncyCastle.Crypto.Generators;
+
 
 namespace Caridology_Department_System.Services
 {
@@ -16,13 +15,19 @@ namespace Caridology_Department_System.Services
     {
         // Database context for accessing the data layer
         private readonly DBContext dbContext;
-
+        private readonly EmailValidator emailValidator;
+        private readonly PasswordHasher passwordHasher;
+        private readonly PatientPhoneNumberSL patientPhoneNumberSL;
         /// <summary>
         /// Constructor initializes a new database context
         /// </summary>
         public PatientSL()
-        {
+        { 
             dbContext = new DBContext();
+            passwordHasher = new PasswordHasher();
+            emailValidator = new EmailValidator(dbContext);
+            patientPhoneNumberSL = new PatientPhoneNumberSL(dbContext);
+
         }
 
         /// <summary>
@@ -46,7 +51,6 @@ namespace Caridology_Department_System.Services
             return dbContext.Patients
                 .Where(p => p.ID == patientID && p.StatusID != 3) // Soft-delete check
                 .Include(p => p.PhoneNumbers)    // Eager load phone numbers
-                .Include(p => p.Appointments)    // Eager load appointments
                 .FirstOrDefault();               // Returns null if not found
         }
 
@@ -57,120 +61,60 @@ namespace Caridology_Department_System.Services
         /// <param name="phoneNumbers">List of phone numbers associated with the patient</param>
         /// <exception cref="ArgumentNullException">Thrown when patient object is null</exception>
         /// <exception cref="ArgumentException">Thrown when phone numbers are missing or email exists</exception>
-        public void AddPatient(PatientRequest patient, List<string> phoneNumbers)
+        public async Task AddPatientAsync(PatientRequest patient, List<string> phoneNumbers)
         {
-            // Validate that patient object is not null
             if (patient == null)
-                throw new ArgumentNullException(nameof(patient), "Patient data cannot be empty");
+                throw new ArgumentNullException(nameof(patient), "Patient cannot be null");
 
-            // Validate that at least one phone number is provided
             if (phoneNumbers == null || !phoneNumbers.Any())
-                throw new ArgumentException("At least one phone number is required", nameof(phoneNumbers));
+                throw new ArgumentException("At least one phone number required", nameof(phoneNumbers));
 
-            // Initialize required services
-            // Note: Should ideally use dependency injection instead of direct instantiation
-            var phoneNumberSL = new PatientPhoneNumberSL();
-            var emailValidator = new EmailValidator(dbContext);
-            var passwordHasher = new PasswordHasher();
+            if (!await emailValidator.IsEmailUniqueAsync(patient.Email))
+                throw new Exception("Email already in use");
 
-            // Check if the email is already in use by another patient
-            if (!emailValidator.IsEmailUnique(patient.Email))
-                throw new ArgumentException("Email already exists", nameof(patient.Email));
+            PatientModel newPatient = new PatientModel();
+            var requestProps = typeof(PatientRequest).GetProperties();
+            var patientProps = typeof(PatientModel).GetProperties();
 
-            // Create a new patient entity from the request data
-            PatientModel newPatient = new PatientModel
+            foreach (var requestProp in requestProps)
             {
-                FName = patient.FName,
-                LName = patient.LName,
-                BirthDate = patient.BirthDate,
-                Email = patient.Email,
-                // Hash the password before storing it for security
-                Password = passwordHasher.HashPassword(patient.Password),
-                PhotoPath = patient.PhotoPath,
-                BloodType = patient.BloodType,
-                EmergencyContactName = patient.EmergencyContactName,
-                EmergencyContactPhone = patient.EmergencyContactPhone,
-                RoleID = 3, // Default patient role
-                StatusID = 1, // Active status
-                CreatedAt = DateTime.UtcNow, // Use UTC for consistency across time zones
+                if (requestProp.Name == "PhoneNumbers")
+                    continue;
+                var patientProp = patientProps.FirstOrDefault(p => p.Name == requestProp.Name);
+                if (patientProp != null && patientProp.CanWrite)
+                {
+                    var value = requestProp.GetValue(patient);
+                    patientProp.SetValue(newPatient, value);
+                }
+            }
+            newPatient.Password = passwordHasher.HashPassword(patient.Password);
+            newPatient.RoleID = 3;
+            newPatient.StatusID = 1;
+            newPatient.CreatedAt = DateTime.UtcNow;
 
-                // Add required patient details
-                Gender = patient.Gender,
-                Link = patient.Link,
-                ParentName = patient.ParentName,
-                Address = patient.Address,
 
-                // Optional patient fields
-                SpouseName = patient.SpouseName,
-                LandLine = patient.LandLine,
-                Allergies = patient.Allergies,
-                ChronicConditions = patient.ChronicConditions,
-                PreviousSurgeries = patient.PreviousSurgeries,
-                CurrentMedications = patient.CurrentMedications,
-                PolicyNumber = patient.PolicyNumber,
-                insuranceProvider = patient.insuranceProvider,
-                PolicyValidDate = patient.PolicyValidDate,
-            };
+            await using var transaction = await dbContext.Database.BeginTransactionAsync();
 
-            // Begin a database transaction to ensure either all data is saved or none
-            using var transaction = dbContext.Database.BeginTransaction();
             try
             {
-                // Add the patient to the database context
-                dbContext.Patients.Add(newPatient);
-                // Save changes to generate the patient ID
-                dbContext.SaveChanges();
+                await dbContext.Patients.AddAsync(newPatient);
+                await dbContext.SaveChangesAsync(); // Saves patient first to get ID
 
-                // Add phone numbers for the patient using the newly generated ID
-                phoneNumberSL.AddPhoneNumbers(phoneNumbers, newPatient.ID);
-                dbContext.SaveChanges();
-
-                // Commit the transaction if everything succeeded
-                transaction.Commit();
+                await patientPhoneNumberSL.AddPhoneNumbersAsync(phoneNumbers, newPatient.ID);
+                await transaction.CommitAsync();
             }
             catch (DbUpdateException dbEx)
             {
-                // Rollback the transaction if an error occurred
-                transaction.Rollback();
-
-                // Create detailed error message with database-specific information
-                var errorMessage = new StringBuilder();
-                errorMessage.AppendLine($"Database update failed: {dbEx.Message}");
-
-                // Include inner exception details if available
-                if (dbEx.InnerException != null)
-                {
-                    errorMessage.AppendLine($"Inner exception: {dbEx.InnerException.Message}");
-
-                    // Special handling for PostgreSQL-specific exceptions
-                    if (dbEx.InnerException is PostgresException pgEx)
-                    {
-                        errorMessage.AppendLine($"Postgres Error Code: {pgEx.SqlState}");
-                        errorMessage.AppendLine($"Detail: {pgEx.Detail}");
-                        errorMessage.AppendLine($"Table: {pgEx.TableName}");
-                        errorMessage.AppendLine($"Column: {pgEx.ColumnName}");
-                        errorMessage.AppendLine($"Constraint: {pgEx.ConstraintName}");
-                    }
-                }
-
-                // Log the error to console for debugging
-                Console.WriteLine(errorMessage.ToString());
-
-                // Log the error to a file for persistence
-                File.AppendAllText("database_errors.log", $"[{DateTime.UtcNow}] {errorMessage}\n");
-
-                // Throw a new exception with detailed information
-                throw new Exception("Failed to save patient data. " + errorMessage, dbEx);
+                await transaction.RollbackAsync();
+                throw new Exception($"Database error: {dbEx.InnerException?.Message}");
             }
-            catch (Exception ex)
+            catch
             {
-                // Handle any other exceptions
-                transaction.Rollback();
-                Console.WriteLine($"General error: {ex.Message}\n{ex.StackTrace}");
-                throw new Exception("An unexpected error occurred while saving patient", ex);
+                await transaction.RollbackAsync();
+                throw;
             }
         }
-
+        
         /// <summary>
         /// Authenticates a patient using email and password
         /// </summary>
@@ -218,85 +162,188 @@ namespace Caridology_Department_System.Services
         /// <param name="request">The update request containing new patient data</param>
         /// <param name="phoneNumbers">Optional list of updated phone numbers</param>
         /// <exception cref="KeyNotFoundException">Thrown when patient is not found</exception>
-        public void UpdateProfile(int patientId, PatientUpdateRequest request, List<string>? phoneNumbers)
+        public async Task UpdateProfile(int patientId, PatientRequest request, List<string>? phoneNumbers)
         {
-            // Find the patient with associated phone numbers
-            var existingPatient = dbContext.Patients
-                .Include(p => p.PhoneNumbers)
-                .FirstOrDefault(p => p.ID == patientId) ?? throw new KeyNotFoundException("Patient not found");
+            // Validate input parameters
+            if (request == null)
+                throw new ArgumentNullException(nameof(request), "Patient request cannot be null");
 
-            // Update patient properties if new values are provided
-            // Only update fields that have non-empty values in the request
-            if (!string.IsNullOrEmpty(request.FName)) existingPatient.FName = request.FName;
-            if (!string.IsNullOrEmpty(request.LName)) existingPatient.LName = request.LName;
-            if (!string.IsNullOrEmpty(request.Email)) existingPatient.Email = request.Email;
-            if (!string.IsNullOrEmpty(request.PhotoPath)) existingPatient.PhotoPath = request.PhotoPath;
-            if (!string.IsNullOrEmpty(request.BloodType)) existingPatient.BloodType = request.BloodType;
-            if (!string.IsNullOrEmpty(request.EmergencyContactName)) existingPatient.EmergencyContactName = request.EmergencyContactName;
-            if (!string.IsNullOrEmpty(request.EmergencyContactPhone)) existingPatient.EmergencyContactPhone = request.EmergencyContactPhone;
-            if (!string.IsNullOrEmpty(request.Gender)) existingPatient.Gender = request.Gender;
-            if (!string.IsNullOrEmpty(request.Link)) existingPatient.Link = request.Link;
-            if (!string.IsNullOrEmpty(request.ParentName)) existingPatient.ParentName = request.ParentName;
-            if (!string.IsNullOrEmpty(request.Address)) existingPatient.Address = request.Address;
-            if (!string.IsNullOrEmpty(request.SpouseName)) existingPatient.SpouseName = request.SpouseName;
-            if (!string.IsNullOrEmpty(request.LandLine)) existingPatient.LandLine = request.LandLine;
-            if (!string.IsNullOrEmpty(request.Allergies)) existingPatient.Allergies = request.Allergies;
-            if (!string.IsNullOrEmpty(request.ChronicConditions)) existingPatient.ChronicConditions = request.ChronicConditions;
-            if (!string.IsNullOrEmpty(request.PreviousSurgeries)) existingPatient.PreviousSurgeries = request.PreviousSurgeries;
-            if (!string.IsNullOrEmpty(request.CurrentMedications)) existingPatient.CurrentMedications = request.CurrentMedications;
-            if (!string.IsNullOrEmpty(request.PolicyNumber)) existingPatient.PolicyNumber = request.PolicyNumber;
-            if (!string.IsNullOrEmpty(request.insuranceProvider)) existingPatient.insuranceProvider = request.insuranceProvider;
-
-            // Update password if provided and different from current password
-            if (!string.IsNullOrEmpty(request.Password) && request.Password != existingPatient.Password)
+            // Begin transaction to ensure all operations succeed or fail together
+            using var transaction = await dbContext.Database.BeginTransactionAsync();
+            try
             {
-                // Hash the new password before storing
-                existingPatient.Password = new PasswordHasher().HashPassword(request.Password);
-            }
+                // Get existing patient with phone numbers
+                PatientModel existingPatient = await dbContext.Patients
+                    .Include(p => p.PhoneNumbers)
+                    .FirstOrDefaultAsync(p => p.ID == patientId);
 
-            // Update date fields if provided and valid
-            if (request.BirthDate.HasValue && request.BirthDate != default)
-                existingPatient.BirthDate = request.BirthDate.Value;
+                if (existingPatient == null)
+                    throw new KeyNotFoundException("Patient not found");
 
-            if (request.PolicyValidDate.HasValue && request.PolicyValidDate != default)
-                existingPatient.PolicyValidDate = request.PolicyValidDate.Value;
-
-            // Update phone numbers if provided
-            if (phoneNumbers != null)
-            {
-                // Clear existing phone numbers to replace with new list
-                existingPatient.PhoneNumbers.Clear();
-
-                // Add new phone numbers to the patient
-                foreach (var number in phoneNumbers)
+                // Check if email is changed and validate uniqueness only if changed
+                if (!string.IsNullOrEmpty(request.Email) &&
+                    !existingPatient.Email.Equals(request.Email, StringComparison.OrdinalIgnoreCase))
                 {
-                    existingPatient.PhoneNumbers.Add(new PatientPhoneNumberModel
-                    {
-                        PhoneNumber = number,
-                        StatusID = 1, // Active status
-                        PatientID = existingPatient.ID
-                    });
+                    var emailValidator = new EmailValidator(dbContext);
+                    bool isEmailUnique = await emailValidator.IsEmailUniqueAsync(request.Email);
+                    if (!isEmailUnique)
+                        throw new InvalidOperationException("Email is already in use by another account");
                 }
+                if (!string.IsNullOrEmpty(request.FName) && existingPatient.FName != request.FName)
+                {
+                    existingPatient.FName = request.FName;
+                }
+                if (!string.IsNullOrEmpty(request.LName) && existingPatient.LName != request.LName)
+                {
+                    existingPatient.LName = request.LName;
+                }
+                // Only update birth date if provided and different
+                if (request.BirthDate != default && existingPatient.BirthDate != request.BirthDate)
+                {
+                    existingPatient.BirthDate = request.BirthDate;
+                }
+                if (!string.IsNullOrEmpty(request.Gender) && existingPatient.Gender != request.Gender)
+                {
+                    existingPatient.Gender = request.Gender;
+
+                }
+                if (!string.IsNullOrEmpty(request.Email) && existingPatient.Email != request.Email)
+                {
+                    existingPatient.Email = request.Email;
+                }
+                if (!string.IsNullOrEmpty(request.Address) && existingPatient.Address != request.Address)
+                {
+                    existingPatient.Address = request.Address;
+                }
+                // Update optional fields only if they are provided and different
+                if (request.LandLine != null && existingPatient.LandLine != request.LandLine)
+                {
+                    existingPatient.LandLine = request.LandLine;
+                }
+                if (!string.IsNullOrEmpty(request.EmergencyContactName) &&
+                    existingPatient.EmergencyContactName != request.EmergencyContactName)
+                {
+                    existingPatient.EmergencyContactName = request.EmergencyContactName;
+                }
+                if (!string.IsNullOrEmpty(request.EmergencyContactPhone) &&
+                    existingPatient.EmergencyContactPhone != request.EmergencyContactPhone)
+                {
+                    existingPatient.EmergencyContactPhone = request.EmergencyContactPhone;
+                }
+                if (!string.IsNullOrEmpty(request.ParentName) && existingPatient.ParentName != request.ParentName)
+                {
+                    existingPatient.ParentName = request.ParentName;
+                }
+                if (request.SpouseName != null && existingPatient.SpouseName != request.SpouseName)
+                {
+                    existingPatient.SpouseName = request.SpouseName;
+                }
+                // Medical information
+                if (request.BloodType != null && existingPatient.BloodType != request.BloodType)
+                {
+                    existingPatient.BloodType = request.BloodType;
+                }
+                if (request.Allergies != null && existingPatient.Allergies != request.Allergies)
+                {
+                    existingPatient.Allergies = request.Allergies;
+                }
+                if (request.ChronicConditions != null && existingPatient.ChronicConditions != request.ChronicConditions)
+                {
+                    existingPatient.ChronicConditions = request.ChronicConditions;
+
+                }
+                if (request.PreviousSurgeries != null && existingPatient.PreviousSurgeries != request.PreviousSurgeries)
+                {
+                    existingPatient.PreviousSurgeries = request.PreviousSurgeries;
+                }
+                if (request.CurrentMedications != null && existingPatient.CurrentMedications != request.CurrentMedications)
+                {
+                    existingPatient.CurrentMedications = request.CurrentMedications;
+                }
+                // Insurance information
+                if (request.PolicyNumber != null && existingPatient.PolicyNumber != request.PolicyNumber)
+                {
+                    existingPatient.PolicyNumber = request.PolicyNumber;
+
+                }
+                if (request.InsuranceProvider != null && existingPatient.InsuranceProvider != request.InsuranceProvider)
+                {
+                    existingPatient.InsuranceProvider = request.InsuranceProvider;
+                }
+                if (request.PolicyValidDate.HasValue && existingPatient.PolicyValidDate != request.PolicyValidDate)
+                {
+                    existingPatient.PolicyValidDate = request.PolicyValidDate;
+                }
+                if (request.PhotoPath != null && existingPatient.PhotoPath != request.PhotoPath)
+                {
+                    existingPatient.PhotoPath = request.PhotoPath;
+                }
+                if (!string.IsNullOrEmpty(request.Link) && existingPatient.Link != request.Link)
+                {
+                    existingPatient.Link = request.Link;
+                }
+                PasswordHasher passwordHasher = new PasswordHasher();
+                // Handle password update separately for security
+                if (!string.IsNullOrEmpty(request.Password) &&
+                    !passwordHasher.VerifyPassword(request.Password,existingPatient.Password))
+                {
+                    existingPatient.Password = new PasswordHasher().HashPassword(request.Password);
+
+                }
+                if (phoneNumbers != null)
+                {
+                    var currentPhoneNumbers = existingPatient.PhoneNumbers
+                        .Select(p => p.PhoneNumber)
+                        .ToList();
+
+                    // Only process phone numbers if they're different from current ones
+                    if (!phoneNumbers.OrderBy(p => p).SequenceEqual(currentPhoneNumbers.OrderBy(p => p)))
+                    {
+                        PatientPhoneNumberSL phoneNumberSL = new PatientPhoneNumberSL(dbContext); 
+                        await phoneNumberSL.UpdatePhoneNumbersAsync(existingPatient.ID, phoneNumbers);
+                    }
+                }
+
+                // Only save if changes were made
+                await dbContext.SaveChangesAsync();
+                
+
+                await transaction.CommitAsync();
             }
-
-            // Save all changes to the database
-            dbContext.SaveChanges();
+            catch
+            {
+                // Rollback transaction on any error
+                await transaction.RollbackAsync();
+                throw; // Re-throw to be handled by the controller
+            }
         }
-        public void UpdatePatientStatus(int patientId, int newStatus)
+
+        public void DeletePatient(int patientId)
         {
-            // Validate status value
-            if (newStatus < 1 || newStatus > 3)
-                throw new ArgumentException("Invalid status value. Allowed: 1 (Active), 2 (Inactive), 3 (Deleted)");
+            // Check if patient exists (with proper PascalCase quoting)
+            var patientExists = dbContext.Patients
+                .FromSqlInterpolated($@"SELECT * FROM ""Patients"" WHERE ""ID"" = {patientId}")
+                .Any();
 
-            // Find the patient
-            var patient = dbContext.Patients.FirstOrDefault(p => p.ID == patientId)
-                ?? throw new KeyNotFoundException("Patient not found");
+            if (!patientExists)
+                throw new KeyNotFoundException("Patient not found");
+            var trans = dbContext.Database.BeginTransaction();
+            try
+            {
+                // Delete related phone numbers
+                new PatientPhoneNumberSL(dbContext).DeletePhoneNumbers(patientId);
 
-            // Update status
-            patient.StatusID = newStatus;
-            patient.UpdatedAt = DateTime.UtcNow; // Optional: for audit
-
-            dbContext.SaveChanges();
+                // Perform soft delete (with proper PascalCase quoting)
+                dbContext.Database.ExecuteSqlInterpolated(
+                $@"UPDATE ""Patients"" 
+            SET ""StatusID"" = {3}, 
+            ""UpdatedAt"" = {DateTime.UtcNow}
+            WHERE ""ID"" = {patientId} AND ""StatusID"" <>{3}");
+                trans.Commit();
+            }
+            catch(Exception ex) {
+                trans.Rollback();
+            }
         }
 
     }

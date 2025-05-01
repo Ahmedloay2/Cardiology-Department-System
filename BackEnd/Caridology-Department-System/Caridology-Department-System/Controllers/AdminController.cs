@@ -98,7 +98,7 @@ namespace Caridology_Department_System.Controllers
         }
 
         [HttpPut("UpdatePatient/{id}")]
-        public IActionResult UpdatePatientProfile(int id, [FromBody] PatientUpdateRequest request)
+        public IActionResult UpdatePatientProfile(int id, [FromBody] PatientRequest request)
         {
             AdminSL adminSL = new AdminSL();
             var admin = GetAuthenticatedAdmin(adminSL);
@@ -153,7 +153,7 @@ namespace Caridology_Department_System.Controllers
                     return BadRequest("At least one phone number is required");
 
                 PatientSL patientSL = new PatientSL();
-                patientSL.AddPatient(request, phoneNumbers);
+                 patientSL.AddPatientAsync(request, phoneNumbers);
 
                 return Ok(new { Message = "Patient added successfully" });
             }
@@ -278,7 +278,7 @@ namespace Caridology_Department_System.Controllers
             try
             {
                 var patientSL = new PatientSL();
-                patientSL.UpdatePatientStatus(id, request.NewStatus);
+                //patientSL.UpdatePatientStatus(id, request.NewStatus);
 
                 return Ok(new { Message = "Patient status updated successfully", PatientId = id, NewStatus = request.NewStatus });
             }

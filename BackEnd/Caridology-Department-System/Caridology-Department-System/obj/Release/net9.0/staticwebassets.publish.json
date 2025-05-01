@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "420cUX4NLYBQRNoSPTNRWmgcap3mAzwHPP7/W2F4pfU=",
+  "Hash": "1Or9YFw7yzkOU4bEp5rgiXsb/rm+tk63isDvTBN0/Cc=",
   "Source": "Caridology-Department-System",
   "BasePath": "_content/Caridology-Department-System",
   "Mode": "Default",
@@ -9,10 +9,10 @@
   "DiscoveryPatterns": [],
   "Assets": [
     {
-      "Identity": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]?.styles.css.gz",
       "AssetKind": "All",
@@ -20,20 +20,20 @@
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
+      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "Fingerprint": "y2l08v9fn1",
       "Integrity": "up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
+      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
     },
     {
-      "Identity": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]?.styles.css.br",
       "AssetKind": "All",
@@ -41,20 +41,20 @@
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
+      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
       "Fingerprint": "3acm2to61v",
       "Integrity": "VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
+      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
     },
     {
-      "Identity": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]!.bundle.scp.css.br",
       "AssetKind": "All",
@@ -62,20 +62,20 @@
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "br",
       "Fingerprint": "3acm2to61v",
       "Integrity": "VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
+      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
     },
     {
-      "Identity": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]!.bundle.scp.css.gz",
       "AssetKind": "All",
@@ -83,20 +83,20 @@
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "Fingerprint": "y2l08v9fn1",
       "Integrity": "up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
+      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
     },
     {
-      "Identity": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "Caridology-Department-System#[.{fingerprint}]?.styles.css",
       "AssetKind": "All",
@@ -111,13 +111,13 @@
       "Integrity": "Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
+      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
     },
     {
-      "Identity": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "Caridology-Department-System#[.{fingerprint}]!.bundle.scp.css",
       "AssetKind": "All",
@@ -132,13 +132,13 @@
       "Integrity": "Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
+      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
     }
   ],
   "Endpoints": [
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -161,7 +161,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -201,7 +201,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -224,7 +224,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -264,7 +264,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -285,7 +285,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -309,7 +309,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css.br",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -330,7 +330,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -362,7 +362,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css.gz",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -383,7 +383,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -415,7 +415,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -438,7 +438,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -478,7 +478,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -501,7 +501,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -541,7 +541,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -562,7 +562,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -586,7 +586,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.styles.css.br",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -607,7 +607,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -639,7 +639,7 @@
     },
     {
       "Route": "Caridology-Department-System.6r2w4qys8d.styles.css.gz",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -660,7 +660,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -692,7 +692,7 @@
     },
     {
       "Route": "Caridology-Department-System.bundle.scp.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -715,7 +715,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -747,7 +747,7 @@
     },
     {
       "Route": "Caridology-Department-System.bundle.scp.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -770,7 +770,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -802,7 +802,7 @@
     },
     {
       "Route": "Caridology-Department-System.bundle.scp.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -823,7 +823,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -839,7 +839,7 @@
     },
     {
       "Route": "Caridology-Department-System.bundle.scp.css.br",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -860,7 +860,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -884,7 +884,7 @@
     },
     {
       "Route": "Caridology-Department-System.bundle.scp.css.gz",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -905,7 +905,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -929,7 +929,7 @@
     },
     {
       "Route": "Caridology-Department-System.styles.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -952,7 +952,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -984,7 +984,7 @@
     },
     {
       "Route": "Caridology-Department-System.styles.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -1007,7 +1007,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1039,7 +1039,7 @@
     },
     {
       "Route": "Caridology-Department-System.styles.css",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1060,7 +1060,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1076,7 +1076,7 @@
     },
     {
       "Route": "Caridology-Department-System.styles.css.br",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1097,7 +1097,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1121,7 +1121,7 @@
     },
     {
       "Route": "Caridology-Department-System.styles.css.gz",
-      "AssetFile": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1142,7 +1142,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 30 Apr 2025 07:10:17 GMT"
+          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
         },
         {
           "Name": "Cache-Control",

@@ -1,8 +1,9 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "Caridology-Department-System",
-    "version": "1.0"
+    "title": "Cardiology Department API",
+    "description": "API for Cardiology Department System",
+    "version": "v1"
   },
   "paths": {
     "/api/Admin/Profile": {
@@ -80,7 +81,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                    "$ref": "#/components/schemas/PatientRequest"
                   }
                 ]
               }
@@ -89,7 +90,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                    "$ref": "#/components/schemas/PatientRequest"
                   }
                 ]
               }
@@ -98,7 +99,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                    "$ref": "#/components/schemas/PatientRequest"
                   }
                 ]
               }
@@ -365,7 +366,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                    "$ref": "#/components/schemas/PatientRequest"
                   }
                 ]
               }
@@ -374,7 +375,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                    "$ref": "#/components/schemas/PatientRequest"
                   }
                 ]
               }
@@ -383,7 +384,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/PatientUpdateRequest"
+                    "$ref": "#/components/schemas/PatientRequest"
                   }
                 ]
               }
@@ -495,33 +496,11 @@
         }
       }
     },
-    "/api/Patient/status": {
+    "/api/Patient/Delete": {
       "patch": {
         "tags": [
           "Patient"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -539,15 +518,13 @@
             "pattern": "^.{2,50}$",
             "type": "string",
             "default": "",
-            "nullable": true,
-            "example": ""
+            "nullable": true
           },
           "lName": {
             "pattern": "^.{2,50}$",
             "type": "string",
             "default": "",
-            "nullable": true,
-            "example": ""
+            "nullable": true
           },
           "birthDate": {
             "type": "string",
@@ -559,22 +536,19 @@
             "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,100}$",
             "type": "string",
             "default": "",
-            "nullable": true,
-            "example": ""
+            "nullable": true
           },
           "email": {
             "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
             "type": "string",
             "default": "",
-            "nullable": true,
-            "example": ""
+            "nullable": true
           },
           "photoPath": {
             "pattern": "^.{0,255}$",
             "type": "string",
             "default": "",
-            "nullable": true,
-            "example": ""
+            "nullable": true
           },
           "roleID": {
             "maximum": 2147483647,
@@ -582,8 +556,7 @@
             "type": "integer",
             "format": "int32",
             "default": 1,
-            "nullable": true,
-            "example": "1"
+            "nullable": true
           },
           "statusID": {
             "maximum": 2147483647,
@@ -591,8 +564,7 @@
             "type": "integer",
             "format": "int32",
             "default": 1,
-            "nullable": true,
-            "example": "1"
+            "nullable": true
           },
           "phoneNumbers": {
             "type": "array",
@@ -606,8 +578,7 @@
             "pattern": "^.{0,500}$",
             "type": "string",
             "default": "",
-            "nullable": true,
-            "example": ""
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -667,6 +638,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "gender": {
+            "minLength": 1,
+            "type": "string"
+          },
           "password": {
             "maxLength": 100,
             "minLength": 8,
@@ -681,22 +656,18 @@
             "type": "string",
             "format": "email"
           },
-          "photoPath": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
+          "address": {
+            "minLength": 1,
+            "type": "string"
           },
-          "bloodType": {
-            "maxLength": 5,
-            "minLength": 0,
-            "pattern": "^(A|B|AB|O)[+-]$",
+          "landLine": {
             "type": "string",
+            "format": "tel",
             "nullable": true
           },
           "emergencyContactName": {
-            "maxLength": 50,
-            "minLength": 2,
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string"
           },
           "emergencyContactPhone": {
@@ -710,19 +681,7 @@
               "type": "string"
             }
           },
-          "gender": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "link": {
-            "minLength": 1,
-            "type": "string"
-          },
           "parentName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "address": {
             "minLength": 1,
             "type": "string"
           },
@@ -730,7 +689,7 @@
             "type": "string",
             "nullable": true
           },
-          "landLine": {
+          "bloodType": {
             "type": "string",
             "nullable": true
           },
@@ -762,6 +721,14 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "photoPath": {
+            "type": "string",
+            "nullable": true
+          },
+          "link": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -775,172 +742,14 @@
           }
         },
         "additionalProperties": false
-      },
-      "PatientUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "fName": {
-            "pattern": "^.{2,50}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "lName": {
-            "pattern": "^.{2,50}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "birthDate": {
-            "type": "string",
-            "format": "date-time",
-            "default": null,
-            "nullable": true
-          },
-          "password": {
-            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,100}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "email": {
-            "pattern": "^(?=.{1,100}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "photoPath": {
-            "pattern": "^.{0,255}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "bloodType": {
-            "pattern": "^(A|B|AB|O)[+-]$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "emergencyContactName": {
-            "pattern": "^.{2,50}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "emergencyContactPhone": {
-            "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "phoneNumbers": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "default": null,
-            "nullable": true
-          },
-          "gender": {
-            "pattern": "^.{0,20}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "link": {
-            "pattern": "^.{0,255}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "parentName": {
-            "pattern": "^.{0,100}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "address": {
-            "pattern": "^.{0,500}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "spouseName": {
-            "pattern": "^.{0,100}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "landLine": {
-            "pattern": "^.{0,20}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "allergies": {
-            "pattern": "^.{0,255}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "chronicConditions": {
-            "pattern": "^.{0,255}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "previousSurgeries": {
-            "pattern": "^.{0,255}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "currentMedications": {
-            "pattern": "^.{0,255}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "policyNumber": {
-            "pattern": "^.{0,50}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "insuranceProvider": {
-            "pattern": "^.{0,100}$",
-            "type": "string",
-            "default": "",
-            "nullable": true,
-            "example": ""
-          },
-          "policyValidDate": {
-            "type": "string",
-            "format": "date-time",
-            "default": null,
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "description": "Cookie-based authentication",
+        "name": ".AspNetCore.Cookies",
+        "in": "cookie"
       }
     }
   }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Caridology_Department_System.Models
 {
@@ -22,12 +23,11 @@ namespace Caridology_Department_System.Models
         [Required]
         [ForeignKey(nameof(Status))]
         public int StatusID { get; set; }
+        [JsonIgnore]
         public StatusModel Status { get; set; }
-        public PatientPhoneNumberModel(string phoneNumber, int patientID)
-        {}
-
         [ForeignKey(nameof(Patient))]
         public int PatientID { get; set; }
+        [JsonIgnore]
         public PatientModel Patient { get; set; } 
 
     }

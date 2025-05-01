@@ -917,3 +917,6 @@ D:\proJECT\Caridology-Department-System\BackEnd\Caridology-Department-System\Car
 D:\proJECT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\ref\Caridology-Department-System.dll
 D:\proJECT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
 D:\proJECT\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\HIS.json
+D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\HIS.json
+D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
+D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {}
+    "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {}
   },
   "projects": {
-    "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {
+    "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
+        "projectUniqueName": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
         "projectName": "Caridology-Department-System",
-        "projectPath": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
-        "packagesPath": "C:\\Users\\Muhammad Khaled\\.nuget\\packages\\",
-        "outputPath": "D:\\proJECT\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\",
+        "projectPath": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
+        "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
+        "outputPath": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files\\VS CODES community\\SA\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Muhammad Khaled\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ahmed\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -138,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

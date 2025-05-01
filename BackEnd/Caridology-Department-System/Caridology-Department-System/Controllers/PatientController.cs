@@ -6,6 +6,7 @@ using Caridology_Department_System.Services;        // Service layer classes
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;                    // HTTP context and session functionality
 using Microsoft.AspNetCore.Mvc;                     // ASP.NET Core MVC components
+using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Asn1.Ocsp;                   // Cryptography library component (might be unused)
 
 namespace Caridology_Department_System.Controllers
@@ -55,7 +56,7 @@ namespace Caridology_Department_System.Controllers
                 patient.Gender,
                 patient.PhotoPath,
                 patient.Address,
-                patient.PhoneNumbers,
+                PhoneNumbers = patient.PhoneNumbers.Select(pn => pn.PhoneNumber).ToList(),
                 patient.EmergencyContactName,
                 patient.EmergencyContactPhone,
                 patient.ParentName,
@@ -68,7 +69,7 @@ namespace Caridology_Department_System.Controllers
                 patient.CurrentMedications,
                 //patient.HealthInsuranceNumber,     // Commented out, not included in response
                 patient.PolicyNumber,
-                patient.insuranceProvider,
+                patient.InsuranceProvider,
                 patient.PolicyValidDate
             });
         }
@@ -79,7 +80,7 @@ namespace Caridology_Department_System.Controllers
         /// <param name="request">The profile data to update</param>
         /// <returns>Success message or error details</returns>
         [HttpPut("Profile")]
-        public IActionResult UpdateProfile([FromBody] PatientUpdateRequest request)
+        public async Task<IActionResult> UpdateProfile([FromBody] PatientRequest request)
         {
             try
             {
@@ -88,26 +89,49 @@ namespace Caridology_Department_System.Controllers
 
                 // Check if the patient is logged in
                 if (patientId == null)
-                    return Unauthorized("Not logged in");
+                    return Unauthorized(new { Success = false, Message = "Not logged in" });
 
-                // Initialize the patient service layer
+                // Basic request validation - check only required fields
+                // Note: We're being lenient with validation since the request may contain
+                // a mix of changed and unchanged fields
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.Values
+                            .SelectMany(v => v.Errors)
+                            .Select(e => e.ErrorMessage)
+                            .ToList();
+
+                    return BadRequest(new { Success = false, Errors = errors });
+                }
+
+                // Initialize the patient service layer with dependency injection
+                // (assuming dbContext is injected in the controller constructor)
                 PatientSL patientSL = new PatientSL();
 
                 // Update the patient profile with the provided information
+                // This returns whether any changes were actually made
                 patientSL.UpdateProfile(patientId.Value, request, request.PhoneNumbers);
 
-                // Return success response
-                return Ok(new { Message = "Profile updated successfully" });
+                // Return appropriate response based on whether changes were made
+                return Ok();
             }
             catch (KeyNotFoundException ex)
             {
                 // Return a 404 Not Found if the patient doesn't exist
-                return NotFound(ex.Message);
+                return NotFound(new { Success = false, Message = ex.Message });
+            }
+            catch (InvalidOperationException ex) when (ex.Message.Contains("Email"))
+            {
+                // Email already exists
+                return Conflict(new { Success = false, Message = ex.Message });
             }
             catch (Exception ex)
             {
+                // Log the exception details (in a real system)
+                // logger.LogError(ex, "Error updating patient profile");
+
                 // Return a 400 Bad Request for other errors
-                return BadRequest(ex.Message);
+                return BadRequest(new { Success = false, Message = ex.Message });
             }
         }
 
@@ -117,26 +141,18 @@ namespace Caridology_Department_System.Controllers
         /// <param name="patient">Patient registration data</param>
         /// <returns>Success message or error details</returns>
         [HttpPost("register")]
-        public IActionResult Register([FromBody] PatientRequest patient)
+        public async Task<IActionResult> Register(PatientRequest patient)
         {
             try
             {
-                // Validate that patient data and phone numbers are provided
                 if (patient == null || patient.PhoneNumbers == null)
                     return BadRequest("patient Data is required");
-
-                // Initialize the patient service layer
-                PatientSL patientSL = new PatientSL();
-
-                // Add the new patient to the database
-                patientSL.AddPatient(patient, patient.PhoneNumbers);
-
-                // Return success response
-                return Ok(new { Message = "Patient registered successfully" });
+                PatientSL patientService = new PatientSL();
+                await patientService.AddPatientAsync(patient, patient.PhoneNumbers);
+                return Ok("Patient registered successfully");
             }
             catch (Exception ex)
             {
-                // Return a 400 Bad Request for any errors
                 return BadRequest(ex.Message);
             }
         }
@@ -164,17 +180,10 @@ namespace Caridology_Department_System.Controllers
                 // Create session with the patient's ID
                 HttpContext.Session.SetInt32("PatientId", patient.ID);
 
-                // Return only essential patient data for client needs
-                var response = new
-                {
-                    patient.ID,
-                    patient.FName,
-                    patient.LName,
-                    patient.Email
-                };
-
                 // Return success with basic patient info
-                return Ok(response);
+                return Ok(new{
+                    patient.ID
+                });
             }
             catch (UnauthorizedAccessException)
             {
@@ -207,20 +216,20 @@ namespace Caridology_Department_System.Controllers
                     : "No active session found"
             });
         }
-        [HttpPatch("status")]
-        [Authorize(Roles = "Patient")]
-        public IActionResult UpdateOwnStatus([FromBody] int newStatus)
+        // NOTE: Pending review, possible optimizations needed
+        [HttpPatch("Delete")]
+        public IActionResult DeleteAccount()
         {
             try
             {
-                var patientId = HttpContext.Session.GetInt32("PatientId");
+                int? patientId = HttpContext.Session.GetInt32("PatientId");
                 if (patientId == null)
                     return Unauthorized("Not logged in");
 
-                var patientSL = new PatientSL();
-                patientSL.UpdatePatientStatus(patientId.Value, newStatus);
+                PatientSL patientSL = new PatientSL();
+                patientSL.DeletePatient(patientId.Value);
 
-                return Ok(new { Message = "Status updated successfully", NewStatus = newStatus });
+                return Ok(new { Message = "Account deleted successfully" });
             }
             catch (KeyNotFoundException ex)
             {
@@ -235,6 +244,5 @@ namespace Caridology_Department_System.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
     }
 }

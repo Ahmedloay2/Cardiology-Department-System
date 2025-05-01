@@ -4,3 +4,19 @@ Inner exception: Cannot write DateTime with Kind=Local to PostgreSQL type 'times
 [4/28/2025 8:08:10 AM] Database update failed: An error occurred while saving the entity changes. See the inner exception for details.
 Inner exception: Cannot write DateTime with Kind=Local to PostgreSQL type 'timestamp with time zone', only UTC is supported. Note that it's not possible to mix DateTimes with different Kinds in an array, range, or multirange. (Parameter 'value')
 
+[5/1/2025 11:12:57 AM] Database update failed: An error occurred while saving the entity changes. See the inner exception for details.
+Inner exception: 22001: value too long for type character varying(5)
+Postgres Error Code: 22001
+Detail: 
+Table: 
+Column: 
+Constraint: 
+
+[5/1/2025 11:13:45 AM] Database update failed: An error occurred while saving the entity changes. See the inner exception for details.
+Inner exception: 22001: value too long for type character varying(5)
+Postgres Error Code: 22001
+Detail: 
+Table: 
+Column: 
+Constraint: 
+

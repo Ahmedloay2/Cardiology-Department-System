@@ -1,6 +1,7 @@
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Caridology-Department-System.exe
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\appsettings.Development.json
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\appsettings.json
+D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\HIS.json
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Caridology-Department-System.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Caridology-Department-System.runtimeconfig.json
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Caridology-Department-System.pdb
@@ -44,6 +45,7 @@ D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Cari
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\BouncyCastle.Crypto.dll
+D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Swashbuckle.AspNetCore.Annotations.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Release\net9.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

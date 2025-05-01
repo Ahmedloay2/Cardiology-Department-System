@@ -1,13 +1,18 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http.Features;
+﻿using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Caridology_Department_System.Models;
 using Caridology_Department_System;
+using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // ===== Services =====
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 
 // --- DbContext ---
 builder.Services.AddDbContext<DBContext>(options =>
@@ -23,27 +28,10 @@ builder.Services.AddSession(options =>
     options.Cookie.Name = "Cardiology.Session";
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
-    options.Cookie.SameSite = SameSiteMode.None;
-    options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
-        ? CookieSecurePolicy.None
-        : CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.None;
     options.IdleTimeout = TimeSpan.FromMinutes(60);
 });
-
-// --- Auth (Cookie) ---
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/Account/Login";
-        options.AccessDeniedPath = "/Account/AccessDenied";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-        options.SlidingExpiration = true;
-        options.Cookie.HttpOnly = true;
-        options.Cookie.SameSite = SameSiteMode.None;
-        options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
-            ? CookieSecurePolicy.None
-            : CookieSecurePolicy.Always;
-    });
 
 // --- CORS ---
 builder.Services.AddCors(options =>
@@ -51,11 +39,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("CorsPolicy", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:3000", "http://localhost:44312",
-
+                "http://localhost:3000",
+                "http://localhost:44312",
                 "http://127.0.0.1:3000",
-                "http://cardiology-department-system.runasp.net",
-                "http://127.0.0.1:5501"
+                "http://127.0.0.1:5501",
+                "https://cardio-w-tever.vercel.app",
+                "https://cardiology-department-system.runasp.net"
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
@@ -75,39 +64,50 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SupportNonNullableReferenceTypes();
     c.UseAllOfToExtendReferenceSchemas();
-    c.SchemaFilter<SwaggerDefaultValuesFilter>();
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Cardiology Department API",
+        Version = "v1",
+        Description = "API for Cardiology Department System"
+    });
+
+    // Swagger security left in place for future use
+    c.AddSecurityDefinition("cookieAuth", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.ApiKey,
+        In = ParameterLocation.Cookie,
+        Name = ".AspNetCore.Cookies",
+        Description = "Cookie-based authentication"
+    });
 });
 
-// ===== Build App =====
 var app = builder.Build();
 
-// ===== Middleware =====
+// ===== Middleware Pipeline =====
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology Department API V1");
+    c.RoutePrefix = string.Empty;
+    c.ConfigObject.AdditionalItems["requestSnippetsEnabled"] = true;
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
 
-// Swagger
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology Department API V1");
-    c.RoutePrefix = "";
-});
-
-// HTTPS & Static
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
-// Middleware Order Matters:
 app.UseRouting();
-app.UseCors("CorsPolicy");     // ? Must come AFTER UseRouting and BEFORE auth/session
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseCors("CorsPolicy");
+app.UseAuthentication();  // Middleware kept
+app.UseAuthorization();   // Middleware kept
 app.UseSession();
 
-// Routes
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 
-// Start App
 app.Run();

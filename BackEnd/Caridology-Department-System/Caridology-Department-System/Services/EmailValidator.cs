@@ -7,14 +7,16 @@ namespace Caridology_Department_System.Services
     public class EmailValidator
     {
         private readonly DBContext _db;
+
         public EmailValidator(DBContext db) => _db = db;
 
-        public  bool IsEmailUnique(string email)
+        public async Task<bool> IsEmailUniqueAsync(string email)
         {
-            bool existsInAdmins =  _db.Admins.Any(a => a.Email == email);
-            bool existsInDoctors =  _db.Doctors.Any(d => d.Email == email);
-            bool existsInPatients =  _db.Patients.Any(p => p.Email == email);
-            return !(existsInAdmins || existsInDoctors || existsInPatients);
+            bool inPatients = await _db.Patients.AnyAsync(p => p.Email == email && p.StatusID !=3);
+            bool inDoctors = await _db.Doctors.AnyAsync(d => d.Email == email && d.StatusID != 3 );
+            bool inAdmins = await _db.Admins.AnyAsync(a => a.Email == email && a.StatusID != 3);
+
+            return !(inPatients || inDoctors || inAdmins);
         }
     }
 }
