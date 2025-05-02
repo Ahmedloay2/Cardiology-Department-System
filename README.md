@@ -1,9 +1,9 @@
 
 <h1 align="center">
   <br>
-  <a href=https://cardio-w-tever.vercel.app/index.html"><img src="https://github.com/alhussien-ayman/cardio_WTever/blob/main/assets/img/Logotest.png" alt="Markdownify" width="200"></a>
+  <a href=https://cardio-w-tever.vercel.app/index.html"><img src="https://github.com/alhussien-ayman/cardio_WTever/blob/main/assets/img/Logotest.png" alt="Cardiology WTever" width="200"></a>
   <br>
-  Markdownify
+  Cardiology WTever
   <br>
 </h1>
 
