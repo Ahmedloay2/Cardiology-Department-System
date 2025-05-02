@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology HIS - Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+                <a id="mobile_btn" href="javascript:void(0);">
+                    <span class="bar-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </a>
+                <a href="index.html" class="navbar-brand logo">
+                    <img src="assets/img/logotest.png" class="img-fluid" alt="Logo" />
+                </a>
+            </div>
+            <div class="main-menu-wrapper">
+                <div class="menu-header">
+                    <a href="index.html" class="menu-logo">
+                        <img src="assets/img/logo.png" class="img-fluid" alt="Logo" />
+                    </a>
+                    <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+                <ul class="main-nav">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#Personal Information"> Personal Information</a>
+                        <ul class="submenu">
+
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#Account Information">Account Information</a>
+                        <ul class="submenu">
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#Contact Information">Contact Information</a>
+                    </li>
+                    <li class="login-link active">
+                        <a href="login.html">Login / Signup</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav header-navbar-rht">
+                <li class="nav-item contact-item">
+                    <div class="header-contact-img">
+                        <i class="far fa-hospital"></i>
+                    </div>
+                    <div class="header-contact-detail">
+                        <p class="contact-header">Contact</p>
+                        <p class="contact-info-header">01500825432</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link header-login custom-button" href="login.html">login / Signup
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /Header -->
+    <div class="bubble" style="width: 300px; height: 300px; top: -150px; left: -150px;"></div>
+    <div class="bubble" style="width: 200px; height: 200px; bottom: -100px; right: -100px; animation-delay: 3s;"></div>
+    <div class="bubble" style="width: 150px; height: 150px; top: 30%; left: 10%; animation-delay: 5s;"></div>
+    <div class="bubble" style="width: 250px; height: 250px; bottom: 20%; right: 15%; animation-delay: 7s;"></div>
+<!-- Updated registration form with password fields and other improvements -->
+<div class="registration-container">
+      <!-- Cardiology Header -->
+    <div class="cardio-header">
+        <div class="ecg-animation-bg"></div>
+        
+        <div class="header-content">
+            <div class="cardio-profile">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring delay-1"></div>
+                <div class="pulse-ring delay-2"></div>
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            
+            <div class="header-text">
+                <h1 class="heartbeat-text">Cardiology HIS</h1>
+                <p class="ecg-text">Complete your registration to access our healthcare services</p>
+            </div>
+        </div>
+        
+        <div class="live-ecg">
+            <svg viewBox="0 0 500 50" preserveAspectRatio="none">
+                <path class="ecg-path" d="M0,25 L500,25" />
+            </svg>
+        </div>
+    </div>
+    <!-- Form success/error messages -->
+    <div class="form-success-message">
+        <i class="fas fa-check-circle"></i> Registration successful! You can now log in to your account.
+    </div>
+    <div class="form-error-message">
+        <i class="fas fa-exclamation-circle"></i> <span class="error-message-text">An error occurred.</span>
+    </div>
+    
+  
+    <div class="role-toolbar">
+      <div class="role-option active" data-role="patient">
+          <div class="role-icon"><i class="fas fa-user"></i></div>
+          <span>Patient</span>
+      </div>
+      <div class="role-option" data-role="doctor">
+          <div class="role-icon"><i class="fas fa-user-md"></i></div>
+          <span>Doctor</span>
+      </div>
+  </div>
+    <form id="patient-registration">
+        <div id="Personal Information"  class="form-section">
+            <h2 class="section-title"><i class="fas fa-user-circle"></i> Personal Information</h2>
+            <div class="photo-upload">
+                <img id="patient-photo" src="images/cardio.jpg" alt="Patient Photo">
+                <label for="photo-input" class="upload-btn">
+                    <i class="fas fa-camera upload-icon"></i> Upload Photo
+                </label>
+                <input type="file" id="photo-input" accept="image/*">
+            </div>
+            <div class="form-row">
+                <label>First Name</label>
+                <input type="text" name="firstName" placeholder="Enter your first name" required>
+                <div class="error-message">First name must be between 2 and 50 characters</div>
+            </div>
+            <div class="form-row">
+                <label>Last Name</label>
+                <input type="text" name="lastName" placeholder="Enter your last name" required>
+                <div class="error-message">Last name must be between 2 and 50 characters</div>
+            </div>
+            <div class="form-row">
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <div class="error-message">Please select a gender</div>
+            </div>
+            <div class="form-row">
+                <label>Date of Birth</label>
+                <input type="date" name="dob" placeholder="dd/mm/yyyy" required>
+                <div class="error-message">Please enter a valid date of birth</div>
+            </div>
+        </div>
+
+        <div id="Account Information" class="form-section">
+            <h2 class="section-title"><i class="fas fa-lock"></i> Account Information</h2>
+            <div class="form-row">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="patient@example.com" required>
+                <div class="error-message">Please enter a valid email address</div>
+            </div>
+            <div class="form-row password-field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create a strong password" required>
+              
+                <div class="password-strength">
+                    <div class="strength-meter"></div>
+                </div>
+                <div class="error-message">Password must be at least 8 characters and include uppercase, lowercase, number, and special character</div>
+            </div>
+            <div class="form-row password-field">
+                <label>Confirm Password</label>
+                <input type="password" name="confirmPassword" placeholder="Confirm your password" required>
+               
+                <div class="error-message">Passwords do not match</div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title"><i class="fas fa-notes-medical"></i> Medical Information</h2>
+            <div class="form-row">
+                <label>Blood Group</label>
+                <select name="bloodGroup">
+                    <option value="">Select Blood Group</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                </select>
+                <div class="error-message">Please select a valid blood group</div>
+            </div>
+            <div class="form-row">
+                <label>Referred By</label>
+                <input type="text" name="referredBy" placeholder="Practo.com">
+                <div class="error-message">Please enter referral information</div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title"><i class="fas fa-users"></i> Family Information</h2>
+            <div class="form-row">
+                <label>Parent Name</label>
+                <input type="text" name="parentName" placeholder="Enter parent's name" required>
+                <div class="error-message">Please enter parent name</div>
+            </div>
+            <div class="form-row">
+                <label>Spouse Name</label>
+                <input type="text" name="spouseName" placeholder="Enter spouse's name">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Emergency Contact</h2>
+            <div class="form-row">
+                <label>Emergency Contact Name</label>
+                <input type="text" name="emergencyContactName" placeholder="Enter emergency contact name" required>
+                <div class="error-message">Emergency contact name is required</div>
+            </div>
+            <div class="form-row">
+                <label>Emergency Contact Phone</label>
+                <input type="tel" name="emergencyContactPhone" placeholder="+201012345678" required>
+                <div class="error-message">Please enter a valid Egyptian phone number</div>
+            </div>
+        </div>    
+        <div class="form-section">
+            <h2 class="section-title"><i class="fas fa-history"></i> Medical History</h2>
+            <div class="form-row">
+                <label>Known Allergies</label>
+                <input type="text" name="allergies" placeholder="List any known allergies">
+            </div>
+            <div class="form-row">
+                <label>Chronic Conditions</label>
+                <input type="text" name="chronicConditions" placeholder="e.g. Diabetes, Hypertension">
+            </div>
+            <div class="form-row">
+                <label>Previous Surgeries</label>
+                <input type="text" name="surgeries" placeholder="List any previous surgeries">
+            </div>
+            <div class="form-row">
+                <label>Current Medications</label>
+                <input type="text" name="medications" placeholder="List current medications">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title"><i class="fas fa-heartbeat"></i> Health Insurance</h2>
+            <div class="form-row">
+                <label>Insurance Provider</label>
+                <input type="text" name="insuranceProvider" placeholder="Insurance company name">
+            </div>
+            <div class="form-row">
+                <label>Policy Number</label>
+                <input type="text" name="policyNumber" placeholder="Insurance policy number">
+            </div>
+            <div class="form-row">
+                <label>Policy Valid Until</label>
+                <input type="date" name="policyValidUntil">
+            </div>
+        </div>
+
+        <div id="Contact Information" class="form-section">
+            <h2 class="section-title"><i class="fas fa-address-book"></i> Contact Information</h2>
+            <div class="form-row">
+                <label>Primary Mobile</label>
+                <input type="tel" name="primaryMobile" placeholder="+201012345678" pattern="(?:\+20|0)?1[0125]\d{8}" required>
+                <div class="error-message">Please enter a valid Egyptian phone number</div>
+            </div>
+            <div class="form-row">
+                <label>Secondary Mobile</label>
+                <input type="tel" name="secondaryMobile" placeholder="+201112345678" pattern="(?:\+20|0)?1[0125]\d{8}">
+            </div>
+            <div class="form-row">
+                <label>Landline</label>
+                <input type="tel" name="landline" placeholder="+20225432101">
+            </div>
+            <div class="form-row">
+                <label>Street Address</label>
+                <textarea name="address" placeholder="#10 4th Main 20th Cross" required></textarea>
+                <div class="error-message">Address is required</div>
+            </div>
+        </div>
+
+        <div class="terms-checkbox">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the <a href="terms-conditions.html">Terms and Conditions</a> and <a href="privacy-policy.html">Privacy Policy</a></label>
+        </div>
+
+        <div class="form-loader">
+            <div class="spinner"></div>
+            <p>Processing your registration...</p>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            <i class="fas fa-user-plus"></i> Register
+        </button>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <!-- Footer Top -->
+    <div class="footer-top">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-about">
+              <div class="footer-logo">
+                <img src="assets/img/footerlogo.png" alt="logo" />
+              </div>
+              <div class="footer-about-content">
+                <p>
+                  To judge human character rightly, a man may sometimes have very small experience, provided he has a very large heart.
+                </p>
+                <div class="social-icon">
+                  <ul>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-linkedin-in"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-instagram"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-dribbble"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-menu">
+              <h2 class="footer-title">For Patients</h2>
+              <ul>
+                <li>
+                  <a href="search.html"
+                    ><i class="fas fa-angle-double-right"></i> Search for
+                    Doctors</a
+                  >
+                </li>
+                <li>
+                  <a href="login.html"
+                    ><i class="fas fa-angle-double-right"></i> Login</a
+                  >
+                </li>
+                <li>
+                  <a href="register.html"
+                    ><i class="fas fa-angle-double-right"></i> Register</a
+                  >
+                </li>
+                <li>
+                  <a href="booking.html"
+                    ><i class="fas fa-angle-double-right"></i> Booking</a
+                  >
+                </li>
+               
+              </ul>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-menu">
+              <h2 class="footer-title">For Doctors</h2>
+              <ul>
+                <li>
+                  <a href="appointments.html"
+                    ><i class="fas fa-angle-double-right"></i>
+                    Appointments</a
+                  >
+                </li>
+                <li>
+                  <a href="chat.html"
+                    ><i class="fas fa-angle-double-right"></i> Chat</a
+                  >
+                </li>
+                <li>
+                  <a href="login.html"
+                    ><i class="fas fa-angle-double-right"></i> Login</a
+                  >
+                </li>
+                <li>
+                  <a href="doctor-register.html"
+                    ><i class="fas fa-angle-double-right"></i> Register</a
+                  >
+                </li>
+                <li>
+                  <a href="doctor-dashboard.html"
+                    ><i class="fas fa-angle-double-right"></i> Doctor
+                    Dashboard</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-contact">
+              <h2 class="footer-title">Contact Us</h2>
+              <div class="footer-contact-info">
+                <div class="footer-address">
+                  <span><i class="fas fa-map-marker-alt"></i></span>
+                  <p>
+                    3556 Beech Street, San Francisco,<br />
+                    California, CA 94108
+                  </p>
+                </div>
+                <p>
+                  <i class="fas fa-phone-alt"></i>
+                  01146502664
+                </p>
+                <p class="mb-0">
+                  <i class="fas fa-envelope"></i>
+                  The7th@gmail.com
+                </p>
+              </div>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Footer Top -->
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container-fluid">
+        <!-- Copyright -->
+        <div class="copyright">
+          <div class="row">
+            <div class="col-md-6 col-lg-6">
+              <div class="copyright-text">
+                <p class="mb-0">
+                  <a
+                    href="https://www.youtube.com/channel/UCOf3bbODZA6ec8B9465gD2Q"
+                    >Alhussien Ayman
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+              <!-- Copyright Menu -->
+              <div class="copyright-menu">
+                <ul class="policy-menu">
+                  <li>
+                    <a href="term-condition.html">Terms and Conditions</a>
+                  </li>
+                  <li><a href="privacy-policy.html">Policy</a></li>
+                </ul>
+              </div>
+              <!-- /Copyright Menu -->
+            </div>
+          </div>
+        </div>
+        <!-- /Copyright -->
+      </div>
+    </div>
+    <!-- /Footer Bottom -->
+  </footer>
+  <!-- /Footer -->
+</div>
+<!-- /Main Wrapper -->
+
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/register.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
