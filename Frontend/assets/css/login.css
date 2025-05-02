@@ -1,0 +1,299 @@
+/* =====Login ======*/
+:root {
+	--primary-color: #F7556D;  /* Main pink-red color */
+	--accent-red: #D10000;     /* Vibrant red for heart */
+	--dark-shade: #C2185B;     /* Darker shade for headers */
+	--light-gray: #f8f9fa;     /* Light background */
+  }
+  
+  body, html {
+	height: 100%;
+	margin: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: var(--light-gray);
+  }
+  
+  .login-container {
+	display: flex;
+	min-height: 100vh;
+  }
+  
+  .left-side {
+	background-color: var(--primary-color);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+	color: white;
+	/* Smaller ellipse that won't affect content positioning */
+	clip-path: ellipse(70% 80% at 15% 50%);
+	position: relative;
+  }
+  
+  /* Ensures content stays perfectly centered */
+  .left-side::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	clip-path: ellipse(70% 80% at 15% 50%);
+	z-index: -1;
+  }
+  
+  .logo {
+	font-size: 2.5rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	position: relative; /* Maintains centering */
+	z-index: 1;
+  }
+  
+  .heart-icon {
+	color: var(--accent-red);
+	margin-right: 0.5rem;
+	display: inline-block;
+  }
+  
+  .right-side {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+  }
+  
+  .login-box {
+	width: 100%;
+	max-width: 400px;
+	background: white;
+	padding: 2.5rem;
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-title {
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin-bottom: 1.5rem;
+	color: var(--dark-shade);
+	text-align: center;
+  }
+  
+  .form-control {
+	height: 45px;
+	border-radius: 8px;
+	border: 1px solid #ddd;
+	padding-left: 15px;
+  }
+  
+  .form-control:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 0.2rem rgba(247, 85, 109, 0.25);
+  }
+  
+  .btn-login {
+	background-color: var(--primary-color);
+	border: none;
+	color: white;
+	height: 45px;
+	border-radius: 8px;
+	font-weight: 500;
+	margin-top: 1rem;
+  }
+  
+  .btn-login:hover {
+	background-color: var(--dark-shade);
+  }
+  
+  .footer-copyright {
+	text-align: center;
+	margin-top: 2rem;
+	font-size: 0.8rem;
+	color: #666;
+  }
+  
+  .role-selector {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+  }
+  
+  .role-btn {
+	flex: 1;
+	margin: 0 5px;
+	padding: 10px;
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	background: white;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.3s;
+  }
+  
+  .role-icon {
+	display: block;
+	font-size: 1.8rem;
+	margin-bottom: 5px;
+  }
+  
+  .role-btn.active {
+	border-color: var(--primary-color);
+	background-color: rgba(247, 85, 109, 0.1);
+  }
+  
+  .role-btn input[type="radio"] {
+	display: none;
+  }
+  
+  .signup-link {
+	color: var(--primary-color);
+	font-weight: 500;
+  }
+  
+  @media (max-width: 768px) {
+	.login-container {
+	  flex-direction: column;
+	}
+	
+	.left-side {
+	  clip-path: none;
+	  padding: 1rem;
+	}
+	
+	.left-side::before {
+	  clip-path: none;
+	}
+	
+	.right-side {
+	  padding: 1rem;
+	}
+	
+	.login-box {
+	  padding: 1.5rem;
+	}
+  }
+  
+  /* Heartbeat animation */
+  @keyframes heartbeat {
+	0% { transform: scale(1); }
+	25% { transform: scale(1.1); }
+	50% { transform: scale(1); }
+	75% { transform: scale(1.1); }
+	100% { transform: scale(1); }
+  }
+  
+  .heart-icon {
+	animation: heartbeat 1.5s infinite;
+  }
+
+
+  /* Additional styles for login functionality */
+
+/* Error alert styling */
+.error-alert {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+/* Role selection button styling improvements */
+.role-selector {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.role-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.role-btn:hover {
+    background-color: #fc7a8d;
+}
+
+.role-btn input[type="radio"] {
+    position: absolute;
+    opacity: 3;
+}
+
+.role-btn input[type="radio"]:checked + span + label,
+.role-btn input[type="radio"]:checked ~ span {
+    color: #009ce7;
+}
+
+.role-btn input[type="radio"]:checked + .role-icon,
+.role-btn input[type="radio"]:checked + span + .role-icon {
+    transform: scale(1.2);
+}
+
+.role-btn input[type="radio"]:checked + span,
+.role-btn input[type="radio"]:checked ~ span {
+    color: #009ce7;
+}
+
+.role-btn input[type="radio"]:checked {
+    background-color: #e3f2fd;
+    border-color: #009ce7;
+}
+
+.role-icon {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+}
+@supports(selector(:has(*))) {
+    .role-btn:has(input[type="radio"]:checked) {
+        border-color: #F7556D;
+        background-color: #F7556D;
+        color: white;
+    }
+
+
+/* Bubble animation adjustments */
+.bubble {
+    position: fixed;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+    opacity: 0.7;
+    z-index: -1;
+    animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(5%, 5%);
+    }
+    50% {
+        transform: translate(0, 10%);
+    }
+    75% {
+        transform: translate(-5%, 5%);
+    }
+}
+
+/* Form focus states */
+.form-control:focus {
+    border-color: #009ce7;
+    box-shadow: 0 0 0 0.2rem rgba(0, 156, 231, 0.25);
+}
+}

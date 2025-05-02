@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Cardiology System Login</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+     <!-- Header -->
+     <header class="header">
+        <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+                <a id="mobile_btn" href="javascript:void(0);">
+                    <span class="bar-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </a>
+                <a href="index.html" class="navbar-brand logo">
+                    <img src="assets/img/logotest.png" class="img-fluid" alt="Logo" />
+                </a>
+            </div>
+            <div class="main-menu-wrapper">
+                <div class="menu-header">
+                    <a href="index.html" class="menu-logo">
+                        <img src="assets/img/logo.png" class="img-fluid" alt="Logo" />
+                    </a>
+                    <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </div>
+                <ul class="main-nav">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="index.html"> Specialities </a>
+                        <ul class="submenu">
+
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="index.html">Doctors </a>
+                        <ul class="submenu">
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="index.html">Features</a>
+                    </li>
+                    <li class="login-link active">
+                        <a href="login.html">Login / Signup</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav header-navbar-rht">
+                <li class="nav-item contact-item">
+                    <div class="header-contact-img">
+                        <i class="far fa-hospital"></i>
+                    </div>
+                    <div class="header-contact-detail">
+                        <p class="contact-header">Contact</p>
+                        <p class="contact-info-header">01500825432</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link header-login custom-button" href="login.html">login / Signup
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- /Header -->
+    <!-- Floating bubbles background -->
+    <div class="bubble" style="width: 300px; height: 300px; top: -150px; left: -150px;"></div>
+    <div class="bubble" style="width: 200px; height: 200px; bottom: -100px; right: -100px; animation-delay: 3s;"></div>
+    <div class="bubble" style="width: 150px; height: 150px; top: 30%; left: 10%; animation-delay: 5s;"></div>
+    <div class="bubble" style="width: 250px; height: 250px; bottom: 20%; right: 15%; animation-delay: 7s;"></div>
+    <div class="login-container">
+       
+        <!-- Right side with login form -->
+        <div class="right-side">
+            <div class="login-box">
+                <h2 class="login-title">Login</h2>
+
+                <!-- Role selection using Bootstrap icons -->
+                <div class="role-selector">
+                    <label class="role-btn">
+                        <input type="radio" name="role" value="doctor">
+                        <span class="role-icon">👨‍⚕️</span>
+                        Doctor
+                    </label>
+                    <label class="role-btn">
+                        <input type="radio" name="role" value="patient">
+                        <span class="role-icon">🧑</span>
+                        Patient
+                    </label>
+                    <label class="role-btn">
+                        <input type="radio" name="role" value="admin">
+                        <span class="role-icon">👔</span>
+                        Admin
+                    </label>
+                </div>
+
+                <form id="loginForm">
+                    <!-- Error alert will be displayed here -->
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="remember">
+                        <label class="form-check-label" for="remember">Remember me</label>
+                        <a href="#" class="float-right">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-login btn-block">Sign In</button>
+
+                    <div class="text-center mt-3">
+                        Don't have an account? <a href="register.html" class="signup-link">Sign Up</a>
+                    </div>
+                </form>
+
+                <div class="footer-copyright">
+                    Copyright © 2025, Cardiology HIS. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  <!-- Footer -->
+  <footer class="footer">
+    <!-- Footer Top -->
+    <div class="footer-top">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-about">
+              <div class="footer-logo">
+                <img src="assets/img/footerlogo.png" alt="logo" />
+              </div>
+              <div class="footer-about-content">
+                <p>
+                  To judge human character rightly, a man may sometimes have very small experience, provided he has a very large heart.
+                </p>
+                <div class="social-icon">
+                  <ul>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-linkedin-in"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-instagram"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#" target="_blank"
+                        ><i class="fab fa-dribbble"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-menu">
+              <h2 class="footer-title">For Patients</h2>
+              <ul>
+                <li>
+                  <a href="search.html"
+                    ><i class="fas fa-angle-double-right"></i> Search for
+                    Doctors</a
+                  >
+                </li>
+                <li>
+                  <a href="login.html"
+                    ><i class="fas fa-angle-double-right"></i> Login</a
+                  >
+                </li>
+                <li>
+                  <a href="register.html"
+                    ><i class="fas fa-angle-double-right"></i> Register</a
+                  >
+                </li>
+                <li>
+                  <a href="booking.html"
+                    ><i class="fas fa-angle-double-right"></i> Booking</a
+                  >
+                </li>
+                <li>
+                  <a href="index.html"
+                    ><i class="fas fa-angle-double-right"></i> 
+                      Home </a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-menu">
+              <h2 class="footer-title">For Doctors</h2>
+              <ul>
+                <li>
+                  <a href="appointments.html"
+                    ><i class="fas fa-angle-double-right"></i>
+                    Appointments</a
+                  >
+                </li>
+                <li>
+                  <a href="chat.html"
+                    ><i class="fas fa-angle-double-right"></i> Chat</a
+                  >
+                </li>
+                <li>
+                  <a href="login.html"
+                    ><i class="fas fa-angle-double-right"></i> Login</a
+                  >
+                </li>
+                <li>
+                  <a href="doctor-register.html"
+                    ><i class="fas fa-angle-double-right"></i> Register</a
+                  >
+                </li>
+                <li>
+                  <a href="doctor-dashboard.html"
+                    ><i class="fas fa-angle-double-right"></i> Doctor
+                    Dashboard</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <!-- Footer Widget -->
+            <div class="footer-widget footer-contact">
+              <h2 class="footer-title">Contact Us</h2>
+              <div class="footer-contact-info">
+                <div class="footer-address">
+                  <span><i class="fas fa-map-marker-alt"></i></span>
+                  <p>
+                    3556 Beech Street, San Francisco,<br />
+                    California, CA 94108
+                  </p>
+                </div>
+                <p>
+                  <i class="fas fa-phone-alt"></i>
+                  01146502664
+                </p>
+                <p class="mb-0">
+                  <i class="fas fa-envelope"></i>
+                  The7th@gmail.com
+                </p>
+              </div>
+            </div>
+            <!-- /Footer Widget -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Footer Top -->
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container-fluid">
+        <!-- Copyright -->
+        <div class="copyright">
+          <div class="row">
+            <div class="col-md-6 col-lg-6">
+              <div class="copyright-text">
+                <p class="mb-0">
+                  <a
+                    href="https://www.youtube.com/channel/UCOf3bbODZA6ec8B9465gD2Q"
+                    >Alhussien Ayman
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+              <!-- Copyright Menu -->
+              <div class="copyright-menu">
+                <ul class="policy-menu">
+                  <li>
+                    <a href="term-condition.html">Terms and Conditions</a>
+                  </li>
+                  <li><a href="privacy-policy.html">Policy</a></li>
+                </ul>
+              </div>
+              <!-- /Copyright Menu -->
+            </div>
+          </div>
+        </div>
+        <!-- /Copyright -->
+      </div>
+    </div>
+    <!-- /Footer Bottom -->
+  </footer>
+  <!-- /Footer -->
+</div>
+<!-- /Main Wrapper -->
+
+    
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Add our custom login script -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/Login.js"></script>
+</body>
+
+</html>
