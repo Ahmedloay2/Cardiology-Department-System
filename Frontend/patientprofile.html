@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cardiology HIS - Registration</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <link rel="stylesheet" href="assets/css/patientprofile.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg header-nav">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">
+                  <img src="assets/img/logotest.png" alt="Logo" class="logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav main-nav">
+                      <li class="nav-item active">
+                          <a class="nav-link" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#Personal Details">Personal Details</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#Medical Information">Medical Information</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#Health Insurance">Health Insurance</a>
+                      </li>
+                  </ul>
+                  <ul class="navbar-nav header-navbar-rht ms-auto">
+                      <li class="nav-item contact-item">
+                          <div class="header-contact-img">
+                              <i class="far fa-hospital"></i>
+                          </div>
+                          <div class="header-contact-detail">
+                              <p class="contact-header">Contact</p>
+                              <p class="contact-info-header">01500825432</p>
+                          </div>
+                      </li>
+                      <div class="profile-photo-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </header>
+    <!-- /Header -->
+    <!-- Floating bubbles background -->
+    <div
+      class="bubble"
+      style="width: 300px; height: 300px; top: -200px; left: -150px"
+    ></div>
+    <div
+      class="bubble"
+      style="
+        width: 200px;
+        height: 200px;
+        bottom: -100px;
+        right: -100px;
+        animation-delay: 3s;
+      "
+    ></div>
+
+    <div class="profile-container">
+      <!-- View Mode (default) -->
+      <div id="view-mode">
+        <!-- Cardiology Header -->
+        <div class="cardio-header">
+          <div class="ecg-animation-bg"></div>
+
+          <div class="profile-section">
+            <div class="cardio-profile">
+              <div class="pulse-ring"></div>
+              <div class="pulse-ring delay-1"></div>
+              <div class="pulse-ring delay-2"></div>
+              <i class="fas fa-heartbeat"></i>
+              <img id="patientPhotoImg" src="" alt="Patient Photo">
+            </div>
+
+            <div class="patient-info">
+              <h1 class="heartbeat-text" id="display-name"></h1>
+              <br />
+              <p class="ecg-text">
+                Patient ID: <span id="display-patientId">P130412</span>
+              </p>
+              <div class="patient-status">
+                <span class="status-indicator active"></span>
+              </div>
+            </div>
+
+            <button id="editBtn" class="edit-profile-btn">
+              <i class="fas fa-edit"></i> Edit Profile
+            </button>
+          </div>
+
+          <!-- Live ECG Line -->
+          <div class="live-ecg">
+            <svg viewBox="0 0 500 50" preserveAspectRatio="none">
+              <path class="ecg-path" d="M0,25 L500,25" />
+            </svg>
+          </div>
+        </div>
+
+        <div id="Personal Details" class="profile-body">
+          <!-- Left Column -->
+          <div class="left-column">
+            <div class="info-section section-1">
+              <h2 class="section-title">
+                <i class="fas fa-user-circle"></i> Personal Details
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">First name</div>
+                <div class="info-value" id="display-firstName"></div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Last name</div>
+                <div class="info-value" id="display-lastName"></div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Gender</div>
+                <div class="info-value" id="display-gender"></div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value" id="display-dob"></div>
+              </div>
+            </div>
+
+            <div id="Medical Information" class="info-section medical-info-section">
+              <h2 class="section-title">
+                <i class="fas fa-heartbeat"></i> Medical Information
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Blood Group</div>
+                <div class="info-value" id="display-bloodGroup">O+</div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Referred By</div>
+                <div class="info-value" id="display-referredBy">Practo.com</div>
+              </div>
+            </div>
+
+            <div class="info-section family-section">
+              <h2 class="section-title">
+                <i class="fas fa-users"></i> Family Information
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Parent Name</div>
+                <div class="info-value" id="display-parentName">Girish V.</div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Spouse Name</div>
+                <div class="info-value" id="display-spouseName">Anita G.</div>
+              </div>
+            </div>
+
+            <div class="info-section section-3">
+              <h2 class="section-title">
+                <i class="fas fa-notes-medical"></i> Patient Notes
+              </h2>
+              <div class="notes-section" id="notes-display">
+                <!-- Notes will be displayed here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="info-section section-2">
+              <h2 class="section-title">
+                <i class="fas fa-address-book"></i> Contact Details
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Primary Mobile</div>
+                <div class="info-value" id="display-primaryMobile">
+                  ----
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Secondary Mobile</div>
+                <div class="info-value" id="display-secondaryMobile">
+                  ----
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Land Line</div>
+                <div class="info-value" id="display-landLine">
+                  ----
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Email</div>
+                <div class="info-value" id="display-email">
+                  ----
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Street Address</div>
+                <div class="info-value" id="display-streetAddress">
+                  ----
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section emergency-contact-section">
+              <h2 class="section-title">
+                <i class="fas fa-ambulance"></i> Emergency Contact
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Emergency Contact Name</div>
+                <div class="info-value" id="display-emergencyName">
+                  ----
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Emergency Contact Phone</div>
+                <div class="info-value" id="display-emergencyPhone">
+                  ----
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section section-4">
+              <h2 class="section-title">
+                <i class="fas fa-history"></i> Medical History
+              </h2>
+              <div class="medical-history-grid">
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Known Allergies</h3>
+                  <div class="medical-history-value" id="display-allergies">
+                    ----
+                  </div>
+                </div>
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Chronic Conditions</h3>
+                  <div class="medical-history-value" id="display-chronic">
+                    ----
+                  </div>
+                </div>
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Previous Surgeries</h3>
+                  <div class="medical-history-value" id="display-surgeries">
+                    ----
+                  </div>
+                </div>
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Current Medications</h3>
+                  <div class="medical-history-value" id="display-medications">
+                    ----
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="Health Insurance" class="info-section section-4">
+              <h2 class="section-title">
+                <i class="fas fa-shield-alt"></i> Health Insurance
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Insurance Provider</div>
+                <div class="info-value" id="display-provider">
+                  ----
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Policy Number</div>
+                <div class="info-value" id="display-policyNumber">
+                  ----
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Policy Valid Until</div>
+                <div class="info-value" id="display-validUntil">----</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPLACE the entire edit-mode div with this: -->
+      <div id="edit-mode" style="display: none">
+        <!-- Cardiology Header - matches view mode structure -->
+        <div class="cardio-header">
+          <div class="ecg-animation-bg"></div>
+
+          <div class="profile-section">
+            <div class="cardio-profile">
+              <div class="pulse-ring"></div>
+              <div class="pulse-ring delay-1"></div>
+              <div class="pulse-ring delay-2"></div>
+              <i class="fas fa-heartbeat"></i>
+            </div>
+
+            <div class="patient-info">
+              <h1 class="heartbeat-text">Edit Patient Profile</h1>
+              <br />
+              <p class="ecg-text">
+                Patient ID: <span id="edit-patientId">----</span>
+              </p>
+              <div class="patient-status">
+                <span class="status-indicator active"></span>
+              </div>
+            </div>
+
+            <!-- ADD these buttons in same position as view mode -->
+            <div class="action-buttons">
+              <button id="saveBtn" class="save-btn">
+                <i class="fas fa-save"></i> Save
+              </button>
+              <button id="cancelBtn" class="cancel-btn">
+                <i class="fas fa-times"></i> Cancel
+              </button>
+            </div>
+          </div>
+
+          <!-- Live ECG Line -->
+          <div class="live-ecg">
+            <svg viewBox="0 0 500 50" preserveAspectRatio="none">
+              <path class="ecg-path" d="M0,25 L500,25" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="profile-body">
+          <div class="left-column">
+            <div class="info-section section-1">
+              <h2 class="section-title">
+                <i class="fas fa-user-circle"></i> Personal Details
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">First name</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-firstName"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Last name</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-lastName"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Gender</div>
+                <div class="info-value">
+                  <select id="edit-gender" class="editable-field">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value">
+                  <input type="text" id="edit-dob" class="editable-field" />
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section medical-info-section">
+              <h2 class="section-title">
+                <i class="fas fa-heartbeat"></i> Medical Information
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Blood Group</div>
+                <div class="info-value">
+                  <select id="edit-bloodGroup" class="editable-field">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                  </select>
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Referred By</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-referredBy"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section family-section">
+              <h2 class="section-title">
+                <i class="fas fa-users"></i> Family Information
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Parent Name</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-parentName"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Spouse Name</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-spouseName"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section section-3">
+              <h2 class="section-title">
+                <i class="fas fa-notes-medical"></i> Patient Notes
+              </h2>
+              <div class="new-note">
+                <textarea
+                  placeholder="Type note here..."
+                  id="new-note-text"
+                ></textarea>
+                <button class="add-note-btn" id="add-note-btn">
+                  Add Note <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="info-section section-2">
+              <h2 class="section-title">
+                <i class="fas fa-address-book"></i> Contact Details
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Primary Mobile</div>
+                <div class="info-value">
+                  <input
+                    type="tel"
+                    id="edit-primaryMobile"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Secondary Mobile</div>
+                <div class="info-value">
+                  <input
+                    type="tel"
+                    id="edit-secondaryMobile"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Land Line</div>
+                <div class="info-value">
+                  <input type="tel" id="edit-landLine" class="editable-field" />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Email</div>
+                <div class="info-value">
+                  <input type="email" id="edit-email" class="editable-field" />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Street Address</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-streetAddress"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section emergency-contact-section">
+              <h2 class="section-title">
+                <i class="fas fa-ambulance"></i> Emergency Contact
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Emergency Contact Name</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-emergencyName"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Emergency Contact Phone</div>
+                <div class="info-value">
+                  <input
+                    type="tel"
+                    id="edit-emergencyPhone"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section section-4">
+              <h2 class="section-title">
+                <i class="fas fa-history"></i> Medical History
+              </h2>
+              <div class="medical-history-grid">
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Known Allergies</h3>
+                  <div class="medical-history-value">
+                    <textarea
+                      id="edit-allergies"
+                      class="editable-field"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Chronic Conditions</h3>
+                  <div class="medical-history-value">
+                    <textarea
+                      id="edit-chronic"
+                      class="editable-field"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Previous Surgeries</h3>
+                  <div class="medical-history-value">
+                    <textarea
+                      id="edit-surgeries"
+                      class="editable-field"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="medical-history-category">
+                  <h3 class="medical-history-title">Current Medications</h3>
+                  <div class="medical-history-value">
+                    <textarea
+                      id="edit-medications"
+                      class="editable-field"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-section section-4">
+              <h2 class="section-title">
+                <i class="fas fa-shield-alt"></i> Health Insurance
+              </h2>
+              <div class="info-grid">
+                <div class="info-label">Insurance Provider</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-provider"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Policy Number</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-policyNumber"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+              <div class="info-grid">
+                <div class="info-label">Policy Valid Until</div>
+                <div class="info-value">
+                  <input
+                    type="text"
+                    id="edit-validUntil"
+                    class="editable-field"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <<button class="logout-button" onclick="window.location.href='logout.php'">Logout</button>
+    <!-- Floating action button -->
+    <div class="fab" title="Quick Actions" onclick="window.location.href='login.html'">
+      <i class="fas fa-sign-out-alt"></i>
+    </div>
+
+
+</div>
+<!-- /Main Wrapper -->  
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/edit.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/patientprofile.js"></script>
+  </body>
+</html>
