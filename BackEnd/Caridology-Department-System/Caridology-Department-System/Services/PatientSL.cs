@@ -21,13 +21,12 @@ namespace Caridology_Department_System.Services
         /// <summary>
         /// Constructor initializes a new database context
         /// </summary>
-        public PatientSL(DBContext dB,PatientPhoneNumberSL numberSL,EmailValidator validator,PasswordHasher hasher)
-        { 
+        public PatientSL(DBContext dB, PatientPhoneNumberSL numberSL, EmailValidator validator, PasswordHasher hasher)
+        {
             this.dbContext = dB;
             this.passwordHasher = hasher;
             this.emailValidator = validator;
             this.patientPhoneNumberSL = numberSL;
-
         }
 
         /// <summary>
@@ -71,7 +70,23 @@ namespace Caridology_Department_System.Services
 
             if (!await emailValidator.IsEmailUniqueAsync(patient.Email))
                 throw new Exception("Email already in use");
+            if (patient.Photo != null)
+            {
+                var uploadsFolder = Path.Combine("wwwroot", "uploads");
+                if (!Directory.Exists(uploadsFolder))
+                    Directory.CreateDirectory(uploadsFolder);
 
+                var uniqueFileName = $"{Guid.NewGuid()}_{patient.Photo.FileName}";
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await patient.Photo.CopyToAsync(fileStream);
+                }
+
+                // Save path to database
+                patient.PhotoPath = $"/uploads/{uniqueFileName}";
+            }
             PatientModel newPatient = new PatientModel();
             var requestProps = typeof(PatientRequest).GetProperties();
             var patientProps = typeof(PatientModel).GetProperties();

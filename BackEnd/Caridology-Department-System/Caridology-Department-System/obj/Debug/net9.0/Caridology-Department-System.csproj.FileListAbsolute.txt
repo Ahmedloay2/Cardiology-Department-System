@@ -704,14 +704,8 @@ D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Cari
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.csproj.CoreCompileInputs.cache
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.MvcApplicationPartsAssemblyInfo.cs
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.MvcApplicationPartsAssemblyInfo.cache
-D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.RazorAssemblyInfo.cache
-D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.RazorAssemblyInfo.cs
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.sourcelink.json
-D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\scopedcss\bundle\Caridology-Department-System.styles.css
-D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\scopedcss\projectbundle\Caridology-Department-System.bundle.scp.css
-D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\compressed\4czzau3cn4-6r2w4qys8d.gz
-D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\compressed\tbz775lbb2-6r2w4qys8d.gz
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\staticwebassets.build.json
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\staticwebassets.development.json
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -920,3 +914,4 @@ D:\proJECT\Caridology-Department-System\BackEnd\Caridology-Department-System\Car
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\HIS.json
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
 D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\training\project database 2\trial_2\Caridology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

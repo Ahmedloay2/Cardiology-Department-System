@@ -34,9 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Patients\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 	<!-- Place the Target here -->
 

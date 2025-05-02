@@ -1,8 +1,12 @@
 {
   "Files": [
     {
-      "Id": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Caridology-Department-System.6r2w4qys8d.bundle.scp.css"
+      "Id": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg"
+    },
+    {
+      "Id": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg"
     },
     {
       "Id": "obj\\Release\\net9.0\\staticwebassets\\msbuild.Caridology-Department-System.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

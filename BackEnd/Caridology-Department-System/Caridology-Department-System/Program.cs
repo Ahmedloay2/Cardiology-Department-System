@@ -3,6 +3,7 @@ using Caridology_Department_System.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -53,7 +54,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = jwtIssuer,
             ValidAudience = jwtAudience,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
-            ClockSkew = TimeSpan.Zero // Remove default 5-minute clock skew
+            ClockSkew = TimeSpan.Zero
         };
     });
 
@@ -62,7 +63,7 @@ builder.Services.AddAuthorization();
 // CORS Configuration
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy", policy =>
+    options.AddPolicy("Default", policy =>
     {
         policy.WithOrigins(
                 "http://localhost:3000",
@@ -77,16 +78,18 @@ builder.Services.AddCors(options =>
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
-            .AllowCredentials(); // Add this if using cookies or auth headers
+            .AllowCredentials();
     });
 });
-
 // File Upload Size Limit
 builder.Services.Configure<FormOptions>(options =>
 {
     options.MultipartBodyLengthLimit = 10 * 1024 * 1024; // 10 MB
+    options.MemoryBufferThreshold = Int32.MaxValue; // For large files
+    options.ValueLengthLimit = Int32.MaxValue;
 });
-
+builder.Services.AddSingleton<IFileProvider>(
+    new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 // Swagger Configuration
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -125,26 +128,34 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+
+    c.MapType<IFormFile>(() => new OpenApiSchema
+    {
+        Type = "string",
+        Format = "binary"
+    });
 });
 
 var app = builder.Build();
 
 // ===== Middleware Pipeline =====
 
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology API v1");
-        c.RoutePrefix = "";
-    });
-
+app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
-app.UseRouting();
-app.UseCors("CorsPolicy");
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology API v1");
+    c.RoutePrefix = "";
+});
+
 app.UseDefaultFiles();
 app.UseStaticFiles();
+
+app.UseRouting();
+app.UseCors("Default");
+
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();

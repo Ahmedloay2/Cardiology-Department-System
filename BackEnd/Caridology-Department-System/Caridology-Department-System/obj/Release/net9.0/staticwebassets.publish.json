@@ -1,270 +1,68 @@
 {
   "Version": 1,
-  "Hash": "1Or9YFw7yzkOU4bEp5rgiXsb/rm+tk63isDvTBN0/Cc=",
+  "Hash": "okYl3QA0PvlG9Gjwe3Bz+DkIK6Ke+WH9/1TtVcf8dvQ=",
   "Source": "Caridology-Department-System",
   "BasePath": "_content/Caridology-Department-System",
   "Mode": "Default",
   "ManifestType": "Publish",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Caridology-Department-System\\wwwroot",
+      "Source": "Caridology-Department-System",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "BasePath": "_content/Caridology-Department-System",
+      "Pattern": "**"
+    }
+  ],
   "Assets": [
     {
-      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
       "SourceId": "Caridology-Department-System",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
-      "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]?.styles.css.gz",
+      "RelativePath": "uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "Fingerprint": "y2l08v9fn1",
-      "Integrity": "up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
-    },
-    {
-      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
-      "SourceId": "Caridology-Department-System",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\",
-      "BasePath": "_content/Caridology-Department-System",
-      "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]?.styles.css.br",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "br",
-      "Fingerprint": "3acm2to61v",
-      "Integrity": "VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
-    },
-    {
-      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
-      "SourceId": "Caridology-Department-System",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\",
-      "BasePath": "_content/Caridology-Department-System",
-      "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]!.bundle.scp.css.br",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "br",
-      "Fingerprint": "3acm2to61v",
-      "Integrity": "VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
-    },
-    {
-      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
-      "SourceId": "Caridology-Department-System",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\",
-      "BasePath": "_content/Caridology-Department-System",
-      "RelativePath": "Caridology-Department-System#[.{fingerprint=6r2w4qys8d}]!.bundle.scp.css.gz",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "Fingerprint": "y2l08v9fn1",
-      "Integrity": "up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
-    },
-    {
-      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
-      "SourceId": "Caridology-Department-System",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/Caridology-Department-System",
-      "RelativePath": "Caridology-Department-System#[.{fingerprint}]?.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
+      "AssetMode": "All",
       "AssetRole": "Primary",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "6r2w4qys8d",
-      "Integrity": "Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u8bkk5m91l",
+      "Integrity": "EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css"
+      "OriginalItemSpec": "wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg"
     },
     {
-      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "Identity": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
       "SourceId": "Caridology-Department-System",
-      "SourceType": "Computed",
-      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
-      "RelativePath": "Caridology-Department-System#[.{fingerprint}]!.bundle.scp.css",
+      "RelativePath": "uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
-      "AssetMode": "Reference",
+      "AssetMode": "All",
       "AssetRole": "Primary",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "6r2w4qys8d",
-      "Integrity": "Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u8bkk5m91l",
+      "Integrity": "EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css"
+      "OriginalItemSpec": "wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg"
     }
   ],
   "Endpoints": [
     {
-      "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "br",
-          "Quality": "0.002415458937"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "413"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001801801802"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "554"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
+      "Route": "uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -273,19 +71,56 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1146"
+          "Value": "15661"
         },
         {
           "Name": "Content-Type",
-          "Value": "text/css"
+          "Value": "image/jpeg"
         },
         {
           "Name": "ETag",
-          "Value": "\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
+          "Value": "\"EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+          "Value": "Fri, 02 May 2025 10:15:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.u8bkk5m91l.jpg",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15661"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 02 May 2025 10:15:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -295,21 +130,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
+          "Value": "u8bkk5m91l"
         },
         {
           "Name": "label",
-          "Value": "Caridology-Department-System.bundle.scp.css"
+          "Value": "uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
+          "Value": "sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="
         }
       ]
     },
     {
-      "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css.br",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
+      "Route": "uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -318,51 +153,35 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "413"
+          "Value": "15661"
         },
         {
           "Name": "Content-Type",
-          "Value": "text/css"
+          "Value": "image/jpeg"
         },
         {
           "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
+          "Value": "\"EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+          "Value": "Fri, 02 May 2025 10:15:31 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
+          "Value": "max-age=3600, must-revalidate"
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.bundle.scp.css.br"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE="
+          "Value": "sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="
         }
       ]
     },
     {
-      "Route": "Caridology-Department-System.6r2w4qys8d.bundle.scp.css.gz",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
+      "Route": "uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.u8bkk5m91l.jpg",
+      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -371,198 +190,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "554"
+          "Value": "15661"
         },
         {
           "Name": "Content-Type",
-          "Value": "text/css"
+          "Value": "image/jpeg"
         },
         {
           "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
+          "Value": "\"EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.bundle.scp.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001801801802"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "554"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "br",
-          "Quality": "0.002415458937"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "413"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1146"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
+          "Value": "Fri, 02 May 2025 10:15:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -572,595 +212,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
+          "Value": "u8bkk5m91l"
         },
         {
           "Name": "label",
-          "Value": "Caridology-Department-System.styles.css"
+          "Value": "uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css.br",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "413"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.styles.css.br"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.6r2w4qys8d.styles.css.gz",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "554"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6r2w4qys8d"
-        },
-        {
-          "Name": "label",
-          "Value": "Caridology-Department-System.styles.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.bundle.scp.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "br",
-          "Quality": "0.002415458937"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "413"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.bundle.scp.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001801801802"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "554"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.bundle.scp.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\projectbundle\\Caridology-Department-System.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1146"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.bundle.scp.css.br",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\tbz775lbb2-6r2w4qys8d.br",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "413"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.bundle.scp.css.gz",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\tbz775lbb2-6r2w4qys8d.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "554"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.styles.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001801801802"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "554"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.styles.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "br",
-          "Quality": "0.002415458937"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "413"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.styles.css",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\scopedcss\\bundle\\Caridology-Department-System.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1146"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Dt6SIdvtbF6bzTxbCQocsReK6ETflEGBDuwm4JASqzs="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.styles.css.br",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\publish\\4czzau3cn4-6r2w4qys8d.br",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "413"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "br"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-VUIcrhsffO+ICQen40huABYXG60BXyVBk1HIwyElbIE="
-        }
-      ]
-    },
-    {
-      "Route": "Caridology-Department-System.styles.css.gz",
-      "AssetFile": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\Release\\net9.0\\compressed\\4czzau3cn4-6r2w4qys8d.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "554"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 28 Apr 2025 16:48:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-up7ffAHvBKo5k3nQKzUwIpmmzDbk9S+nYy0oFgICH5Y="
+          "Value": "sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="
         }
       ]
     }

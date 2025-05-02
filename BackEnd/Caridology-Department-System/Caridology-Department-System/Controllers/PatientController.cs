@@ -27,10 +27,19 @@ namespace Caridology_Department_System.Controllers
             try
             {
                 var patientId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var patient =  _patientService.GetPatientByID(patientId);
+                var patient = _patientService.GetPatientByID(patientId);
 
                 if (patient == null)
                     return NotFound(new { Message = "Patient not found" });
+                byte[] imageBytes = null;
+                if (!string.IsNullOrEmpty(patient.PhotoPath))
+                {
+                    var filePath = Path.Combine("wwwroot", patient.PhotoPath.TrimStart('/'));
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        imageBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+                    }
+                }
 
                 return Ok(new
                 {
@@ -56,7 +65,10 @@ namespace Caridology_Department_System.Controllers
                     patient.CurrentMedications,
                     patient.PolicyNumber,
                     patient.InsuranceProvider,
-                    patient.PolicyValidDate
+                    patient.PolicyValidDate,
+                    PhotoData = imageBytes != null
+            ? $"data:{GetContentType(patient.PhotoPath)};base64,{Convert.ToBase64String(imageBytes)}"
+            : null
                 });
             }
             catch (Exception ex)
@@ -64,10 +76,19 @@ namespace Caridology_Department_System.Controllers
                 return StatusCode(500, new { Message = "An error occurred while retrieving patient profile", Error = ex.Message });
             }
         }
-
+        private string GetContentType(string path)
+        {
+            var extension = Path.GetExtension(path).ToLowerInvariant();
+            return extension switch
+            {
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                _ => "application/octet-stream"
+            };
+        }
         [HttpPut("Profile")]
         [Authorize]
-        public async Task<IActionResult> UpdateProfile([FromBody] PatientRequest request)
+        public async Task<IActionResult> UpdateProfile([FromForm] PatientRequest request)
         {
             try
             {
@@ -86,7 +107,13 @@ namespace Caridology_Department_System.Controllers
                 var patientId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 await _patientService.UpdateProfile(patientId, request, request.PhoneNumbers);
 
-                return Ok(new { Success = true, Message = "Profile updated successfully" });
+                var response = new ResponseWrapperDto
+                {
+                    Success= true,
+                    StatusCode= 202,
+                    Message= "Profile updated successfully"
+                };
+                return Accepted(response);
             }
             catch (KeyNotFoundException ex)
             {
@@ -103,7 +130,9 @@ namespace Caridology_Department_System.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] PatientRequest patient)
+        [Consumes("multipart/form-data")]
+        [RequestSizeLimit(10 * 1024 * 1024)]
+        public async Task<IActionResult> Register([FromForm] PatientRequest patient)
         {
             try
             {
@@ -132,7 +161,7 @@ namespace Caridology_Department_System.Controllers
 
             try
             {
-                PatientModel patient =  _patientService.GetPatientByEmailAndPassword(request.Email,request.Password);
+                PatientModel patient = _patientService.GetPatientByEmailAndPassword(request.Email, request.Password);
 
                 if (patient == null)
                     return Unauthorized(new { Message = "Invalid credentials" });
@@ -173,7 +202,7 @@ namespace Caridology_Department_System.Controllers
             try
             {
                 var patientId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                 _patientService.DeletePatient(patientId);
+                _patientService.DeletePatient(patientId);
 
                 return Ok(new { Message = "Account deleted successfully" });
             }

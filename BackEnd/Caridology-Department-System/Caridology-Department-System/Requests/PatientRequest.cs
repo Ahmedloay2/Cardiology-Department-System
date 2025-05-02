@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
+using Caridology_Department_System.ValdiationAttributes;
 
 public class PatientRequest
 {
@@ -77,4 +79,7 @@ public class PatientRequest
 
     [Required(ErrorMessage = "Link is required")]
     public string Link { get; set; }
+    [DataType(DataType.Upload)]
+    [AllowedImageExtensions]
+    public IFormFile? Photo { get; set; }
 }
