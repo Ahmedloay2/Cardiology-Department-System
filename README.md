@@ -24,7 +24,7 @@ Welcome to the Cardiology Hospital Information System (HIS) – your gateway to 
 
 ### 🎥 **Demo Video**
 
-📽️ [Watch the Full Demo on Google Drive](https://drive.google.com/file/d/1VfpgsEF1U_gDq-0-stfJuaMLJP4C2kCc/view?usp=sharing)
+📽️ [Watch the Full Demo on Google Drive](https://drive.google.com/file/d/1D2ZwHpUvLaiqg2ZwphrmZguXxMAfOJLq/view?usp=sharing)
 
 ### 🗂️ **Project Repository**
 
