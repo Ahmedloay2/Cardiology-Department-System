@@ -8,7 +8,7 @@
 </h1>
 
 
-# 🫀Cardiology Hospital Information System – Phase 1 Implementation
+# 🫀Cardiology Hospital Information System 
 Welcome to the Cardiology Hospital Information System (HIS) – your gateway to modern, efficient, and patient-centered heart care management.
 
 
