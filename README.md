@@ -1,6 +1,4 @@
 
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/GZ21lnOq)
-
 <h1 align="center">
   <br>
   <a href="https://cardio-w-tever.vercel.app/index.html"><img src="https://github.com/alhussien-ayman/cardio_WTever/blob/main/assets/img/Logotest.png" alt="Cardiology WTever" width="200"></a>
@@ -8,8 +6,6 @@
   Cardiology WTever
   <br>
 </h1>
-
-## 🌟  Team 8 — **Wtever**
 
 
 # 🫀Cardiology Hospital Information System – Phase 1 Implementation
@@ -143,13 +139,13 @@ This web application serves as a **Cardiology Department Information System**, a
 
 ### 👥 Team Members
 
-| Name                         | University ID |
-|------------------------------|---------------|
-| Alhussien Ayman Hanafy       | 9230235       |
-| Ahmed Loay Elsayyed          | 9230164       |
-| Suhila Tharwat Elmasry       | 9230455       |
-| Mai Mahmoud Mohamed          | 9230934       |
-| Muhammad Khaled Abdalhameed | 9230759       |
+| Name                        |
+|-----------------------------|
+| Alhussien Ayman Hanafy      |
+| Ahmed Loay Elsayyed         |
+| Suhila Tharwat Elmasry      |
+| Mai Mahmoud Mohamed         |
+| Muhammad Khaled Abdalhameed |
 
 
 
