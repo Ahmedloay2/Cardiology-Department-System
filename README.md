@@ -18,10 +18,6 @@ Welcome to the Cardiology Hospital Information System (HIS) – your gateway to 
 
 👉 [Explore the Live System](https://cardio-w-tever.vercel.app/)
 
-### 🎥 **Demo Video**
-
-📽️ [Watch the Full Demo on Google Drive](https://drive.google.com/file/d/1D2ZwHpUvLaiqg2ZwphrmZguXxMAfOJLq/view?usp=sharing)
-
 ### 🗂️ **Project Repository**
 
 📁 [View the GitHub Repository](https://github.com/Ahmedloay2/Caridology-Department-System)
