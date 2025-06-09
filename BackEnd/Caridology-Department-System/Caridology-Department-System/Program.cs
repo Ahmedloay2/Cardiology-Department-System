@@ -1,13 +1,18 @@
 ﻿using Caridology_Department_System.Models;
 using Caridology_Department_System.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +24,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     });
 
-// Database Context - Use your actual DbContext type instead of DbContext
+// Database Context
 builder.Services.AddDbContext<DBContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -30,12 +35,16 @@ builder.Services.AddDbContext<DBContext>(options =>
 });
 
 // Services
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<JwtTokenService>();
 builder.Services.AddScoped<PatientSL>();
 builder.Services.AddScoped<DBContext>();
 builder.Services.AddScoped<EmailValidator>();
 builder.Services.AddScoped<PasswordHasher>();
 builder.Services.AddScoped<PatientPhoneNumberSL>();
+builder.Services.AddScoped<AdminSL>();
+builder.Services.AddScoped<AdminPhoneNumberSL>();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 // JWT Authentication Configuration
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
@@ -74,13 +83,15 @@ builder.Services.AddCors(options =>
                 "http://127.0.0.1:5502",
                 "http://127.0.0.1:3002",
                 "https://cardio-w-tever.vercel.app",
-                "https://cardiology-department-system.runasp.net"
+                "https://cardiology-department-system.runasp.net",
+                "https://localhost:44312/"
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
     });
 });
+
 // File Upload Size Limit
 builder.Services.Configure<FormOptions>(options =>
 {
@@ -88,8 +99,10 @@ builder.Services.Configure<FormOptions>(options =>
     options.MemoryBufferThreshold = Int32.MaxValue; // For large files
     options.ValueLengthLimit = Int32.MaxValue;
 });
+
 builder.Services.AddSingleton<IFileProvider>(
     new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+
 // Swagger Configuration
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -139,23 +152,26 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // ===== Middleware Pipeline =====
-
-app.UseDeveloperExceptionPage();
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+    var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+    mapper.ConfigurationProvider.AssertConfigurationIsValid();
+}
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseDefaultFiles();
+app.UseRouting();
+app.UseCors("Default");
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cardiology API v1");
-    c.RoutePrefix = "";
+    c.RoutePrefix = string.Empty;
 });
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
-app.UseRouting();
-app.UseCors("Default");
-
-app.UseAuthentication();
-app.UseAuthorization();
 app.MapControllers();
 app.Run();

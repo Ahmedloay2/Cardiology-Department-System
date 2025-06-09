@@ -1,20 +1,55 @@
 [
   {
     "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "AddPatient",
-    "RelativePath": "api/Admin/AddPatient",
+    "Method": "CreateAdminAsync",
+    "RelativePath": "api/Admin/CreateAdmim",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "PatientRequest",
-        "IsRequired": true
+        "Name": "FName",
+        "Type": "System.String",
+        "IsRequired": false
       },
       {
-        "Name": "phoneNumbers",
+        "Name": "LName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BirthDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumbers",
         "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Photo",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -22,23 +57,17 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "DeletePatient",
-    "RelativePath": "api/Admin/DeletePatient/{id}",
+    "Method": "DeleteAccountAsync",
+    "RelativePath": "api/Admin/Delete",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "Login",
+    "Method": "LoginAsync",
     "RelativePath": "api/Admin/Login",
     "HttpMethod": "POST",
     "IsController": true,
@@ -64,7 +93,7 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "GetAdminProfile",
+    "Method": "GetAdminProfileAsync",
     "RelativePath": "api/Admin/Profile",
     "HttpMethod": "GET",
     "IsController": true,
@@ -74,79 +103,51 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "UpdateAdminProfile",
+    "Method": "UpdateAdminProfileAsync",
     "RelativePath": "api/Admin/Profile",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "Caridology_Department_System.Requests.AdminUpdateRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "UpdateAdminStatus",
-    "RelativePath": "api/Admin/UpdateAdminStatus/{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Name": "FName",
+        "Type": "System.String",
+        "IsRequired": false
       },
       {
-        "Name": "newStatus",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "UpdatePatientProfile",
-    "RelativePath": "api/Admin/UpdatePatient/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Name": "LName",
+        "Type": "System.String",
+        "IsRequired": false
       },
       {
-        "Name": "request",
-        "Type": "PatientRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Caridology_Department_System.Controllers.AdminController",
-    "Method": "UpdatePatientStatus",
-    "RelativePath": "api/Admin/UpdatePatientStatus/{id}",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Name": "BirthDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       },
       {
-        "Name": "request",
-        "Type": "Caridology_Department_System.Controllers.AdminController\u002BPatientStatusUpdateRequest",
-        "IsRequired": true
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumbers",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhotoData",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

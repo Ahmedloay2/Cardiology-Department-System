@@ -1,12 +1,44 @@
 {
   "Files": [
     {
-      "Id": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
+      "PackagePath": "staticwebassets\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
+      "PackagePath": "staticwebassets\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
       "PackagePath": "staticwebassets\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg"
     },
     {
-      "Id": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
+      "PackagePath": "staticwebassets\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
       "PackagePath": "staticwebassets\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg"
+    },
+    {
+      "Id": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
+      "PackagePath": "staticwebassets\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Caridology-Department-System.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

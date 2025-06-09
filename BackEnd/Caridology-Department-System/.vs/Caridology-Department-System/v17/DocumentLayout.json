@@ -1,38 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\",
+  "WorkspaceRootPath": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\services\\patientsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\services\\patientsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\services\\adminsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\services\\adminsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\requests\\patientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\requests\\patientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\requests\\adminrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\requests\\adminrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\models\\doctormodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\models\\doctormodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\models\\patientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\models\\patientmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\requests\\doctorrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\requests\\doctorrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\services\\doctorsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\services\\doctorsl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\models\\responsewrapperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\models\\responsewrapperdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\training\\project database 2\\trial_2\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\services\\doctorphonenumbersl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\services\\doctorphonenumbersl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\services\\adminphonenumbersl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\services\\adminphonenumbersl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|d:\\projects developing\\cardiology department system project\\caridology-department-system\\backend\\caridology-department-system\\caridology-department-system\\automappers\\doctormapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03FCCDF3-B9EF-435A-85F6-B3E1968E7234}|Caridology-Department-System\\Caridology-Department-System.csproj|solutionrelative:caridology-department-system\\automappers\\doctormapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,114 +50,148 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PatientSL.cs",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\PatientSL.cs",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\Services\\PatientSL.cs",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\PatientSL.cs*",
-              "RelativeToolTip": "Caridology-Department-System\\Services\\PatientSL.cs*",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAgwFUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T09:50:27.781Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Program.cs",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\Program.cs",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Program.cs",
-              "RelativeToolTip": "Caridology-Department-System\\Program.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAAAIcAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T08:40:33.115Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PatientController.cs",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Controllers\\PatientController.cs",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\Controllers\\PatientController.cs",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Controllers\\PatientController.cs",
-              "RelativeToolTip": "Caridology-Department-System\\Controllers\\PatientController.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAkwFcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-30T18:36:42.211Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PatientRequest.cs",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Requests\\PatientRequest.cs",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\Requests\\PatientRequest.cs",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Requests\\PatientRequest.cs",
-              "RelativeToolTip": "Caridology-Department-System\\Requests\\PatientRequest.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAqwFIAAAAcAAAAAAAAAA==",
+              "Title": "AdminRequest.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Requests\\AdminRequest.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Requests\\AdminRequest.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Requests\\AdminRequest.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Requests\\AdminRequest.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAkwCkAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T09:46:35.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T12:15:13.694Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ResponseWrapperDto.cs",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\ResponseWrapperDto.cs",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\Models\\ResponseWrapperDto.cs",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\ResponseWrapperDto.cs",
-              "RelativeToolTip": "Caridology-Department-System\\Models\\ResponseWrapperDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DoctorModel.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\DoctorModel.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Models\\DoctorModel.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\DoctorModel.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Models\\DoctorModel.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAA6wEQAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T23:47:00.017Z",
+              "WhenOpened": "2025-06-09T12:11:59.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminSL.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\AdminSL.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Services\\AdminSL.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\AdminSL.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Services\\AdminSL.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAkwHEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T11:52:32.856Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PatientModel.cs",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\PatientModel.cs",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\Models\\PatientModel.cs",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\PatientModel.cs",
-              "RelativeToolTip": "Caridology-Department-System\\Models\\PatientModel.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAowFcAAAAAAAAAAAAAAA==",
+              "Title": "DoctorRequest.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Requests\\DoctorRequest.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Requests\\DoctorRequest.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Requests\\DoctorRequest.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Requests\\DoctorRequest.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAqwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T10:24:36.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T11:41:28.742Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DBContext.cs",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\DBContext.cs",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\Models\\DBContext.cs",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Models\\DBContext.cs",
-              "RelativeToolTip": "Caridology-Department-System\\Models\\DBContext.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAYwFQAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T20:07:40.936Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-09T11:07:52.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DoctorController.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Controllers\\DoctorController.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Controllers\\DoctorController.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Controllers\\DoctorController.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Controllers\\DoctorController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAcwDYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T11:06:54.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DoctorSL.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\DoctorSL.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Services\\DoctorSL.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\DoctorSL.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Services\\DoctorSL.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAUwDQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T10:52:57.567Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\appsettings.json",
-              "RelativeDocumentMoniker": "Caridology-Department-System\\appsettings.json",
-              "ToolTip": "D:\\training\\project database 2\\trial_2\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\appsettings.json",
-              "RelativeToolTip": "Caridology-Department-System\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-01T19:32:24.398Z"
+              "Title": "DoctorPhoneNumberSL.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\DoctorPhoneNumberSL.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Services\\DoctorPhoneNumberSL.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\DoctorPhoneNumberSL.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Services\\DoctorPhoneNumberSL.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T10:52:48.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminPhoneNumberSL.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\AdminPhoneNumberSL.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\Services\\AdminPhoneNumberSL.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Services\\AdminPhoneNumberSL.cs",
+              "RelativeToolTip": "Caridology-Department-System\\Services\\AdminPhoneNumberSL.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwEEAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T10:52:26.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DoctorMapper.cs",
+              "DocumentMoniker": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\AutoMappers\\DoctorMapper.cs",
+              "RelativeDocumentMoniker": "Caridology-Department-System\\AutoMappers\\DoctorMapper.cs",
+              "ToolTip": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\AutoMappers\\DoctorMapper.cs",
+              "RelativeToolTip": "Caridology-Department-System\\AutoMappers\\DoctorMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T10:48:50.525Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         }

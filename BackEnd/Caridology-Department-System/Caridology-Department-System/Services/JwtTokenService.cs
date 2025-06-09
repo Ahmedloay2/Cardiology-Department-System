@@ -22,16 +22,16 @@ public class JwtTokenService
         _expiryInMinutes = Convert.ToInt32(configuration["Jwt:ExpiryInMinutes"] ?? "60");
     }
 
-    public string GenerateToken(PatientModel patient)
+    public string GenerateToken(UserModel user)
     {
-        if (patient == null) throw new ArgumentNullException(nameof(patient));
+        if (user == null) throw new ArgumentNullException(nameof(user));
 
         var claims = new[]
         {
-            new Claim(ClaimTypes.NameIdentifier, patient.ID.ToString()),
-            new Claim(ClaimTypes.Email, patient.Email),
-            new Claim(ClaimTypes.GivenName, patient.FName ?? string.Empty),
-            new Claim(ClaimTypes.Surname, patient.LName ?? string.Empty),
+            new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.GivenName, user.FName ?? string.Empty),
+            new Claim(ClaimTypes.Surname, user.LName ?? string.Empty),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Unique token identifier
         };
 

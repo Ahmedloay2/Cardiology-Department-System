@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using AutoMapper;
+using Azure.Core;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -16,47 +20,73 @@ namespace Caridology_Department_System.Services
     public class AdminSL
     {
         private readonly DBContext dbContext;
-
+        private readonly EmailValidator emailValidator;
+        private readonly PasswordHasher passwordHasher;
+        private readonly AdminPhoneNumberSL adminPhoneNumberSL;
+        private readonly IImageService imageService;
+        private readonly IMapper automapper;
         /// <summary>
         /// Initializes a new instance of the AdminSL service, creating a new DB context.
         /// </summary>
-        public AdminSL()
+        public AdminSL(AdminPhoneNumberSL adminPhoneNumberSL, DBContext dbContext,
+                        EmailValidator emailValidator, PasswordHasher passwordHasher,
+                        IImageService imageService, IMapper automapper)
         {
-            dbContext = new DBContext();
+            this.dbContext = dbContext;
+            this.adminPhoneNumberSL = adminPhoneNumberSL;
+            this.emailValidator = emailValidator;
+            this.passwordHasher = passwordHasher;
+            this.imageService = imageService;
+            this.automapper = automapper;
         }
 
         /// <summary>
         /// Retrieves an admin by their ID, including phone numbers, only if not deleted.
         /// </summary>
-        public AdminModel GetAdminByID(int? adminId)
+        public async Task<AdminModel> GetAdminByID(int? adminId)
         {
             if (adminId == null)
                 throw new ArgumentNullException(nameof(adminId));
-
             // Find admin with phone numbers, skip if deleted (StatusID == 3)
-            var admin = dbContext.Admins
+            AdminModel admin = await dbContext.Admins
                 .Where(a => a.ID == adminId && a.StatusID != 3)
-                .Include(a => a.PhoneNumbers)
-                .SingleOrDefault();
-
+                .Include(a => a.PhoneNumbers.Where(p => p.StatusID!=3))
+                .SingleOrDefaultAsync();
+            if (admin == null)
+                throw new Exception("account doesnot exist");
             return admin;
+        }
+        public async Task<AdminProfilePageRequest> GetAdminProfile(int? adminId)
+        {
+            if (adminId == null) throw new ArgumentNullException(nameof(adminId));
+            AdminModel admin = await GetAdminByID(adminId);
+            AdminProfilePageRequest request = automapper.Map<AdminProfilePageRequest>(admin);
+            if (!String.IsNullOrEmpty(admin.PhotoPath))
+            {
+                request.PhotoData = imageService.GetImageBase64(admin.PhotoPath);
+            }
+            return request;
         }
 
         /// <summary>
         /// Retrieves an admin by email and password for login.
         /// Throws if credentials are invalid or admin is deleted.
         /// </summary>
-        public AdminModel GetAdminByEmailAndPassword(LoginRequest login)
+        public async Task<AdminModel> GetAdminByEmailAndPassword(LoginRequest login)
         {
-            if (string.IsNullOrWhiteSpace(login.Email) || string.IsNullOrWhiteSpace(login.Password))
-                throw new ArgumentException("Email and password are required");
-
-            var hasher = new PasswordHasher();
-            var admin = dbContext.Admins.SingleOrDefault(a => a.Email == login.Email);
+            if (string.IsNullOrWhiteSpace(login.Email))
+            {
+                throw new ArgumentException("Email is required");
+            }
+            if (string.IsNullOrWhiteSpace(login.Password))
+            {
+                throw new ArgumentException("Password is required");
+            }
+            AdminModel admin = await dbContext.Admins.SingleOrDefaultAsync(a => a.Email == login.Email);
 
             // Check password and ensure admin is not deleted
             bool passwordValid = admin != null &&
-                hasher.VerifyPassword(login.Password, admin.Password) &&
+                passwordHasher.VerifyPassword(login.Password, admin.Password) &&
                 admin.StatusID != 3;
 
             if (!passwordValid)
@@ -64,86 +94,76 @@ namespace Caridology_Department_System.Services
 
             return admin;
         }
-
         /// <summary>
         /// Adds a new admin with validated data and phone numbers.
         /// Throws if email is not unique or other validation fails.
         /// </summary>
-        public void AddAdmin(AdminRequest request, List<string> phoneNumbers)
+        public async Task<bool> AddAdminasync(AdminRequest request)
         {
+            bool created = false;
             if (request == null)
+            {
+                created = false;
                 throw new ArgumentNullException(nameof(request), "Admin data cannot be empty");
-
-            if (phoneNumbers == null || !phoneNumbers.Any())
-                throw new ArgumentException("At least one phone number is required", nameof(phoneNumbers));
-
-            // Email uniqueness check
-            if (dbContext.Admins.Any(a => a.Email == request.Email))
-                throw new ArgumentException("Email already exists", nameof(request.Email));
-
-            var passwordHasher = new PasswordHasher();
-
-            // Create new admin entity from request
-            var newAdmin = new AdminModel
-            {
-                FName = request.FName,
-                LName = request.LName,
-                BirthDate = request.BirthDate,
-                Email = request.Email,
-                Password = passwordHasher.HashPassword(request.Password),
-                PhotoPath = request.PhotoPath,
-                RoleID = request.RoleID,
-                StatusID = request.StatusID,
-                CreatedAt = DateTime.UtcNow,
-                Address = request.Address,
-            };
-
-            // Add phone numbers to the admin
-            foreach (var number in phoneNumbers)
-            {
-                newAdmin.PhoneNumbers.Add(new AdminPhoneNumberModel
-                {
-                    PhoneNumber = number,
-                    StatusID = 1,
-                    AdminID = newAdmin.ID
-                });
             }
-
+            if (request.PhoneNumbers == null || !request.PhoneNumbers.Any())
+            {
+                created = false;
+                throw new ArgumentException("At least one phone number is required", nameof(request.PhoneNumbers));
+            }
+            // Email uniqueness check
+            if (!await emailValidator.IsEmailUniqueAsync(request.Email))
+            {
+                created = false;
+                throw new ArgumentException("Email already exists", nameof(request.Email));
+            }
+            // Create new admin entity from request
+            AdminModel newAdmin = automapper.Map<AdminModel>(request);
+            newAdmin.StatusID = 1;
+            newAdmin.CreatedAt = DateTime.UtcNow;
+            newAdmin.RoleID = 1;
+            newAdmin.Password = passwordHasher.HashPassword(request.Password);
+            if (request.Photo != null)
+            {
+                newAdmin.PhotoPath = await imageService.SaveImageAsync(request.Photo);
+            }
             // Transaction for safe DB insert
-            using var transaction = dbContext.Database.BeginTransaction();
+            using var transaction = await dbContext.Database.BeginTransactionAsync();
             try
             {
-                dbContext.Admins.Add(newAdmin);
-                dbContext.SaveChanges();
-                transaction.Commit();
-            }
-            catch (DbUpdateException dbEx)
-            {
-                transaction.Rollback();
-                // Log detailed DB errors for troubleshooting
-                var errorMessage = new StringBuilder();
-                errorMessage.AppendLine($"Database update failed: {dbEx.Message}");
-
-                if (dbEx.InnerException != null)
+                // 1. Add and save admin FIRST to get the ID
+                await dbContext.Admins.AddAsync(newAdmin);
+                await dbContext.SaveChangesAsync();
+                bool success = await adminPhoneNumberSL.AddPhoneNumbersasync(request.PhoneNumbers,
+                                                                             newAdmin.ID, transaction);
+                if (!success)
                 {
-                    errorMessage.AppendLine($"Inner exception: {dbEx.InnerException.Message}");
-                    if (dbEx.InnerException is PostgresException pgEx)
-                    {
-                        errorMessage.AppendLine($"Postgres Error Code: {pgEx.SqlState}");
-                        errorMessage.AppendLine($"Detail: {pgEx.Detail}");
-                        errorMessage.AppendLine($"Table: {pgEx.TableName}");
-                        errorMessage.AppendLine($"Column: {pgEx.ColumnName}");
-                        errorMessage.AppendLine($"Constraint: {pgEx.ConstraintName}");
-                    }
+                    await transaction.RollbackAsync();
+                    return false;
                 }
-                Console.WriteLine(errorMessage.ToString());
-                File.AppendAllText("database_errors.log", $"[{DateTime.UtcNow}] {errorMessage}\n");
-                throw new Exception("Failed to save admin data. " + errorMessage, dbEx);
+                await transaction.CommitAsync();
+                return true;
             }
             catch (Exception ex)
             {
-                transaction.Rollback();
-                Console.WriteLine($"General error: {ex.Message}\n{ex.StackTrace}");
+                await transaction.RollbackAsync();
+
+                // Handle specific database errors
+                if (ex is DbUpdateException dbEx && dbEx.InnerException is PostgresException pgEx)
+                {
+                    var errorDetails = new StringBuilder()
+                        .AppendLine($"Database error ({pgEx.SqlState}): {pgEx.Message}")
+                        .AppendLine($"Table: {pgEx.TableName}")
+                        .AppendLine($"Constraint: {pgEx.ConstraintName}");
+
+                    // Log the error
+                    Console.WriteLine($"Admin creation failed: {errorDetails}");
+
+                    throw new Exception($"Database operation failed: {pgEx.Message}", pgEx);
+                }
+
+                // Log general errors
+                Console.WriteLine($"Admin creation failed: {ex.Message}\n{ex.StackTrace}");
                 throw new Exception("An unexpected error occurred while saving admin", ex);
             }
         }
@@ -152,56 +172,94 @@ namespace Caridology_Department_System.Services
         /// Updates an existing admin's profile with provided fields and phone numbers.
         /// Only updates fields that are supplied (partial update).
         /// </summary>
-        public void UpdateProfile(int adminId, AdminUpdateRequest request, List<string>? phoneNumbers)
+        public async Task<bool> UpdateProfileAsync(int adminId, AdminUpdateRequest request)
         {
-            var existingAdmin = dbContext.Admins
-                .Include(a => a.PhoneNumbers)
-                .FirstOrDefault(a => a.ID == adminId)
-                ?? throw new KeyNotFoundException("Admin not found");
+            // Use AsNoTracking for better performance if you don't need change tracking on the initial query
+            AdminModel existingAdmin = await GetAdminByID(adminId);
 
-            // Update only provided fields (partial update)
-            if (!string.IsNullOrEmpty(request.FName))
-                existingAdmin.FName = request.FName;
-            if (!string.IsNullOrEmpty(request.LName))
-                existingAdmin.LName = request.LName;
-            if (!string.IsNullOrEmpty(request.Email))
-                existingAdmin.Email = request.Email;
-            if (!string.IsNullOrEmpty(request.PhotoPath))
-                existingAdmin.PhotoPath = request.PhotoPath;
-            if (!string.IsNullOrEmpty(request.Address))
-                existingAdmin.Address = request.Address;
-
-            // Hash new password if changed
-            if (!string.IsNullOrEmpty(request.Password) && request.Password != existingAdmin.Password)
-                existingAdmin.Password = new PasswordHasher().HashPassword(request.Password);
-
-            if (request.BirthDate.HasValue && request.BirthDate != default)
-                existingAdmin.BirthDate = request.BirthDate.Value;
-
-            if (request.RoleID.HasValue)
-                existingAdmin.RoleID = request.RoleID.Value;
-            if (request.StatusID.HasValue)
-                existingAdmin.StatusID = request.StatusID.Value;
-
-            // Replace phone numbers if provided
-            if (phoneNumbers != null)
+            if (existingAdmin == null)
             {
-                existingAdmin.PhoneNumbers.Clear();
-                foreach (var number in phoneNumbers)
-                {
-                    existingAdmin.PhoneNumbers.Add(new AdminPhoneNumberModel
-                    {
-                        PhoneNumber = number,
-                        StatusID = 1,
-                        AdminID = existingAdmin.ID
-                    });
-                }
+                throw new Exception("User not found");
             }
 
-            existingAdmin.UpdatedAt = DateTime.UtcNow;
-            dbContext.SaveChanges();
-        }
+            using var transaction = await dbContext.Database.BeginTransactionAsync();
+            try
+            {
+                bool hasChanges = false;
 
+                if (request.PhotoData != null && request.PhotoData.Length > 0 && !request.FName.Equals(existingAdmin.FName))
+                {
+                    existingAdmin.PhotoPath = await imageService.SaveImageAsync(request.PhotoData);
+                    hasChanges = true;
+                }
+
+                if (!String.IsNullOrEmpty(request.Address) && !request.Address.Equals(existingAdmin.Address))
+                {
+                    existingAdmin.Address = request.Address;
+                    hasChanges = true;
+                }
+
+                if (!String.IsNullOrEmpty(request.FName)&&!request.FName.Equals(existingAdmin.FName))
+                {
+                    existingAdmin.FName = request.FName;
+                    hasChanges = true;
+                }
+
+                if (!String.IsNullOrEmpty(request.LName) && !request.LName.Equals(existingAdmin.LName))
+                {
+                    existingAdmin.LName = request.LName;
+                    hasChanges = true;
+                }
+                if (!String.IsNullOrEmpty(request.Gender) && !request.Gender.Equals(existingAdmin.Gender))
+                {
+                    existingAdmin.Gender = request.Gender;
+                    hasChanges = true;
+                }
+
+                if (request.BirthDate.HasValue && request.BirthDate.Value > DateTime.MinValue && request.BirthDate != null)
+                {
+                    // Check if they're actually different
+                    if (existingAdmin.BirthDate != request.BirthDate.Value)
+                    {
+                        existingAdmin.BirthDate = request.BirthDate.Value;
+                        hasChanges = true;
+                    }
+                }
+                if (!string.IsNullOrWhiteSpace(request.Email)&&!(existingAdmin.Email.Equals(request.Email)))
+                {                    
+                    if (!await emailValidator.IsEmailUniqueAsync(request.Email))
+                    {
+                        throw new Exception("Email is already used");
+                    }
+                    existingAdmin.Email = request.Email;
+                    hasChanges = true;
+                }
+                List<string> existingadminPhoneNumbers = existingAdmin.PhoneNumbers.Select(p => p.PhoneNumber).ToList();
+                if (request.PhoneNumbers != null &&
+                    request.PhoneNumbers.Any() &&
+                    request.PhoneNumbers.Any(p => !string.IsNullOrWhiteSpace(p))&&
+                    new HashSet<string>(request.PhoneNumbers).SetEquals(existingadminPhoneNumbers))
+                {
+                    await adminPhoneNumberSL.UpdatePhonesAsync(request.PhoneNumbers, adminId, transaction);
+                    hasChanges = true;
+                }
+                // Only update timestamp and save if there are actual changes
+                if (hasChanges)
+                {
+                    existingAdmin.UpdatedAt = DateTime.UtcNow;
+                    await dbContext.SaveChangesAsync();
+                }
+
+                await transaction.CommitAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+        /*
         /// <summary>
         /// Updates the status of an admin (e.g., activate, deactivate, delete).
         /// </summary>
@@ -217,8 +275,8 @@ namespace Caridology_Department_System.Services
             admin.StatusID = newStatus;
             admin.UpdatedAt = DateTime.UtcNow;
             dbContext.SaveChanges();
-        }
-
+        }*/
+        /*
         /// <summary>
         /// Soft deletes a patient (sets status to deleted) and removes their phone numbers.
         /// </summary>
@@ -244,8 +302,8 @@ namespace Caridology_Department_System.Services
                 transaction.Rollback();
                 throw new Exception("Failed to delete patient", dbEx);
             }
-        }
-
+        }*/
+        /*
         /// <summary>
         /// Updates the status of a patient (e.g., activate, deactivate, delete).
         /// </summary>
@@ -262,6 +320,36 @@ namespace Caridology_Department_System.Services
             patient.StatusID = newStatus;
             patient.UpdatedAt = DateTime.UtcNow;
             dbContext.SaveChanges();
+        }*/
+        public async Task<bool> DeleteAdminAsync(int adminId)
+        {
+            try
+            {
+               AdminModel admin = await GetAdminByID(adminId);
+               using var transaction = await dbContext.Database.BeginTransactionAsync();
+                {
+                    bool deleted = true;
+                    List<string> existingadminPhoneNumbers = admin.PhoneNumbers.Select(p => p.PhoneNumber).ToList();
+                    if (existingadminPhoneNumbers.Any() && existingadminPhoneNumbers.Count>0)
+                    {
+                         deleted = await adminPhoneNumberSL.DeletePhonesAsync(existingadminPhoneNumbers, adminId, transaction);
+                    }
+                    admin.StatusID = 3;
+                    admin.UpdatedAt = DateTime.UtcNow;
+                    if (!deleted)
+                    {
+                        await transaction.RollbackAsync();
+                        return false;
+                    }
+                    await dbContext.SaveChangesAsync();
+                    await transaction.CommitAsync();
+                    return deleted;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

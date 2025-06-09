@@ -63,6 +63,9 @@ namespace Caridology_Department_System.Models
         = new List<DoctorPhoneNumberModel>();
         [Range(1, 50, ErrorMessage = "Experience must be 1-50 years")]
         public int YearsOfExperience { get; set; }
-
+        [Required]
+        public string Gender { get; set; }
+        [StringLength(500, ErrorMessage = "Address cannot exceed 500 characters")]
+        public string? Address { get; set; }
     }
 }

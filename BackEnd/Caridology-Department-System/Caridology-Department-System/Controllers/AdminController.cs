@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
+using System.Security.Claims;
+using AutoMapper;
 
 namespace Caridology_Department_System.Controllers
 {
@@ -13,90 +15,126 @@ namespace Caridology_Department_System.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        // Helper method for admin authentication and retrieval
-        private AdminModel GetAuthenticatedAdmin(AdminSL adminSL)
+        private readonly AdminSL adminSL;
+        private readonly JwtTokenService jwtTokenService;
+        public AdminController(AdminSL adminSL, JwtTokenService jwtTokenService )
         {
-            int? adminID = HttpContext.Session.GetInt32("AdminID");
-            if (adminID == null)
-                return null;
-
-            AdminModel admin = adminSL.GetAdminByID(adminID);
-            return admin;
+            this.adminSL = adminSL;
+            this.jwtTokenService = jwtTokenService;
         }
-
-        [HttpGet("Profile")]
-        public IActionResult GetAdminProfile()
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginAsync(LoginRequest request)
         {
-            AdminSL adminSL = new AdminSL();
-            var admin = GetAuthenticatedAdmin(adminSL);
-
-            if (admin == null)
-            {
-                int? id = HttpContext.Session.GetInt32("AdminID");
-                if (id == null)
-                    return Unauthorized("Not logged in");
-                else
-                    return NotFound("Admin not found");
-            }
-
-            return Ok(new
-            {
-                admin.ID,
-                admin.FName,
-                admin.LName,
-                admin.FullName,
-                admin.Email,
-                admin.BirthDate,
-                admin.PhotoPath,
-                admin.RoleID,
-                RoleModel = admin.Role?.RoleName,
-                admin.StatusID,
-                StatusName = admin.Status?.Name,
-                admin.CreatedAt,
-                admin.UpdatedAt,
-                PhoneNumbers = admin.PhoneNumbers.Select(p => p.PhoneNumber).ToList()
-            });
-        }
-
-        [HttpPut("Profile")]
-        public IActionResult UpdateAdminProfile([FromBody] AdminUpdateRequest request)
-        {
-            AdminSL adminSL = new AdminSL();
-            var admin = GetAuthenticatedAdmin(adminSL);
-
-            if (admin == null)
-            {
-                int? id = HttpContext.Session.GetInt32("AdminID");
-                if (id == null)
-                    return Unauthorized("Not logged in");
-                else
-                    return NotFound("Admin not found");
-            }
-
             try
             {
-                adminSL.UpdateProfile(
-                    admin.ID,
-                    request,
-                    request.PhoneNumbers
-                );
-
-                return Ok(new { Message = "Admin profile updated successfully" });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (DbUpdateException dbEx)
-            {
-                return StatusCode(500, "Database error: " + dbEx.Message);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                AdminModel admin = await adminSL.GetAdminByEmailAndPassword(request);
+                var token = jwtTokenService.GenerateToken(admin);
+                return Ok(new
+                {
+                    Token = token,
+                    Admin = admin
+                });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                var response = new ResponseWrapperDto {
+                    Errors = ex.Message,
+                    Success= false,
+                    StatusCode=400
+                };
+                return BadRequest(response);
             }
         }
-
+        [HttpGet("Profile")]
+        public async Task<IActionResult> GetAdminProfileAsync()
+        {
+            try
+            {
+                int adminID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                AdminProfilePageRequest adminProfilePage = await adminSL.GetAdminProfile(adminID);
+                return Ok(adminProfilePage);
+            }
+            catch(Exception ex) {
+                var response = new ResponseWrapperDto {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode =400
+                };
+                return BadRequest(response);
+            }
+        }
+        [HttpPost("CreateAdmim")]
+        [Consumes("multipart/form-data")]
+        [RequestSizeLimit(10 * 1024 * 1024)]
+        public async Task<IActionResult> CreateAdminAsync([FromForm] AdminRequest admin)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                bool created = await adminSL.AddAdminasync(admin);
+                var response = new ResponseWrapperDto
+                {
+                    Success = created,
+                    StatusCode = 200,
+                    Message = "account created successfully"
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode = 400
+                };
+                return BadRequest(response);
+            }
+        }
+        [HttpPut("Profile")]
+        [Consumes("multipart/form-data")]
+        [RequestSizeLimit(10 * 1024 * 1024)]
+        public async Task<IActionResult> UpdateAdminProfileAsync([FromForm] AdminUpdateRequest request)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                int adminID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                bool Updated = await adminSL.UpdateProfileAsync(adminID,request);
+                if (!Updated)
+                {
+                    throw new Exception("error has occured");
+                }
+                var response = new ResponseWrapperDto
+                {
+                    Message= "Account updated successfully",
+                    Success = Updated,
+                    StatusCode = 200,
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode = 400,
+                };
+                return BadRequest(response);
+            }
+        }
+        /*
         [HttpPut("UpdatePatient/{id}")]
         public IActionResult UpdatePatientProfile(int id, [FromBody] PatientRequest request)
         {
@@ -128,7 +166,8 @@ namespace Caridology_Department_System.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        */
+        /*
         [HttpPost("AddPatient")]
         public IActionResult AddPatient([FromBody] PatientRequest request, [FromQuery] List<string> phoneNumbers)
         {
@@ -170,26 +209,8 @@ namespace Caridology_Department_System.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
-        [HttpPost("Login")]
-        public IActionResult Login(LoginRequest request)
-        {
-            AdminSL adminSL = new AdminSL();
-            try
-            {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                AdminModel admin = adminSL.GetAdminByEmailAndPassword(request);
-                HttpContext.Session.SetInt32("AdminID", admin.ID);
-                return Ok(admin);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return Unauthorized(new { message = "Invalid email or password" });
-            }
-        }
-
+        */       
+        /*
         [HttpDelete("DeletePatient/{id}")]
         public IActionResult DeletePatient(int id)
         {
@@ -219,7 +240,8 @@ namespace Caridology_Department_System.Controllers
                 return StatusCode(500, $"Error deleting patient: {ex.Message}");
             }
         }
-
+        */
+        /*
         [HttpPatch("UpdateAdminStatus/{id}")]
         public IActionResult UpdateAdminStatus(int id, [FromBody] int newStatus)
         {
@@ -254,7 +276,8 @@ namespace Caridology_Department_System.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        */
+        /*
         public class PatientStatusUpdateRequest
         {
             public int NewStatus { get; set; }
@@ -295,19 +318,48 @@ namespace Caridology_Department_System.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        */
         [HttpPost("Logout")]
         public IActionResult Logout()
         {
-            bool wasLoggedIn = HttpContext.Session.TryGetValue("AdminID", out _);
-            HttpContext.Session.Clear();
-
-            return Ok(new
+            var response = new ResponseWrapperDto
             {
-                message = wasLoggedIn
-                    ? "Logout successful"
-                    : "No active admin session found"
-            });
+                Success = true,
+                StatusCode = 200,
+                Message = "Logout Successfully"
+            };
+            return Ok(response);
+        }
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> DeleteAccountAsync()
+        {
+            try
+            {
+                int adminID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                bool deleted = await adminSL.DeleteAdminAsync(adminID);
+                if (!deleted)
+                {
+                    throw new Exception("error has occured");
+                }
+                var response = new ResponseWrapperDto
+                {
+                    Message= "account deleted successfuly",
+                    Success = true,
+                    StatusCode = 200
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode = 400
+                };
+                return BadRequest(response);
+            }
         }
     }
 }
+

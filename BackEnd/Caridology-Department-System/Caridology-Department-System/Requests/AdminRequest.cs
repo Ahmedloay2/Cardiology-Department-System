@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Caridology_Department_System.ValdiationAttributes;
 
 namespace Caridology_Department_System.Requests
 {
@@ -28,22 +29,16 @@ namespace Caridology_Department_System.Requests
 )]
         public string Email { get; set; }
 
-        [StringLength(255, ErrorMessage = "Photo path cannot exceed 255 characters")]
-        public string? PhotoPath { get; set; }
-
-        [Required(ErrorMessage = "Role ID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid role ID")]
-        public int RoleID { get; set; } = 1; // Default to basic admin role
-
-        [Required(ErrorMessage = "Status ID is required")]
-        [Range(1, int.MaxValue, ErrorMessage = "Invalid status ID")]
-        public int StatusID { get; set; } = 1; // Default to active
-
         [Required(ErrorMessage = "At least one phone number is required")]
         [PhoneListValidation]
         public List<string> PhoneNumbers { get; set; }
 
         [StringLength(500, ErrorMessage = "Address cannot exceed 500 characters")]
         public string? Address { get; set; }
+        [DataType(DataType.Upload)]
+        [AllowedImageExtensions]
+        public IFormFile? Photo { get; set; }
+        [Required]
+        public string Gender { get; set; }
     }
 }

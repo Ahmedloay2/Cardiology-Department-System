@@ -20,3 +20,43 @@ Table:
 Column: 
 Constraint: 
 
+[6/5/2025 1:36:10 PM] Database update failed: An error occurred while saving the entity changes. See the inner exception for details.
+Inner exception: 23503: insert or update on table "AdminPhoneNumbers" violates foreign key constraint "FK_AdminPhoneNumbers_Admins_AdminID"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Postgres Error Code: 23503
+Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Table: AdminPhoneNumbers
+Column: 
+Constraint: FK_AdminPhoneNumbers_Admins_AdminID
+
+[6/5/2025 1:37:37 PM] Database update failed: An error occurred while saving the entity changes. See the inner exception for details.
+Inner exception: 23503: insert or update on table "AdminPhoneNumbers" violates foreign key constraint "FK_AdminPhoneNumbers_Admins_AdminID"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Postgres Error Code: 23503
+Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Table: AdminPhoneNumbers
+Column: 
+Constraint: FK_AdminPhoneNumbers_Admins_AdminID
+
+[6/5/2025 1:39:49 PM] Database update failed: An error occurred while saving the entity changes. See the inner exception for details.
+Inner exception: 23503: insert or update on table "AdminPhoneNumbers" violates foreign key constraint "FK_AdminPhoneNumbers_Admins_AdminID"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Postgres Error Code: 23503
+Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Table: AdminPhoneNumbers
+Column: 
+Constraint: FK_AdminPhoneNumbers_Admins_AdminID
+
+[6/5/2025 2:28:53 PM] Database update failed: An error occurred while saving the entity changes. See the inner exception for details.
+Inner exception: 23503: insert or update on table "AdminPhoneNumbers" violates foreign key constraint "FK_AdminPhoneNumbers_Admins_AdminID"
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Postgres Error Code: 23503
+Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+Table: AdminPhoneNumbers
+Column: 
+Constraint: FK_AdminPhoneNumbers_Admins_AdminID
+

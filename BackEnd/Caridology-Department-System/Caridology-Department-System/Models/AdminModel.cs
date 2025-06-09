@@ -62,8 +62,9 @@ namespace Caridology_Department_System.Models
 
         public ICollection<AdminPhoneNumberModel> PhoneNumbers { get; set; } = new List<AdminPhoneNumberModel>();
 
-        // Optional: Address field if you want to match DTOs
         [StringLength(500)]
         public string? Address { get; set; }
+        [Required]
+        public string Gender { get; set; }
     }
 }

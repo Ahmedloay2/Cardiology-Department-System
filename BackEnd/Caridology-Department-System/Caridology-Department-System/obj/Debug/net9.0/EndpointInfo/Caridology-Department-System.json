@@ -6,132 +6,6 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Admin/Profile": {
-      "get": {
-        "tags": [
-          "Admin"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Admin"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminUpdateRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminUpdateRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AdminUpdateRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Admin/UpdatePatient/{id}": {
-      "put": {
-        "tags": [
-          "Admin"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Admin/AddPatient": {
-      "post": {
-        "tags": [
-          "Admin"
-        ],
-        "parameters": [
-          {
-            "name": "phoneNumbers",
-            "in": "query",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Admin/Login": {
       "post": {
         "tags": [
@@ -163,63 +37,94 @@
         }
       }
     },
-    "/api/Admin/DeletePatient/{id}": {
-      "delete": {
+    "/api/Admin/Profile": {
+      "get": {
         "tags": [
           "Admin"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "responses": {
           "200": {
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/Admin/UpdateAdminStatus/{id}": {
-      "patch": {
+      },
+      "put": {
         "tags": [
           "Admin"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "default": null
+                  },
+                  "Email": {
+                    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": null
+                  },
+                  "Address": {
+                    "pattern": "^.{0,500}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PhotoData": {
+                    "type": "string",
+                    "format": "binary",
+                    "default": null
+                  },
+                  "Gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "PhotoData": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -231,37 +136,96 @@
         }
       }
     },
-    "/api/Admin/UpdatePatientStatus/{id}": {
-      "patch": {
+    "/api/Admin/CreateAdmim": {
+      "post": {
         "tags": [
           "Admin"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/PatientStatusUpdateRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientStatusUpdateRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PatientStatusUpdateRequest"
+                "required": [
+                  "BirthDate",
+                  "Email",
+                  "FName",
+                  "Gender",
+                  "LName",
+                  "Password",
+                  "PhoneNumbers"
+                ],
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "LName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Password": {
+                    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,100}$",
+                    "type": "string"
+                  },
+                  "Email": {
+                    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                    "type": "string"
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "Address": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Photo": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "Photo": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -275,6 +239,18 @@
     },
     "/api/Admin/Logout": {
       "post": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Delete": {
+      "delete": {
         "tags": [
           "Admin"
         ],
@@ -763,78 +739,6 @@
   },
   "components": {
     "schemas": {
-      "AdminUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "fName": {
-            "pattern": "^.{2,50}$",
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "lName": {
-            "pattern": "^.{2,50}$",
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "birthDate": {
-            "type": "string",
-            "format": "date-time",
-            "default": null,
-            "nullable": true
-          },
-          "password": {
-            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,100}$",
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "email": {
-            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "photoPath": {
-            "pattern": "^.{0,255}$",
-            "type": "string",
-            "default": "",
-            "nullable": true
-          },
-          "roleID": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32",
-            "default": 1,
-            "nullable": true
-          },
-          "statusID": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32",
-            "default": 1,
-            "nullable": true
-          },
-          "phoneNumbers": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "default": null,
-            "nullable": true
-          },
-          "address": {
-            "pattern": "^.{0,500}$",
-            "type": "string",
-            "default": "",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "LoginRequest": {
         "required": [
           "email",
@@ -855,147 +759,6 @@
             "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
             "type": "string",
             "format": "password"
-          }
-        },
-        "additionalProperties": false
-      },
-      "PatientRequest": {
-        "required": [
-          "address",
-          "birthDate",
-          "email",
-          "emergencyContactName",
-          "emergencyContactPhone",
-          "fName",
-          "gender",
-          "link",
-          "lName",
-          "parentName",
-          "password",
-          "phoneNumbers"
-        ],
-        "type": "object",
-        "properties": {
-          "fName": {
-            "maxLength": 50,
-            "minLength": 2,
-            "type": "string"
-          },
-          "lName": {
-            "maxLength": 50,
-            "minLength": 2,
-            "type": "string"
-          },
-          "birthDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "gender": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "password": {
-            "maxLength": 100,
-            "minLength": 8,
-            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
-            "type": "string",
-            "format": "password"
-          },
-          "email": {
-            "maxLength": 100,
-            "minLength": 0,
-            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-            "type": "string",
-            "format": "email"
-          },
-          "address": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "landLine": {
-            "type": "string",
-            "format": "tel",
-            "nullable": true
-          },
-          "emergencyContactName": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
-          },
-          "emergencyContactPhone": {
-            "minLength": 1,
-            "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
-            "type": "string"
-          },
-          "phoneNumbers": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "parentName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "spouseName": {
-            "type": "string",
-            "nullable": true
-          },
-          "bloodType": {
-            "type": "string",
-            "nullable": true
-          },
-          "allergies": {
-            "type": "string",
-            "nullable": true
-          },
-          "chronicConditions": {
-            "type": "string",
-            "nullable": true
-          },
-          "previousSurgeries": {
-            "type": "string",
-            "nullable": true
-          },
-          "currentMedications": {
-            "type": "string",
-            "nullable": true
-          },
-          "policyNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "insuranceProvider": {
-            "type": "string",
-            "nullable": true
-          },
-          "policyValidDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "photoPath": {
-            "type": "string",
-            "nullable": true
-          },
-          "link": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "photo": {
-            "type": "string",
-            "format": "binary",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PatientStatusUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "newStatus": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

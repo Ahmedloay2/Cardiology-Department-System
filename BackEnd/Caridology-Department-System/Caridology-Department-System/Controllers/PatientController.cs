@@ -14,7 +14,7 @@ namespace Caridology_Department_System.Controllers
         private readonly JwtTokenService _tokenService;
         private readonly PatientSL _patientService;
 
-        public PatientController(JwtTokenService tokenService, PatientSL patientService)
+        private PatientController(JwtTokenService tokenService, PatientSL patientService)
         {
             _tokenService = tokenService;
             _patientService = patientService;
@@ -117,7 +117,13 @@ namespace Caridology_Department_System.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return NotFound(new { Success = false, Message = ex.Message });
+                var response = new ResponseWrapperDto
+                {
+                    Success = false,
+                    StatusCode = 404,
+                    Message = ex.Message
+                };
+                return NotFound(response);
             }
             catch (InvalidOperationException ex) when (ex.Message.Contains("Email"))
             {
@@ -191,8 +197,8 @@ namespace Caridology_Department_System.Controllers
         [Authorize]
         public IActionResult Logout()
         {
-            // With JWT, logout is handled client-side by removing the token
-            return Ok(new { Message = "Logged out successfully - please remove your token client-side" });
+            // logout is handled client-side by removing the token
+            return Ok(new { Message = "Logged out successfully" });
         }
 
         [HttpDelete("Delete")]
