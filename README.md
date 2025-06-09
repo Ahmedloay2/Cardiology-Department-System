@@ -122,6 +122,13 @@ This web application serves as a **Cardiology Department Information System**, a
 | POST        | `/api/Patient/register`      | Register new patient        |
 | POST        | `/api/Patient/Login`         | Login patient               |
 | POST        | `/api/Patient/Logout`        | Logout patient              |
+| Delete      | `/api/Patient/Delete`        | Delete patient              |
+| GET         | `/api/Admin/Profile`         | Get logged-in Admin info    |
+| PUT         | `/api/Admin/Profile`         | Update logged-in Admin      |
+| POST        | `/api/Admin/CreateAdmin`     | Create new Admin            |
+| POST        | `/api/Admin/Login`           | Login Admin                 |
+| POST        | `/api/Admin/Logout`          | Logout Admin                |
+| Delete      | `/api/Admin/Delete`          | Delete Admin                |
 ---
 ## Backend
 - Developed a cardiology department website using .NET for backend logic.
