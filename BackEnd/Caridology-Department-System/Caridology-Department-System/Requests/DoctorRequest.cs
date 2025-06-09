@@ -45,5 +45,8 @@ namespace Caridology_Department_System.Requests
         [DataType(DataType.Upload)]
         [AllowedImageExtensions]
         public IFormFile? Photo { get; set; }
+        [Required]
+        [Range(6000, 50000, ErrorMessage = "Salary must be lower than 50k and higher than 6k")]
+        public float Salary { get; set; }
     }
 }

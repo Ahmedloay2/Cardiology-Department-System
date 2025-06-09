@@ -64,6 +64,9 @@ namespace Caridology_Department_System.Models
         [Range(1, 50, ErrorMessage = "Experience must be 1-50 years")]
         public int YearsOfExperience { get; set; }
         [Required]
+        [Range(6000,50000,ErrorMessage = "Salary must be lower than 50k and higher than 6k")]
+        public float Salary { get; set; }
+        [Required]
         public string Gender { get; set; }
         [StringLength(500, ErrorMessage = "Address cannot exceed 500 characters")]
         public string? Address { get; set; }

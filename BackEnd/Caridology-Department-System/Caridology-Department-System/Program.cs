@@ -38,14 +38,15 @@ builder.Services.AddDbContext<DBContext>(options =>
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<JwtTokenService>();
 builder.Services.AddScoped<PatientSL>();
+builder.Services.AddScoped<PatientPhoneNumberSL>();
 builder.Services.AddScoped<DBContext>();
 builder.Services.AddScoped<EmailValidator>();
 builder.Services.AddScoped<PasswordHasher>();
-builder.Services.AddScoped<PatientPhoneNumberSL>();
 builder.Services.AddScoped<AdminSL>();
 builder.Services.AddScoped<AdminPhoneNumberSL>();
 builder.Services.AddScoped<IImageService, ImageService>();
-
+builder.Services.AddScoped<DoctorSL>();
+builder.Services.AddScoped<DoctorPhoneNumberSL>();
 // JWT Authentication Configuration
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? throw new InvalidOperationException("JWT Issuer not configured");

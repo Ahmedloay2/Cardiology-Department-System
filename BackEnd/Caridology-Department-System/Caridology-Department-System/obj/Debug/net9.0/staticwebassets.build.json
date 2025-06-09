@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ltpIPTmcExhAtW/EC3T5AgwgGGDCmLi+QDkvnlmipPo=",
+  "Hash": "kLMr63wqP0gn11YzMCUH/kIM1FQfMkWZmqq23bFREYg=",
   "Source": "Caridology-Department-System",
   "BasePath": "_content/Caridology-Department-System",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Caridology-Department-System\\wwwroot",
       "Source": "Caridology-Department-System",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/0a7aaec2-a31d-49dd-bf1e-27e584f32570#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/1f6b903f-cc73-4622-924f-faa297c0bbbb#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -59,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/3ad681ef-034c-4133-b972-5129f7b3d245#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -80,10 +80,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/4bdffc5e-af27-42ea-b8c6-6858cbb80e3f#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -101,10 +101,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -122,10 +122,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -143,10 +143,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/9b5a8f0c-2f0f-4102-b5c1-68854089287e#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -164,10 +164,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/a02e12d9-a67e-4a6a-86c2-27965ddf6d87#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -185,10 +185,31 @@
       "OriginalItemSpec": "wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "BasePath": "_content/Caridology-Department-System",
+      "RelativePath": "uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4pe89f25et",
+      "Integrity": "mF7cf406AxbL9h780p9V+MlDllONCHsYY82fF0nq2AI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg"
+    },
+    {
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
+      "SourceId": "Caridology-Department-System",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -206,10 +227,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg"
     },
     {
-      "Identity": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
+      "Identity": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
       "SourceId": "Caridology-Department-System",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
+      "ContentRoot": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\",
       "BasePath": "_content/Caridology-Department-System",
       "RelativePath": "uploads/d8398b59-6b25-4d27-b6a7-d6d8b9c38067#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -230,7 +251,7 @@
   "Endpoints": [
     {
       "Route": "uploads/0a7aaec2-a31d-49dd-bf1e-27e584f32570.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -251,7 +272,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 12:27:00 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -275,7 +296,7 @@
     },
     {
       "Route": "uploads/0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -296,7 +317,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 12:27:00 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -312,7 +333,7 @@
     },
     {
       "Route": "uploads/1f6b903f-cc73-4622-924f-faa297c0bbbb.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -333,7 +354,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:36:07 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -357,7 +378,7 @@
     },
     {
       "Route": "uploads/1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -378,7 +399,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:36:07 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -394,7 +415,7 @@
     },
     {
       "Route": "uploads/3ad681ef-034c-4133-b972-5129f7b3d245.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -415,7 +436,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 14:50:16 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -439,7 +460,7 @@
     },
     {
       "Route": "uploads/3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\3ad681ef-034c-4133-b972-5129f7b3d245.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -460,7 +481,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 14:50:16 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -476,7 +497,7 @@
     },
     {
       "Route": "uploads/4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -497,7 +518,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:37:34 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -521,7 +542,7 @@
     },
     {
       "Route": "uploads/4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -542,7 +563,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:37:34 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -558,7 +579,7 @@
     },
     {
       "Route": "uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -579,7 +600,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 02 Jun 2025 16:06:47 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -595,7 +616,7 @@
     },
     {
       "Route": "uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.u8bkk5m91l.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -616,7 +637,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 02 Jun 2025 16:06:47 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -640,7 +661,7 @@
     },
     {
       "Route": "uploads/75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -661,7 +682,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:17:56 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -685,7 +706,7 @@
     },
     {
       "Route": "uploads/75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -706,7 +727,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:17:56 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -722,7 +743,7 @@
     },
     {
       "Route": "uploads/9b5a8f0c-2f0f-4102-b5c1-68854089287e.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -743,7 +764,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 14:28:50 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -767,7 +788,7 @@
     },
     {
       "Route": "uploads/9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -788,7 +809,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 14:28:50 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -804,7 +825,7 @@
     },
     {
       "Route": "uploads/a02e12d9-a67e-4a6a-86c2-27965ddf6d87.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -825,7 +846,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:39:45 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -849,7 +870,7 @@
     },
     {
       "Route": "uploads/a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -870,7 +891,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:39:45 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -885,8 +906,90 @@
       ]
     },
     {
+      "Route": "uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5.4pe89f25et.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "26912"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mF7cf406AxbL9h780p9V+MlDllONCHsYY82fF0nq2AI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Jun 2025 14:18:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4pe89f25et"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mF7cf406AxbL9h780p9V+MlDllONCHsYY82fF0nq2AI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "26912"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mF7cf406AxbL9h780p9V+MlDllONCHsYY82fF0nq2AI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Jun 2025 14:18:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mF7cf406AxbL9h780p9V+MlDllONCHsYY82fF0nq2AI="
+        }
+      ]
+    },
+    {
       "Route": "uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -907,7 +1010,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 02 Jun 2025 16:06:47 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -923,7 +1026,7 @@
     },
     {
       "Route": "uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.u8bkk5m91l.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -944,7 +1047,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 02 Jun 2025 16:06:47 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -968,7 +1071,7 @@
     },
     {
       "Route": "uploads/d8398b59-6b25-4d27-b6a7-d6d8b9c38067.83s1ojy18q.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -989,7 +1092,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:32:30 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1013,7 +1116,7 @@
     },
     {
       "Route": "uploads/d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
-      "AssetFile": "D:\\projects developing\\cardiology department system project\\Caridology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
+      "AssetFile": "D:\\projects developing\\cardiology department system project\\try 2\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\wwwroot\\uploads\\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1034,7 +1137,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 05 Jun 2025 13:32:30 GMT"
+          "Value": "Mon, 09 Jun 2025 12:32:20 GMT"
         },
         {
           "Name": "Cache-Control",

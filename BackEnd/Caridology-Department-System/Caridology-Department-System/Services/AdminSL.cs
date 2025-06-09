@@ -174,7 +174,6 @@ namespace Caridology_Department_System.Services
         /// </summary>
         public async Task<bool> UpdateProfileAsync(int adminId, AdminUpdateRequest request)
         {
-            // Use AsNoTracking for better performance if you don't need change tracking on the initial query
             AdminModel existingAdmin = await GetAdminByID(adminId);
 
             if (existingAdmin == null)

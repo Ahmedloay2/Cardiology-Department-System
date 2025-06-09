@@ -18,6 +18,7 @@ namespace Caridology_Department_System.Requests
         public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,100}$",
             ErrorMessage = "Password must contain 8-100 characters with at least one uppercase, lowercase, number, and special character")]
         public string Password { get; set; }

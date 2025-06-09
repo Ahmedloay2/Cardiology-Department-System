@@ -144,6 +144,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Caridology-Department-System</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Caridology-Department-System</BasePath>
+      <RelativePath>uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>4pe89f25et</Fingerprint>
+      <Integrity>mF7cf406AxbL9h780p9V+MlDllONCHsYY82fF0nq2AI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>Caridology-Department-System</SourceId>
