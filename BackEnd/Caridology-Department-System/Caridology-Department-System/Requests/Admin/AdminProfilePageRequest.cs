@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Caridology_Department_System.ValdiationAttributes;
 
-namespace Caridology_Department_System.Requests
+namespace Caridology_Department_System.Requests.Admin
 {
     public class AdminProfilePageRequest
     {
@@ -42,10 +42,10 @@ namespace Caridology_Department_System.Requests
         [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public List<String> phoneNumbers { get; set; }
+        public List<string> phoneNumbers { get; set; }
         [StringLength(500)]
         public string? Address { get; set; }
-        public String? PhotoData { get; set; }
+        public string? PhotoData { get; set; }
         [NotMapped]
         public int Age => DateTime.UtcNow.Year - BirthDate.Year -
                  (BirthDate > DateTime.UtcNow.AddYears(-(DateTime.UtcNow.Year - BirthDate.Year)) ? 1 : 0);

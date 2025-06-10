@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Caridology_Department_System.ValdiationAttributes;
 
-namespace Caridology_Department_System.Requests
+namespace Caridology_Department_System.Requests.Admin
 {
     public class AdminRequest
     {

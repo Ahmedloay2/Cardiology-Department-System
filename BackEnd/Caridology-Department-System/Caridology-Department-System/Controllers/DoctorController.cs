@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
+using Caridology_Department_System.Requests.Doctor;
 using Caridology_Department_System.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;

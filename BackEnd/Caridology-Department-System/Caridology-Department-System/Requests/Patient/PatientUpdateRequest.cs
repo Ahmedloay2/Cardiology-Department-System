@@ -1,4 +1,4 @@
-﻿namespace Caridology_Department_System.Requests
+﻿namespace Caridology_Department_System.Requests.Patient
 {
     using Swashbuckle.AspNetCore.Annotations;
     using System;
@@ -25,21 +25,10 @@
         public DateTime? BirthDate { get; set; }
 
         [DefaultValue("")]
-        [SwaggerSchema(Description = "Password")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,100}$",
-            ErrorMessage = "Password must be 8-100 characters with at least one uppercase, one lowercase, one number, and one special character.")]
-        public string? Password { get; set; }
-
-        [DefaultValue("")]
         [SwaggerSchema(Description = "Email address")]
         [RegularExpression(@"^(?=.{1,100}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
             ErrorMessage = "Email must be valid and 1-100 characters.")]
         public string? Email { get; set; }
-
-        [DefaultValue("")]
-        [SwaggerSchema(Description = "Photo path")]
-        [RegularExpression(@"^.{0,255}$", ErrorMessage = "Photo path must be up to 255 characters.")]
-        public string? PhotoPath { get; set; }
 
         [DefaultValue("")]
         [SwaggerSchema(Description = "Blood type")]
@@ -119,10 +108,13 @@
         [DefaultValue("")]
         [SwaggerSchema(Description = "Insurance provider")]
         [RegularExpression(@"^.{0,100}$", ErrorMessage = "Insurance provider must be up to 100 characters.")]
-        public string? insuranceProvider { get; set; }
+        public string? InsuranceProvider { get; set; }
 
         [DefaultValue(null)]
         [SwaggerSchema(Description = "Policy valid date")]
         public DateTime? PolicyValidDate { get; set; }
+        [DefaultValue(null)]
+        public IFormFile? PhotoData { get; set; }
+
     }
 }

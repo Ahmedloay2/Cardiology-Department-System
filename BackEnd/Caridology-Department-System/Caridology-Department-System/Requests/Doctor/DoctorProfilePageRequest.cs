@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Caridology_Department_System.Models;
 
-namespace Caridology_Department_System.Requests
+namespace Caridology_Department_System.Requests.Doctor
 {
     public class DoctorProfilePageRequest
     {
@@ -18,7 +18,7 @@ namespace Caridology_Department_System.Requests
         public int YearsOfExperience { get; set; }
         public string Gender { get; set; }
         public string? Address { get; set; }
-        public List<String> phoneNumbers { get; set; }
+        public List<string> phoneNumbers { get; set; }
         [NotMapped]
         public int Age => DateTime.UtcNow.Year - BirthDate.Year -
                  (BirthDate > DateTime.UtcNow.AddYears(-(DateTime.UtcNow.Year - BirthDate.Year)) ? 1 : 0);
@@ -30,7 +30,7 @@ namespace Caridology_Department_System.Requests
         [ForeignKey(nameof(Role))]
         public int RoleID { get; set; }
         public RoleModel Role { get; set; }
-        public String? PhotoData { get; set; }
+        public string? PhotoData { get; set; }
         public float salary { get; set; }
     }
 }

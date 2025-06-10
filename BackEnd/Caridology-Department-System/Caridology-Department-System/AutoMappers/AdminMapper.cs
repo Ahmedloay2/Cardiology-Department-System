@@ -1,7 +1,7 @@
 ﻿
 using AutoMapper;
 using Caridology_Department_System.Models;
-using Caridology_Department_System.Requests;
+using Caridology_Department_System.Requests.Admin;
 namespace Caridology_Department_System.AutoMappers
 {
     public class AdminMapper : Profile

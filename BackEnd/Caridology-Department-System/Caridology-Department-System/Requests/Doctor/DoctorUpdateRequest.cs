@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace Caridology_Department_System.Requests
+namespace Caridology_Department_System.Requests.Doctor
 {
     public class DoctorUpdateRequest
     {       

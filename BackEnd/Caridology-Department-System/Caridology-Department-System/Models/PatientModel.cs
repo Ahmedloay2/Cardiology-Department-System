@@ -101,5 +101,6 @@ namespace Caridology_Department_System.Models
 
         [Required]
         public string Link { get; set; }
+
     }
 }

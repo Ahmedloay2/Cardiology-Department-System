@@ -8,6 +8,7 @@ using AutoMapper;
 using Azure.Core;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
+using Caridology_Department_System.Requests.Admin;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;

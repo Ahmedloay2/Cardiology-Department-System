@@ -1,4 +1,4 @@
-﻿namespace Caridology_Department_System.Requests
+﻿namespace Caridology_Department_System.Requests.Admin
 {
     using Swashbuckle.AspNetCore.Annotations;
     using System;

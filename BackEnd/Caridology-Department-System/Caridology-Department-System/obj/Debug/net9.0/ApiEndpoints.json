@@ -214,6 +214,11 @@
         "Name": "Photo",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      },
+      {
+        "Name": "Salary",
+        "Type": "System.Single",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -321,13 +326,18 @@
         "Name": "PhotoData",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      },
+      {
+        "Name": "Salary",
+        "Type": "System.Nullable\u00601[[System.Single, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.PatientController",
-    "Method": "DeleteAccount",
+    "Method": "DeleteAccountAsync",
     "RelativePath": "api/Patient/Delete",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -363,7 +373,7 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.PatientController",
-    "Method": "GetPatientProfile",
+    "Method": "GetProfilePageAsync",
     "RelativePath": "api/Patient/Profile",
     "HttpMethod": "GET",
     "IsController": true,
@@ -373,139 +383,8 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.PatientController",
-    "Method": "UpdateProfile",
-    "RelativePath": "api/Patient/Profile",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "FName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "LName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "BirthDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Gender",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Address",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "LandLine",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "EmergencyContactName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "EmergencyContactPhone",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumbers",
-        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "ParentName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "SpouseName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "BloodType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Allergies",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ChronicConditions",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PreviousSurgeries",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "CurrentMedications",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PolicyNumber",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "InsuranceProvider",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "PolicyValidDate",
-        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhotoPath",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Link",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Photo",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
-    "Method": "Register",
-    "RelativePath": "api/Patient/register",
+    "Method": "CreatePatientAsync",
+    "RelativePath": "api/Patient/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -616,7 +495,68 @@
         "IsRequired": false
       },
       {
-        "Name": "PhotoPath",
+        "Name": "Link",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Photo",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
+    "Method": "UpdateProfileAsync",
+    "RelativePath": "api/Patient/UpdateProfile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BirthDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BloodType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmergencyContactName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmergencyContactPhone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumbers",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -626,7 +566,62 @@
         "IsRequired": false
       },
       {
-        "Name": "Photo",
+        "Name": "ParentName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SpouseName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LandLine",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Allergies",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ChronicConditions",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PreviousSurgeries",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CurrentMedications",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PolicyNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "InsuranceProvider",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PolicyValidDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhotoData",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }

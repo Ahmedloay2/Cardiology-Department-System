@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Caridology_Department_System.Models;
-using Caridology_Department_System.Requests;
+using Caridology_Department_System.Requests.Doctor;
 
 namespace Caridology_Department_System.AutoMappers
 {

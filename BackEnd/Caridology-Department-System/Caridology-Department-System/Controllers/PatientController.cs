@@ -1,9 +1,11 @@
 ﻿using System.Security.Claims;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
+using Caridology_Department_System.Requests.Patient;
 using Caridology_Department_System.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Caridology_Department_System.Controllers
 {
@@ -11,214 +13,174 @@ namespace Caridology_Department_System.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        private readonly JwtTokenService _tokenService;
-        private readonly PatientSL _patientService;
+        private readonly JwtTokenService jwtTokenService;
+        private readonly PatientSL PatientSL;
 
-        private PatientController(JwtTokenService tokenService, PatientSL patientService)
+        public PatientController(JwtTokenService tokenService, PatientSL patientService)
         {
-            _tokenService = tokenService;
-            _patientService = patientService;
+            jwtTokenService = tokenService;
+            PatientSL = patientService;
         }
-
-        [HttpGet("Profile")]
-        [Authorize]
-        public async Task<IActionResult> GetPatientProfile()
-        {
-            try
-            {
-                var patientId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var patient = _patientService.GetPatientByID(patientId);
-
-                if (patient == null)
-                    return NotFound(new { Message = "Patient not found" });
-                byte[] imageBytes = null;
-                if (!string.IsNullOrEmpty(patient.PhotoPath))
-                {
-                    var filePath = Path.Combine("wwwroot", patient.PhotoPath.TrimStart('/'));
-                    if (System.IO.File.Exists(filePath))
-                    {
-                        imageBytes = await System.IO.File.ReadAllBytesAsync(filePath);
-                    }
-                }
-
-                return Ok(new
-                {
-                    patient.ID,
-                    patient.FName,
-                    patient.LName,
-                    patient.Email,
-                    patient.BirthDate,
-                    patient.BloodType,
-                    patient.Gender,
-                    patient.PhotoPath,
-                    patient.Address,
-                    PhoneNumbers = patient.PhoneNumbers?.Select(pn => pn.PhoneNumber).ToList() ?? new List<string>(),
-                    patient.EmergencyContactName,
-                    patient.EmergencyContactPhone,
-                    patient.ParentName,
-                    patient.Link,
-                    patient.SpouseName,
-                    patient.LandLine,
-                    patient.Allergies,
-                    patient.ChronicConditions,
-                    patient.PreviousSurgeries,
-                    patient.CurrentMedications,
-                    patient.PolicyNumber,
-                    patient.InsuranceProvider,
-                    patient.PolicyValidDate,
-                    PhotoData = imageBytes != null
-            ? $"data:{GetContentType(patient.PhotoPath)};base64,{Convert.ToBase64String(imageBytes)}"
-            : null
-                });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Message = "An error occurred while retrieving patient profile", Error = ex.Message });
-            }
-        }
-        private string GetContentType(string path)
-        {
-            var extension = Path.GetExtension(path).ToLowerInvariant();
-            return extension switch
-            {
-                ".jpg" or ".jpeg" => "image/jpeg",
-                ".png" => "image/png",
-                _ => "application/octet-stream"
-            };
-        }
-        [HttpPut("Profile")]
-        [Authorize]
-        public async Task<IActionResult> UpdateProfile([FromForm] PatientRequest request)
+        [HttpPost("Register")]
+        [Consumes("multipart/form-data")]
+        [RequestSizeLimit(10 * 1024 * 1024)]
+        public async Task<IActionResult> CreatePatientAsync([FromForm] PatientRequest Patient)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return BadRequest(new
-                    {
-                        Success = false,
-                        Errors = ModelState.Values
-                            .SelectMany(v => v.Errors)
-                            .Select(e => e.ErrorMessage)
-                            .ToList()
-                    });
+                    return BadRequest(ModelState);
                 }
-
-                var patientId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                await _patientService.UpdateProfile(patientId, request, request.PhoneNumbers);
-
+                bool Created = false;
+                Created = await PatientSL.AddPatientAsync(Patient);
+                if (!Created)
+                {
+                    throw new Exception("error has occured");
+                }
                 var response = new ResponseWrapperDto
                 {
-                    Success= true,
-                    StatusCode= 202,
-                    Message= "Profile updated successfully"
+                    Success = Created,
+                    StatusCode = 200,
+                    Message = "account created successfully"
                 };
-                return Accepted(response);
+                return Ok(response);
             }
-            catch (KeyNotFoundException ex)
+            catch (Exception ex)
             {
                 var response = new ResponseWrapperDto
                 {
+                    Errors = ex.Message,
                     Success = false,
-                    StatusCode = 404,
-                    Message = ex.Message
+                    StatusCode = 400
                 };
-                return NotFound(response);
-            }
-            catch (InvalidOperationException ex) when (ex.Message.Contains("Email"))
-            {
-                return Conflict(new { Success = false, Message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Success = false, Message = ex.Message });
+                return BadRequest(response);
             }
         }
-
-        [HttpPost("register")]
-        [Consumes("multipart/form-data")]
-        [RequestSizeLimit(10 * 1024 * 1024)]
-        public async Task<IActionResult> Register([FromForm] PatientRequest patient)
-        {
-            try
-            {
-                if (patient == null)
-                    return BadRequest(new { Message = "Patient data is required" });
-
-                await _patientService.AddPatientAsync(patient, patient.PhoneNumbers ?? new List<string>());
-                return Ok(new { Message = "Patient registered successfully" });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { Message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Message = "An error occurred during registration", Error = ex.Message });
-            }
-        }
-
         [HttpPost("Login")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(new { Errors = ModelState.Values.SelectMany(v => v.Errors) });
-
             try
             {
-                PatientModel patient = _patientService.GetPatientByEmailAndPassword(request.Email, request.Password);
-
-                if (patient == null)
-                    return Unauthorized(new { Message = "Invalid credentials" });
-
-                var token = _tokenService.GenerateToken(patient);
-
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                PatientModel Patient = await PatientSL.GetPatientByEmailAndPassword(request);
+                var token = jwtTokenService.GenerateToken(Patient);
                 return Ok(new
                 {
                     Token = token,
-                    patient.ID,
-                    patient.Email,
-                    patient.FName,
-                    patient.LName
+                    patient = Patient
                 });
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                return Unauthorized(new { Message = ex.Message });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred during login", Error = ex.Message });
+                var response = new ResponseWrapperDto
+                {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode = 400
+                };
+                return BadRequest(response);
             }
         }
-
-        [HttpPost("Logout")]
-        [Authorize]
-        public IActionResult Logout()
-        {
-            // logout is handled client-side by removing the token
-            return Ok(new { Message = "Logged out successfully" });
-        }
-
-        [HttpDelete("Delete")]
-        [Authorize]
-        public async Task<IActionResult> DeleteAccount()
+        [HttpGet("Profile")]
+        public async Task<IActionResult> GetProfilePageAsync()
         {
             try
             {
-                var patientId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                _patientService.DeletePatient(patientId);
-
-                return Ok(new { Message = "Account deleted successfully" });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { Message = ex.Message });
+                int Patientid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                PatientProfilePageRequest Patient = await PatientSL.GetPatientProfilePage(Patientid);
+                return Ok(Patient);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "An error occurred while deleting account", Error = ex.Message });
+                var response = new ResponseWrapperDto
+                {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode = 400
+                };
+                return BadRequest(response);
+            }
+        }
+        [HttpPut("UpdateProfile")]
+        [Consumes("multipart/form-data")]
+        [RequestSizeLimit(10 * 1024 * 1024)]
+        public async Task<IActionResult> UpdateProfileAsync([FromForm] PatientUpdateRequest request)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                int Patientid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                bool Updated = await PatientSL.UpdateProfileAsync(Patientid, request);
+                if (!Updated)
+                {
+                    throw new Exception("there is not data to update");
+                }
+                var response = new ResponseWrapperDto
+                {
+                    Message = "Account updated successfully",
+                    Success = Updated,
+                    StatusCode = 200,
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode = 400,
+                };
+                return BadRequest(response);
+            }
+
+        }
+        [HttpPost("Logout")]
+        public IActionResult Logout()
+        {
+            var response = new ResponseWrapperDto
+            {
+                Success = true,
+                StatusCode = 200,
+                Message = "Logout Successfully"
+            };
+            return Ok(response);
+        }
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> DeleteAccountAsync()
+        {
+            try
+            {
+                int adminID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                bool deleted = await PatientSL.DeletePatientAsync(adminID);
+                if (!deleted)
+                {
+                    throw new Exception("error has occured");
+                }
+                var response = new ResponseWrapperDto
+                {
+                    Message = "account deleted successfuly",
+                    Success = true,
+                    StatusCode = 200
+                };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    Errors = ex.Message,
+                    Success = false,
+                    StatusCode = 400
+                };
+                return BadRequest(response);
             }
         }
     }

@@ -279,7 +279,8 @@
                   "LName",
                   "Password",
                   "PhoneNumbers",
-                  "Position"
+                  "Position",
+                  "Salary"
                 ],
                 "type": "object",
                 "properties": {
@@ -339,6 +340,12 @@
                   "Photo": {
                     "type": "string",
                     "format": "binary"
+                  },
+                  "Salary": {
+                    "maximum": 50000,
+                    "minimum": 6000,
+                    "type": "number",
+                    "format": "float"
                   }
                 }
               },
@@ -374,6 +381,9 @@
                   "style": "form"
                 },
                 "Photo": {
+                  "style": "form"
+                },
+                "Salary": {
                   "style": "form"
                 }
               }
@@ -492,6 +502,12 @@
                     "type": "string",
                     "format": "binary",
                     "default": null
+                  },
+                  "Salary": {
+                    "maximum": 50000,
+                    "minimum": 6000,
+                    "type": "number",
+                    "format": "float"
                   }
                 }
               },
@@ -524,6 +540,9 @@
                   "style": "form"
                 },
                 "PhotoData": {
+                  "style": "form"
+                },
+                "Salary": {
                   "style": "form"
                 }
               }
@@ -561,222 +580,7 @@
         }
       }
     },
-    "/api/Patient/Profile": {
-      "get": {
-        "tags": [
-          "Patient"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Patient"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "required": [
-                  "Address",
-                  "BirthDate",
-                  "Email",
-                  "EmergencyContactName",
-                  "EmergencyContactPhone",
-                  "FName",
-                  "Gender",
-                  "Link",
-                  "LName",
-                  "ParentName",
-                  "Password",
-                  "PhoneNumbers"
-                ],
-                "type": "object",
-                "properties": {
-                  "FName": {
-                    "maxLength": 50,
-                    "minLength": 2,
-                    "type": "string"
-                  },
-                  "LName": {
-                    "maxLength": 50,
-                    "minLength": 2,
-                    "type": "string"
-                  },
-                  "BirthDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "Gender": {
-                    "type": "string"
-                  },
-                  "Password": {
-                    "maxLength": 100,
-                    "minLength": 8,
-                    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
-                    "type": "string",
-                    "format": "password"
-                  },
-                  "Email": {
-                    "maxLength": 100,
-                    "minLength": 0,
-                    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-                    "type": "string",
-                    "format": "email"
-                  },
-                  "Address": {
-                    "type": "string"
-                  },
-                  "LandLine": {
-                    "type": "string",
-                    "format": "tel"
-                  },
-                  "EmergencyContactName": {
-                    "maxLength": 100,
-                    "minLength": 0,
-                    "type": "string"
-                  },
-                  "EmergencyContactPhone": {
-                    "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
-                    "type": "string"
-                  },
-                  "PhoneNumbers": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "ParentName": {
-                    "type": "string"
-                  },
-                  "SpouseName": {
-                    "type": "string"
-                  },
-                  "BloodType": {
-                    "type": "string"
-                  },
-                  "Allergies": {
-                    "type": "string"
-                  },
-                  "ChronicConditions": {
-                    "type": "string"
-                  },
-                  "PreviousSurgeries": {
-                    "type": "string"
-                  },
-                  "CurrentMedications": {
-                    "type": "string"
-                  },
-                  "PolicyNumber": {
-                    "type": "string"
-                  },
-                  "InsuranceProvider": {
-                    "type": "string"
-                  },
-                  "PolicyValidDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "PhotoPath": {
-                    "type": "string"
-                  },
-                  "Link": {
-                    "type": "string"
-                  },
-                  "Photo": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "FName": {
-                  "style": "form"
-                },
-                "LName": {
-                  "style": "form"
-                },
-                "BirthDate": {
-                  "style": "form"
-                },
-                "Gender": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Address": {
-                  "style": "form"
-                },
-                "LandLine": {
-                  "style": "form"
-                },
-                "EmergencyContactName": {
-                  "style": "form"
-                },
-                "EmergencyContactPhone": {
-                  "style": "form"
-                },
-                "PhoneNumbers": {
-                  "style": "form"
-                },
-                "ParentName": {
-                  "style": "form"
-                },
-                "SpouseName": {
-                  "style": "form"
-                },
-                "BloodType": {
-                  "style": "form"
-                },
-                "Allergies": {
-                  "style": "form"
-                },
-                "ChronicConditions": {
-                  "style": "form"
-                },
-                "PreviousSurgeries": {
-                  "style": "form"
-                },
-                "CurrentMedications": {
-                  "style": "form"
-                },
-                "PolicyNumber": {
-                  "style": "form"
-                },
-                "InsuranceProvider": {
-                  "style": "form"
-                },
-                "PolicyValidDate": {
-                  "style": "form"
-                },
-                "PhotoPath": {
-                  "style": "form"
-                },
-                "Link": {
-                  "style": "form"
-                },
-                "Photo": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Patient/register": {
+    "/api/Patient/Register": {
       "post": {
         "tags": [
           "Patient"
@@ -804,49 +608,58 @@
                   "FName": {
                     "maxLength": 50,
                     "minLength": 2,
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "LName": {
                     "maxLength": 50,
                     "minLength": 2,
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "BirthDate": {
                     "type": "string",
                     "format": "date-time"
                   },
                   "Gender": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "Password": {
                     "maxLength": 100,
                     "minLength": 8,
                     "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
                     "type": "string",
-                    "format": "password"
+                    "format": "password",
+                    "default": ""
                   },
                   "Email": {
                     "maxLength": 100,
                     "minLength": 0,
                     "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
                     "type": "string",
-                    "format": "email"
+                    "format": "email",
+                    "default": ""
                   },
                   "Address": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "LandLine": {
                     "type": "string",
-                    "format": "tel"
+                    "format": "tel",
+                    "default": ""
                   },
                   "EmergencyContactName": {
                     "maxLength": 100,
                     "minLength": 0,
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "EmergencyContactPhone": {
                     "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "PhoneNumbers": {
                     "type": "array",
@@ -855,41 +668,48 @@
                     }
                   },
                   "ParentName": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "SpouseName": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "BloodType": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "Allergies": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "ChronicConditions": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "PreviousSurgeries": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "CurrentMedications": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "PolicyNumber": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "InsuranceProvider": {
                     "type": "string"
                   },
                   "PolicyValidDate": {
                     "type": "string",
-                    "format": "date-time"
-                  },
-                  "PhotoPath": {
-                    "type": "string"
+                    "format": "date-time",
+                    "default": ""
                   },
                   "Link": {
-                    "type": "string"
+                    "type": "string",
+                    "default": ""
                   },
                   "Photo": {
                     "type": "string",
@@ -959,9 +779,6 @@
                   "style": "form"
                 },
                 "PolicyValidDate": {
-                  "style": "form"
-                },
-                "PhotoPath": {
                   "style": "form"
                 },
                 "Link": {
@@ -1001,6 +818,221 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/Profile": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/UpdateProfile": {
+      "put": {
+        "tags": [
+          "Patient"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "default": null
+                  },
+                  "Email": {
+                    "pattern": "^(?=.{1,100}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BloodType": {
+                    "pattern": "^(A|B|AB|O)[+-]$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "EmergencyContactName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "EmergencyContactPhone": {
+                    "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": null
+                  },
+                  "Gender": {
+                    "pattern": "^.{0,20}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Link": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "ParentName": {
+                    "pattern": "^.{0,100}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Address": {
+                    "pattern": "^.{0,500}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "SpouseName": {
+                    "pattern": "^.{0,100}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LandLine": {
+                    "pattern": "^.{0,20}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Allergies": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "ChronicConditions": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PreviousSurgeries": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "CurrentMedications": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PolicyNumber": {
+                    "pattern": "^.{0,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "InsuranceProvider": {
+                    "pattern": "^.{0,100}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PolicyValidDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "default": null
+                  },
+                  "PhotoData": {
+                    "type": "string",
+                    "format": "binary",
+                    "default": null
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "BloodType": {
+                  "style": "form"
+                },
+                "EmergencyContactName": {
+                  "style": "form"
+                },
+                "EmergencyContactPhone": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Link": {
+                  "style": "form"
+                },
+                "ParentName": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "SpouseName": {
+                  "style": "form"
+                },
+                "LandLine": {
+                  "style": "form"
+                },
+                "Allergies": {
+                  "style": "form"
+                },
+                "ChronicConditions": {
+                  "style": "form"
+                },
+                "PreviousSurgeries": {
+                  "style": "form"
+                },
+                "CurrentMedications": {
+                  "style": "form"
+                },
+                "PolicyNumber": {
+                  "style": "form"
+                },
+                "InsuranceProvider": {
+                  "style": "form"
+                },
+                "PolicyValidDate": {
+                  "style": "form"
+                },
+                "PhotoData": {
+                  "style": "form"
+                }
               }
             }
           }

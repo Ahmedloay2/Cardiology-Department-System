@@ -1,87 +1,79 @@
 ﻿using Caridology_Department_System.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Caridology_Department_System.Services
 {
     public class PatientPhoneNumberSL
     {
         private readonly DBContext dbcontext;
-
-        public PatientPhoneNumberSL(DBContext db) => dbcontext = db;
-
-        public async Task AddPhoneNumbersAsync(List<string> phoneNumbers, int patientId)
+        public PatientPhoneNumberSL(DBContext dBContext)
         {
-            if (phoneNumbers == null || !phoneNumbers.Any())
-                throw new ArgumentException("Phone numbers list cannot be empty");
+            this.dbcontext = dBContext;
+        }
+        public async Task<bool> AddPhoneNumbersasync(List<string> PhoneNumbers, int PatientID,
+                                                     IDbContextTransaction transaction)
+        {
+            await dbcontext.Database.UseTransactionAsync(transaction.GetDbTransaction());
+            if (PhoneNumbers == null || !PhoneNumbers.Any())
+                throw new ArgumentException("Phone numbers list is empty.");
 
-            var existingNumbers = await dbcontext.PatientPhoneNumbers
-                .Where(p => p.PatientID == patientId)
+            List<PatientPhoneNumberModel> PatientPhones = PhoneNumbers.Select(Phone => new PatientPhoneNumberModel
+            {
+                PhoneNumber = Phone,
+                PatientID = PatientID,
+                StatusID = 1
+            }).ToList();
+            await dbcontext.PatientPhoneNumbers.AddRangeAsync(PatientPhones);
+            await dbcontext.SaveChangesAsync();
+            return true;
+        }
+        public async Task<bool> UpdatePhonesAsync(List<string> newPhoneNumbers, int PatientID,
+                                                 IDbContextTransaction transaction)
+        {
+            await dbcontext.Database.UseTransactionAsync(transaction.GetDbTransaction());
+
+            if (newPhoneNumbers == null)
+                newPhoneNumbers = new List<string>();
+
+            // Get existing phone numbers 
+            List<string> existingPhoneNumbers = await dbcontext.PatientPhoneNumbers
+                .Where(p => p.PatientID == PatientID && p.StatusID != 3)
                 .Select(p => p.PhoneNumber)
                 .ToListAsync();
 
-            var newNumbers = phoneNumbers
-                .Except(existingNumbers) // Only add new ones
-                .ToList();
+            // Find differences using string comparison
+            List<string> phonesToDelete = existingPhoneNumbers.Except(newPhoneNumbers).ToList();
+            List<string> phonesToAdd = newPhoneNumbers.Except(existingPhoneNumbers).ToList();
 
-            if (newNumbers.Any())
+            bool deleteSuccess = true;
+            bool addSuccess = true;
+            // Delete phones that are no longer needed
+            if (phonesToDelete.Any())
             {
-                var phonesToAdd = newNumbers.Select(phone => new PatientPhoneNumberModel
-                {
-                    PhoneNumber = phone,
-                    PatientID = patientId,
-                    StatusID = 1
-                }).ToList();
-
-                await dbcontext.PatientPhoneNumbers.AddRangeAsync(phonesToAdd);
-                await dbcontext.SaveChangesAsync();
+                deleteSuccess = await DeletePhonesAsync(phonesToDelete, PatientID, transaction);
             }
+
+            // Add new phones
+            if (phonesToAdd.Any())
+            {
+                addSuccess = await AddPhoneNumbersasync(phonesToAdd, PatientID, transaction);
+            }
+
+            return deleteSuccess && addSuccess;
         }
-        public async Task UpdatePhoneNumbersAsync(int patientId, List<string> phoneNumbers)
+        public async Task<bool> DeletePhonesAsync(List<String> PhoneNumbers, int PatientID,
+                                                  IDbContextTransaction transaction)
         {
-
-            // Get current phone numbers
-            var existingNumbers = await dbcontext.PatientPhoneNumbers
-                .Where(p => p.PatientID == patientId)
-                .ToListAsync();
-
-            // Identify numbers to add, keep, and remove
-            var currentNumbers = existingNumbers.Select(n => n.PhoneNumber).ToList();
-            var numbersToAdd = phoneNumbers.Except(currentNumbers, StringComparer.OrdinalIgnoreCase).ToList();
-            var numbersToRemove = currentNumbers.Except(phoneNumbers, StringComparer.OrdinalIgnoreCase).ToList();
-
-            // Only make changes if there are differences
-            if (!numbersToAdd.Any() && !numbersToRemove.Any())
-                return;
-
-            // Add new numbers
-            if (numbersToAdd.Any())
+            await dbcontext.Database.UseTransactionAsync(transaction.GetDbTransaction());
+            foreach (var phoneNumber in PhoneNumbers)
             {
-                var phonesToAdd = numbersToAdd.Select(phone => new PatientPhoneNumberModel
-                {
-                    PhoneNumber = phone,
-                    PatientID = patientId,
-                    StatusID = 1 // Assuming 1 is active status
-                }).ToList();
-
-                await dbcontext.PatientPhoneNumbers.AddRangeAsync(phonesToAdd);
+                await dbcontext.PatientPhoneNumbers.Where(p => p.PhoneNumber.Equals(phoneNumber) &&
+                p.StatusID != 3 && p.PatientID == PatientID)
+                     .ExecuteUpdateAsync(s => s.SetProperty(p => p.StatusID, 3));
             }
-
-            // Remove numbers not in the provided list
-            if (numbersToRemove.Any())
-            {
-                var phonesToRemove = existingNumbers
-                    .Where(p => numbersToRemove.Contains(p.PhoneNumber, StringComparer.OrdinalIgnoreCase))
-                    .ToList();
-
-                dbcontext.PatientPhoneNumbers.RemoveRange(phonesToRemove);
-            }
-        }
-        public void DeletePhoneNumbers(int PatientID)
-        {
-                dbcontext.Database.ExecuteSqlInterpolated(
-                $@"UPDATE ""PatientsPhoneNumbers"" 
-                SET ""StatusID"" = {3}
-                WHERE ""PatientID"" = {PatientID} AND ""StatusID"" <> {3}");
+            await dbcontext.SaveChangesAsync();
+            return true;
         }
     }
 }

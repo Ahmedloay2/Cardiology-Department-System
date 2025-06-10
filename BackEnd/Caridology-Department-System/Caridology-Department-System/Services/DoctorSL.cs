@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
+using Caridology_Department_System.Requests.Doctor;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
