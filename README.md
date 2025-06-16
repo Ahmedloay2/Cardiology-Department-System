@@ -138,7 +138,7 @@ This web application serves as a **Cardiology Department Information System**, a
 | Get         | `/api/Doctor/DoctorsProfileList'| Get List of Doctors Profiles            |
 | Get         | `/api/Doctor/DoctorsList`       | Get List of Doctors                     |
 | Get         | `/api/Message/GetMessage`       | Get Messages between Patient and Doctor |
-| Post        | `/api/Message/SendMessage`      | Send Mesaage to patient or doctor       |
+| Post        | `/api/Message/SendMessage`      | Send Mesaage to Patient or Doctor       |
 ---
 ## Backend
 - Developed a cardiology department website using .NET for backend logic.
