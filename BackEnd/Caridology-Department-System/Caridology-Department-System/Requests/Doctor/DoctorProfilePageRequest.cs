@@ -31,6 +31,5 @@ namespace Caridology_Department_System.Requests.Doctor
         public int RoleID { get; set; }
         public RoleModel Role { get; set; }
         public string? PhotoData { get; set; }
-        public float salary { get; set; }
     }
 }

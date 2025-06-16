@@ -52,6 +52,7 @@ namespace Caridology_Department_System.Services
             AdminModel admin = await dbContext.Admins
                 .Where(a => a.ID == adminId && a.StatusID != 3)
                 .Include(a => a.PhoneNumbers.Where(p => p.StatusID!=3))
+                .Include(a => a.Role)
                 .SingleOrDefaultAsync();
             if (admin == null)
                 throw new Exception("account doesnot exist");
@@ -83,7 +84,8 @@ namespace Caridology_Department_System.Services
             {
                 throw new ArgumentException("Password is required");
             }
-            AdminModel admin = await dbContext.Admins.SingleOrDefaultAsync(a => a.Email == login.Email);
+            AdminModel admin = await dbContext.Admins.Include(a => a.Role)
+                .SingleOrDefaultAsync(a => a.Email == login.Email);
 
             // Check password and ensure admin is not deleted
             bool passwordValid = admin != null &&

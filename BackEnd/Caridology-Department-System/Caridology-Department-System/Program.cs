@@ -47,6 +47,7 @@ builder.Services.AddScoped<AdminPhoneNumberSL>();
 builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<DoctorSL>();
 builder.Services.AddScoped<DoctorPhoneNumberSL>();
+builder.Services.AddScoped<MessageSL>();
 // JWT Authentication Configuration
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? throw new InvalidOperationException("JWT Issuer not configured");
@@ -166,7 +167,7 @@ app.UseRouting();
 app.UseCors("Default");
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseDeveloperExceptionPage();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {

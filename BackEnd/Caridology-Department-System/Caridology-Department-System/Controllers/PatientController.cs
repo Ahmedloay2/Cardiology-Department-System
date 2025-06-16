@@ -86,11 +86,19 @@ namespace Caridology_Department_System.Controllers
             }
         }
         [HttpGet("Profile")]
-        public async Task<IActionResult> GetProfilePageAsync()
+        public async Task<IActionResult> GetProfilePageAsync(int? ID)
         {
             try
             {
-                int Patientid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                int Patientid;
+                if (!ID.HasValue || ID > 0)
+                {
+                    Patientid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                }
+                else
+                {
+                    Patientid = ID.Value;
+                }
                 PatientProfilePageRequest Patient = await PatientSL.GetPatientProfilePage(Patientid);
                 return Ok(Patient);
             }

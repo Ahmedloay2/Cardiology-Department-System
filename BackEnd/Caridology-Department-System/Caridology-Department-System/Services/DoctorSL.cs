@@ -79,7 +79,8 @@ namespace Caridology_Department_System.Services
             {
                 throw new ArgumentException("Password is required");
             }
-            DoctorModel doctor = await dbContext.Doctors.SingleOrDefaultAsync(d => d.Email == Request.Email);
+            DoctorModel doctor = await dbContext.Doctors.Include(d => d.Role)
+                .SingleOrDefaultAsync(d => d.Email == Request.Email);
             bool passwordValid = doctor != null &&
                 hasher.VerifyPassword(Request.Password, doctor.Password) &&
                 doctor.StatusID != 3;
@@ -92,8 +93,9 @@ namespace Caridology_Department_System.Services
         public async Task<DoctorModel> GetDoctorByID(int? doctorid)
         {
             DoctorModel doctor = await dbContext.Doctors
-                                        .Where(a => a.ID == doctorid && a.StatusID != 3)
-                                        .Include(a => a.PhoneNumbers.Where(p => p.StatusID != 3))
+                                        .Where(d => d.ID == doctorid && d.StatusID != 3)
+                                        .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                        .Include(d => d.Role)
                                         .SingleOrDefaultAsync();
             if (doctor == null)
             {
@@ -242,6 +244,90 @@ namespace Caridology_Department_System.Services
                 await transaction.RollbackAsync();
                 throw;
             }
+        }
+        public async Task<List<DoctorModel>> GetDoctorsPerPage(string? name,
+                                        int pagenumber = 1, bool exactmatch = false)
+        {
+            List<DoctorModel> doctorsPerPage = new List<DoctorModel>();
+            int pageSize = 10;
+            if (!String.IsNullOrEmpty(name))
+            {
+                if (exactmatch)
+                {
+                    doctorsPerPage = await dbContext.Doctors
+                                    .Where(d => (d.FName + " " + d.LName).Contains(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+                else
+                {
+                    doctorsPerPage = await dbContext.Doctors
+                                    .Where(d => (d.FName + " " + d.LName).StartsWith(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+
+            }
+            else
+            {
+                doctorsPerPage = await dbContext.Doctors
+                .Skip((pagenumber - 1) * pageSize)
+                .Take(pageSize)
+                .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                .ToListAsync();
+            }
+            return doctorsPerPage;
+        }
+        public async Task<List<DoctorProfilePageRequest>> GetDoctorsProfilePerPage(string? name,
+                                        int pagenumber = 1, bool exactmatch = false)
+        {
+            List<DoctorModel> doctorsPerPage = new List<DoctorModel>();
+            int pageSize = 10;
+            if (!String.IsNullOrEmpty(name))
+            {
+                if (exactmatch)
+                {
+                    doctorsPerPage = await dbContext.Doctors
+                                    .Where(d => (d.FName + " " + d.LName).Contains(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+                else
+                {
+                    doctorsPerPage = await dbContext.Doctors
+                                    .Where(d => (d.FName + " " + d.LName).StartsWith(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+
+            }
+            else
+            {
+                doctorsPerPage = await dbContext.Doctors
+                .Skip((pagenumber - 1) * pageSize)
+                .Take(pageSize)
+                .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                .ToListAsync();
+            }
+            List<DoctorProfilePageRequest> doctorProfilePages = new List<DoctorProfilePageRequest>();
+            foreach (DoctorModel doctor in doctorsPerPage)
+            {
+                DoctorProfilePageRequest doctorProfilePage =mapper.Map<DoctorProfilePageRequest>(doctor);
+                if (!String.IsNullOrEmpty(doctor.PhotoPath))
+                {
+                    doctorProfilePage.PhotoData = imageService.GetImageBase64(doctor.PhotoPath);
+                }
+                doctorProfilePages.Add(doctorProfilePage);
+            }
+            return doctorProfilePages;
         }
     }
     

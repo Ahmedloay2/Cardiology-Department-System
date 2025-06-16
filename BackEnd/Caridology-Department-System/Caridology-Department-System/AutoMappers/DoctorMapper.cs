@@ -25,7 +25,7 @@ namespace Caridology_Department_System.AutoMappers
                 .ForMember(dest => dest.AuthoredReports, opt => opt.Ignore())
                 .ForMember(dest => dest.Password, opt => opt.Ignore());
 
-            // AdminModel → AdminProfilePageRequest
+            // DoctorModel → DoctorProfilePageRequest
             CreateMap<DoctorModel, DoctorProfilePageRequest>()
                 .ForMember(dest => dest.PhotoData, opt => opt.Ignore()) // Handle separately 
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))

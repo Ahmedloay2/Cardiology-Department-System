@@ -58,7 +58,7 @@ namespace Caridology_Department_System.Controllers
             }
         }
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginRequest request)
+        public async Task<IActionResult> LoginAsync(LoginRequest request)
         {
             try
             {
@@ -86,12 +86,20 @@ namespace Caridology_Department_System.Controllers
             }
         }
         [HttpGet("Profile")]
-        public async Task<IActionResult> GetProfilePageAsync()
+        public async Task<IActionResult> GetProfilePageAsync(int? ID)
         {
             try
             {
-                int doctorid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                DoctorProfilePageRequest doctor = await doctorSL.GetDoctorProfilePage(doctorid);
+                int doctorid;
+                if (!ID.HasValue || ID > 0)
+                {
+                     doctorid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                }
+                else
+                {
+                    doctorid = ID.Value;
+                }
+                    DoctorProfilePageRequest doctor = await doctorSL.GetDoctorProfilePage(doctorid);
                 return Ok(doctor);
             }
             catch (Exception ex)
@@ -183,5 +191,88 @@ namespace Caridology_Department_System.Controllers
                 return BadRequest(response);
             }
         }
+        [HttpGet("DoctorsProfileList")]
+        public async Task<IActionResult> GetDoctorsProfilePageAsync([FromQuery] string? name
+                                ,[FromQuery] int pagenumber=1, [FromQuery] bool exactmatch=false)
+        {
+            try
+            {
+                if (pagenumber < 1)
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 400,
+                        Success = false,
+                        Message = "pagenumber must be positive integers"
+                    };
+                    return BadRequest(response);
+                }
+                List<DoctorProfilePageRequest> doctors = await doctorSL.GetDoctorsProfilePerPage(name,pagenumber,exactmatch);
+                if (doctors == null || !doctors.Any())
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 404,
+                        Success = false,
+                        Message = "no doctors found"
+                    };
+                    return NotFound(response);
+                }
+                return Ok(doctors);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    StatusCode = 500,
+                    Success = false,
+                    Message = "An unexpected error occurred",
+                    Errors = ex.Message
+                };
+                return StatusCode(500,response);
+            }
+        }
+        [HttpGet("DoctorsList")]
+        public async Task<IActionResult> GetDoctorsPerPageAsync([FromQuery] string? name
+                                , [FromQuery] int pagenumber = 1, [FromQuery] bool exactmatch=false)
+        {
+            try
+            {
+                if (pagenumber < 1)
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 400,
+                        Success = false,
+                        Message = "pagenumber must be positive integers"
+                    };
+                    return BadRequest(response);
+                }
+            List <DoctorModel> doctors = await doctorSL.GetDoctorsPerPage(name,pagenumber,exactmatch);
+                if (doctors == null || !doctors.Any())
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 404,
+                        Success = false,
+                        Message = "no doctors found"
+                    };
+                    return NotFound(response);
+                }
+                return Ok(doctors);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    StatusCode = 500,
+                    Success = false,
+                    Message = "An unexpected error occurred",
+                    Errors = ex.Message
+                };
+                return StatusCode(500, response);
+            }
+        }
+        
     }
 }

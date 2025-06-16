@@ -85,7 +85,7 @@ namespace Caridology_Department_System.Services
             {
                 throw new ArgumentException("Password is required");
             }
-            PatientModel Patient = await dbContext.Patients.SingleOrDefaultAsync(d => d.Email == Request.Email);
+            PatientModel Patient = await dbContext.Patients.Include(p => p.Role).SingleOrDefaultAsync(p => p.Email == Request.Email);
             bool passwordValid = Patient != null &&
                 hasher.VerifyPassword(Request.Password, Patient.Password) &&
                 Patient.StatusID != 3;
@@ -98,8 +98,9 @@ namespace Caridology_Department_System.Services
         public async Task<PatientModel> GetPatientByID(int? Patientid)
         {
             PatientModel Patient = await dbContext.Patients
-                                        .Where(a => a.ID == Patientid && a.StatusID != 3)
-                                        .Include(a => a.PhoneNumbers.Where(p => p.StatusID != 3))
+                                        .Where(p => p.ID == Patientid && p.StatusID != 3)
+                                        .Include(p => p.PhoneNumbers.Where(p => p.StatusID != 3))
+                                        .Include(p => p.Role)
                                         .SingleOrDefaultAsync() ?? throw new Exception("account doesnot exist");
             return Patient;
         }

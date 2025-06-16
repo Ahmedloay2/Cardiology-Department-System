@@ -32,6 +32,7 @@ public class JwtTokenService
             new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.GivenName, user.FName ?? string.Empty),
             new Claim(ClaimTypes.Surname, user.LName ?? string.Empty),
+            new Claim(ClaimTypes.Role,user.Role.RoleName),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Unique token identifier
         };
 

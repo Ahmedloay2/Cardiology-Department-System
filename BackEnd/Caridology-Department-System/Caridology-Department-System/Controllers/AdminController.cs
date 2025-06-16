@@ -51,11 +51,19 @@ namespace Caridology_Department_System.Controllers
             }
         }
         [HttpGet("Profile")]
-        public async Task<IActionResult> GetAdminProfileAsync()
+        public async Task<IActionResult> GetAdminProfileAsync(int? ID)
         {
             try
             {
-                int adminID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                int adminID;
+                if (!ID.HasValue || ID < 1)
+                {
+                    adminID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                }
+                else
+                {
+                    adminID = ID.Value;
+                }
                 AdminProfilePageRequest adminProfilePage = await adminSL.GetAdminProfile(adminID);
                 return Ok(adminProfilePage);
             }
