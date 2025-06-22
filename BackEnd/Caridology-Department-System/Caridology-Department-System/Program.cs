@@ -17,6 +17,14 @@ using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 // ===== Services Configuration =====
+// Load configuration from multiple sources
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
+// Configure controllers and JSON settings
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -24,10 +32,12 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     });
 
-// Database Context
+// Configure database context securely
 builder.Services.AddDbContext<DBContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseNpgsql(connectionString);
+
     if (builder.Environment.IsDevelopment())
     {
         options.EnableSensitiveDataLogging();

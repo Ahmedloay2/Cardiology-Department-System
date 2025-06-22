@@ -4,169 +4,169 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\0a7aaec2-a31d-49dd-bf1e-27e584f32570.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/1f6b903f-cc73-4622-924f-faa297c0bbbb.83s1ojy18q.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\1f6b903f-cc73-4622-924f-faa297c0bbbb.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/2f1ec892-8da0-4375-a47d-e620df23e294.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2f1ec892-8da0-4375-a47d-e620df23e294.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-KEaIf74ZAKOf7vMEnF3hBMohHaqDKMcjhLKiwPlw3Y0="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"23238"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022KEaIf74ZAKOf7vMEnF3hBMohHaqDKMcjhLKiwPlw3Y0=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Jun 2025 11:48:29 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"23238"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022KEaIf74ZAKOf7vMEnF3hBMohHaqDKMcjhLKiwPlw3Y0=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/2f1ec892-8da0-4375-a47d-e620df23e294.owcu5ynbpa.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2f1ec892-8da0-4375-a47d-e620df23e294.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"owcu5ynbpa"},{"Name":"integrity","Value":"sha256-KEaIf74ZAKOf7vMEnF3hBMohHaqDKMcjhLKiwPlw3Y0="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/2f1ec892-8da0-4375-a47d-e620df23e294.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"23238"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022KEaIf74ZAKOf7vMEnF3hBMohHaqDKMcjhLKiwPlw3Y0=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Jun 2025 11:48:29 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"23238"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022KEaIf74ZAKOf7vMEnF3hBMohHaqDKMcjhLKiwPlw3Y0=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/3ad681ef-034c-4133-b972-5129f7b3d245.83s1ojy18q.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\3ad681ef-034c-4133-b972-5129f7b3d245.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/3ad681ef-034c-4133-b972-5129f7b3d245.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/3ad681ef-034c-4133-b972-5129f7b3d245.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\3ad681ef-034c-4133-b972-5129f7b3d245.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/490aa786-bc67-4d01-86c8-3f0f8a7aa227.20riq8ksg1.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\490aa786-bc67-4d01-86c8-3f0f8a7aa227.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"20riq8ksg1"},{"Name":"integrity","Value":"sha256-zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/490aa786-bc67-4d01-86c8-3f0f8a7aa227.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Jun 2025 11:59:47 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/490aa786-bc67-4d01-86c8-3f0f8a7aa227.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\490aa786-bc67-4d01-86c8-3f0f8a7aa227.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Jun 2025 11:59:47 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.83s1ojy18q.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4bdffc5e-af27-42ea-b8c6-6858cbb80e3f.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.u8bkk5m91l.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"u8bkk5m91l"},{"Name":"integrity","Value":"sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/68800174-1fe1-48f1-ba40-d697075a1c14_patient9.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.83s1ojy18q.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\75ecfc27-4158-4ca3-a6cd-740ee3bf4c5a.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/8d394010-7f10-4c33-b645-f81bd9e0593e.20riq8ksg1.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8d394010-7f10-4c33-b645-f81bd9e0593e.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"20riq8ksg1"},{"Name":"integrity","Value":"sha256-zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/8d394010-7f10-4c33-b645-f81bd9e0593e.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Jun 2025 12:01:10 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/8d394010-7f10-4c33-b645-f81bd9e0593e.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8d394010-7f10-4c33-b645-f81bd9e0593e.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Tue, 10 Jun 2025 12:01:10 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"14436"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022zuwSwPDXOsfqQd2iOyTbcjpS55kpZ7L8ZvJtQt8RP0w=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/9b5a8f0c-2f0f-4102-b5c1-68854089287e.83s1ojy18q.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\9b5a8f0c-2f0f-4102-b5c1-68854089287e.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/a02e12d9-a67e-4a6a-86c2-27965ddf6d87.83s1ojy18q.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a02e12d9-a67e-4a6a-86c2-27965ddf6d87.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5.4pe89f25et.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4pe89f25et"},{"Name":"integrity","Value":"sha256-mF7cf406AxbL9h780p9V\u002BMlDllONCHsYY82fF0nq2AI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"26912"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mF7cf406AxbL9h780p9V\u002BMlDllONCHsYY82fF0nq2AI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 14:18:34 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"26912"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mF7cf406AxbL9h780p9V\u002BMlDllONCHsYY82fF0nq2AI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\c39252ab-350b-4ada-8a35-c41cf688eaf5.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-mF7cf406AxbL9h780p9V\u002BMlDllONCHsYY82fF0nq2AI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"26912"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mF7cf406AxbL9h780p9V\u002BMlDllONCHsYY82fF0nq2AI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 14:18:34 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"26912"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022mF7cf406AxbL9h780p9V\u002BMlDllONCHsYY82fF0nq2AI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.u8bkk5m91l.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"u8bkk5m91l"},{"Name":"integrity","Value":"sha256-EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/d81a54ae-3f20-43dd-ab7e-0588bf90b61e_patient9.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15661"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022EiKLvXnLCuvSCTYvMPp3Ymgk8jA5fjr5pnQAVqmlUlU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/d8398b59-6b25-4d27-b6a7-d6d8b9c38067.83s1ojy18q.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"83s1ojy18q"},{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="},{"Name":"label","Value":"_content/Caridology-Department-System/uploads/d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Caridology-Department-System/uploads/d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d8398b59-6b25-4d27-b6a7-d6d8b9c38067.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 09 Jun 2025 12:32:20 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"25365"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022dOjw9UC31Cp1c6dE9jMq6\u002B7y8EOrjj9MZecN4I1CaSI=\u0022"},{"Name":"Last-Modified","Value":"Sat, 21 Jun 2025 15:42:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>
