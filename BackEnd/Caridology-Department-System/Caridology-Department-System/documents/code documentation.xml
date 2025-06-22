@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Caridology-Department-System</name>
+    </assembly>
+    <members>
+        <member name="M:Caridology_Department_System.Controllers.MessageController.GetMessagesAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Retrieves messages between the logged-in user and the opposite role (patient/doctor).
+            </summary>
+            <param name="patientid">Optional query parameter. Will be overridden if the logged-in user is a patient.</param>
+            <param name="doctorid">Optional query parameter. Will be overridden if the logged-in user is a doctor.</param>
+            <returns>
+            Returns a list of messages in an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/>.
+            If successful, returns HTTP 200 with the message list.
+            If failed, returns HTTP 400 with an error message.
+            </returns>
+            <remarks>
+            The method uses the logged-in user's identity and role (from JWT claims) to determine the sender.
+            Only users with roles "Patient" or "Doctor" can use this endpoint.
+            </remarks>
+            <response code="200">Returns list of messages between the doctor and patient</response>
+            <response code="400">If the user is not logged in or an error occurs</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.MessageController.SendMessageAsync(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Sends a message from the currently authenticated user (Doctor or Patient) to a recipient.
+            </summary>
+            <param name="Content">
+            The content of the message to be sent. Must not be null or empty.
+            </param>
+            <param name="reciverID">
+            The ID of the recipient user, passed as a query parameter. Required if sender is a Doctor.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c>:
+            - <c>200 OK</c> if the message is successfully sent.
+            - <c>400 Bad Request</c> if input is invalid or a general error occurs.
+            - <c>403 Forbidden</c> if the sender is unauthorized to perform this action.
+            </returns>
+            <remarks>
+            The sender's ID and role are automatically extracted from the user's JWT claims.
+            Only users with roles "Patient" or "Doctor" are authorized to send messages.
+            Admins are explicitly forbidden from using this endpoint.
+            </remarks>
+            <response code="200">Message sent successfully</response>
+            <response code="400">Validation failed or a general exception occurred</response>
+            <response code="403">User is not authorized to send messages (e.g., Admin role)</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.MessageController.DeleteMessageAsync(System.Int32)">
+            <summary>
+            Deletes a message by marking it as deleted (soft delete).
+            Only the original sender or an admin can delete a message.
+            </summary>
+            <param name="messageId">
+            The ID of the message to delete, passed as a query parameter. Must be a positive integer.
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with status and message.
+            - Returns <c>200 OK</c> if the message was successfully deleted.
+            - Returns <c>400 Bad Request</c> if the message ID is invalid or an argument exception occurs.
+            - Returns <c>403 Forbidden</c> if the user is not authorized to delete the message.
+            - Returns <c>404 Not Found</c> if the message does not exist or is already deleted.
+            - Returns <c>500 Internal Server Error</c> if an unexpected error occurs.
+            </returns>
+            <remarks>
+            The role of the current user is extracted from their authentication token (JWT claims).
+            Admins and the original sender are authorized to delete messages.
+            The deletion is implemented as a soft delete (changing the message's status).
+            </remarks>
+            <response code="200">Message deleted successfully</response>
+            <response code="400">Invalid message ID or bad input</response>
+            <response code="403">User is not authorized to delete the message</response>
+            <response code="404">Message not found or already deleted</response>
+            <response code="500">Unexpected server error occurred</response>
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.FirstMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FirstMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FirstMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FirstMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.FirstMigration1">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FirstMigration1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FirstMigration1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FirstMigration1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations._2">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations._2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations._2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations._2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.a">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.a.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.a.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.a.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations._22">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations._22.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations._22.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations._22.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.hopfullylastone">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.hopfullylastone.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.hopfullylastone.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.hopfullylastone.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.genderadded">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.genderadded.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.genderadded.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.genderadded.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.addressaddedtodoctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.addressaddedtodoctor.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.addressaddedtodoctor.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.addressaddedtodoctor.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.salaryaddedtodoctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.salaryaddedtodoctor.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.salaryaddedtodoctor.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.salaryaddedtodoctor.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Services.AdminSL">
+            <summary>
+            Service Layer for Admin-related operations (CRUD, authentication, patient management).
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.#ctor(Caridology_Department_System.Services.AdminPhoneNumberSL,Caridology_Department_System.Models.DBContext,Caridology_Department_System.Services.EmailValidator,PasswordHasher,Caridology_Department_System.Services.IImageService,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the AdminSL service, creating a new DB context.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.GetAdminByID(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves an admin by their ID, including phone numbers, only if not deleted.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.GetAdminByEmailAndPassword(Caridology_Department_System.Requests.LoginRequest)">
+            <summary>
+            Retrieves an admin by email and password for login.
+            Throws if credentials are invalid or admin is deleted.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.AddAdminasync(Caridology_Department_System.Requests.Admin.AdminRequest)">
+            <summary>
+            Adds a new admin with validated data and phone numbers.
+            Throws if email is not unique or other validation fails.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.UpdateProfileAsync(System.Int32,Caridology_Department_System.Requests.Admin.AdminUpdateRequest)">
+            <summary>
+            Updates an existing admin's profile with provided fields and phone numbers.
+            Only updates fields that are supplied (partial update).
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.MessageSL.GetMessagesAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Retrieve messages between a doctor and a patient.
+            </summary>
+            <param name="patientID">ID of the patient.</param>
+            <param name="doctorID">ID of the doctor.</param>
+            <returns>
+            Returns <c>A list of messages exchanged between the specified patient and doctor, ordered by timestamp</c>
+            </returns>
+            <exception cref="T:System.Exception">
+            Thrown if:
+            - <paramref name="patientID"/> is null or not positive number .
+            - <paramref name="doctorID"/> is null or not positive number.
+            </exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.MessageSL.CreateMessageAsync(System.Int32,System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Creates and stores a new message between a patient and a doctor.
+            The sender and receiver roles are automatically assigned based on the sender's role.
+            </summary>
+            <param name="senderid">
+            The ID of the user sending the message. Must be a patient or a doctor.
+            </param>
+            <param name="senderRole">
+            The role of the sender. Must be either "Patient" or "Doctor". "Admin" is not allowed.
+            </param>
+            <param name="reciverid">
+            The ID of the recipient. Must be a valid, non-null, positive integer.
+            </param>
+            <param name="content">
+            The textual content of the message. Cannot be null or empty.
+            </param>
+            <returns>
+            Returns <c>true</c> if the message is successfully created and saved to the database.
+            </returns>
+            <exception cref="T:System.Exception">
+            Thrown when:
+            - <paramref name="senderRole"/> is null or empty.
+            - <paramref name="senderRole"/> is "Admin", who is not allowed to send messages.
+            - <paramref name="reciverid"/> is null or less than 1.
+            - <paramref name="content"/> is null or empty.
+            </exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            Thrown when the sender has the "Admin" role, which is not allowed to send messages.
+            </exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.MessageSL.DeleteMessageAsync(System.Nullable{System.Int32},System.String)">
+            <summary>
+            Soft-deletes a message by setting its <c>StatusID</c> to 3.
+            Only the original sender or an admin is authorized to perform this action.
+            </summary>
+            <param name="MessageID">The unique identifier of the message to delete.</param>
+            <param name="senderRole">
+            The role of the user attempting to delete the message.
+            Must match the original sender's role or be "Admin".
+            </param>
+            <returns>
+            Returns <c>true</c> if the message exists and was successfully marked as deleted.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+            Thrown when the <paramref name="MessageID"/> is null, invalid, or the message is not found or already deleted.
+            </exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            Thrown when the user is not authorized to delete the message (not the sender and not an admin).
+            </exception>
+        </member>
+        <member name="T:Caridology_Department_System.Services.PatientSL">
+            <summary>
+            Service Layer class for Patient-related operations
+            Handles database operations for patient records including CRUD operations
+            </summary>
+        </member>
+    </members>
+</doc>
