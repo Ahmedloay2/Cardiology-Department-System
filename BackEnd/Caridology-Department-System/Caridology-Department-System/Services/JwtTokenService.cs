@@ -21,7 +21,15 @@ public class JwtTokenService
         _audience = configuration["Jwt:Audience"] ?? throw new ArgumentNullException("Jwt:Audience");
         _expiryInMinutes = Convert.ToInt32(configuration["Jwt:ExpiryInMinutes"] ?? "60");
     }
-
+    /// <summary>
+    /// Generates a JSON Web Token (JWT) that contains the user's ID, email, first name, last name, and role name.
+    /// The token is signed using the HMAC SHA-256 algorithm.
+    /// </summary>
+    /// <param name="user">The user whose data will be included in the token claims.</param>
+    /// <returns>The generated JWT token as a string.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown if the <paramref name="user"/> is <c>null</c>.
+    /// </exception>
     public string GenerateToken(UserModel user)
     {
         if (user == null) throw new ArgumentNullException(nameof(user));

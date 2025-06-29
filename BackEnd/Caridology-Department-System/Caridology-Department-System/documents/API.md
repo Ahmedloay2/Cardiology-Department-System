@@ -129,6 +129,30 @@ Photo: binary file
 
 ---
 
+#### **GET** `/api/Admin/AdminProfilesList`
+**Purpose**: Get list of admin profiles with search functionality
+
+**📥 Input Parameters:**
+- `name` (query, string) - Search by name
+- `pagenumber` (query, integer, default: 1) - Page number
+- `exactmatch` (query, boolean, default: false) - Exact name match
+
+**📤 Output:** `200 OK` - List of admin profiles
+
+---
+
+#### **GET** `/api/Admin/AdminsList`
+**Purpose**: Get simplified list of admins
+
+**📥 Input Parameters:**
+- `name` (query, string) - Search by name
+- `pagenumber` (query, integer, default: 1) - Page number  
+- `exactmatch` (query, boolean, default: false) - Exact name match
+
+**📤 Output:** `200 OK` - List of admins
+
+---
+
 ### 🔵 Doctor Operations
 
 #### **POST** `/api/Doctor/CreateDoctor`
@@ -223,7 +247,7 @@ Salary: float (6000-50000)
 
 ---
 
-#### **GET** `/api/Doctor/DoctorsProfileList`
+#### **GET** `/api/Doctor/DoctorProfilezList`
 **Purpose**: Get list of doctor profiles with search functionality
 
 **📥 Input Parameters:**
@@ -376,6 +400,30 @@ PhotoData: binary file
 **Purpose**: Delete patient account
 
 **📤 Output:** `200 OK` - Account deleted
+
+---
+
+#### **GET** `/api/Patient/PatientProfilezList`
+**Purpose**: Get list of patient profiles with search functionality
+
+**📥 Input Parameters:**
+- `name` (query, string) - Search by name
+- `pagenumber` (query, integer, default: 1) - Page number
+- `exactmatch` (query, boolean, default: false) - Exact name match
+
+**📤 Output:** `200 OK` - List of patient profiles
+
+---
+
+#### **GET** `/api/Patient/PatientsList`
+**Purpose**: Get simplified list of patients
+
+**📥 Input Parameters:**
+- `name` (query, string) - Search by name
+- `pagenumber` (query, integer, default: 1) - Page number  
+- `exactmatch` (query, boolean, default: false) - Exact name match
+
+**📤 Output:** `200 OK` - List of patients
 
 ---
 

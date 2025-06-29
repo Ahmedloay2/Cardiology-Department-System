@@ -1,2 +1,2 @@
 .vs/
-appsettings.Development.json
+**/appsettings.Development.json

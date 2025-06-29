@@ -4,13 +4,28 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Caridology_Department_System.Services
 {
+    /// <summary>
+    /// Service class for managing admin phone numbers, including adding, updating, and deleting them with soft-delete logic.
+    /// </summary>
     public class AdminPhoneNumberSL
     {
         private readonly  DBContext dbcontext;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdminPhoneNumberSL"/> class with the specified database context.
+        /// </summary>
+        /// <param name="dbcontext">The database context used for phone number operations.</param>
         public AdminPhoneNumberSL(DBContext dbcontext)
         {
             this.dbcontext = dbcontext;
         }
+        /// <summary>
+        /// Adds a list of phone numbers for the specified admin within a database transaction.
+        /// </summary>
+        /// <param name="phoneNumbers">The list of phone numbers to add.</param>
+        /// <param name="adminID">The unique ID of the admin to whom the phone numbers belong.</param>
+        /// <param name="transaction">The current database transaction.</param>
+        /// <returns><c>true</c> if the phone numbers were added successfully; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentException">Thrown if the phone numbers list is null or empty.</exception>
         public async Task<bool> AddPhoneNumbersasync(List<string> PhoneNumbers,int AdminID,
                                                      IDbContextTransaction transaction)
         {
@@ -28,6 +43,14 @@ namespace Caridology_Department_System.Services
             await dbcontext.SaveChangesAsync();
             return true;
         }
+        /// <summary>
+        /// Updates an admin's phone numbers by comparing the existing list to the new list.
+        /// Removes numbers no longer present and adds new ones, all within a transaction.
+        /// </summary>
+        /// <param name="newPhoneNumbers">The updated list of phone numbers.</param>
+        /// <param name="adminID">The ID of the admin whose phone numbers will be updated.</param>
+        /// <param name="transaction">The active database transaction.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public async Task<bool> UpdatePhonesAsync(List<string> newPhoneNumbers, int AdminID, IDbContextTransaction transaction)
         {
             await dbcontext.Database.UseTransactionAsync(transaction.GetDbTransaction());
@@ -61,6 +84,13 @@ namespace Caridology_Department_System.Services
 
             return deleteSuccess && addSuccess;
         }
+        /// <summary>
+        /// Soft-deletes the specified phone numbers for a given admin by setting their status to deleted (StatusID = 3).
+        /// </summary>
+        /// <param name="phoneNumbers">The list of phone numbers to delete.</param>
+        /// <param name="adminID">The ID of the admin whose phone numbers will be deleted.</param>
+        /// <param name="transaction">The current database transaction.</param>
+        /// <returns><c>true</c> if the phone numbers were marked as deleted successfully; otherwise, <c>false</c>.</returns>
         public async Task<bool> DeletePhonesAsync(List<String>PhoneNumbers , int AdminID, IDbContextTransaction transaction)
         {
             await dbcontext.Database.UseTransactionAsync(transaction.GetDbTransaction());

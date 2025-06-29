@@ -4,13 +4,28 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Caridology_Department_System.Services
 {
+    /// <summary>
+    /// Service class for managing patient phone numbers, including adding, updating, and deleting them with soft-delete logic.
+    /// </summary>
     public class PatientPhoneNumberSL
     {
         private readonly DBContext dbcontext;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PatientPhoneNumberSL"/> class with the specified database context.
+        /// </summary>
+        /// <param name="dBContext">The database context used for phone number operations.</param>
         public PatientPhoneNumberSL(DBContext dBContext)
         {
             this.dbcontext = dBContext;
         }
+        /// <summary>
+        /// Adds a list of phone numbers for the specified patient within a database transaction.
+        /// </summary>
+        /// <param name="PhoneNumbers">The list of phone numbers to add.</param>
+        /// <param name="PatientID">The unique ID of the patient to whom the phone numbers belong.</param>
+        /// <param name="transaction">The current database transaction.</param>
+        /// <returns><c>true</c> if the phone numbers were added successfully; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentException">Thrown if the phone numbers list is null or empty.</exception>
         public async Task<bool> AddPhoneNumbersasync(List<string> PhoneNumbers, int PatientID,
                                                      IDbContextTransaction transaction)
         {
@@ -28,6 +43,14 @@ namespace Caridology_Department_System.Services
             await dbcontext.SaveChangesAsync();
             return true;
         }
+        /// <summary>
+        /// Updates a patient's phone numbers by comparing the existing list to the new list.
+        /// Removes numbers no longer present and adds new ones, all within a transaction.
+        /// </summary>
+        /// <param name="newPhoneNumbers">The updated list of phone numbers.</param>
+        /// <param name="PatientID">The ID of the patient whose phone numbers will be updated.</param>
+        /// <param name="transaction">The active database transaction.</param>
+        /// <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
         public async Task<bool> UpdatePhonesAsync(List<string> newPhoneNumbers, int PatientID,
                                                  IDbContextTransaction transaction)
         {
@@ -62,6 +85,13 @@ namespace Caridology_Department_System.Services
 
             return deleteSuccess && addSuccess;
         }
+        /// <summary>
+        /// Soft-deletes the specified phone numbers for a given patient by setting their status to deleted (StatusID = 3).
+        /// </summary>
+        /// <param name="PhoneNumbers">The list of phone numbers to delete.</param>
+        /// <param name="PatientID">The ID of the patient whose phone numbers will be deleted.</param>
+        /// <param name="transaction">The current database transaction.</param>
+        /// <returns><c>true</c> if the phone numbers were marked as deleted successfully; otherwise, <c>false</c>.</returns>
         public async Task<bool> DeletePhonesAsync(List<String> PhoneNumbers, int PatientID,
                                                   IDbContextTransaction transaction)
         {

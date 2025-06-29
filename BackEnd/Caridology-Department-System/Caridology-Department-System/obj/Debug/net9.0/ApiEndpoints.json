@@ -1,6 +1,58 @@
 [
   {
     "ContainingType": "Caridology_Department_System.Controllers.AdminController",
+    "Method": "GetAdminsProfilePageAsync",
+    "RelativePath": "api/Admin/AdminProfilesList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagenumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "exactmatch",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.AdminController",
+    "Method": "GetAdminsPerPageAsync",
+    "RelativePath": "api/Admin/AdminsList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagenumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "exactmatch",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.AdminController",
     "Method": "CreateAdminAsync",
     "RelativePath": "api/Admin/CreateAdmim",
     "HttpMethod": "POST",
@@ -236,13 +288,19 @@
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "ID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.DoctorController",
-    "Method": "GetDoctorsPerPageAsync",
-    "RelativePath": "api/Doctor/DoctorsList",
+    "Method": "GetDoctorsProfilePageAsync",
+    "RelativePath": "api/Doctor/DoctorProfilesList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -267,8 +325,8 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.DoctorController",
-    "Method": "GetDoctorsProfilePageAsync",
-    "RelativePath": "api/Doctor/DoctorsProfileList",
+    "Method": "GetDoctorsPerPageAsync",
+    "RelativePath": "api/Doctor/DoctorsList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -401,6 +459,22 @@
   },
   {
     "ContainingType": "Caridology_Department_System.Controllers.MessageController",
+    "Method": "DeleteMessageAsync",
+    "RelativePath": "api/Message/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "messageId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.MessageController",
     "Method": "GetMessagesAsync",
     "RelativePath": "api/Message/GetMessages",
     "HttpMethod": "GET",
@@ -448,7 +522,13 @@
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "ID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -475,6 +555,58 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
+    "Method": "GetPatientsProfilePageAsync",
+    "RelativePath": "api/Patient/PatientProfilesList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagenumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "exactmatch",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.PatientController",
+    "Method": "GetPatientsPerPageAsync",
+    "RelativePath": "api/Patient/PatientsList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagenumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "exactmatch",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

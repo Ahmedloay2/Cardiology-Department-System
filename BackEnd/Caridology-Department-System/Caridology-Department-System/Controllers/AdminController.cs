@@ -1,28 +1,52 @@
 ﻿using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
 using Caridology_Department_System.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Collections.Generic;
 using System.Security.Claims;
-using AutoMapper;
 using Caridology_Department_System.Requests.Admin;
 
 namespace Caridology_Department_System.Controllers
 {
+    /// <summary>
+    /// Controller responsible for handling admin-related HTTP requests.
+    /// It acts as an entry point for the API endpoints related to admin functionalities.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase
     {
         private readonly AdminSL adminSL;
         private readonly JwtTokenService jwtTokenService;
+
+        /// <summary>
+        ///  Initializes a new instance of the <see cref="AdminController"/> class with the specified service layer.
+        /// </summary>
+        /// <param name="adminSL">service layer that is responsible to handle admin logic</param>
+        /// <param name="jwtTokenService">web jason token sevice layer that is responsible of generating token</param>
         public AdminController(AdminSL adminSL, JwtTokenService jwtTokenService )
         {
             this.adminSL = adminSL;
             this.jwtTokenService = jwtTokenService;
         }
+
+        /// <summary>
+        /// Authenticates an admin user based on provided credentials and returns a JWT if successful.
+        /// </summary>
+        /// <param name="request">
+        /// The login request containing the admin's email and password. Both fields are required.
+        /// </param>
+        /// <returns>
+        /// Returns an <see cref="IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+        /// - A <c>200 OK</c> status, including the authenticated admin's data and a JWT token.
+        /// - A <c>400 Bad Request</c> status if the credentials are invalid or if a general error occurs.
+        /// </returns>
+        /// <remarks>
+        /// This endpoint is intended for admin users only. 
+        /// On successful authentication, a signed JSON Web Token (JWT) is returned for use in subsequent requests.
+        /// The credentials are matched against the admin records stored in the database.
+        /// </remarks>
+        /// <response code="200">Authentication successful; returns admin info and JWT token</response>
+        /// <response code="400">Invalid credentials, validation failed, or a general exception occurred</response>
         [HttpPost("Login")]
         public async Task<IActionResult> LoginAsync(LoginRequest request)
         {
@@ -50,18 +74,46 @@ namespace Caridology_Department_System.Controllers
                 return BadRequest(response);
             }
         }
+
+        /// <summary>
+        /// Retrieves an admin user's profile information based on the provided ID or JWT token.
+        /// </summary>
+        /// <param name="ID">
+        /// The ID of the admin whose profile is being requested. If not provided, the ID is extracted from the JWT claims.
+        /// </param>
+        /// <returns>
+        /// Returns an <see cref="IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+        /// - A <c>200 OK</c> status and the admin profile data if retrieval is successful.
+        /// - A <c>400 Bad Request</c> status if the ID is invalid, not a positive number, or if an error occurs during processing.
+        /// </returns>
+        /// <remarks>
+        /// This endpoint is accessible to authenticated admin users only.
+        /// If no ID is supplied via query, the user's ID is automatically extracted from the JWT token's claims.
+        /// </remarks>
+        /// <response code="200">Retrieval successful; returns admin profile data</response>
+        /// <response code="400">Invalid ID or a general exception occurred</response>
         [HttpGet("Profile")]
-        public async Task<IActionResult> GetAdminProfileAsync(int? ID)
+        public async Task<IActionResult> GetAdminProfileAsync([FromQuery]int? ID)
         {
             try
             {
                 int adminID;
-                if (!ID.HasValue || ID < 1)
+                if (!ID.HasValue)
                 {
                     adminID = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 }
                 else
                 {
+                    if (ID < 1)
+                    {
+                        var response = new ResponseWrapperDto
+                        {
+                            Message = "Id must be positive number",
+                            Success = false,
+                            StatusCode = 400
+                        };
+                        return BadRequest(response);
+                    }
                     adminID = ID.Value;
                 }
                 AdminProfilePageRequest adminProfilePage = await adminSL.GetAdminProfile(adminID);
@@ -76,6 +128,25 @@ namespace Caridology_Department_System.Controllers
                 return BadRequest(response);
             }
         }
+
+        /// <summary>
+        /// Creates a new admin account using the provided form data.
+        /// </summary>
+        /// <param name="admin">
+        /// The <see cref="AdminRequest"/> object containing the admin's details, including personal information,
+        /// credentials, and optionally a profile image. Submitted as multipart/form-data.
+        /// </param>
+        /// <returns>
+        /// Returns an <see cref="IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+        /// - A <c>200 OK</c> status if the account is successfully created.
+        /// - A <c>400 Bad Request</c> status if validation fails or an exception occurs.
+        /// </returns>
+        /// <remarks>
+        /// This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+        /// It validates the input model before attempting to create the admin account.
+        /// </remarks>
+        /// <response code="200">Admin account created successfully</response>
+        /// <response code="400">Validation failed or a general exception occurred</response>
         [HttpPost("CreateAdmim")]
         [Consumes("multipart/form-data")]
         [RequestSizeLimit(10 * 1024 * 1024)]
@@ -107,6 +178,22 @@ namespace Caridology_Department_System.Controllers
                 return BadRequest(response);
             }
         }
+
+        /// <summary>
+        /// Update an admin account using the provided form data
+        /// </summary>
+        /// <param name="request">
+        /// The <see cref="AdminUpdateRequest"/> object containing the updated admin details
+        /// </param>
+        /// <returns>        
+        /// - A <c>200 OK</c> status if the account is successfully updated.
+        /// - A <c>400 Bad Request</c> status if validation fails or an exception occurs.</returns>
+        /// <remarks>
+        /// This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+        /// It validates the input model before attempting to update the admin account.
+        /// </remarks>
+        /// <response code="200">Admin account updated successfully</response>
+        /// <response code="400">Validation failed or a general exception occurred</response>
         [HttpPut("Profile")]
         [Consumes("multipart/form-data")]
         [RequestSizeLimit(10 * 1024 * 1024)]
@@ -143,191 +230,19 @@ namespace Caridology_Department_System.Controllers
                 return BadRequest(response);
             }
         }
-        /*
-        [HttpPut("UpdatePatient/{id}")]
-        public IActionResult UpdatePatientProfile(int id, [FromBody] PatientRequest request)
-        {
-            AdminSL adminSL = new AdminSL();
-            var admin = GetAuthenticatedAdmin(adminSL);
 
-            if (admin == null)
-            {
-                int? adminID = HttpContext.Session.GetInt32("AdminID");
-                if (adminID == null)
-                    return Unauthorized("Not logged in");
-                else
-                    return NotFound("Admin not found");
-            }
-
-            try
-            {
-                //var patientSL = new PatientSL();
-               // patientSL.UpdateProfile(id, request, request.PhoneNumbers);
-
-                return Ok(new { Message = "Patient profile updated successfully" });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-        */
-        /*
-        [HttpPost("AddPatient")]
-        public IActionResult AddPatient([FromBody] PatientRequest request, [FromQuery] List<string> phoneNumbers)
-        {
-            AdminSL adminSL = new AdminSL();
-            var admin = GetAuthenticatedAdmin(adminSL);
-
-            if (admin == null)
-            {
-                int? adminID = HttpContext.Session.GetInt32("AdminID");
-                if (adminID == null)
-                    return Unauthorized("Not logged in");
-                else
-                    return NotFound("Admin not found");
-            }
-
-            try
-            {
-                if (request == null)
-                    return BadRequest("Patient data is required");
-
-                if (phoneNumbers == null || !phoneNumbers.Any())
-                    return BadRequest("At least one phone number is required");
-
-              //  PatientSL patientSL = new PatientSL();
-                // patientSL.AddPatientAsync(request, phoneNumbers);
-
-                return Ok(new { Message = "Patient added successfully" });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (DbUpdateException dbEx)
-            {
-                return StatusCode(500, $"Database error: {dbEx.Message}");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
-        */       
-        /*
-        [HttpDelete("DeletePatient/{id}")]
-        public IActionResult DeletePatient(int id)
-        {
-            AdminSL adminSL = new AdminSL();
-            var admin = GetAuthenticatedAdmin(adminSL);
-
-            if (admin == null)
-            {
-                int? adminID = HttpContext.Session.GetInt32("AdminID");
-                if (adminID == null)
-                    return Unauthorized("Not logged in");
-                else
-                    return NotFound("Admin not found");
-            }
-
-            try
-            {
-                adminSL.DeletePatient(id);
-                return Ok(new { Message = "Patient deleted successfully" });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Error deleting patient: {ex.Message}");
-            }
-        }
-        */
-        /*
-        [HttpPatch("UpdateAdminStatus/{id}")]
-        public IActionResult UpdateAdminStatus(int id, [FromBody] int newStatus)
-        {
-            AdminSL adminSL = new AdminSL();
-            var admin = GetAuthenticatedAdmin(adminSL);
-
-            if (admin == null)
-            {
-                int? adminID = HttpContext.Session.GetInt32("AdminID");
-                if (adminID == null)
-                    return Unauthorized("Not logged in");
-                else
-                    return NotFound("Admin not found");
-            }
-
-            try
-            {
-                adminSL.UpdateAdminStatus(id, newStatus);
-
-                return Ok(new { Message = "Admin status updated successfully", AdminId = id, NewStatus = newStatus });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-        */
-        /*
-        public class PatientStatusUpdateRequest
-        {
-            public int NewStatus { get; set; }
-        }
-
-        [HttpPatch("UpdatePatientStatus/{id}")]
-        public IActionResult UpdatePatientStatus(int id, [FromBody] PatientStatusUpdateRequest request)
-        {
-            AdminSL adminSL = new AdminSL();
-            var admin = GetAuthenticatedAdmin(adminSL);
-
-            if (admin == null)
-            {
-                int? adminID = HttpContext.Session.GetInt32("AdminID");
-                if (adminID == null)
-                    return Unauthorized("Not logged in");
-                else
-                    return NotFound("Admin not found");
-            }
-
-            try
-            {
-                //var patientSL = new PatientSL();
-                //patientSL.UpdatePatientStatus(id, request.NewStatus);
-
-                return Ok(new { Message = "Patient status updated successfully", PatientId = id, NewStatus = request.NewStatus });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-        */
+        /// <summary>
+        /// Logs the currently authenticated admin out of their account.
+        /// </summary>
+        /// <returns>
+        /// Returns an <see cref="IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+        /// - A <c>200 OK</c> status if the logout process completes successfully.
+        /// </returns>
+        /// <remarks>
+        /// This endpoint simply returns a success response. 
+        /// Token invalidation or session cleanup should be handled on the client side (e.g., by removing the JWT).
+        /// </remarks>
+        /// <response code="200">Logout successful</response>
         [HttpPost("Logout")]
         public IActionResult Logout()
         {
@@ -339,6 +254,16 @@ namespace Caridology_Department_System.Controllers
             };
             return Ok(response);
         }
+
+        /// <summary>
+        /// Deletes the currently authenticated admin account.
+        /// </summary>
+        /// <returns>
+        /// - A <c>200 OK</c> status if the account is successfully deleted.
+        /// - A <c>400 Bad Request</c> status an exception occurs. 
+        /// </returns>
+        /// <response code="200">Admin account deleted successfully</response>
+        /// <response code="400">general exception occurred</response>
         [HttpDelete("Delete")]
         public async Task<IActionResult> DeleteAccountAsync()
         {
@@ -367,6 +292,134 @@ namespace Caridology_Department_System.Controllers
                     StatusCode = 400
                 };
                 return BadRequest(response);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves a paginated list of admin accounts, 10 per page.
+        /// </summary>
+        /// <param name="name">
+        /// Optional name filter to search for admins.
+        /// </param>
+        /// <param name="pagenumber">
+        /// The page number to retrieve (must be a positive integer).
+        /// </param>
+        /// <param name="exactmatch">
+        /// If true, performs an exact match on the admin name; otherwise, performs a partial match.
+        /// </param>
+        /// <returns>
+        /// - A <c>200 OK</c> response with a list of admins if found.
+        /// - A <c>404 Not Found</c> if no matching admins are found.
+        /// - A <c>400 Bad Request</c> if the page number is invalid.
+        /// - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+        /// </returns>
+        /// <response code="200">A list of admins was found and returned successfully.</response>
+        /// <response code="404">No matching admins are found.</response>
+        /// <response code="200">The page number is invalid.</response>
+        /// <response code="500">An unexpected error occurs.</response>
+        [HttpGet("AdminsList")]
+        public async Task<IActionResult> GetAdminsPerPageAsync([FromQuery] string? name
+                                , [FromQuery] int pagenumber = 1, [FromQuery] bool exactmatch = false)
+        {
+            try
+            {
+                if (pagenumber < 1)
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 400,
+                        Success = false,
+                        Message = "pagenumber must be positive integers"
+                    };
+                    return BadRequest(response);
+                }
+                List<AdminModel> Admins = await adminSL.GetAdminsPerPageAsync(name, pagenumber, exactmatch);
+                if (Admins == null || Admins.Count == 0)
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 404,
+                        Success = false,
+                        Message = "no Admins found"
+                    };
+                    return NotFound(response);
+                }
+                return Ok(Admins);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    StatusCode = 500,
+                    Success = false,
+                    Message = "An unexpected error occurred",
+                    Errors = ex.Message
+                };
+                return StatusCode(500, response);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves a paginated list of admin profile pages, 10 per page.
+        /// </summary>
+        /// <param name="name">
+        /// Optional name filter to search for admins.
+        /// </param>
+        /// <param name="pagenumber">
+        /// The page number to retrieve (must be a positive integer).
+        /// </param>
+        /// <param name="exactmatch">
+        /// If true, performs an exact match on the admin name; otherwise, performs a partial match.
+        /// </param>
+        /// <returns>
+        /// - A <c>200 OK</c> response with a list of admin profiles if found.
+        /// - A <c>404 Not Found</c> if no matching admins are found.
+        /// - A <c>400 Bad Request</c> if the page number is invalid.
+        /// - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+        /// </returns>
+        /// <response code="200">A list of admin profiles was found and returned successfully.</response>
+        /// <response code="404">No matching admin profiles were found.</response>
+        /// <response code="400">The page number provided is invalid.</response>
+        /// <response code="500">An unexpected server error occurred.</response>
+        [HttpGet("AdminProfilesList")]
+        public async Task<IActionResult> GetAdminsProfilePageAsync([FromQuery] string? name
+                        , [FromQuery] int pagenumber = 1, [FromQuery] bool exactmatch = false)
+        {
+            try
+            {
+                if (pagenumber < 1)
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 400,
+                        Success = false,
+                        Message = "pagenumber must be positive integers"
+                    };
+                    return BadRequest(response);
+                }
+                List<AdminProfilePageRequest> Admins = await adminSL.GetAdminsProfilePerPageAsync(name, pagenumber, exactmatch);
+                if (Admins == null || !Admins.Any())
+                {
+                    var response = new ResponseWrapperDto
+                    {
+                        StatusCode = 404,
+                        Success = false,
+                        Message = "no Admins found"
+                    };
+                    return NotFound(response);
+                }
+                return Ok(Admins);
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseWrapperDto
+                {
+                    StatusCode = 500,
+                    Success = false,
+                    Message = "An unexpected error occurred",
+                    Errors = ex.Message
+                };
+                return StatusCode(500, response);
             }
         }
     }

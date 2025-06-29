@@ -1287,9 +1287,9 @@ D:\projects developing\cardiology department system project\try 2\Cardiology-Dep
 D:\projects developing\cardiology department system project\try 2\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridolo.6F30628F.Up2Date
 D:\projects developing\cardiology department system project\try 2\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.genruntimeconfig.cache
 D:\projects developing\cardiology department system project\try 2\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\ref\Caridology-Department-System.dll
-D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\HIS.json
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\appsettings.Development.json
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\appsettings.json
+D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\HIS.json
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Caridology-Department-System.staticwebassets.runtime.json
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Caridology-Department-System.staticwebassets.endpoints.json
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\Caridology-Department-System.exe
@@ -1473,3 +1473,4 @@ D:\projects developing\cardiology department system project\try 3\Cardiology-Dep
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.pdb
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\Caridology-Department-System.genruntimeconfig.cache
 D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\obj\Debug\net9.0\ref\Caridology-Department-System.dll
+D:\projects developing\cardiology department system project\try 3\Cardiology-Department-System\BackEnd\Caridology-Department-System\Caridology-Department-System\bin\Debug\net9.0\code documentation.xml

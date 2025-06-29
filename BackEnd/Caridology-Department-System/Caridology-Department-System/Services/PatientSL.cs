@@ -5,14 +5,16 @@ using AutoMapper;
 using Caridology_Department_System.Models;
 using Caridology_Department_System.Requests;
 using Caridology_Department_System.Requests.Patient;
+using Caridology_Department_System.Requests.Patient;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace Caridology_Department_System.Services
 {
     /// <summary>
-    /// Service Layer class for Patient-related operations
-    /// Handles database operations for patient records including CRUD operations
+    /// Service layer for handling patient-related business logic such as profile updates and deletions.
+    /// This class delegates responsibilities like phone number operations, email validation,
+    /// password hashing, and image handling to specialized services.
     /// </summary>
     public class PatientSL
     {
@@ -22,6 +24,15 @@ namespace Caridology_Department_System.Services
         private readonly EmailValidator emailValidator;
         private readonly IImageService imageService;
         private readonly DBContext dbContext;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PatientSL"/> class with its required services.
+        /// </summary>
+        /// <param name="PatientPhoneNumberSL">Service for handling admin phone number operations.</param>
+        /// <param name="dBContext">The application's database context.</param>
+        /// <param name="emailValidator">Service for validating the uniqueness of email addresses.</param>
+        /// <param name="passwordHasher">Service for hashing and verifying passwords.</param>
+        /// <param name="imageService">Service for saving, retrieving, and deleting images.</param>
+        /// <param name="mapper">AutoMapper instance for mapping between models and DTOs.</param>
         public PatientSL(DBContext dBContext, IImageService imageService,
                                    IMapper mapper, PasswordHasher passwordHasher, EmailValidator emailValidator,
                                    PatientPhoneNumberSL PatientPhoneNumberSL)
@@ -33,12 +44,35 @@ namespace Caridology_Department_System.Services
             this.imageService = imageService;
             this.PatientPhoneNumberSL = PatientPhoneNumberSL;
         }
+        /// <summary>
+        /// Adds a new patient to the system along with their phone numbers and profile photo.
+        /// Performs input validation, password hashing, image saving, and runs within a database transaction.
+        /// </summary>
+        /// <param name="request">
+        /// The patient creation request containing name, email, password, phone numbers, optional photo, and some other data.
+        /// </param>
+        /// <returns>
+        /// Returns <c>true</c> if the patient and phone numbers were added successfully; <c>false</c> otherwise.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown if <paramref name="request"/> is null.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// Thrown if:
+        /// - <paramref name="request.PhoneNumbers"/> is null or empty,
+        /// - <paramref name="request.Email"/> is already used,
+        /// - Or mapping the request to <c>PatientModel</c> fails.
+        /// </exception>
+        /// <remarks>
+        /// This method uses a database transaction. If adding phone numbers fails,
+        /// the patient record is rolled back.
+        /// </remarks>
         public async Task<bool> AddPatientAsync(PatientRequest request)
         {
             bool created = false;
             if (request == null)
             {
-                throw new ArgumentNullException(nameof(request), "Admin data cannot be empty");
+                throw new ArgumentNullException(nameof(request), "Patient data cannot be empty");
             }
             if (request.PhoneNumbers == null || !request.PhoneNumbers.Any())
             {
@@ -75,6 +109,21 @@ namespace Caridology_Department_System.Services
                 return created;
             }
         }
+        /// <summary>
+        /// Retrieves a patient user by their email and password, including role information.
+        /// </summary>
+        /// <param name="login">
+        /// The login request containing the patient's email and password.
+        /// </param>
+        /// <returns>
+        /// Returns a <see cref="PatientModel"/> if the credentials are valid and the patient account is active.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if <paramref name="login.Email"/> or <paramref name="login.Password"/> is null, empty, or whitespace.
+        /// </exception>
+        /// <exception cref="UnauthorizedAccessException">
+        /// Thrown if the email is not found, the password is incorrect, or the account is marked as deleted.
+        /// </exception>
         public async Task<PatientModel> GetPatientByEmailAndPassword(LoginRequest Request)
         {
             if (string.IsNullOrWhiteSpace(Request.Email))
@@ -86,15 +135,25 @@ namespace Caridology_Department_System.Services
                 throw new ArgumentException("Password is required");
             }
             PatientModel Patient = await dbContext.Patients.Include(p => p.Role).SingleOrDefaultAsync(p => p.Email == Request.Email);
-            bool passwordValid = Patient != null &&
-                hasher.VerifyPassword(Request.Password, Patient.Password) &&
-                Patient.StatusID != 3;
-            if (!passwordValid)
+            if (Patient == null &&
+                !hasher.VerifyPassword(Request.Password, Patient.Password) &&
+                Patient.StatusID == 3)
             {
                 throw new UnauthorizedAccessException("Invalid email or password");
             }
             return Patient;
         }
+        /// <summary>
+        /// Retrieves a patient user by their unique ID, including phone numbers and role information.
+        /// </summary>
+        /// <param name="Patientid">
+        /// The ID of the patient to retrieve. Must be a valid, non-null, positive integer.
+        /// </param>
+        /// <returns>
+        ///  Returns a <see cref="PatientModel"/> that matches the given ID, or throws an exception if not found.
+        /// </returns>
+        /// <exception cref="Exception"></exception>
+        /// Thrown if no patient is found with the given ID (or if the account is deleted).
         public async Task<PatientModel> GetPatientByID(int? Patientid)
         {
             PatientModel Patient = await dbContext.Patients
@@ -104,9 +163,19 @@ namespace Caridology_Department_System.Services
                                         .SingleOrDefaultAsync() ?? throw new Exception("account doesnot exist");
             return Patient;
         }
+        /// <summary>
+        /// Retrieves the profile of a patient by their ID, including role, phone numbers, and optional profile photo as Base64.
+        /// </summary>
+        /// <param name="Patientid">
+        /// The unique ID of the patient whose profile is requested. Must be a non-null, positive integer.
+        /// </param>
+        /// <returns>
+        /// Returns a <see cref="PatientProfilePageRequest"/> object mapped from the patient entity, 
+        /// with embedded Base64-encoded profile photo (if available).
+        /// </returns>
         public async Task<PatientProfilePageRequest> GetPatientProfilePage(int? Patientid)
         {
-            PatientModel Patient = await GetPatientByID(Patientid) ?? throw new Exception("account doesnot exist");
+            PatientModel Patient = await GetPatientByID(Patientid);
             PatientProfilePageRequest PatientProfile = mapper.Map<PatientProfilePageRequest>(Patient);
             if (!String.IsNullOrEmpty(Patient.PhotoPath))
             {
@@ -114,7 +183,13 @@ namespace Caridology_Department_System.Services
             }
             return PatientProfile;
         }
-        public async Task<bool> DeletePatientAsync(int? Patientid)
+        /// <summary>
+        /// Deletes a patient and their associated phone numbers within a database transaction.
+        /// The patient is soft-deleted by updating their status.
+        /// </summary>
+        /// <param name="Patientid">The unique identifier of the patient to delete.</param>
+        /// <returns>True if the deletion was successful and changes were committed; otherwise, false.</returns>
+        public async Task<bool> DeletePatientAsync(int Patientid)
         {
             bool deleted = false;
             PatientModel Patient = await GetPatientByID(Patientid);
@@ -124,7 +199,7 @@ namespace Caridology_Department_System.Services
                 List<string> phones = Patient.PhoneNumbers.Select(p => p.PhoneNumber).ToList();
                 if (phones.Count > 0)
                 {
-                    deleted = await PatientPhoneNumberSL.DeletePhonesAsync(phones, Patient.ID, transaction);
+                    deleted = await PatientPhoneNumberSL.DeletePhonesAsync(phones, Patientid, transaction);
                 }
                 Patient.StatusID = 3;
                 Patient.UpdatedAt = DateTime.UtcNow;
@@ -138,11 +213,16 @@ namespace Caridology_Department_System.Services
                 return deleted;
             }
         }
+        /// <summary>
+        /// Updates a patient's profile details, including personal information, email, photo, and phone numbers, within a database transaction. 
+        /// AutoMapper is used to map other fields, and changes are saved only if modifications are detected.
+        /// </summary>
+        /// <param name="Patientid">The unique identifier of the patient to update.</param>
+        /// <param name="request">An object containing the new data to apply to the patient profile.</param>
+        /// <returns>True if any changes were detected and saved; otherwise, false.</returns>
         public async Task<bool> UpdateProfileAsync(int Patientid, PatientUpdateRequest request)
         {
-            PatientModel patient = await GetPatientByID(Patientid) ??
-                throw new Exception("User not found");
-
+            PatientModel patient = await GetPatientByID(Patientid);
             using var transaction = await dbContext.Database.BeginTransactionAsync();
             try
             {
@@ -257,6 +337,112 @@ namespace Caridology_Department_System.Services
                 await transaction.RollbackAsync();
                 throw;
             }
+        }
+        /// <summary>
+        /// Retrieves a paginated list of patients and their phone numbers, 10 per page.
+        /// </summary>
+        /// <param name="name">The admin name to search for. Can be partial or full depending on <paramref name="exactmatch"/>.</param>
+        /// <param name="pagenumber">The page number to retrieve. Defaults to 1.</param>
+        /// <param name="exactmatch">If true, searches for names that exactly match; otherwise, performs a partial match.</param>
+        /// <returns>A list of <see cref="PatientModel"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) ).</returns>
+        public async Task<List<PatientModel>> GetPatientsPerPageAsync(string? name,
+                                int pagenumber = 1, bool exactmatch = false)
+        {
+            List<PatientModel> PatientsPerPage = new List<PatientModel>();
+            int pageSize = 10;
+            if (!String.IsNullOrEmpty(name))
+            {
+                if (exactmatch)
+                {
+                    PatientsPerPage = await dbContext.Patients
+                                    .Where(d => (d.FName + " " + d.LName).Contains(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+                else
+                {
+                    PatientsPerPage = await dbContext.Patients
+                                    .Where(d => (d.FName + " " + d.LName).StartsWith(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+
+            }
+            else
+            {
+                PatientsPerPage = await dbContext.Patients
+                .Skip((pagenumber - 1) * pageSize)
+                .Take(pageSize)
+                .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                .ToListAsync();
+            }
+            return PatientsPerPage;
+        }
+        /// <summary>
+        /// Retrieves a paginated list of patient profiles and thier phone number, 10 per page.
+        /// </summary>
+        /// <param name = "name" >
+        /// The admin name to search for. Can be partial or full depending on<paramref name="exactmatch"/>.
+        /// </param>
+        /// <param name="pagenumber">
+        /// The page number to retrieve. Defaults to 1.
+        /// </param>
+        /// <param name="exactmatch">
+        /// If true, searches for names that exactly match; otherwise, performs a partial match.
+        /// </param>
+        /// <returns>
+        /// A list of <see cref="PatientProfilePageRequest"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) )
+        /// </returns>
+        public async Task<List<PatientProfilePageRequest>> GetPatientsProfilePerPageAsync(string? name,
+                                        int pagenumber = 1, bool exactmatch = false)
+        {
+            List<PatientModel> PatientsPerPage = new List<PatientModel>();
+            int pageSize = 10;
+            if (!String.IsNullOrEmpty(name))
+            {
+                if (exactmatch)
+                {
+                    PatientsPerPage = await dbContext.Patients
+                                    .Where(d => (d.FName + " " + d.LName).Contains(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+                else
+                {
+                    PatientsPerPage = await dbContext.Patients
+                                    .Where(d => (d.FName + " " + d.LName).StartsWith(name))
+                                    .Skip((pagenumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                                    .ToListAsync();
+                }
+
+            }
+            else
+            {
+                PatientsPerPage = await dbContext.Patients
+                .Skip((pagenumber - 1) * pageSize)
+                .Take(pageSize)
+                .Include(d => d.PhoneNumbers.Where(p => p.StatusID != 3))
+                .ToListAsync();
+            }
+            List<PatientProfilePageRequest> PatientProfilePages = new List<PatientProfilePageRequest>();
+            foreach (PatientModel Patient in PatientsPerPage)
+            {
+                PatientProfilePageRequest PatientProfilePage = mapper.Map<PatientProfilePageRequest>(Patient);
+                if (!String.IsNullOrEmpty(Patient.PhotoPath))
+                {
+                    PatientProfilePage.PhotoData = imageService.GetImageBase64(Patient.PhotoPath);
+                }
+                PatientProfilePages.Add(PatientProfilePage);
+            }
+            return PatientProfilePages;
         }
     }
 }

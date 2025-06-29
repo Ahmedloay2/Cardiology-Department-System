@@ -4,6 +4,353 @@
         <name>Caridology-Department-System</name>
     </assembly>
     <members>
+        <member name="T:Caridology_Department_System.Controllers.AdminController">
+            <summary>
+            Controller responsible for handling admin-related HTTP requests.
+            It acts as an entry point for the API endpoints related to admin functionalities.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.#ctor(Caridology_Department_System.Services.AdminSL,JwtTokenService)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Caridology_Department_System.Controllers.AdminController"/> class with the specified service layer.
+            </summary>
+            <param name="adminSL">service layer that is responsible to handle admin logic</param>
+            <param name="jwtTokenService">web jason token sevice layer that is responsible of generating token</param>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.LoginAsync(Caridology_Department_System.Requests.LoginRequest)">
+            <summary>
+            Authenticates an admin user based on provided credentials and returns a JWT if successful.
+            </summary>
+            <param name="request">
+            The login request containing the admin's email and password. Both fields are required.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status, including the authenticated admin's data and a JWT token.
+            - A <c>400 Bad Request</c> status if the credentials are invalid or if a general error occurs.
+            </returns>
+            <remarks>
+            This endpoint is intended for admin users only. 
+            On successful authentication, a signed JSON Web Token (JWT) is returned for use in subsequent requests.
+            The credentials are matched against the admin records stored in the database.
+            </remarks>
+            <response code="200">Authentication successful; returns admin info and JWT token</response>
+            <response code="400">Invalid credentials, validation failed, or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.GetAdminProfileAsync(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves an admin user's profile information based on the provided ID or JWT token.
+            </summary>
+            <param name="ID">
+            The ID of the admin whose profile is being requested. If not provided, the ID is extracted from the JWT claims.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status and the admin profile data if retrieval is successful.
+            - A <c>400 Bad Request</c> status if the ID is invalid, not a positive number, or if an error occurs during processing.
+            </returns>
+            <remarks>
+            This endpoint is accessible to authenticated admin users only.
+            If no ID is supplied via query, the user's ID is automatically extracted from the JWT token's claims.
+            </remarks>
+            <response code="200">Retrieval successful; returns admin profile data</response>
+            <response code="400">Invalid ID or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.CreateAdminAsync(Caridology_Department_System.Requests.Admin.AdminRequest)">
+            <summary>
+            Creates a new admin account using the provided form data.
+            </summary>
+            <param name="admin">
+            The <see cref="T:Caridology_Department_System.Requests.Admin.AdminRequest"/> object containing the admin's details, including personal information,
+            credentials, and optionally a profile image. Submitted as multipart/form-data.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status if the account is successfully created.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs.
+            </returns>
+            <remarks>
+            This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+            It validates the input model before attempting to create the admin account.
+            </remarks>
+            <response code="200">Admin account created successfully</response>
+            <response code="400">Validation failed or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.UpdateAdminProfileAsync(Caridology_Department_System.Requests.Admin.AdminUpdateRequest)">
+            <summary>
+            Update an admin account using the provided form data
+            </summary>
+            <param name="request">
+            The <see cref="T:Caridology_Department_System.Requests.Admin.AdminUpdateRequest"/> object containing the updated admin details
+            </param>
+            <returns>        
+            - A <c>200 OK</c> status if the account is successfully updated.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs.</returns>
+            <remarks>
+            This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+            It validates the input model before attempting to update the admin account.
+            </remarks>
+            <response code="200">Admin account updated successfully</response>
+            <response code="400">Validation failed or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.Logout">
+            <summary>
+            Logs the currently authenticated admin out of their account.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status if the logout process completes successfully.
+            </returns>
+            <remarks>
+            This endpoint simply returns a success response. 
+            Token invalidation or session cleanup should be handled on the client side (e.g., by removing the JWT).
+            </remarks>
+            <response code="200">Logout successful</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.DeleteAccountAsync">
+            <summary>
+            Deletes the currently authenticated admin account.
+            </summary>
+            <returns>
+            - A <c>200 OK</c> status if the account is successfully deleted.
+            - A <c>400 Bad Request</c> status an exception occurs. 
+            </returns>
+            <response code="200">Admin account deleted successfully</response>
+            <response code="400">general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.GetAdminsPerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of admin accounts, 10 per page.
+            </summary>
+            <param name="name">
+            Optional name filter to search for admins.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve (must be a positive integer).
+            </param>
+            <param name="exactmatch">
+            If true, performs an exact match on the admin name; otherwise, performs a partial match.
+            </param>
+            <returns>
+            - A <c>200 OK</c> response with a list of admins if found.
+            - A <c>404 Not Found</c> if no matching admins are found.
+            - A <c>400 Bad Request</c> if the page number is invalid.
+            - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+            </returns>
+            <response code="200">A list of admins was found and returned successfully.</response>
+            <response code="404">No matching admins are found.</response>
+            <response code="200">The page number is invalid.</response>
+            <response code="500">An unexpected error occurs.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AdminController.GetAdminsProfilePageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of admin profile pages, 10 per page.
+            </summary>
+            <param name="name">
+            Optional name filter to search for admins.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve (must be a positive integer).
+            </param>
+            <param name="exactmatch">
+            If true, performs an exact match on the admin name; otherwise, performs a partial match.
+            </param>
+            <returns>
+            - A <c>200 OK</c> response with a list of admin profiles if found.
+            - A <c>404 Not Found</c> if no matching admins are found.
+            - A <c>400 Bad Request</c> if the page number is invalid.
+            - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+            </returns>
+            <response code="200">A list of admin profiles was found and returned successfully.</response>
+            <response code="404">No matching admin profiles were found.</response>
+            <response code="400">The page number provided is invalid.</response>
+            <response code="500">An unexpected server error occurred.</response>
+        </member>
+        <member name="T:Caridology_Department_System.Controllers.DoctorController">
+            <summary>
+            Controller responsible for handling doctor-related HTTP requests.
+            It acts as an entry point for the API endpoints related to doctor functionalities.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.#ctor(Caridology_Department_System.Services.DoctorSL,JwtTokenService)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Caridology_Department_System.Controllers.DoctorController"/> class with the specified service layer.
+            </summary>
+            <param name="doctorSL">service layer that is responsible to handle doctor logic</param>
+            <param name="jwtTokenService">web jason token sevice layer that is responsible of generating token</param>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.CreateDoctorAsync(Caridology_Department_System.Requests.Doctor.DoctorRequest)">
+            <summary>
+            Creates a new doctor account using the provided form data.
+            </summary>
+            <param name="doctor">
+            The <see cref="T:Caridology_Department_System.Requests.Doctor.DoctorRequest"/> object containing the doctor's details, including personal information,
+            credentials, and optionally a profile image. Submitted as multipart/form-data.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status if the account is successfully created.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs.
+            </returns>
+            <remarks>
+            This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+            It validates the input model before attempting to create the doctor account.
+            </remarks>
+            <response code="200">doctor account created successfully</response>
+            <response code="400">Validation failed or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.LoginAsync(Caridology_Department_System.Requests.LoginRequest)">
+            <summary>
+            Authenticates a doctor user based on provided credentials and returns a JWT if successful.
+            </summary>
+            <param name="request">
+            The login request containing the doctor's email and password. Both fields are required.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status, including the authenticated codtor's data and a JWT token.
+            - A <c>400 Bad Request</c> status if the credentials are invalid or if a general error occurs.
+            </returns>
+            <remarks>
+            This endpoint is intended for doctor users only. 
+            On successful authentication, a signed JSON Web Token (JWT) is returned for use in subsequent requests.
+            The credentials are matched against the doctor records stored in the database.
+            </remarks>
+            <response code="200">Authentication successful; returns doctor info and JWT token</response>
+            <response code="400">Invalid credentials, validation failed, or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.GetProfilePageAsync(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves a doctor's profile information based on the provided ID or the JWT token of the authenticated user.
+            </summary>
+            <param name="ID">
+            The optional ID of the doctor whose profile is being requested. 
+            If not provided and the authenticated user is not an admin, the ID is extracted from the JWT claims.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status and the doctor's profile data if retrieval is successful.
+            - A <c>400 Bad Request</c> status if the ID is invalid, negative, or if an error occurs during processing.
+            </returns>
+            <remarks>
+            This endpoint can be accessed by authenticated users with the "Doctor" or "Admin" role.
+            If the user is not an admin and no ID is provided, the doctor's ID is automatically extracted from the JWT token.
+            Admins may supply an explicit doctor ID via query to retrieve any doctor's profile.
+            </remarks>
+            <response code="200">Retrieval successful; returns doctor profile data</response>
+            <response code="400">Invalid ID or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.UpdateProfileAsync(Caridology_Department_System.Requests.Doctor.DoctorUpdateRequest)">
+            <summary>
+            Update a doctor account using the provided form data
+            </summary>
+            <param name="request">
+            The <see cref="T:Caridology_Department_System.Requests.Doctor.DoctorUpdateRequest"/> object containing the updated doctor details
+            </param>
+            <returns>        
+            - A <c>200 OK</c> status if the account is successfully updated.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs.</returns>
+            <remarks>
+            This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+            It validates the input model before attempting to update the doctor account.
+            </remarks>
+            <response code="200">doctor account updated successfully</response>
+            <response code="400">Validation failed or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.Logout">
+            <summary>
+            Logs the currently authenticated doctor out of their account.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status if the logout process completes successfully.
+            </returns>
+            <remarks>
+            This endpoint simply returns a success response. 
+            Token invalidation or session cleanup should be handled on the client side (e.g., by removing the JWT).
+            </remarks>
+            <response code="200">Logout successful</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.DeleteAccountAsync(System.Nullable{System.Int32})">
+            <summary>
+            Deletes the currently authenticated doctor's account or, if the user is an admin, deletes a specified doctor's account.
+            </summary>
+            <param name="ID">
+            The optional ID of the doctor whose profile is being requested. 
+            If not provided and the authenticated user is not an admin, the ID is extracted from the JWT claims.
+            </param>
+            <returns>
+            - A <c>200 OK</c> status if the account is successfully deleted.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs. 
+            </returns>
+            <remarks>
+            This endpoint can be accessed by users with either the "Doctor" or "Admin" role.
+            - Doctors can only delete their own account (ID is taken from JWT).
+            - Admins can delete any doctor account by specifying the doctor ID in the query.
+            </remarks>
+            <response code="200">Admin account deleted successfully</response>
+            <response code="400">general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.GetDoctorsProfilePageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of doctor profile pages, 10 per page.
+            </summary>
+            <param name="name">
+            Optional name filter to search for doctors.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve (must be a positive integer).
+            </param>
+            <param name="exactmatch">
+            If true, performs an exact match on the doctor name; otherwise, performs a partial match.
+            </param>
+            <returns>
+            - A <c>200 OK</c> response with a list of doctor profiles if found.
+            - A <c>404 Not Found</c> if no matching doctors are found.
+            - A <c>400 Bad Request</c> if the page number is invalid.
+            - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+            </returns>
+            <response code="200">A list of doctor profiles was found and returned successfully.</response>
+            <response code="404">No matching doctor profiles were found.</response>
+            <response code="400">The page number provided is invalid.</response>
+            <response code="500">An unexpected server error occurred.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.DoctorController.GetDoctorsPerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of doctor accounts, 10 per page.
+            </summary>
+            <param name="name">
+            Optional name filter to search for doctor.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve (must be a positive integer).
+            </param>
+            <param name="exactmatch">
+            If true, performs an exact match on the doctor name; otherwise, performs a partial match.
+            </param>
+            <returns>
+            - A <c>200 OK</c> response with a list of doctors if found.
+            - A <c>404 Not Found</c> if no matching doctors are found.
+            - A <c>400 Bad Request</c> if the page number is invalid.
+            - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+            </returns>
+            <response code="200">A list of doctors was found and returned successfully.</response>
+            <response code="404">No matching doctors are found.</response>
+            <response code="200">The page number is invalid.</response>
+            <response code="500">An unexpected error occurs.</response>
+        </member>
+        <member name="T:Caridology_Department_System.Controllers.MessageController">
+            <summary>
+            Controller responsible for handling message-related HTTP requests.
+            It acts as an entry point for the API endpoints related to messaging functionalities.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.MessageController.#ctor(Caridology_Department_System.Services.MessageSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Controllers.MessageController"/> class with the specified service layer.
+            </summary>
+            <param name="messageSL">The service layer that contains business logic for message operations.</param>
+        </member>
         <member name="M:Caridology_Department_System.Controllers.MessageController.GetMessagesAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
             Retrieves messages between the logged-in user and the opposite role (patient/doctor).
@@ -73,6 +420,179 @@
             <response code="403">User is not authorized to delete the message</response>
             <response code="404">Message not found or already deleted</response>
             <response code="500">Unexpected server error occurred</response>
+        </member>
+        <member name="T:Caridology_Department_System.Controllers.PatientController">
+            <summary>
+            Controller responsible for handling patinet-related HTTP requests.
+            It acts as an entry point for the API endpoints related to patient functionalities.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.#ctor(JwtTokenService,Caridology_Department_System.Services.PatientSL)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Caridology_Department_System.Controllers.PatientController"/> class with the specified service layer.
+            </summary>
+            <param name="patientService">service layer that is responsible to handle doctor logic</param>
+            <param name="tokenService">web jason token sevice layer that is responsible of generating token</param>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.CreatePatientAsync(PatientRequest)">
+            <summary>
+            Creates a new patietn account using the provided form data.
+            </summary>
+            <param name="Patient">
+            The <see cref="T:PatientRequest"/> object containing the patient's details, including personal information,
+            credentials, and optionally a profile image. Submitted as multipart/form-data.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status if the account is successfully created.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs.
+            </returns>
+            <remarks>
+            This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+            It validates the input model before attempting to create the patient account.
+            </remarks>
+            <response code="200">patient account created successfully</response>
+            <response code="400">Validation failed or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.Login(Caridology_Department_System.Requests.LoginRequest)">
+            <summary>
+            Authenticates a patient user based on provided credentials and returns a JWT if successful.
+            </summary>
+            <param name="request">
+            The login request containing the patient's email and password. Both fields are required.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status, including the authenticated patient's data and a JWT token.
+            - A <c>400 Bad Request</c> status if the credentials are invalid or if a general error occurs.
+            </returns>
+            <remarks>
+            This endpoint is intended for patient users only. 
+            On successful authentication, a signed JSON Web Token (JWT) is returned for use in subsequent requests.
+            The credentials are matched against the patient records stored in the database.
+            </remarks>
+            <response code="200">Authentication successful; returns patient info and JWT token</response>
+            <response code="400">Invalid credentials, validation failed, or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.GetProfilePageAsync(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves a patient's profile information based on the provided ID or the JWT token of the authenticated user.
+            </summary>
+            <param name="ID">
+            The optional ID of the patient whose profile is being requested. 
+            If not provided and the authenticated user is not an admin, the ID is extracted from the JWT claims.
+            </param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status and the patietn's profile data if retrieval is successful.
+            - A <c>400 Bad Request</c> status if the ID is invalid, negative, or if an error occurs during processing.
+            </returns>
+            <remarks>
+            This endpoint can be accessed by authenticated users with the "Patient" or "Admin" role.
+            If the user is not an admin and no ID is provided, the patient's ID is automatically extracted from the JWT token.
+            Admins may supply an explicit patient ID via query to retrieve any patient's profile.
+            </remarks>
+            <response code="200">Retrieval successful; returns patient profile data</response>
+            <response code="400">Invalid ID or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.UpdateProfileAsync(Caridology_Department_System.Requests.Patient.PatientUpdateRequest)">
+            <summary>
+            Update a patient account using the provided form data
+            </summary>
+            <param name="request">
+            The <see cref="T:Caridology_Department_System.Requests.Patient.PatientUpdateRequest"/> object containing the updated patient details
+            </param>
+            <returns>        
+            - A <c>200 OK</c> status if the account is successfully updated.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs.</returns>
+            <remarks>
+            This endpoint accepts multipart/form-data and is limited to 10 MB in request size.
+            It validates the input model before attempting to update the patient account.
+            </remarks>
+            <response code="200">patient account updated successfully</response>
+            <response code="400">Validation failed or a general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.Logout">
+            <summary>
+            Logs the currently authenticated patient out of their account.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing a <c>ResponseWrapperDto</c> with:
+            - A <c>200 OK</c> status if the logout process completes successfully.
+            </returns>
+            <remarks>
+            This endpoint simply returns a success response. 
+            Token invalidation or session cleanup should be handled on the client side (e.g., by removing the JWT).
+            </remarks>
+            <response code="200">Logout successful</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.DeleteAccountAsync(System.Nullable{System.Int32})">
+            <summary>
+            Deletes the currently authenticated patient's account or, if the user is an admin, deletes a specified doctor's account.
+            </summary>
+            <param name="ID">
+            The optional ID of the patient whose profile is being requested. 
+            If not provided and the authenticated user is not an admin, the ID is extracted from the JWT claims.
+            </param>
+            <returns>
+            - A <c>200 OK</c> status if the account is successfully deleted.
+            - A <c>400 Bad Request</c> status if validation fails or an exception occurs. 
+            </returns>
+            <remarks>
+            This endpoint can be accessed by users with either the "Patient" or "Admin" role.
+            - Patients can only delete their own account (ID is taken from JWT).
+            - Admins can delete any patient account by specifying the patient ID in the query.
+            </remarks>
+            <response code="200">Admin account deleted successfully</response>
+            <response code="400">general exception occurred</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.GetPatientsProfilePageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of patient profile pages, 10 per page.
+            </summary>
+            <param name="name">
+            Optional name filter to search for patients.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve (must be a positive integer).
+            </param>
+            <param name="exactmatch">
+            If true, performs an exact match on the patient name; otherwise, performs a partial match.
+            </param>
+            <returns>
+            - A <c>200 OK</c> response with a list of patient profiles if found.
+            - A <c>404 Not Found</c> if no matching patients are found.
+            - A <c>400 Bad Request</c> if the page number is invalid.
+            - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+            </returns>
+            <response code="200">A list of patient profiles was found and returned successfully.</response>
+            <response code="404">No matching patient profiles were found.</response>
+            <response code="400">The page number provided is invalid.</response>
+            <response code="500">An unexpected server error occurred.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.PatientController.GetPatientsPerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of patient accounts, 10 per page.
+            </summary>
+            <param name="name">
+            Optional name filter to search for patients.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve (must be a positive integer).
+            </param>
+            <param name="exactmatch">
+            If true, performs an exact match on the patient name; otherwise, performs a partial match.
+            </param>
+            <returns>
+            - A <c>200 OK</c> response with a list of patients if found.
+            - A <c>404 Not Found</c> if no matching patients are found.
+            - A <c>400 Bad Request</c> if the page number is invalid.
+            - A <c>500 Internal Server Error</c> if an unexpected error occurs.
+            </returns>
+            <response code="200">A list of patients was found and returned successfully.</response>
+            <response code="404">No matching patients are found.</response>
+            <response code="200">The page number is invalid.</response>
+            <response code="500">An unexpected error occurs.</response>
         </member>
         <member name="T:Caridology_Department_System.Migrations.FirstMigration">
             <inheritdoc />
@@ -182,52 +702,412 @@
         <member name="M:Caridology_Department_System.Migrations.salaryaddedtodoctor.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Caridology_Department_System.Services.AdminPhoneNumberSL">
+            <summary>
+            Service class for managing admin phone numbers, including adding, updating, and deleting them with soft-delete logic.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminPhoneNumberSL.#ctor(Caridology_Department_System.Models.DBContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.AdminPhoneNumberSL"/> class with the specified database context.
+            </summary>
+            <param name="dbcontext">The database context used for phone number operations.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminPhoneNumberSL.AddPhoneNumbersasync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Adds a list of phone numbers for the specified admin within a database transaction.
+            </summary>
+            <param name="phoneNumbers">The list of phone numbers to add.</param>
+            <param name="adminID">The unique ID of the admin to whom the phone numbers belong.</param>
+            <param name="transaction">The current database transaction.</param>
+            <returns><c>true</c> if the phone numbers were added successfully; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the phone numbers list is null or empty.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminPhoneNumberSL.UpdatePhonesAsync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Updates an admin's phone numbers by comparing the existing list to the new list.
+            Removes numbers no longer present and adds new ones, all within a transaction.
+            </summary>
+            <param name="newPhoneNumbers">The updated list of phone numbers.</param>
+            <param name="adminID">The ID of the admin whose phone numbers will be updated.</param>
+            <param name="transaction">The active database transaction.</param>
+            <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminPhoneNumberSL.DeletePhonesAsync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Soft-deletes the specified phone numbers for a given admin by setting their status to deleted (StatusID = 3).
+            </summary>
+            <param name="phoneNumbers">The list of phone numbers to delete.</param>
+            <param name="adminID">The ID of the admin whose phone numbers will be deleted.</param>
+            <param name="transaction">The current database transaction.</param>
+            <returns><c>true</c> if the phone numbers were marked as deleted successfully; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="T:Caridology_Department_System.Services.AdminSL">
             <summary>
-            Service Layer for Admin-related operations (CRUD, authentication, patient management).
+            Service layer for handling admin-related business logic such as profile updates and deletions.
+            This class delegates responsibilities like phone number operations, email validation,
+            password hashing, and image handling to specialized services.
             </summary>
         </member>
         <member name="M:Caridology_Department_System.Services.AdminSL.#ctor(Caridology_Department_System.Services.AdminPhoneNumberSL,Caridology_Department_System.Models.DBContext,Caridology_Department_System.Services.EmailValidator,PasswordHasher,Caridology_Department_System.Services.IImageService,AutoMapper.IMapper)">
             <summary>
-            Initializes a new instance of the AdminSL service, creating a new DB context.
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.AdminSL"/> class with its required services.
             </summary>
+            <param name="adminPhoneNumberSL">Service for handling admin phone number operations.</param>
+            <param name="dbContext">The application's database context.</param>
+            <param name="emailValidator">Service for validating the uniqueness of email addresses.</param>
+            <param name="passwordHasher">Service for hashing and verifying passwords.</param>
+            <param name="imageService">Service for saving, retrieving, and deleting images.</param>
+            <param name="automapper">AutoMapper instance for mapping between models and DTOs.</param>
         </member>
         <member name="M:Caridology_Department_System.Services.AdminSL.GetAdminByID(System.Nullable{System.Int32})">
             <summary>
-            Retrieves an admin by their ID, including phone numbers, only if not deleted.
+            Retrieves an admin user by their unique ID, including phone numbers and role information.
             </summary>
+            <param name="adminId">
+            The ID of the admin to retrieve. Must be a valid, non-null, positive integer.
+            </param>
+            <returns>
+             Returns an <see cref="T:Caridology_Department_System.Models.AdminModel"/> that matches the given ID, or throws an exception if not found.
+            </returns>
+            <exception cref="T:System.Exception"></exception>
+            Thrown if no admin is found with the given ID (or if the account is deleted).
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.GetAdminProfile(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves the profile of an admin by their ID, including role, phone numbers, and optional profile photo as Base64.
+            </summary>
+            <param name="adminId">
+            The unique ID of the admin whose profile is requested. Must be a non-null, positive integer.
+            </param>
+            <returns>
+            Returns an <see cref="T:Caridology_Department_System.Requests.Admin.AdminProfilePageRequest"/> object mapped from the admin entity, 
+            with embedded Base64-encoded profile photo (if available).
+            </returns>
         </member>
         <member name="M:Caridology_Department_System.Services.AdminSL.GetAdminByEmailAndPassword(Caridology_Department_System.Requests.LoginRequest)">
             <summary>
-            Retrieves an admin by email and password for login.
-            Throws if credentials are invalid or admin is deleted.
+            Retrieves an admin user by their email and password, including role information.
             </summary>
+            <param name="login">
+            The login request containing the admin's email and password.
+            </param>
+            <returns>
+            Returns an <see cref="T:Caridology_Department_System.Models.AdminModel"/> if the credentials are valid and the admin account is active.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Thrown if <paramref name="login.Email.Email"/> or <paramref name="login.Password.Password"/> is null, empty, or whitespace.
+            </exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            Thrown if the email is not found, the password is incorrect, or the account is marked as deleted.
+            </exception>
         </member>
         <member name="M:Caridology_Department_System.Services.AdminSL.AddAdminasync(Caridology_Department_System.Requests.Admin.AdminRequest)">
             <summary>
-            Adds a new admin with validated data and phone numbers.
-            Throws if email is not unique or other validation fails.
+            Adds a new Admin to the system along with their phone numbers and profile photo.
+            Performs input validation, password hashing, image saving, and runs within a database transaction.
             </summary>
+            <param name="request">
+            The Admin creation request containing name, email, password, phone numbers, optional photo, and some other data.
+            </param>
+            <returns>
+            Returns <c>true</c> if the Admin and phone numbers were added successfully; <c>false</c> otherwise.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="request"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            Thrown if:
+            - <paramref name="request.PhoneNumbers.PhoneNumbers"/> is null or empty,
+            - <paramref name="request.Email.Email"/> is already used,
+            - Or mapping the request to <c>AdminModel</c> fails.
+            </exception>
+            <remarks>
+            This method uses a database transaction. If adding phone numbers fails,
+            the Admin record is rolled back.
+            </remarks>
         </member>
         <member name="M:Caridology_Department_System.Services.AdminSL.UpdateProfileAsync(System.Int32,Caridology_Department_System.Requests.Admin.AdminUpdateRequest)">
             <summary>
-            Updates an existing admin's profile with provided fields and phone numbers.
-            Only updates fields that are supplied (partial update).
+            Updates an admin's profile details, including personal info, email, photo, and phone numbers, within a database transaction.
+            </summary>
+            <param name="adminId">The unique identifier of the admin to update.</param>
+            <param name="request">The new data to apply to the admin profile.</param>
+            <returns>True if the update was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.DeleteAdminAsync(System.Int32)">
+            <summary>
+            Deletes an admin and their associated phone numbers within a database transaction.
+            The admin is soft-deleted by updating their status.
+            </summary>
+            <param name="adminId">The unique identifier of the admin to delete.</param>
+            <returns>True if the deletion was successful and changes were committed; otherwise, false.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.GetAdminsPerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of admins and their phone numbers, 10 per page.
+            </summary>
+            <param name="name">The admin name to search for. Can be partial or full depending on <paramref name="exactmatch"/>.</param>
+            <param name="pagenumber">The page number to retrieve. Defaults to 1.</param>
+            <param name="exactmatch">If true, searches for names that exactly match; otherwise, performs a partial match.</param>
+            <returns>A list of <see cref="T:Caridology_Department_System.Models.AdminModel"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) ).</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AdminSL.GetAdminsProfilePerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of admin profiles and thier phone number, 10 per page.
+            </summary>
+            <param name = "name" >
+            The admin name to search for. Can be partial or full depending on<paramref name="exactmatch"/>.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve. Defaults to 1.
+            </param>
+            <param name="exactmatch">
+            If true, searches for names that exactly match; otherwise, performs a partial match.
+            </param>
+            <returns>
+            A list of <see cref="T:Caridology_Department_System.Requests.Admin.AdminProfilePageRequest"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) )
+            </returns>
+        </member>
+        <member name="T:Caridology_Department_System.Services.DoctorPhoneNumberSL">
+            <summary>
+            Service class for managing doctor phone numbers, including adding, updating, and deleting them with soft-delete logic.
             </summary>
         </member>
+        <member name="M:Caridology_Department_System.Services.DoctorPhoneNumberSL.#ctor(Caridology_Department_System.Models.DBContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.DoctorPhoneNumberSL"/> class with the specified database context.
+            </summary>
+            <param name="dBContext">The database context used for phone number operations.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorPhoneNumberSL.AddPhoneNumbersasync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Adds a list of phone numbers for the specified doctor within a database transaction.
+            </summary>
+            <param name="PhoneNumbers">The list of phone numbers to add.</param>
+            <param name="DoctorID">The unique ID of the doctor to whom the phone numbers belong.</param>
+            <param name="transaction">The current database transaction.</param>
+            <returns><c>true</c> if the phone numbers were added successfully; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the phone numbers list is null or empty.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorPhoneNumberSL.UpdatePhonesAsync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Updates a doctor's phone numbers by comparing the existing list to the new list.
+            Removes numbers no longer present and adds new ones, all within a transaction.
+            </summary>
+            <param name="newPhoneNumbers">The updated list of phone numbers.</param>
+            <param name="DoctorID">The ID of the doctor whose phone numbers will be updated.</param>
+            <param name="transaction">The active database transaction.</param>
+            <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorPhoneNumberSL.DeletePhonesAsync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Soft-deletes the specified phone numbers for a given doctor by setting their status to deleted (StatusID = 3).
+            </summary>
+            <param name="PhoneNumbers">The list of phone numbers to delete.</param>
+            <param name="DoctorID">The ID of the doctor whose phone numbers will be deleted.</param>
+            <param name="transaction">The current database transaction.</param>
+            <returns><c>true</c> if the phone numbers were marked as deleted successfully; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Caridology_Department_System.Services.DoctorSL">
+            <summary>
+            Service layer for handling doctor-related business logic such as profile updates and deletions.
+            This class delegates responsibilities like phone number operations, email validation,
+            password hashing, and image handling to specialized services.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.#ctor(Caridology_Department_System.Models.DBContext,Caridology_Department_System.Services.IImageService,AutoMapper.IMapper,PasswordHasher,Caridology_Department_System.Services.EmailValidator,Caridology_Department_System.Services.DoctorPhoneNumberSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.DoctorSL"/> class with its required services.
+            </summary>
+            <param name="doctorPhoneNumberSL">Service for handling admin phone number operations.</param>
+            <param name="dBContext">The application's database context.</param>
+            <param name="emailValidator">Service for validating the uniqueness of email addresses.</param>
+            <param name="passwordHasher">Service for hashing and verifying passwords.</param>
+            <param name="imageService">Service for saving, retrieving, and deleting images.</param>
+            <param name="mapper">AutoMapper instance for mapping between models and DTOs.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.AddDoctorAsync(Caridology_Department_System.Requests.Doctor.DoctorRequest)">
+            <summary>
+            Adds a new doctor to the system along with their phone numbers and profile photo.
+            Performs input validation, password hashing, image saving, and runs within a database transaction.
+            </summary>
+            <param name="request">
+            The doctor creation request containing name, email, password, phone numbers, optional photo, and some other data.
+            </param>
+            <returns>
+            Returns <c>true</c> if the doctor and phone numbers were added successfully; <c>false</c> otherwise.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="request"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            Thrown if:
+            - <paramref name="request.PhoneNumbers.PhoneNumbers"/> is null or empty,
+            - <paramref name="request.Email.Email"/> is already used,
+            - Or mapping the request to <c>DoctorModel</c> fails.
+            </exception>
+            <remarks>
+            This method uses a database transaction. If adding phone numbers fails,
+            the doctor record is rolled back.
+            </remarks>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.GetDoctorByEmailAndPassword(Caridology_Department_System.Requests.LoginRequest)">
+            <summary>
+            Retrieves an doctor user by their email and password, including role information.
+            </summary>
+            <param name="login">
+            The login request containing the doctor's email and password.
+            </param>
+            <returns>
+            Returns an <see cref="T:Caridology_Department_System.Models.DoctorModel"/> if the credentials are valid and the doctor account is active.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Thrown if <paramref name="login.Email.Email"/> or <paramref name="login.Password.Password"/> is null, empty, or whitespace.
+            </exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            Thrown if the email is not found, the password is incorrect, or the account is marked as deleted.
+            </exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.GetDoctorByID(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves an doctor user by their unique ID, including phone numbers and role information.
+            </summary>
+            <param name="doctorid">
+            The ID of the doctor to retrieve. Must be a valid, non-null, positive integer.
+            </param>
+            <returns>
+             Returns an <see cref="T:Caridology_Department_System.Models.DoctorModel"/> that matches the given ID, or throws an exception if not found.
+            </returns>
+            <exception cref="T:System.Exception"></exception>
+            Thrown if no doctor is found with the given ID (or if the account is deleted).
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.GetDoctorProfilePage(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves the profile of an patient by their ID, including role, phone numbers, and optional profile photo as Base64.
+            </summary>
+            <param name="Patientid">
+            The unique ID of the patient whose profile is requested. Must be a non-null, positive integer.
+            </param>
+            <returns>
+            Returns an <see cref="!:PatientProfilePageRequest"/> object mapped from the patient entity, 
+            with embedded Base64-encoded profile photo (if available).
+            </returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.DeleteDoctorAsync(System.Nullable{System.Int32})">
+            <summary>
+            Deletes a doctor and their associated phone numbers within a database transaction.
+            The doctor is soft-deleted by updating their status.
+            </summary>
+            <param name="doctorid">The unique identifier of the doctor to delete.</param>
+            <returns>True if the deletion was successful and changes were committed; otherwise, false.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.UpdateProfileAsync(System.Int32,Caridology_Department_System.Requests.Doctor.DoctorUpdateRequest)">
+            <summary>
+            Updates a doctor's profile details, including personal info, email, photo, and phone numbers, within a database transaction.
+            </summary>
+            <param name="doctorid">The unique identifier of the doctor to update.</param>
+            <param name="request">The new data to apply to the doctor profile.</param>
+            <returns>True if the update was successful; otherwise, false.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.GetDoctorsPerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of doctors and their phone numbers, 10 per page.
+            </summary>
+            <param name="name">The admin name to search for. Can be partial or full depending on <paramref name="exactmatch"/>.</param>
+            <param name="pagenumber">The page number to retrieve. Defaults to 1.</param>
+            <param name="exactmatch">If true, searches for names that exactly match; otherwise, performs a partial match.</param>
+            <returns>A list of <see cref="T:Caridology_Department_System.Models.DoctorModel"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) ).</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.GetDoctorsProfilePerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of doctor profiles and thier phone number, 10 per page.
+            </summary>
+            <param name = "name" >
+            The admin name to search for. Can be partial or full depending on<paramref name="exactmatch"/>.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve. Defaults to 1.
+            </param>
+            <param name="exactmatch">
+            If true, searches for names that exactly match; otherwise, performs a partial match.
+            </param>
+            <returns>
+            A list of <see cref="T:Caridology_Department_System.Requests.Doctor.DoctorProfilePageRequest"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) )
+            </returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.EmailValidator.IsEmailUniqueAsync(System.String)">
+            <summary>
+            Checks whether the provided email address is unique across patients, doctors, and admins.
+            </summary>
+            <param name="email">The email address to check.</param>
+            <returns>
+            Returns <c>true</c> if the email is not currently in use by any active user (i.e., with StatusID other than 3); otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ImageService.SaveImageAsync(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Saves an uploaded image to a unique path under the "wwwroot/uploads" directory.
+            </summary>
+            <param name="imageStream">The uploaded image file to save.</param>
+            <returns>The relative path to the saved image file.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the image file extension is not valid.</exception>
+            <exception cref="T:System.Exception">Thrown if the image could not be saved.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ImageService.GetImageUrl(System.String)">
+            <summary>
+            Gets the public URL of the image if it exists on disk.
+            </summary>
+            <param name="imagePath">The relative image path.</param>
+            <returns>The image URL as a string, or <c>null</c> if the file does not exist.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ImageService.GetImageBase64(System.String)">
+            <summary>
+            Converts an image file to a Base64 data URL suitable for embedding in HTML.
+            </summary>
+            <param name="imagePath">The relative path to the image file.</param>
+            <returns>The Base64-encoded image string, or <c>null</c> if the file is not found.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ImageService.DeleteImage(System.String)">
+            <summary>
+            Deletes an image file from disk.
+            </summary>
+            <param name="imagePath">The relative path to the image to delete.</param>
+            <returns><c>true</c> if the image was deleted; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ImageService.IsValidImageExtension(System.String)">
+            <summary>
+            Checks whether the given file extension is a supported image format.
+            </summary>
+            <param name="extension">The file extension to check (including the dot, e.g., ".jpg").</param>
+            <returns><c>true</c> if the extension is valid; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ImageService.GetContentType(System.String)">
+            <summary>
+            Gets the MIME content type based on the image file extension.
+            </summary>
+            <param name="path">The image file path.</param>
+            <returns>The content type string.</returns>
+        </member>
+        <member name="T:Caridology_Department_System.Services.MessageSL">
+            <summary>
+            Service layer for handling message-related business logic, 
+            including retrieving, sending, and soft-deleting messages exchanged between patients and doctors.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Caridology_Department_System.Services.MessageSL.#ctor(Caridology_Department_System.Models.DBContext)" -->
         <member name="M:Caridology_Department_System.Services.MessageSL.GetMessagesAsync(System.Nullable{System.Int32},System.Nullable{System.Int32})">
             <summary>
-            Retrieve messages between a doctor and a patient.
+            Retrieves all non-deleted messages exchanged between a specific doctor and patient, sorted by time.
             </summary>
             <param name="patientID">ID of the patient.</param>
             <param name="doctorID">ID of the doctor.</param>
             <returns>
-            Returns <c>A list of messages exchanged between the specified patient and doctor, ordered by timestamp</c>
+            A list of messages exchanged between the specified patient and doctor, ordered by timestamp.
             </returns>
             <exception cref="T:System.Exception">
-            Thrown if:
-            - <paramref name="patientID"/> is null or not positive number .
-            - <paramref name="doctorID"/> is null or not positive number.
+            Thrown if either <paramref name="patientID"/> or <paramref name="doctorID"/> is null or not a positive integer,
+            indicating invalid or missing user context.
             </exception>
         </member>
         <member name="M:Caridology_Department_System.Services.MessageSL.CreateMessageAsync(System.Int32,System.String,System.Nullable{System.Int32},System.String)">
@@ -281,11 +1161,199 @@
             Thrown when the user is not authorized to delete the message (not the sender and not an admin).
             </exception>
         </member>
+        <member name="T:Caridology_Department_System.Services.PatientPhoneNumberSL">
+            <summary>
+            Service class for managing patient phone numbers, including adding, updating, and deleting them with soft-delete logic.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientPhoneNumberSL.#ctor(Caridology_Department_System.Models.DBContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.PatientPhoneNumberSL"/> class with the specified database context.
+            </summary>
+            <param name="dBContext">The database context used for phone number operations.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientPhoneNumberSL.AddPhoneNumbersasync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Adds a list of phone numbers for the specified patient within a database transaction.
+            </summary>
+            <param name="PhoneNumbers">The list of phone numbers to add.</param>
+            <param name="PatientID">The unique ID of the patient to whom the phone numbers belong.</param>
+            <param name="transaction">The current database transaction.</param>
+            <returns><c>true</c> if the phone numbers were added successfully; otherwise, <c>false</c>.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if the phone numbers list is null or empty.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientPhoneNumberSL.UpdatePhonesAsync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Updates a patient's phone numbers by comparing the existing list to the new list.
+            Removes numbers no longer present and adds new ones, all within a transaction.
+            </summary>
+            <param name="newPhoneNumbers">The updated list of phone numbers.</param>
+            <param name="PatientID">The ID of the patient whose phone numbers will be updated.</param>
+            <param name="transaction">The active database transaction.</param>
+            <returns><c>true</c> if the update was successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientPhoneNumberSL.DeletePhonesAsync(System.Collections.Generic.List{System.String},System.Int32,Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction)">
+            <summary>
+            Soft-deletes the specified phone numbers for a given patient by setting their status to deleted (StatusID = 3).
+            </summary>
+            <param name="PhoneNumbers">The list of phone numbers to delete.</param>
+            <param name="PatientID">The ID of the patient whose phone numbers will be deleted.</param>
+            <param name="transaction">The current database transaction.</param>
+            <returns><c>true</c> if the phone numbers were marked as deleted successfully; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="T:Caridology_Department_System.Services.PatientSL">
             <summary>
-            Service Layer class for Patient-related operations
-            Handles database operations for patient records including CRUD operations
+            Service layer for handling patient-related business logic such as profile updates and deletions.
+            This class delegates responsibilities like phone number operations, email validation,
+            password hashing, and image handling to specialized services.
             </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.#ctor(Caridology_Department_System.Models.DBContext,Caridology_Department_System.Services.IImageService,AutoMapper.IMapper,PasswordHasher,Caridology_Department_System.Services.EmailValidator,Caridology_Department_System.Services.PatientPhoneNumberSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.PatientSL"/> class with its required services.
+            </summary>
+            <param name="PatientPhoneNumberSL">Service for handling admin phone number operations.</param>
+            <param name="dBContext">The application's database context.</param>
+            <param name="emailValidator">Service for validating the uniqueness of email addresses.</param>
+            <param name="passwordHasher">Service for hashing and verifying passwords.</param>
+            <param name="imageService">Service for saving, retrieving, and deleting images.</param>
+            <param name="mapper">AutoMapper instance for mapping between models and DTOs.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.AddPatientAsync(PatientRequest)">
+            <summary>
+            Adds a new patient to the system along with their phone numbers and profile photo.
+            Performs input validation, password hashing, image saving, and runs within a database transaction.
+            </summary>
+            <param name="request">
+            The patient creation request containing name, email, password, phone numbers, optional photo, and some other data.
+            </param>
+            <returns>
+            Returns <c>true</c> if the patient and phone numbers were added successfully; <c>false</c> otherwise.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if <paramref name="request"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            Thrown if:
+            - <paramref name="request.PhoneNumbers.PhoneNumbers"/> is null or empty,
+            - <paramref name="request.Email.Email"/> is already used,
+            - Or mapping the request to <c>PatientModel</c> fails.
+            </exception>
+            <remarks>
+            This method uses a database transaction. If adding phone numbers fails,
+            the patient record is rolled back.
+            </remarks>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.GetPatientByEmailAndPassword(Caridology_Department_System.Requests.LoginRequest)">
+            <summary>
+            Retrieves a patient user by their email and password, including role information.
+            </summary>
+            <param name="login">
+            The login request containing the patient's email and password.
+            </param>
+            <returns>
+            Returns a <see cref="T:Caridology_Department_System.Models.PatientModel"/> if the credentials are valid and the patient account is active.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            Thrown if <paramref name="login.Email.Email"/> or <paramref name="login.Password.Password"/> is null, empty, or whitespace.
+            </exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            Thrown if the email is not found, the password is incorrect, or the account is marked as deleted.
+            </exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.GetPatientByID(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves a patient user by their unique ID, including phone numbers and role information.
+            </summary>
+            <param name="Patientid">
+            The ID of the patient to retrieve. Must be a valid, non-null, positive integer.
+            </param>
+            <returns>
+             Returns a <see cref="T:Caridology_Department_System.Models.PatientModel"/> that matches the given ID, or throws an exception if not found.
+            </returns>
+            <exception cref="T:System.Exception"></exception>
+            Thrown if no patient is found with the given ID (or if the account is deleted).
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.GetPatientProfilePage(System.Nullable{System.Int32})">
+            <summary>
+            Retrieves the profile of a patient by their ID, including role, phone numbers, and optional profile photo as Base64.
+            </summary>
+            <param name="Patientid">
+            The unique ID of the patient whose profile is requested. Must be a non-null, positive integer.
+            </param>
+            <returns>
+            Returns a <see cref="T:Caridology_Department_System.Requests.Patient.PatientProfilePageRequest"/> object mapped from the patient entity, 
+            with embedded Base64-encoded profile photo (if available).
+            </returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.DeletePatientAsync(System.Int32)">
+            <summary>
+            Deletes a patient and their associated phone numbers within a database transaction.
+            The patient is soft-deleted by updating their status.
+            </summary>
+            <param name="Patientid">The unique identifier of the patient to delete.</param>
+            <returns>True if the deletion was successful and changes were committed; otherwise, false.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.UpdateProfileAsync(System.Int32,Caridology_Department_System.Requests.Patient.PatientUpdateRequest)">
+            <summary>
+            Updates a patient's profile details, including personal information, email, photo, and phone numbers, within a database transaction. 
+            AutoMapper is used to map other fields, and changes are saved only if modifications are detected.
+            </summary>
+            <param name="Patientid">The unique identifier of the patient to update.</param>
+            <param name="request">An object containing the new data to apply to the patient profile.</param>
+            <returns>True if any changes were detected and saved; otherwise, false.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.GetPatientsPerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of patients and their phone numbers, 10 per page.
+            </summary>
+            <param name="name">The admin name to search for. Can be partial or full depending on <paramref name="exactmatch"/>.</param>
+            <param name="pagenumber">The page number to retrieve. Defaults to 1.</param>
+            <param name="exactmatch">If true, searches for names that exactly match; otherwise, performs a partial match.</param>
+            <returns>A list of <see cref="T:Caridology_Department_System.Models.PatientModel"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) ).</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.GetPatientsProfilePerPageAsync(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves a paginated list of patient profiles and thier phone number, 10 per page.
+            </summary>
+            <param name = "name" >
+            The admin name to search for. Can be partial or full depending on<paramref name="exactmatch"/>.
+            </param>
+            <param name="pagenumber">
+            The page number to retrieve. Defaults to 1.
+            </param>
+            <param name="exactmatch">
+            If true, searches for names that exactly match; otherwise, performs a partial match.
+            </param>
+            <returns>
+            A list of <see cref="T:Caridology_Department_System.Requests.Patient.PatientProfilePageRequest"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) )
+            </returns>
+        </member>
+        <member name="M:JwtTokenService.GenerateToken(UserModel)">
+            <summary>
+            Generates a JSON Web Token (JWT) that contains the user's ID, email, first name, last name, and role name.
+            The token is signed using the HMAC SHA-256 algorithm.
+            </summary>
+            <param name="user">The user whose data will be included in the token claims.</param>
+            <returns>The generated JWT token as a string.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown if the <paramref name="user"/> is <c>null</c>.
+            </exception>
+        </member>
+        <member name="M:PasswordHasher.HashPassword(System.String)">
+            <summary>
+            Hashes the provided password using the BCrypt algorithm for secure storage.
+            </summary>
+            <param name="password">The plain text password to hash.</param>
+            <returns>The hashed password string.</returns>
+        </member>
+        <member name="M:PasswordHasher.VerifyPassword(System.String,System.String)">
+            <summary>
+            Verifies whether the provided plain text password matches the stored hashed password using BCrypt.
+            </summary>
+            <param name="password">The plain text password to verify.</param>
+            <param name="hashedPassword">The previously stored hashed password.</param>
+            <returns><c>true</c> if the password is correct; otherwise, <c>false</c>.</returns>
         </member>
     </members>
 </doc>

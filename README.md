@@ -115,30 +115,35 @@ This web application serves as a **Cardiology Department Information System**, a
 ---
 ## API Endpoints
 
-| HTTP Method | URL                             | Action                                  |
-|-------------|---------------------------------|-----------------------------------------|
-| GET         | `/api/Patient/Profile`          | Get logged-in patient info              |
-| PUT         | `/api/Patient/UpdateProfile`    | Update logged-in patient                |
-| POST        | `/api/Patient/register`         | Register new patient                    |
-| POST        | `/api/Patient/Login`            | Login patient                           |
-| POST        | `/api/Patient/Logout`           | Logout patient                          |
-| Delete      | `/api/Patient/Delete`           | Delete patient                          |
-| GET         | `/api/Admin/Profile`            | Get logged-in Admin info                |
-| PUT         | `/api/Admin/Profile`            | Update logged-in Admin                  |
-| POST        | `/api/Admin/CreateAdmin`        | Create new Admin                        |
-| POST        | `/api/Admin/Login`              | Login Admin                             |
-| POST        | `/api/Admin/Logout`             | Logout Admin                            |
-| Delete      | `/api/Admin/Delete`             | Delete Admin                            |
-| GET         | `/api/Doctor/Profile`           | Get logged-in Doctor info               |
-| PUT         | `/api/Doctor/UpdateProfile`     | Update logged-in Doctor                 |
-| POST        | `/api/Doctor/CreateDoctor`      | Create new Doctor                       |
-| POST        | `/api/Doctor/Login`             | Login Doctor                            |
-| POST        | `/api/Doctor/Logout`            | Logout Doctor                           |
-| Delete      | `/api/Doctor/Delete`            | Delete Doctor                           |
-| Get         | `/api/Doctor/DoctorsProfileList'| Get List of Doctors Profiles            |
-| Get         | `/api/Doctor/DoctorsList`       | Get List of Doctors                     |
-| Get         | `/api/Message/GetMessage`       | Get Messages between Patient and Doctor |
-| Post        | `/api/Message/SendMessage`      | Send Mesaage to Patient or Doctor       |
+| HTTP Method | URL                               | Action                                   |
+|-------------|-----------------------------------|------------------------------------------|
+| GET         | `/api/Patient/Profile`            | Get logged-in patient info               |
+| PUT         | `/api/Patient/UpdateProfile`      | Update logged-in patient                 |
+| POST        | `/api/Patient/register`           | Register new patient                     |
+| POST        | `/api/Patient/Login`              | Login patient                            |
+| POST        | `/api/Patient/Logout`             | Logout patient                           |
+| Delete      | `/api/Patient/Delete`             | Delete patient                           |
+| Get         | `/api/Doctor/PatientProfilesList` | Get List of Patient Profiles             |
+| Get         | `/api/Doctor/PatientsList`        | Get List of Patients                     |
+| GET         | `/api/Admin/Profile`              | Get logged-in Admin info                 |
+| PUT         | `/api/Admin/Profile`              | Update logged-in Admin                   |
+| POST        | `/api/Admin/CreateAdmin`          | Create new Admin                         |
+| POST        | `/api/Admin/Login`                | Login Admin                              |
+| POST        | `/api/Admin/Logout`               | Logout Admin                             |
+| Delete      | `/api/Admin/Delete`               | Delete Admin                             |
+| Get         | `/api/Doctor/AdminProfilesList`   | Get List of Admin Profiles               |
+| Get         | `/api/Doctor/AdminsList`          | Get List of Admins                       |
+| GET         | `/api/Doctor/Profile`             | Get logged-in Doctor info                |
+| PUT         | `/api/Doctor/UpdateProfile`       | Update logged-in Doctor                  |
+| POST        | `/api/Doctor/CreateDoctor`        | Create new Doctor                        |
+| POST        | `/api/Doctor/Login`               | Login Doctor                             |
+| POST        | `/api/Doctor/Logout`              | Logout Doctor                            |
+| Delete      | `/api/Doctor/Delete`              | Delete Doctor                            |
+| Get         | `/api/Doctor/DoctorProfilesList`  | Get List of Doctor Profiles              |
+| Get         | `/api/Doctor/DoctorsList`         | Get List of Doctors                      |
+| Get         | `/api/Message/GetMessage`         | Get Messages between Patient and Doctor  |
+| Post        | `/api/Message/SendMessage`        | Send Mesaage to Patient or Doctor        |
+| Delete      | `/api/Message/Delete`             | Delete message between Patient or Doctor |
 ---
 ## Backend
 - Developed a cardiology department website using .NET for backend logic.

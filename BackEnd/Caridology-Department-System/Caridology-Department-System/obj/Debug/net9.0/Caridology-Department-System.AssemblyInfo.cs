@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Caridology-Department-System")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73338dd6d6fc386b04a2537864f5ca4fbc40dd8d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+feadda1992d4845be3fd7db9df7f85365ed2835d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Caridology-Department-System")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Caridology-Department-System")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
