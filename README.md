@@ -1,4 +1,3 @@
-
 <h1 align="center">
   <br>
   <a href="https://cardio-w-tever.vercel.app/index.html"><img src="https://github.com/alhussien-ayman/cardio_WTever/blob/main/assets/img/Logotest.png" alt="Cardiology WTever" width="200"></a>
@@ -17,10 +16,6 @@ Welcome to the Cardiology Hospital Information System (HIS) – your gateway to 
 ### 🚀 **Live Demo**
 
 👉 [Explore the Live System](https://cardio-w-tever.vercel.app/)
-
-### 🗂️ **Project Repository**
-
-📁 [View the GitHub Repository](https://github.com/Ahmedloay2/Caridology-Department-System)
 
 ---
 
@@ -106,53 +101,149 @@ This web application serves as a **Cardiology Department Information System**, a
 
 ---
 
-## 🔜 Next Steps – Phase 2 Plan  
-- Develop doctor profiles and dashboards
-- Create appointment scheduling system
-- Add medical record management
-- Implement admin dashboard
+## 🔧 Backend Architecture
+
+### Technology Stack
+- **.NET Framework**: Robust backend logic and API development
+- **JWT Authentication**: Secure token-based authentication system
+- **Neon PostgreSQL**: Cloud-native, scalable database solution
+- **RESTful API**: Comprehensive endpoints for all system operations
+
+### Security Features
+- **Role-Based Access Control**: Separate authentication for Patients, Doctors, and Admins
+- **Password Complexity Requirements**: Enforced strong password policies
+- **JWT Token Authorization**: Secure API access with Bearer tokens
+- **Data Validation**: Comprehensive input validation and sanitization
+
+### Database Design
+- Custom **ER model** tailored for cardiology department operations
+- **Relational Schema** optimized for healthcare data management
+- Support for patient medical records, appointment scheduling, and communication
 
 ---
-## API Endpoints
 
-| HTTP Method | URL                               | Action                                   |
-|-------------|-----------------------------------|------------------------------------------|
-| GET         | `/api/Patient/Profile`            | Get logged-in patient info               |
-| PUT         | `/api/Patient/UpdateProfile`      | Update logged-in patient                 |
-| POST        | `/api/Patient/register`           | Register new patient                     |
-| POST        | `/api/Patient/Login`              | Login patient                            |
-| POST        | `/api/Patient/Logout`             | Logout patient                           |
-| Delete      | `/api/Patient/Delete`             | Delete patient                           |
-| Get         | `/api/Doctor/PatientProfilesList` | Get List of Patient Profiles             |
-| Get         | `/api/Doctor/PatientsList`        | Get List of Patients                     |
-| GET         | `/api/Admin/Profile`              | Get logged-in Admin info                 |
-| PUT         | `/api/Admin/Profile`              | Update logged-in Admin                   |
-| POST        | `/api/Admin/CreateAdmin`          | Create new Admin                         |
-| POST        | `/api/Admin/Login`                | Login Admin                              |
-| POST        | `/api/Admin/Logout`               | Logout Admin                             |
-| Delete      | `/api/Admin/Delete`               | Delete Admin                             |
-| Get         | `/api/Doctor/AdminProfilesList`   | Get List of Admin Profiles               |
-| Get         | `/api/Doctor/AdminsList`          | Get List of Admins                       |
-| GET         | `/api/Doctor/Profile`             | Get logged-in Doctor info                |
-| PUT         | `/api/Doctor/UpdateProfile`       | Update logged-in Doctor                  |
-| POST        | `/api/Doctor/CreateDoctor`        | Create new Doctor                        |
-| POST        | `/api/Doctor/Login`               | Login Doctor                             |
-| POST        | `/api/Doctor/Logout`              | Logout Doctor                            |
-| Delete      | `/api/Doctor/Delete`              | Delete Doctor                            |
-| Get         | `/api/Doctor/DoctorProfilesList`  | Get List of Doctor Profiles              |
-| Get         | `/api/Doctor/DoctorsList`         | Get List of Doctors                      |
-| Get         | `/api/Message/GetMessage`         | Get Messages between Patient and Doctor  |
-| Post        | `/api/Message/SendMessage`        | Send Mesaage to Patient or Doctor        |
-| Delete      | `/api/Message/Delete`             | Delete message between Patient or Doctor |
+## 📚 API Documentation
+
+### Base Configuration
+- **Base URL**: `/api`
+- **Authentication**: Bearer Token (JWT)
+- **Content Types**: `application/json`, `multipart/form-data`
+
+### User Role Categories
+
+#### 🔴 Admin Operations
+Complete system administration capabilities including user management, profile oversight, and system configuration.
+
+#### 🔵 Doctor Operations  
+Medical staff functionalities including patient management, appointment handling, profile updates, and communication tools.
+
+#### 🟢 Patient Operations
+Patient-centered services including registration, profile management, appointment booking, and medical record access.
+
+#### 🟡 Message System
+Secure communication platform between doctors and patients with full conversation history and message management.
+
+#### 🗓️ Appointment Management
+Comprehensive appointment system supporting booking, rescheduling, cancellation, and status tracking.
+
 ---
-## Backend
-- Developed a cardiology department website using .NET for backend logic.
 
-- Implemented an API to handle communication between system components and external services.
+## 🔗 Core API Endpoints
 
-- Used JWT (JSON Web Tokens) for secure user authentication and API access.
+### Authentication & Profile Management
 
-- Stored and managed data using Neon PostgreSQL, a cloud-native, scalable database solution.
+| HTTP Method | Endpoint | Description | Access Level |
+|-------------|----------|-------------|--------------|
+| POST | `/api/Patient/Login` | Patient authentication | Patient |
+| POST | `/api/Doctor/Login` | Doctor authentication | Doctor |
+| POST | `/api/Admin/Login` | Admin authentication | Admin |
+| POST | `/api/Patient/Register` | New patient registration | Patient/Admin |
+| GET | `/api/Patient/Profile` | Retrieve patient profile | Patient/Doctor/Admin |
+| PUT | `/api/Patient/UpdateProfile` | Update patient information | Patient |
+| GET | `/api/Doctor/Profile` | Retrieve doctor profile | Doctor/Admin |
+| PUT | `/api/Doctor/UpdateProfile` | Update doctor information | Doctor |
+| POST | `/api/Doctor/CreateDoctor` | Create new doctor account | Admin |
+
+### Appointment System
+
+| HTTP Method | Endpoint | Description | Access Level |
+|-------------|----------|-------------|--------------|
+| POST | `/api/Appointment/BookAppointment` | Schedule new appointment | Patient |
+| GET | `/api/Appointment/GetAppointments` | Retrieve appointments by date | All Authenticated |
+| GET | `/api/Appointment/GetAppointment` | Get specific appointment | All Authenticated |
+| POST | `/api/Appointment/RescheduleAppointment` | Modify appointment time | Patient |
+| POST | `/api/Appointment/CancelAppointment` | Cancel existing appointment | Patient |
+| POST | `/api/Appointment/MarkAppointment` | Mark as completed/missed | Doctor |
+
+### Communication System
+
+| HTTP Method | Endpoint | Description | Access Level |
+|-------------|----------|-------------|--------------|
+| GET | `/api/Message/GetMessages` | Retrieve conversation history | Patient/Doctor |
+| POST | `/api/Message/SendMessage` | Send message to user | Patient/Doctor |
+| DELETE | `/api/Message/Delete` | Remove specific message | Message Owner |
+
+### Administrative Functions
+
+| HTTP Method | Endpoint | Description | Access Level |
+|-------------|----------|-------------|--------------|
+| GET | `/api/Admin/AdminProfilesList` | List all admin profiles | Admin |
+| GET | `/api/Doctor/DoctorProfilesList` | List all doctor profiles | Admin/Doctor |
+| GET | `/api/Patient/PatientProfilesList` | List all patient profiles | Admin/Doctor |
+| POST | `/api/Admin/CreateAdmin` | Create new admin account | Admin |
+| DELETE | `/api/Admin/Delete` | Remove admin account | Admin |
+
+---
+
+## 🔒 Security & Validation
+
+### Password Requirements
+- **Length**: 8-100 characters
+- **Complexity**: Must include lowercase, uppercase, digit, and special character
+- **Pattern**: `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$`
+
+### Data Validation Rules
+- **Email Format**: Standard email validation with 100 character limit
+- **Phone Numbers**: Egyptian mobile format (`^(?:\+20|0)?1[0125]\d{8}$`)
+- **Names**: 2-50 character limit with pattern validation
+- **Medical Data**: Structured formats for blood types, allergies, medications
+- **Appointment Constraints**: Future dates only, no time slot conflicts
+
+### Role-Based Security
+- **Patient Access**: Profile management, appointment booking, messaging
+- **Doctor Access**: Patient lists, appointment management, medical records, messaging
+- **Admin Access**: Full system administration, user management, reporting
+
+---
+
+## 📊 System Capabilities
+
+### Patient Management
+- Comprehensive registration with medical history
+- Profile updates with photo upload support
+- Emergency contact and family information
+- Insurance policy management
+- Medical record tracking (allergies, medications, surgeries)
+
+### Appointment System
+- Real-time availability checking
+- Multi-status tracking (Confirmed, Cancelled, Postponed, Completed, Missed)
+- Automated conflict prevention
+- Rescheduling and cancellation workflows
+
+### Communication Platform
+- Secure doctor-patient messaging
+- Message history preservation
+- File attachment support 
+- Real-time notification system 
+
+### Administrative Tools
+- User role management
+- Profile oversight and editing
+- System-wide search functionality
+- Pagination for large datasets
+- Comprehensive audit trails
+
 ---
 
 ### 👥 Team Members
@@ -164,6 +255,3 @@ This web application serves as a **Cardiology Department Information System**, a
 | Suhila Tharwat Elmasry      |
 | Mai Mahmoud Mohamed         |
 | Muhammad Khaled Abdalhameed |
-
-
-

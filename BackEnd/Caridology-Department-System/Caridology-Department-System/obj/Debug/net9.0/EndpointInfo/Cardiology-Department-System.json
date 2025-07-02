@@ -1,0 +1,1723 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Cardiology Department API",
+    "description": "API for Cardiology Department System",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Admin/Login": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Profile": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "default": null
+                  },
+                  "Email": {
+                    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": null
+                  },
+                  "Address": {
+                    "pattern": "^.{0,500}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PhotoData": {
+                    "type": "string",
+                    "format": "binary",
+                    "default": null
+                  },
+                  "Gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "PhotoData": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/CreateAdmim": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "BirthDate",
+                  "Email",
+                  "FName",
+                  "Gender",
+                  "LName",
+                  "Password",
+                  "PhoneNumbers"
+                ],
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "LName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Password": {
+                    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,100}$",
+                    "type": "string",
+                    "format": "password"
+                  },
+                  "Email": {
+                    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                    "type": "string"
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "Address": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Photo": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Gender": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "Photo": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Logout": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/Delete": {
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/AdminsList": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagenumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "exactmatch",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Admin/AdminProfilesList": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagenumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "exactmatch",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/BookAppointment": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/GetAppointments": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "RequestedDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IsPatient",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/GetAppointment": {
+      "get": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "RequestedDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IsPatient",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/RescheduleAppointment": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RescheduleAppointmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RescheduleAppointmentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RescheduleAppointmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/CancelAppointment": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Appointment/MarkAppointment": {
+      "post": {
+        "tags": [
+          "Appointment"
+        ],
+        "parameters": [
+          {
+            "name": "AppointmentId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "IsCompleted",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/CreateDoctor": {
+      "post": {
+        "tags": [
+          "Doctor"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "BirthDate",
+                  "Email",
+                  "FName",
+                  "Gender",
+                  "LName",
+                  "Password",
+                  "PhoneNumbers",
+                  "Position",
+                  "Salary"
+                ],
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "LName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Password": {
+                    "maxLength": 100,
+                    "minLength": 8,
+                    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
+                    "type": "string",
+                    "format": "password"
+                  },
+                  "Email": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "Position": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "YearsOfExperience": {
+                    "maximum": 50,
+                    "minimum": 1,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Gender": {
+                    "type": "string"
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "Address": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Photo": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Salary": {
+                    "maximum": 50000,
+                    "minimum": 6000,
+                    "type": "number",
+                    "format": "float"
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Position": {
+                  "style": "form"
+                },
+                "YearsOfExperience": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "Photo": {
+                  "style": "form"
+                },
+                "Salary": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/Login": {
+      "post": {
+        "tags": [
+          "Doctor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/Profile": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/UpdateProfile": {
+      "put": {
+        "tags": [
+          "Doctor"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "LName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Email": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "Position": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "YearsOfExperience": {
+                    "maximum": 50,
+                    "minimum": 1,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Gender": {
+                    "type": "string"
+                  },
+                  "Address": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": null
+                  },
+                  "PhotoData": {
+                    "type": "string",
+                    "format": "binary",
+                    "default": null
+                  },
+                  "Salary": {
+                    "maximum": 50000,
+                    "minimum": 6000,
+                    "type": "number",
+                    "format": "float"
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Position": {
+                  "style": "form"
+                },
+                "YearsOfExperience": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "PhotoData": {
+                  "style": "form"
+                },
+                "Salary": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/Logout": {
+      "post": {
+        "tags": [
+          "Doctor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/Delete": {
+      "delete": {
+        "tags": [
+          "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/DoctorProfilesList": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagenumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "exactmatch",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Doctor/DoctorsList": {
+      "get": {
+        "tags": [
+          "Doctor"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagenumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "exactmatch",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Message/GetMessages": {
+      "get": {
+        "tags": [
+          "Message"
+        ],
+        "parameters": [
+          {
+            "name": "patientid",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "doctorid",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Message/SendMessage": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "parameters": [
+          {
+            "name": "reciverID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Message/Delete": {
+      "delete": {
+        "tags": [
+          "Message"
+        ],
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/Register": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Address",
+                  "BirthDate",
+                  "Email",
+                  "EmergencyContactName",
+                  "EmergencyContactPhone",
+                  "FName",
+                  "Gender",
+                  "Link",
+                  "LName",
+                  "ParentName",
+                  "Password",
+                  "PhoneNumbers"
+                ],
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LName": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Gender": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Password": {
+                    "maxLength": 100,
+                    "minLength": 8,
+                    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
+                    "type": "string",
+                    "format": "password",
+                    "default": ""
+                  },
+                  "Email": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                    "type": "string",
+                    "format": "email",
+                    "default": ""
+                  },
+                  "Address": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LandLine": {
+                    "type": "string",
+                    "format": "tel",
+                    "default": ""
+                  },
+                  "EmergencyContactName": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string",
+                    "default": ""
+                  },
+                  "EmergencyContactPhone": {
+                    "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "ParentName": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "SpouseName": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BloodType": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Allergies": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "ChronicConditions": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PreviousSurgeries": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "CurrentMedications": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PolicyNumber": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "InsuranceProvider": {
+                    "type": "string"
+                  },
+                  "PolicyValidDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "default": ""
+                  },
+                  "Link": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Photo": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "LandLine": {
+                  "style": "form"
+                },
+                "EmergencyContactName": {
+                  "style": "form"
+                },
+                "EmergencyContactPhone": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "ParentName": {
+                  "style": "form"
+                },
+                "SpouseName": {
+                  "style": "form"
+                },
+                "BloodType": {
+                  "style": "form"
+                },
+                "Allergies": {
+                  "style": "form"
+                },
+                "ChronicConditions": {
+                  "style": "form"
+                },
+                "PreviousSurgeries": {
+                  "style": "form"
+                },
+                "CurrentMedications": {
+                  "style": "form"
+                },
+                "PolicyNumber": {
+                  "style": "form"
+                },
+                "InsuranceProvider": {
+                  "style": "form"
+                },
+                "PolicyValidDate": {
+                  "style": "form"
+                },
+                "Link": {
+                  "style": "form"
+                },
+                "Photo": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/Login": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/Profile": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/UpdateProfile": {
+      "put": {
+        "tags": [
+          "Patient"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "FName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BirthDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "default": null
+                  },
+                  "Email": {
+                    "pattern": "^(?=.{1,100}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "BloodType": {
+                    "pattern": "^(A|B|AB|O)[+-]$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "EmergencyContactName": {
+                    "pattern": "^.{2,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "EmergencyContactPhone": {
+                    "pattern": "^(?:\\+20|0)?1[0125]\\d{8}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PhoneNumbers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": null
+                  },
+                  "Gender": {
+                    "pattern": "^.{0,20}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Link": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "ParentName": {
+                    "pattern": "^.{0,100}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Address": {
+                    "pattern": "^.{0,500}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "SpouseName": {
+                    "pattern": "^.{0,100}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "LandLine": {
+                    "pattern": "^.{0,20}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "Allergies": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "ChronicConditions": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PreviousSurgeries": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "CurrentMedications": {
+                    "pattern": "^.{0,255}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PolicyNumber": {
+                    "pattern": "^.{0,50}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "InsuranceProvider": {
+                    "pattern": "^.{0,100}$",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "PolicyValidDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "default": null
+                  },
+                  "PhotoData": {
+                    "type": "string",
+                    "format": "binary",
+                    "default": null
+                  }
+                }
+              },
+              "encoding": {
+                "FName": {
+                  "style": "form"
+                },
+                "LName": {
+                  "style": "form"
+                },
+                "BirthDate": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "BloodType": {
+                  "style": "form"
+                },
+                "EmergencyContactName": {
+                  "style": "form"
+                },
+                "EmergencyContactPhone": {
+                  "style": "form"
+                },
+                "PhoneNumbers": {
+                  "style": "form"
+                },
+                "Gender": {
+                  "style": "form"
+                },
+                "Link": {
+                  "style": "form"
+                },
+                "ParentName": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                },
+                "SpouseName": {
+                  "style": "form"
+                },
+                "LandLine": {
+                  "style": "form"
+                },
+                "Allergies": {
+                  "style": "form"
+                },
+                "ChronicConditions": {
+                  "style": "form"
+                },
+                "PreviousSurgeries": {
+                  "style": "form"
+                },
+                "CurrentMedications": {
+                  "style": "form"
+                },
+                "PolicyNumber": {
+                  "style": "form"
+                },
+                "InsuranceProvider": {
+                  "style": "form"
+                },
+                "PolicyValidDate": {
+                  "style": "form"
+                },
+                "PhotoData": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/Logout": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/Delete": {
+      "delete": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/PatientProfilesList": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagenumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "exactmatch",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Patient/PatientsList": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagenumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "exactmatch",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppointmentRequest": {
+        "required": [
+          "appDate"
+        ],
+        "type": "object",
+        "properties": {
+          "appDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "doctorID": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "maxLength": 100,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
+            "type": "string",
+            "format": "password"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RescheduleAppointmentRequest": {
+        "required": [
+          "appDate",
+          "newDate"
+        ],
+        "type": "object",
+        "properties": {
+          "appDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "doctorID": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "newDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

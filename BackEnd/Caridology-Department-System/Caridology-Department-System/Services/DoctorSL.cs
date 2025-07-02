@@ -21,6 +21,7 @@ namespace Caridology_Department_System.Services
         private readonly EmailValidator emailValidator;
         private readonly IImageService imageService;
         private readonly DBContext dbContext;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DoctorSL"/> class with its required services.
         /// </summary>
@@ -41,6 +42,7 @@ namespace Caridology_Department_System.Services
             this.imageService = imageService;
             this.doctorPhoneNumberSL = doctorPhoneNumberSL;
         }
+
         /// <summary>
         /// Adds a new doctor to the system along with their phone numbers and profile photo.
         /// Performs input validation, password hashing, image saving, and runs within a database transaction.
@@ -106,6 +108,7 @@ namespace Caridology_Department_System.Services
                 return created;
             }
         }
+
         /// <summary>
         /// Retrieves an doctor user by their email and password, including role information.
         /// </summary>
@@ -142,6 +145,7 @@ namespace Caridology_Department_System.Services
             }
             return doctor;
         }
+
         /// <summary>
         /// Retrieves an doctor user by their unique ID, including phone numbers and role information.
         /// </summary>
@@ -162,10 +166,11 @@ namespace Caridology_Department_System.Services
                                         .SingleOrDefaultAsync();
             if (doctor == null)
             {
-                throw new Exception("account doesnot exist");
+                throw new Exception("Doctor account doesnot exist");
             }
             return doctor;
         }
+
         /// <summary>
         /// Retrieves the profile of an patient by their ID, including role, phone numbers, and optional profile photo as Base64.
         /// </summary>
@@ -186,6 +191,7 @@ namespace Caridology_Department_System.Services
             }
             return DoctorProfile ;
         }
+
         /// <summary>
         /// Deletes a doctor and their associated phone numbers within a database transaction.
         /// The doctor is soft-deleted by updating their status.
@@ -216,6 +222,7 @@ namespace Caridology_Department_System.Services
                 return deleted;                
             }
         }
+
         /// <summary>
         /// Updates a doctor's profile details, including personal info, email, photo, and phone numbers, within a database transaction.
         /// </summary>
@@ -321,6 +328,7 @@ namespace Caridology_Department_System.Services
                 throw;
             }
         }
+
         /// <summary>
         /// Retrieves a paginated list of doctors and their phone numbers, 10 per page.
         /// </summary>
@@ -365,6 +373,7 @@ namespace Caridology_Department_System.Services
             }
             return doctorsPerPage;
         }
+
         /// <summary>
         /// Retrieves a paginated list of doctor profiles and thier phone number, 10 per page.
         /// </summary>
@@ -426,6 +435,22 @@ namespace Caridology_Department_System.Services
                 doctorProfilePages.Add(doctorProfilePage);
             }
             return doctorProfilePages;
+        }
+
+        /// <summary>
+        /// Checks whether a doctor with the specified ID exists and is not marked as deleted.
+        /// </summary>
+        /// <param name="doctorID">The unique ID of the requested doctor.</param>
+        /// <returns>True if the doctor exists and is active.</returns>
+        /// <exception cref="Exception">Thrown if the doctor does not exist or is marked as deleted.</exception>
+        public async Task<bool> DoctorExists(int? doctorID)
+        {
+            bool DoctorExist= await dbContext.Doctors.AnyAsync(d => d.ID == doctorID && d.StatusID != 3);
+            if (!DoctorExist)
+            {
+                throw new Exception("Doctor not found");
+            }
+            return true;
         }
     }   
 }

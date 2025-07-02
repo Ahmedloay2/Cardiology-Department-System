@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Caridology-Department-System</name>
+        <name>Cardiology-Department-System</name>
     </assembly>
     <members>
         <member name="T:Caridology_Department_System.Controllers.AdminController">
@@ -165,6 +165,180 @@
             <response code="404">No matching admin profiles were found.</response>
             <response code="400">The page number provided is invalid.</response>
             <response code="500">An unexpected server error occurred.</response>
+        </member>
+        <member name="T:Caridology_Department_System.Controllers.AppointmentController">
+            <summary>
+            API controller responsible for handling appointment-related HTTP requests.
+            Provides endpoints for creating, retrieving, updating, and managing appointments
+            between patients and doctors in the cardiology department system.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AppointmentController.#ctor(Caridology_Department_System.Services.AppointmentSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Controllers.AppointmentController"/> class.
+            </summary>
+            <param name="appointmentSL">The appointment service layer responsible for handling appointment business logic.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AppointmentController.CreateAppointment(Caridology_Department_System.Requests.Appointment.AppointmentRequest)">
+            <summary>
+            Creates a new appointment between the authenticated patient and the specified doctor.
+            </summary>
+            <param name="appointmentRequest">The appointment creation request containing the appointment date and doctor ID.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the appointment creation:
+            <list type="bullet">
+            <item><description>200 OK - Appointment created successfully</description></item>
+            <item><description>400 Bad Request - Invalid input data or business logic error</description></item>
+            </list>
+            </returns>
+            <remarks>
+            <para>This endpoint requires authentication and is restricted to users with the "Patient" role.</para>
+            <para>The patient's ID is automatically extracted from the JWT token claims.</para>
+            <para>The appointment date must be in the future and the requested time slot must be available.</para>
+            </remarks>
+            <response code="200">Appointment created successfully with confirmation details.</response>
+            <response code="400">Invalid request model, appointment date, or time slot unavailable.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AppointmentController.GetAppointmentsByDay(System.DateTime,System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves all confirmed appointments for a specific doctor or patient on a given day.
+            </summary>
+            <param name="RequestedDate">The date for which to retrieve appointments (required).</param>
+            <param name="ID">
+            The unique identifier of the doctor or patient. 
+            If the user is authenticated as a doctor or patient, this parameter is ignored and the ID is extracted from the token.
+            </param>
+            <param name="IsPatient">
+            Indicates whether to retrieve appointments for a patient (true) or doctor (false).
+            Required only for non-authenticated requests or admin users.
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing:
+            <list type="bullet">
+            <item><description>200 OK - List of appointments for the specified date</description></item>
+            <item><description>400 Bad Request - Invalid parameters or error occurred</description></item>
+            </list>
+            </returns>
+            <remarks>
+            <para>For authenticated doctors and patients, the ID is automatically extracted from the JWT token.</para>
+            <para>For admin users or public access, both ID and isPatient parameters must be provided.</para>
+            <para>Returns an empty list if no appointments are found for the specified date.</para>
+            </remarks>
+            <response code="200">List of appointments retrieved successfully.</response>
+            <response code="400">Invalid parameters, missing role information, or user not found.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AppointmentController.GetAppointmentByDayAndTime(System.DateTime,System.Nullable{System.Int32},System.Nullable{System.Boolean})">
+            <summary>
+            Retrieves a specific confirmed appointment for a doctor or patient at an exact date and time.
+            </summary>
+            <param name="requestedDate">The exact date and time of the appointment to retrieve (required).</param>
+            <param name="id">
+            The unique identifier of the doctor or patient.
+            If the user is authenticated as a doctor or patient, this parameter is ignored and the ID is extracted from the token.
+            </param>
+            <param name="isPatient">
+            Indicates whether to retrieve an appointment for a patient (true) or doctor (false).
+            Required only for non-authenticated requests or admin users.
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing:
+            <list type="bullet">
+            <item><description>200 OK - The appointment details at the specified time</description></item>
+            <item><description>400 Bad Request - Invalid parameters, no appointment found, or error occurred</description></item>
+            </list>
+            </returns>
+            <remarks>
+            <para>For authenticated doctors and patients, the ID is automatically extracted from the JWT token.</para>
+            <para>For admin users or public access, both ID and isPatient parameters must be provided.</para>
+            <para>The date and time must match exactly with an existing confirmed appointment.</para>
+            </remarks>
+            <response code="200">Appointment details retrieved successfully.</response>
+            <response code="400">No appointment found at the specified time, invalid parameters, or user not found.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AppointmentController.RescheduleAppointment(Caridology_Department_System.Requests.Appointment.RescheduleAppointmentRequest)">
+            <summary>
+            Reschedules an existing appointment to a new date and time for the authenticated patient.
+            </summary>
+            <param name="request">
+            The reschedule request containing:
+            <list type="bullet">
+            <item><description>AppDate - The original appointment date and time</description></item>
+            <item><description>NewDate - The new desired appointment date and time</description></item>
+            <item><description>DoctorID - The unique identifier of the doctor</description></item>
+            </list>
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the reschedule operation:
+            <list type="bullet">
+            <item><description>200 OK - Appointment rescheduled successfully</description></item>
+            <item><description>400 Bad Request - Invalid input, unauthorized access, or conflict</description></item>
+            </list>
+            </returns>
+            <remarks>
+            <para>This endpoint requires authentication and is restricted to users with the "Patient" role.</para>
+            <para>The patient's ID is automatically extracted from the JWT token.</para>
+            <para>Only the patient who originally booked the appointment can reschedule it.</para>
+            <para>The new appointment date must be in the future and the time slot must be available.</para>
+            <para>The original appointment will be marked as "Postponed" and a new appointment will be created.</para>
+            </remarks>
+            <response code="200">Appointment rescheduled successfully with new date confirmation.</response>
+            <response code="400">Invalid request data, original appointment not found, new time slot unavailable, or unauthorized access.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AppointmentController.CancelAppointment(Caridology_Department_System.Requests.Appointment.AppointmentRequest)">
+            <summary>
+            Cancels an existing appointment for the authenticated patient.
+            </summary>
+            <param name="request">
+            The cancellation request containing:
+            <list type="bullet">
+            <item><description>AppDate - The appointment date and time to cancel</description></item>
+            <item><description>DoctorID - The unique identifier of the doctor</description></item>
+            </list>
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the cancellation:
+            <list type="bullet">
+            <item><description>200 OK - Appointment cancelled successfully</description></item>
+            <item><description>400 Bad Request - Invalid input, appointment not found, or unauthorized access</description></item>
+            </list>
+            </returns>
+            <remarks>
+            <para>This endpoint requires authentication and is restricted to users with the "Patient" role.</para>
+            <para>The patient's ID is automatically extracted from the JWT token.</para>
+            <para>Only the patient who originally booked the appointment can cancel it.</para>
+            <para>The appointment status will be changed to "Cancelled".</para>
+            </remarks>
+            <response code="200">Appointment cancelled successfully with confirmation details.</response>
+            <response code="400">Invalid request data, appointment not found, or unauthorized access.</response>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.AppointmentController.MarkAppointment(System.Int32,System.Boolean)">
+            <summary>
+            Marks an appointment as completed or missed by the attending doctor.
+            </summary>
+            <param name="AppointmentId">The unique identifier of the appointment to mark (required).</param>
+            <param name="IsCompleted">
+            Indicates the appointment outcome:
+            <list type="bullet">
+            <item><description>true - The appointment was completed successfully</description></item>
+            <item><description>false - The appointment was missed by the patient</description></item>
+            </list>
+            </param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> representing the result of the marking operation:
+            <list type="bullet">
+            <item><description>200 OK - Appointment marked successfully</description></item>
+            <item><description>400 Bad Request - Invalid input, appointment not found, unauthorized access, or timing error</description></item>
+            </list>
+            </returns>
+            <remarks>
+            <para>This endpoint requires authentication and is restricted to users with the "Doctor" role.</para>
+            <para>The doctor's ID is automatically extracted from the JWT token.</para>
+            <para>Only the doctor assigned to the appointment can mark it.</para>
+            <para>Appointments can only be marked after their scheduled time has passed.</para>
+            <para>The appointment status will be changed to either "Completed" or "Missed" based on the isCompleted parameter.</para>
+            </remarks>
+            <response code="200">Appointment marked successfully with status confirmation.</response>
+            <response code="400">Invalid appointment ID, appointment not found, unauthorized access, or attempt to mark future appointment.</response>
         </member>
         <member name="T:Caridology_Department_System.Controllers.DoctorController">
             <summary>
@@ -869,6 +1043,92 @@
             A list of <see cref="T:Caridology_Department_System.Requests.Admin.AdminProfilePageRequest"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) )
             </returns>
         </member>
+        <member name="T:Caridology_Department_System.Services.AppointmentSL">
+            <summary>
+            Service layer for handling appointment-related business logic, 
+            including creating, retrieving, updating, and managing appointments between patients and doctors.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.#ctor(Caridology_Department_System.Models.DBContext,Caridology_Department_System.Services.DoctorSL,Caridology_Department_System.Services.StatusSL,AutoMapper.IMapper,Caridology_Department_System.Services.PatientSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.AppointmentSL"/> class.
+            </summary>
+            <param name="dbContext">The database context for data operations.</param>
+            <param name="doctorSL">Service for doctor-related operations.</param>
+            <param name="patientSL">Service for patient-related operations.</param>
+            <param name="statusSL">Service for status-related operations.</param>
+            <param name="mapper">AutoMapper instance for object mapping.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.CreateAppointmentAsync(System.Int32,Caridology_Department_System.Requests.Appointment.AppointmentRequest)">
+            <summary>
+            Creates a new appointment between a patient and a doctor.
+            </summary>
+            <param name="PatientID">The unique identifier of the patient booking the appointment.</param>
+            <param name="request">The appointment request containing the appointment date and doctor ID.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains true if the appointment was created successfully.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the requested time slot is already taken or the doctor is unavailable.</exception>
+            <exception cref="T:System.Exception">Thrown when the doctor doesn't exist, is inactive, or required status is missing from the database.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.GetAppointmentsDataByDayAsync(System.DateTime,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Retrieves all confirmed appointments for a specific doctor or patient on a given day.
+            </summary>
+            <param name="RequestedDay">The date for which to retrieve appointments.</param>
+            <param name="ID">The unique identifier of the doctor or patient.</param>
+            <param name="Role">The role of the user ("Doctor" or "Patient").</param>
+            <returns>A task that represents the asynchronous operation. The task result contains a list of appointment data for the specified day.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when the ID is invalid or null.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.GetAppointmentDataByDayAndTimeAsync(System.DateTime,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Retrieves a specific confirmed appointment for a doctor or patient at an exact date and time.
+            </summary>
+            <param name="RequestedDate">The exact date and time of the requested appointment.</param>
+            <param name="ID">The unique identifier of the doctor or patient.</param>
+            <param name="Role">The role of the user ("Doctor" or "Patient").</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the appointment data at the specified time.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when no appointment exists at the specified date and time.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.RescheduleAppointmentAsync(Caridology_Department_System.Requests.Appointment.RescheduleAppointmentRequest,System.Int32)">
+            <summary>
+            Reschedules an existing appointment to a new date and time.
+            </summary>
+            <param name="request">The reschedule request containing the original appointment date, new date, and doctor ID.</param>
+            <param name="PatientID">The unique identifier of the patient requesting the reschedule.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains true if the reschedule was successful.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the original appointment doesn't exist or the new time slot is taken.</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Thrown when a patient tries to reschedule another patient's appointment.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.CancelAppointmentAsync(Caridology_Department_System.Requests.Appointment.AppointmentRequest,System.Int32)">
+            <summary>
+            Cancels an existing appointment.
+            </summary>
+            <param name="request">The appointment request containing the appointment date and doctor ID.</param>
+            <param name="PatientID">The unique identifier of the patient requesting the cancellation.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains true if the cancellation was successful.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the appointment doesn't exist or is already cancelled.</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Thrown when a patient tries to cancel another patient's appointment.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.MarkAppointmentAsync(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Marks an appointment as completed or missed by the attending doctor.
+            </summary>
+            <param name="AppointmentID">The unique identifier of the appointment to mark.</param>
+            <param name="DoctorID">The unique identifier of the doctor marking the appointment.</param>
+            <param name="IsCompleted">True if the appointment was completed; false if it was missed.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains true if the appointment was marked successfully.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the appointment is not found or when trying to mark a future appointment.</exception>
+            <exception cref="T:System.UnauthorizedAccessException">Thrown when the doctor is not authorized to mark this appointment.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.GetAppointmentByDayAndTimeAsync(System.DateTime,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Retrieves a confirmed appointment for a doctor or patient at a specific date and time.
+            </summary>
+            <param name="RequestedDate">The exact date and time of the appointment.</param>
+            <param name="ID">The unique identifier of the doctor or patient.</param>
+            <param name="Role">The role ("Doctor" or "Patient").</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the appointment model or null if not found.</returns>
+        </member>
         <member name="T:Caridology_Department_System.Services.DoctorPhoneNumberSL">
             <summary>
             Service class for managing doctor phone numbers, including adding, updating, and deleting them with soft-delete logic.
@@ -1035,6 +1295,14 @@
             <returns>
             A list of <see cref="T:Caridology_Department_System.Requests.Doctor.DoctorProfilePageRequest"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) )
             </returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.DoctorSL.DoctorExists(System.Nullable{System.Int32})">
+            <summary>
+            Checks whether a doctor with the specified ID exists and is not marked as deleted.
+            </summary>
+            <param name="doctorID">The unique ID of the requested doctor.</param>
+            <returns>True if the doctor exists and is active.</returns>
+            <exception cref="T:System.Exception">Thrown if the doctor does not exist or is marked as deleted.</exception>
         </member>
         <member name="M:Caridology_Department_System.Services.EmailValidator.IsEmailUniqueAsync(System.String)">
             <summary>
@@ -1328,6 +1596,14 @@
             <returns>
             A list of <see cref="T:Caridology_Department_System.Requests.Patient.PatientProfilePageRequest"/> objects including associated phone numbers (excluding those with StatusID 3 (deleted) )
             </returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.PatientSL.PatientExists(System.Nullable{System.Int32})">
+            <summary>
+            Checks whether a patient with the specified ID exists and is not marked as deleted.
+            </summary>
+            <param name="PatientID">The unique ID of the requested patient.</param>
+            <returns>True if the patient exists and is active.</returns>
+            <exception cref="T:System.Exception">Thrown if the patient does not exist or is marked as deleted.</exception>
         </member>
         <member name="M:JwtTokenService.GenerateToken(UserModel)">
             <summary>

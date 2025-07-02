@@ -147,7 +147,7 @@ namespace Caridology_Department_System.Controllers
         /// </remarks>
         /// <response code="200">Admin account created successfully</response>
         /// <response code="400">Validation failed or a general exception occurred</response>
-        [HttpPost("CreateAdmim")]
+        [HttpPost("CreateAdmin")]
         [Consumes("multipart/form-data")]
         [RequestSizeLimit(10 * 1024 * 1024)]
         public async Task<IActionResult> CreateAdminAsync([FromForm] AdminRequest admin)

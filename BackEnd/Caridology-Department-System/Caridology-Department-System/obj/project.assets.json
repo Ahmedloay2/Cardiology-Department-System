@@ -9536,9 +9536,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects developing\\cardiology department system project\\try 3\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
-      "projectName": "Caridology-Department-System",
-      "projectPath": "D:\\projects developing\\cardiology department system project\\try 3\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Caridology-Department-System.csproj",
+      "projectUniqueName": "D:\\projects developing\\cardiology department system project\\try 3\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Cardiology-Department-System.csproj",
+      "projectName": "Cardiology-Department-System",
+      "projectPath": "D:\\projects developing\\cardiology department system project\\try 3\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\Cardiology-Department-System.csproj",
       "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
       "outputPath": "D:\\projects developing\\cardiology department system project\\try 3\\Cardiology-Department-System\\BackEnd\\Caridology-Department-System\\Caridology-Department-System\\obj\\",
       "projectStyle": "PackageReference",
@@ -9573,7 +9573,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -9675,7 +9675,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

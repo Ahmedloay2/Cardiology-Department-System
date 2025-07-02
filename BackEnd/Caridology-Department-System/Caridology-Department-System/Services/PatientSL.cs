@@ -382,6 +382,7 @@ namespace Caridology_Department_System.Services
             }
             return PatientsPerPage;
         }
+
         /// <summary>
         /// Retrieves a paginated list of patient profiles and thier phone number, 10 per page.
         /// </summary>
@@ -443,6 +444,22 @@ namespace Caridology_Department_System.Services
                 PatientProfilePages.Add(PatientProfilePage);
             }
             return PatientProfilePages;
+        }
+
+        /// <summary>
+        /// Checks whether a patient with the specified ID exists and is not marked as deleted.
+        /// </summary>
+        /// <param name="PatientID">The unique ID of the requested patient.</param>
+        /// <returns>True if the patient exists and is active.</returns>
+        /// <exception cref="Exception">Thrown if the patient does not exist or is marked as deleted.</exception>
+        public async Task<bool> PatientExists(int? PatientID)
+        {
+            bool PatientExist = await dbContext.Patients.AnyAsync(d => d.ID == PatientID && d.StatusID != 3);
+            if (!PatientExist)
+            {
+                throw new Exception("Patient not found");
+            }
+            return true;
         }
     }
 }

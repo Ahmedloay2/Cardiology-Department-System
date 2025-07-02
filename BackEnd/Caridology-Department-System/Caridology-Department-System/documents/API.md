@@ -33,6 +33,9 @@ Patient registration, profile management, and health records
 ### 🟡 Message Endpoints
 Communication system between doctors and patients
 
+### 🗓️ Appointment Endpoints
+Appointment booking, management, and tracking system
+
 ---
 
 ## 📋 Endpoint Reference
@@ -85,7 +88,7 @@ Gender: string
 
 ---
 
-#### **POST** `/api/Admin/CreateAdmim`
+#### **POST** `/api/Admin/CreateAdmin`
 **Purpose**: Create new admin account  
 **Content-Type**: `multipart/form-data`
 
@@ -247,7 +250,7 @@ Salary: float (6000-50000)
 
 ---
 
-#### **GET** `/api/Doctor/DoctorProfilezList`
+#### **GET** `/api/Doctor/DoctorProfilesList`
 **Purpose**: Get list of doctor profiles with search functionality
 
 **📥 Input Parameters:**
@@ -403,7 +406,7 @@ PhotoData: binary file
 
 ---
 
-#### **GET** `/api/Patient/PatientProfilezList`
+#### **GET** `/api/Patient/PatientProfilesList`
 **Purpose**: Get list of patient profiles with search functionality
 
 **📥 Input Parameters:**
@@ -466,6 +469,136 @@ PhotoData: binary file
 
 ---
 
+### 🗓️ Appointment Operations
+
+#### **POST** `/api/Appointment/BookAppointment`
+**Purpose**: Create a new appointment between patient and doctor  
+**Content-Type**: `application/json`  
+**🔒 Authorization**: Patient role required
+
+**📥 Input:**
+```json
+{
+  "AppDate": "2025-07-15T10:30:00",
+  "DoctorID": 123
+}
+```
+
+**📤 Responses:**
+- `200 OK` - Appointment created successfully
+- `400 Bad Request` - Invalid input data or time slot unavailable
+
+**📝 Notes:**
+- Patient ID is automatically extracted from JWT token
+- Appointment date must be in the future
+- Time slot must be available for the specified doctor
+
+---
+
+#### **GET** `/api/Appointment/GetAppointments`
+**Purpose**: Retrieve all confirmed appointments for a specific day
+
+**📥 Input Parameters:**
+- `RequestedDate` (query, datetime, required) - Date to retrieve appointments for
+- `ID` (query, integer, optional) - Doctor/Patient ID (auto-extracted for authenticated users)
+- `IsPatient` (query, boolean, optional) - true for patient appointments, false for doctor appointments
+
+**📤 Responses:**
+- `200 OK` - List of appointments for the specified date
+- `400 Bad Request` - Invalid parameters or error occurred
+
+**📝 Notes:**
+- For authenticated doctors/patients, ID is auto-extracted from JWT token
+- For admin users, both ID and IsPatient parameters are required
+- Returns empty list if no appointments found
+
+---
+
+#### **GET** `/api/Appointment/GetAppointment`
+**Purpose**: Retrieve a specific appointment at exact date and time
+
+**📥 Input Parameters:**
+- `RequestedDate` (query, datetime, required) - Exact appointment date and time
+- `ID` (query, integer, optional) - Doctor/Patient ID (auto-extracted for authenticated users)
+- `IsPatient` (query, boolean, optional) - true for patient appointment, false for doctor appointment
+
+**📤 Responses:**
+- `200 OK` - Appointment details at specified time
+- `400 Bad Request` - No appointment found or invalid parameters
+
+**📝 Notes:**
+- Requires exact date and time match
+- For authenticated users, ID is auto-extracted from JWT token
+
+---
+
+#### **POST** `/api/Appointment/RescheduleAppointment`
+**Purpose**: Reschedule an existing appointment to a new date and time  
+**Content-Type**: `application/json`  
+**🔒 Authorization**: Patient role required
+
+**📥 Input:**
+```json
+{
+  "AppDate": "2025-07-15T10:30:00",
+  "NewDate": "2025-07-20T14:00:00",
+  "DoctorID": 123
+}
+```
+
+**📤 Responses:**
+- `200 OK` - Appointment rescheduled successfully
+- `400 Bad Request` - Invalid input, original appointment not found, or new time unavailable
+
+**📝 Notes:**
+- Only the original patient can reschedule their appointment
+- Original appointment is marked as "Postponed"
+- New appointment date must be in the future and available
+
+---
+
+#### **POST** `/api/Appointment/CancelAppointment`
+**Purpose**: Cancel an existing appointment  
+**Content-Type**: `application/json`  
+**🔒 Authorization**: Patient role required
+
+**📥 Input:**
+```json
+{
+  "AppDate": "2025-07-15T10:30:00",
+  "DoctorID": 123
+}
+```
+
+**📤 Responses:**
+- `200 OK` - Appointment cancelled successfully
+- `400 Bad Request` - Invalid input, appointment not found, or unauthorized access
+
+**📝 Notes:**
+- Only the original patient can cancel their appointment
+- Appointment status is changed to "Cancelled"
+
+---
+
+#### **POST** `/api/Appointment/MarkAppointment`
+**Purpose**: Mark appointment as completed or missed by the doctor  
+**🔒 Authorization**: Doctor role required
+
+**📥 Input Parameters:**
+- `AppointmentId` (query, integer, required) - Appointment ID to mark
+- `IsCompleted` (query, boolean, required) - true for completed, false for missed
+
+**📤 Responses:**
+- `200 OK` - Appointment marked successfully
+- `400 Bad Request` - Invalid input, appointment not found, or unauthorized access
+
+**📝 Notes:**
+- Only the assigned doctor can mark their appointments
+- Can only mark appointments after their scheduled time
+- Status changes to "Completed" or "Missed" based on IsCompleted parameter
+
+---
+
 ## 🔒 Security Requirements
 
 ### Password Complexity
@@ -507,6 +640,11 @@ All passwords must meet the following criteria:
 - **Years of Experience:** 1-50 years
 - **Blood Type:** A+, A-, B+, B-, AB+, AB-, O+, O-
 
+### Appointment Constraints
+- **Future Dates Only:** All appointment dates must be in the future
+- **Time Slot Availability:** Each doctor can only have one appointment per time slot
+- **Status Values:** Confirmed, Cancelled, Postponed, Completed, Missed
+
 ---
 
 ## 🎨 Legend
@@ -515,6 +653,7 @@ All passwords must meet the following criteria:
 - 🔵 **Doctor Functions** - Medical staff operations  
 - 🟢 **Patient Functions** - Patient services
 - 🟡 **Message Functions** - Communication system
+- 🗓️ **Appointment Functions** - Appointment management system
 - 📥 **Input** - Request data/parameters
 - 📤 **Output** - Response data
 - ✅ **Required Field** - Must be provided
@@ -545,3 +684,6 @@ All passwords must meet the following criteria:
 - Phone numbers must follow Egyptian format for patients
 - Passwords must meet complexity requirements
 - Email addresses must be unique across the system
+- Appointment dates must be in the future
+- Only assigned users can modify their own appointments
+- Doctors can only mark appointments after the scheduled time

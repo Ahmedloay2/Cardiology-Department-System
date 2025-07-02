@@ -58,6 +58,10 @@ builder.Services.AddScoped<IImageService, ImageService>();
 builder.Services.AddScoped<DoctorSL>();
 builder.Services.AddScoped<DoctorPhoneNumberSL>();
 builder.Services.AddScoped<MessageSL>();
+builder.Services.AddScoped<AppointmentSL>();
+builder.Services.AddScoped<StatusSL>();
+//builder.Services.AddScoped<IReportSL>();
+
 // JWT Authentication Configuration
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? throw new InvalidOperationException("JWT Issuer not configured");
