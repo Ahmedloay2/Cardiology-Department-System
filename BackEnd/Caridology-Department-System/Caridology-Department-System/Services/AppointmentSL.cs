@@ -243,6 +243,83 @@ namespace Caridology_Department_System.Services
             await dbContext.SaveChangesAsync();
             return true;
         }
+        
+        /// <summary>
+        /// Retrieves an appointment by its unique identifier.
+        /// </summary>
+        /// <param name="appointmentID">The unique identifier of the appointment to retrieve. Must be a positive integer.</param>
+        /// <returns>An <see cref="AppointmentModel"/> representing the appointment with the specified identifier.</returns>
+        /// <exception cref="Exception">Thrown if no appointment with the specified identifier is found.</exception>
+        private async Task<AppointmentModel> GetAppointmentByIDAsync(int appointmentID)
+        {
+            AppointmentModel? appointment = await dbContext.Appointments.
+                                        Where(a=> a.APPID==appointmentID).
+                                        FirstOrDefaultAsync();
+            if (appointment == null)
+            {
+                throw new Exception("Appointment not found");
+            }
+            return appointment;
+        }
+
+        /// <summary>
+        /// Determines whether the specified appointment is marked as completed.
+        /// </summary>
+        /// <remarks>This method checks the status of the appointment by comparing its status ID to the ID
+        /// of the "Completed" status.</remarks>
+        /// <param name="appointmentID">The unique identifier of the appointment to check.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains  true if the appointment is
+        /// completed; otherwise, false.</returns>
+        public async Task<bool> IsCompletedAsync(int appointmentID)
+        {
+            StatusModel CompletedStatus = await statusSL.GetStatusByNameAsync("Completed");
+            AppointmentModel appointment = await GetAppointmentByIDAsync(appointmentID);
+            if (appointment.StatusID != CompletedStatus.StatusID)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Determines whether the specified appointment is associated with the given doctor.
+        /// </summary>
+        /// <remarks>This method retrieves the appointment details asynchronously and compares the
+        /// associated doctor ID  with the provided <paramref name="doctorID"/>. Ensure that the <paramref
+        /// name="appointmentID"/>  corresponds to a valid appointment.</remarks>
+        /// <param name="appointmentID">The unique identifier of the appointment to check.</param>
+        /// <param name="doctorID">The unique identifier of the doctor to compare against.</param>
+        /// <returns><see langword="true"/> if the appointment is associated with the specified doctor;  otherwise, <see
+        /// langword="false"/>.</returns>
+        public async Task<bool> isSameDoctor(int appointmentID,int doctorID)
+        {
+            AppointmentModel appointment = await GetAppointmentByIDAsync(appointmentID);
+            if (appointment.DoctorID != doctorID)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Determines whether the specified appointment is associated with the given patient.
+        /// </summary>
+        /// <remarks>This method retrieves the appointment details asynchronously and compares the
+        /// associated patient ID  with the provided <paramref name="patientID"/>. Ensure that the appointment ID
+        /// corresponds to a valid  appointment in the system.</remarks>
+        /// <param name="appointmentID">The unique identifier of the appointment to check.</param>
+        /// <param name="patientID">The unique identifier of the patient to compare against the appointment.</param>
+        /// <returns><see langword="true"/> if the appointment is associated with the specified patient;  otherwise, <see
+        /// langword="false"/>.</returns>
+        public async Task<bool> isSamePatient(int appointmentID, int patientID)
+        {
+            AppointmentModel appointment = await GetAppointmentByIDAsync(appointmentID);
+            if (appointment.PatientID != patientID)
+            {
+                return false;
+            }
+            return true;
+        }
 
         /// <summary>
         /// Retrieves a confirmed appointment for a doctor or patient at a specific date and time.

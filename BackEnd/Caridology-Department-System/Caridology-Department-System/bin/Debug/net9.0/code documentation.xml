@@ -768,6 +768,53 @@
             <response code="200">The page number is invalid.</response>
             <response code="500">An unexpected error occurs.</response>
         </member>
+        <member name="T:Caridology_Department_System.Controllers.ReportController">
+            <summary>
+            Controller responsible for handling report-related HTTP requests.
+            It acts as an entry point for the API endpoints related to report functionalities.
+            </summary>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.ReportController.#ctor(Caridology_Department_System.Services.IReportSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Controllers.ReportController"/> class.
+            </summary>
+            <param name="reportSL">The service layer instance used to handle report-related operations. This parameter cannot be null.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.ReportController.CreateReport(Caridology_Department_System.Requests.Report.ReportDto)">
+            <summary>
+            Creates a new medical report based on the provided data.
+            </summary>
+            <remarks>This method is accessible only to users with the "Doctor" role and requires
+            authorization. It validates the input model and attempts to create a report using the provided data. If the
+            report creation is successful, a success response is returned; otherwise, an error response is
+            generated.</remarks>
+            <param name="request">The data required to create the report, encapsulated in a <see cref="T:Caridology_Department_System.Requests.Report.ReportDto"/> object.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the result of the operation.  Returns a success response with
+            status code 200 if the report is created successfully.  Returns a bad request response with status code 400
+            if the input is invalid or an error occurs during report creation.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.ReportController.UpdateReport(Caridology_Department_System.Requests.Report.ReportDto)">
+            <summary>
+            Updates an existing medical report with the provided data.
+            </summary>
+            <remarks>This endpoint is restricted to users with the "Doctor" role and requires
+            authorization. Ensure that the <paramref name="request"/> object is valid before calling this
+            method.</remarks>
+            <param name="request">An object containing the updated report details. The request must conform to the expected model structure.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the outcome of the operation.  Returns a success response if the
+            report is updated successfully, or a message indicating no changes were made. Returns a bad request response
+            if the input model is invalid or an error occurs during processing.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Controllers.ReportController.GetReport(System.Int32)">
+            <summary>
+            Retrieves a report associated with the specified appointment ID.
+            </summary>
+            <remarks>This method requires authorization and is accessible via an HTTP GET request to the
+            "GetReport" endpoint. Ensure that the <paramref name="appointmentID"/> is a positive integer.</remarks>
+            <param name="appointmentID">The unique identifier of the appointment for which the report is requested. Must be greater than 0.</param>
+            <returns>An <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the report data if the operation is successful. Returns a <see
+            cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/> if the appointment ID is invalid or if an error occurs.</returns>
+        </member>
         <member name="T:Caridology_Department_System.Migrations.FirstMigration">
             <inheritdoc />
         </member>
@@ -875,6 +922,112 @@
         </member>
         <member name="M:Caridology_Department_System.Migrations.salaryaddedtodoctor.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.FixReportModel">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FixReportModel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FixReportModel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.FixReportModel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Migrations.fixingreportmodel">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.fixingreportmodel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.fixingreportmodel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Caridology_Department_System.Migrations.fixingreportmodel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Caridology_Department_System.Repository.IReportRepository">
+            <summary>
+            Defines a contract for managing reports in the system.
+            </summary>
+            <remarks>This interface provides methods for saving, adding, and retrieving reports asynchronously.
+            Implementations of this interface are responsible for interacting with the underlying data store to perform
+            these operations. Ensure that all preconditions for the methods are met before invoking them.</remarks>
+        </member>
+        <member name="M:Caridology_Department_System.Repository.IReportRepository.SaveAsync">
+            <summary>
+            Saves the current state asynchronously.
+            </summary>
+            <remarks>This method performs an asynchronous save operation to persist the current state.
+            Ensure that any required data is properly initialized before calling this method.</remarks>
+            <returns>A task that represents the asynchronous save operation.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Repository.IReportRepository.AddReportAsync(Caridology_Department_System.Models.ReportModel)">
+            <summary>
+            Asynchronously adds a new report to the system.
+            </summary>
+            <remarks>This method adds the provided report to the system's data store. Ensure that the 
+            <paramref name="report"/> object is properly initialized before calling this method.</remarks>
+            <param name="report">The report to be added. Must not be <see langword="null"/>.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Repository.IReportRepository.GetByAppointmentIDAsync(System.Int32)">
+            <summary>
+            Retrieves a report associated with the specified appointment ID.
+            </summary>
+            <remarks>Use this method to retrieve detailed information about a specific appointment's
+            report. If no report exists for the given appointment ID, the method returns <see
+            langword="null"/>.</remarks>
+            <param name="appointmentID">The unique identifier of the appointment for which the report is to be retrieved. Must be a positive
+            integer.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the  <see cref="T:Caridology_Department_System.Models.ReportModel"/>
+            associated with the specified appointment ID, or <see langword="null"/>  if no report is found.</returns>
+        </member>
+        <member name="T:Caridology_Department_System.Repository.ReportRepository">
+            <summary>
+            Provides methods for managing reports in the database, including adding, retrieving, and saving reports.
+            </summary>
+            <remarks>The <see cref="T:Caridology_Department_System.Repository.ReportRepository"/> class serves as a repository for handling report-related
+            operations. It interacts with the underlying database context and a status service layer to perform tasks such
+            as adding new reports, retrieving reports by appointment ID, and saving changes to the database.</remarks>
+        </member>
+        <member name="M:Caridology_Department_System.Repository.ReportRepository.#ctor(Caridology_Department_System.Models.DBContext,Caridology_Department_System.Services.StatusSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Repository.ReportRepository"/> class.
+            </summary>
+            <param name="dbContext">The database context used to interact with the underlying data store. This parameter cannot be null.</param>
+            <param name="statusSL">The service layer responsible for handling status-related operations. This parameter cannot be null.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Repository.ReportRepository.AddReportAsync(Caridology_Department_System.Models.ReportModel)">
+            <summary>
+            Asynchronously adds a new report to the database.
+            </summary>
+            <remarks>This method adds the specified <see cref="T:Caridology_Department_System.Models.ReportModel"/> instance to the database
+            context. Changes are not persisted to the database until <c>SaveChangesAsync</c> is called on the
+            context.</remarks>
+            <param name="report">The report to add. This parameter cannot be null.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Repository.ReportRepository.GetByAppointmentIDAsync(System.Int32)">
+            <summary>
+            Retrieves a report associated with the specified appointment ID, excluding reports marked with a "Deleted"
+            status.
+            </summary>
+            <remarks>This method filters out reports with a "Deleted" status before attempting to retrieve
+            a single report. Ensure that the appointment ID provided corresponds to a valid appointment in the
+            system.</remarks>
+            <param name="appointmentID">The unique identifier of the appointment for which the report is to be retrieved.</param>
+            <returns>A <see cref="T:Caridology_Department_System.Models.ReportModel"/> object representing the report associated with the specified appointment ID,  or
+            <see langword="null"/> if no matching report is found.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Repository.ReportRepository.SaveAsync">
+            <summary>
+            Saves all pending changes to the database asynchronously.
+            </summary>
+            <remarks>This method commits all changes tracked by the underlying <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> to
+            the database. It should be called after making modifications to entities to persist those changes.</remarks>
+            <returns>A task that represents the asynchronous save operation.</returns>
         </member>
         <member name="T:Caridology_Department_System.Services.AdminPhoneNumberSL">
             <summary>
@@ -1120,6 +1273,48 @@
             <exception cref="T:System.InvalidOperationException">Thrown when the appointment is not found or when trying to mark a future appointment.</exception>
             <exception cref="T:System.UnauthorizedAccessException">Thrown when the doctor is not authorized to mark this appointment.</exception>
         </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.GetAppointmentByIDAsync(System.Int32)">
+            <summary>
+            Retrieves an appointment by its unique identifier.
+            </summary>
+            <param name="appointmentID">The unique identifier of the appointment to retrieve. Must be a positive integer.</param>
+            <returns>An <see cref="T:Caridology_Department_System.Models.AppointmentModel"/> representing the appointment with the specified identifier.</returns>
+            <exception cref="T:System.Exception">Thrown if no appointment with the specified identifier is found.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.IsCompletedAsync(System.Int32)">
+            <summary>
+            Determines whether the specified appointment is marked as completed.
+            </summary>
+            <remarks>This method checks the status of the appointment by comparing its status ID to the ID
+            of the "Completed" status.</remarks>
+            <param name="appointmentID">The unique identifier of the appointment to check.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains  true if the appointment is
+            completed; otherwise, false.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.isSameDoctor(System.Int32,System.Int32)">
+            <summary>
+            Determines whether the specified appointment is associated with the given doctor.
+            </summary>
+            <remarks>This method retrieves the appointment details asynchronously and compares the
+            associated doctor ID  with the provided <paramref name="doctorID"/>. Ensure that the <paramref
+            name="appointmentID"/>  corresponds to a valid appointment.</remarks>
+            <param name="appointmentID">The unique identifier of the appointment to check.</param>
+            <param name="doctorID">The unique identifier of the doctor to compare against.</param>
+            <returns><see langword="true"/> if the appointment is associated with the specified doctor;  otherwise, <see
+            langword="false"/>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.AppointmentSL.isSamePatient(System.Int32,System.Int32)">
+            <summary>
+            Determines whether the specified appointment is associated with the given patient.
+            </summary>
+            <remarks>This method retrieves the appointment details asynchronously and compares the
+            associated patient ID  with the provided <paramref name="patientID"/>. Ensure that the appointment ID
+            corresponds to a valid  appointment in the system.</remarks>
+            <param name="appointmentID">The unique identifier of the appointment to check.</param>
+            <param name="patientID">The unique identifier of the patient to compare against the appointment.</param>
+            <returns><see langword="true"/> if the appointment is associated with the specified patient;  otherwise, <see
+            langword="false"/>.</returns>
+        </member>
         <member name="M:Caridology_Department_System.Services.AppointmentSL.GetAppointmentByDayAndTimeAsync(System.DateTime,System.Nullable{System.Int32},System.String)">
             <summary>
             Retrieves a confirmed appointment for a doctor or patient at a specific date and time.
@@ -1356,6 +1551,48 @@
             </summary>
             <param name="path">The image file path.</param>
             <returns>The content type string.</returns>
+        </member>
+        <member name="T:Caridology_Department_System.Services.IReportSL">
+            <summary>
+            Defines the contract for report-related operations, including creating, updating, and retrieving reports.
+            </summary>
+            <remarks>This interface provides methods for managing reports in an asynchronous manner.
+            Implementations of this interface should ensure proper validation of input parameters and handle any necessary
+            business logic for report creation, updates, and retrieval.</remarks>
+        </member>
+        <member name="M:Caridology_Department_System.Services.IReportSL.CreateReportAsync(Caridology_Department_System.Requests.Report.ReportDto,System.Int32)">
+            <summary>
+            Asynchronously creates a report based on the provided request data and associates it with the specified doctor.
+            </summary>
+            <remarks>Ensure that the <paramref name="request"/> contains all required fields before calling this method.
+            The operation may fail if the provided data is invalid or if the doctor ID does not exist.</remarks>
+            <param name="request">The data required to create the report, including patient information and report details. Cannot be null.</param>
+            <param name="doctorID">The unique identifier of the doctor to associate with the report. Must be a positive integer.</param>
+            <returns>A task that represents the asynchronous operation. The task result is <see langword="true"/> if the report was
+            successfully created;  otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.IReportSL.UpdateReportAsync(Caridology_Department_System.Requests.Report.ReportDto,System.Int32)">
+            <summary>
+            Updates an existing report with the provided data.
+            </summary>
+            <remarks>Ensure that the <paramref name="request"/> contains valid data and that the <paramref
+            name="doctorID"/> corresponds to an existing doctor.</remarks>
+            <param name="request">The report data to update, including any changes to its fields.</param>
+            <param name="doctorID">The unique identifier of the doctor associated with the report.</param>
+            <returns>A task that represents the asynchronous operation. The task result is <see langword="true"/> if the update
+            was successful; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:Caridology_Department_System.Services.IReportSL.GetReportByAppointmentIdAsync(System.Int32)">
+            <summary>
+            Retrieves the report associated with the specified appointment ID.
+            </summary>
+            <remarks>This method performs an asynchronous operation to fetch the report data. Ensure that
+            the appointment ID provided is valid and corresponds to an existing appointment.</remarks>
+            <param name="appointmentID">The unique identifier of the appointment for which the report is to be retrieved. Must be a positive
+            integer.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the  <see cref="T:Caridology_Department_System.Models.ReportModel"/>
+            associated with the specified appointment ID. If no report is found, the result will be <see
+            langword="null"/>.</returns>
         </member>
         <member name="T:Caridology_Department_System.Services.MessageSL">
             <summary>
@@ -1604,6 +1841,65 @@
             <param name="PatientID">The unique ID of the requested patient.</param>
             <returns>True if the patient exists and is active.</returns>
             <exception cref="T:System.Exception">Thrown if the patient does not exist or is marked as deleted.</exception>
+        </member>
+        <member name="T:Caridology_Department_System.Services.ReportSL">
+            <summary>
+            Provides functionality for managing reports associated with appointments, including creation,  updating, and
+            retrieval operations.
+            </summary>
+            <remarks>The <see cref="T:Caridology_Department_System.Services.ReportSL"/> class acts as a service layer for handling report-related
+            operations.  It validates business rules and interacts with the underlying repository to persist report data. 
+            This class ensures that reports are created, updated, and retrieved in accordance with appointment  and
+            doctor-specific constraints.</remarks>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ReportSL.#ctor(Caridology_Department_System.Repository.IReportRepository,Caridology_Department_System.Services.StatusSL,Caridology_Department_System.Services.AppointmentSL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caridology_Department_System.Services.ReportSL"/> class.
+            </summary>
+            <param name="reportRepository">The repository used for accessing and managing report data.</param>
+            <param name="statusSL">The service layer responsible for handling status-related operations.</param>
+            <param name="appointmentSL">The service layer responsible for managing appointment-related operations.</param>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ReportSL.CreateReportAsync(Caridology_Department_System.Requests.Report.ReportDto,System.Int32)">
+            <summary>
+            Creates a new report for a completed appointment.
+            </summary>
+            <remarks>This method validates several conditions before creating the report: <list
+            type="bullet"> <item>If a report already exists for the specified appointment, an exception is
+            thrown.</item> <item>If the doctor attempting to create the report is not the doctor associated with the
+            appointment, an exception is thrown.</item> <item>If the appointment is not marked as completed, an
+            exception is thrown.</item> </list> The report is created with an "Active" status and saved to the
+            repository.</remarks>
+            <param name="request">The data transfer object containing the details of the report to be created, including the appointment ID
+            and prescription.</param>
+            <param name="doctorID">The ID of the doctor attempting to create the report. Must match the doctor associated with the appointment.</param>
+            <returns><see langword="true"/> if the report is successfully created; otherwise, an exception is thrown.</returns>
+            <exception cref="T:System.Exception">Thrown if a report already exists for the specified appointment. Thrown if the doctor attempting to create
+            the report is not associated with the appointment. Thrown if the appointment is not marked as completed.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ReportSL.UpdateReportAsync(Caridology_Department_System.Requests.Report.ReportDto,System.Int32)">
+            <summary>
+            Updates an existing report associated with a specific appointment.
+            </summary>
+            <remarks>This method ensures that the report belongs to the specified doctor before allowing
+            updates.  If the report does not exist or the doctor does not have permission to update it, an exception is
+            thrown.</remarks>
+            <param name="request">The data transfer object containing the updated report details, including the appointment ID and
+            prescription.</param>
+            <param name="doctorID">The unique identifier of the doctor attempting to update the report.</param>
+            <returns><see langword="true"/> if the report was successfully updated; otherwise, <see langword="false"/> if no
+            changes were made.</returns>
+            <exception cref="T:System.Exception">Thrown if no report exists for the specified appointment ID. Thrown if the doctor does not have permission
+            to update the report.</exception>
+        </member>
+        <member name="M:Caridology_Department_System.Services.ReportSL.GetReportByAppointmentIdAsync(System.Int32)">
+            <summary>
+            Retrieves the report associated with the specified appointment ID.
+            </summary>
+            <param name="appointmentID">The unique identifier of the appointment for which the report is to be retrieved. Must be a positive
+            integer.</param>
+            <returns>A <see cref="T:Caridology_Department_System.Models.ReportModel"/> object representing the report for the specified appointment.</returns>
+            <exception cref="T:System.Exception">Thrown if no report has been generated for the specified appointment ID.</exception>
         </member>
         <member name="M:JwtTokenService.GenerateToken(UserModel)">
             <summary>

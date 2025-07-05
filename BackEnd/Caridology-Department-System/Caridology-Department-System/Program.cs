@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using Caridology_Department_System.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +61,8 @@ builder.Services.AddScoped<DoctorPhoneNumberSL>();
 builder.Services.AddScoped<MessageSL>();
 builder.Services.AddScoped<AppointmentSL>();
 builder.Services.AddScoped<StatusSL>();
-//builder.Services.AddScoped<IReportSL>();
+builder.Services.AddScoped<IReportSL,ReportSL>();
+builder.Services.AddScoped<IReportRepository,ReportRepository>();
 
 // JWT Authentication Configuration
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");

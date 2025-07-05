@@ -36,6 +36,9 @@ Communication system between doctors and patients
 ### 🗓️ Appointment Endpoints
 Appointment booking, management, and tracking system
 
+### 📋 Report Endpoints
+Medical report creation, updates, and retrieval system
+
 ---
 
 ## 📋 Endpoint Reference
@@ -599,6 +602,84 @@ PhotoData: binary file
 
 ---
 
+### 📋 Report Operations
+
+#### **POST** `/api/Report/CreateReport`
+**Purpose**: Create a new medical report for a patient  
+**Content-Type**: `application/json`  
+**🔒 Authorization**: Doctor role required
+
+**📥 Input:**
+```json
+{
+  "PatientID": 456,
+  "AppointmentID": 123,
+  "Diagnosis": "Hypertension",
+  "Treatment": "Prescribed ACE inhibitors",
+  "Notes": "Patient shows improvement",
+  "RecommendedFollowUp": "2025-08-15T10:00:00"
+}
+```
+
+**📤 Responses:**
+- `200 OK` - Report created successfully
+- `400 Bad Request` - Invalid input data or model validation failed
+
+**📝 Notes:**
+- Doctor ID is automatically extracted from JWT token
+- All required fields must be provided in the ReportDto
+- Report is linked to a specific appointment and patient
+
+---
+
+#### **POST** `/api/Report/UpdateReport`
+**Purpose**: Update an existing medical report  
+**Content-Type**: `application/json`  
+**🔒 Authorization**: Doctor role required
+
+**📥 Input:**
+```json
+{
+  "ReportID": 789,
+  "PatientID": 456,
+  "AppointmentID": 123,
+  "Diagnosis": "Hypertension - Controlled",
+  "Treatment": "Continue current medication",
+  "Notes": "Patient shows significant improvement",
+  "RecommendedFollowUp": "2025-09-15T10:00:00"
+}
+```
+
+**📤 Responses:**
+- `200 OK` - Report updated successfully
+- `200 OK` - "There is no thing to update" (if no changes detected)
+- `400 Bad Request` - Invalid input data or model validation failed
+
+**📝 Notes:**
+- Doctor ID is automatically extracted from JWT token
+- Only the doctor who created the report can update it
+- Returns success message even if no changes were made
+
+---
+
+#### **GET** `/api/Report/GetReport`
+**Purpose**: Retrieve a medical report by appointment ID  
+**🔒 Authorization**: Required (All authenticated users)
+
+**📥 Input Parameters:**
+- `appointmentID` (query, integer, required) - Appointment ID associated with the report (must be > 0)
+
+**📤 Responses:**
+- `200 OK` - Report data retrieved successfully
+- `400 Bad Request` - Invalid appointment ID or report not found
+
+**📝 Notes:**
+- Appointment ID must be a positive integer
+- Returns complete report details including diagnosis, treatment, and notes
+- Accessible to all authenticated users (Admin, Doctor, Patient)
+
+---
+
 ## 🔒 Security Requirements
 
 ### Password Complexity
@@ -639,11 +720,17 @@ All passwords must meet the following criteria:
 - **Doctor Salary:** 6,000 - 50,000
 - **Years of Experience:** 1-50 years
 - **Blood Type:** A+, A-, B+, B-, AB+, AB-, O+, O-
+- **Appointment ID:** Must be positive integer (> 0)
 
 ### Appointment Constraints
 - **Future Dates Only:** All appointment dates must be in the future
 - **Time Slot Availability:** Each doctor can only have one appointment per time slot
 - **Status Values:** Confirmed, Cancelled, Postponed, Completed, Missed
+
+### Report Constraints
+- **Doctor Authorization:** Only doctors can create and update reports
+- **Appointment Association:** Each report must be linked to a valid appointment
+- **Data Integrity:** All report fields must follow ReportDto model validation
 
 ---
 
@@ -654,6 +741,7 @@ All passwords must meet the following criteria:
 - 🟢 **Patient Functions** - Patient services
 - 🟡 **Message Functions** - Communication system
 - 🗓️ **Appointment Functions** - Appointment management system
+- 📋 **Report Functions** - Medical report management system
 - 📥 **Input** - Request data/parameters
 - 📤 **Output** - Response data
 - ✅ **Required Field** - Must be provided
@@ -687,3 +775,5 @@ All passwords must meet the following criteria:
 - Appointment dates must be in the future
 - Only assigned users can modify their own appointments
 - Doctors can only mark appointments after the scheduled time
+- Medical reports can only be created and updated by doctors
+- Reports are permanently linked to specific appointments and patients

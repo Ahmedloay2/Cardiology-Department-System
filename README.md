@@ -158,9 +158,9 @@ Comprehensive appointment system supporting booking, rescheduling, cancellation,
 | POST | `/api/Doctor/Login` | Doctor authentication | Doctor |
 | POST | `/api/Admin/Login` | Admin authentication | Admin |
 | POST | `/api/Patient/Register` | New patient registration | Patient/Admin |
-| GET | `/api/Patient/Profile` | Retrieve patient profile | Patient/Doctor/Admin |
+| GET | `/api/Patient/Profile` | Retrieve patient profile | All Authenticated |
 | PUT | `/api/Patient/UpdateProfile` | Update patient information | Patient |
-| GET | `/api/Doctor/Profile` | Retrieve doctor profile | Doctor/Admin |
+| GET | `/api/Doctor/Profile` | Retrieve doctor profile | All Authenticated |
 | PUT | `/api/Doctor/UpdateProfile` | Update doctor information | Doctor |
 | POST | `/api/Doctor/CreateDoctor` | Create new doctor account | Admin |
 
@@ -183,12 +183,20 @@ Comprehensive appointment system supporting booking, rescheduling, cancellation,
 | POST | `/api/Message/SendMessage` | Send message to user | Patient/Doctor |
 | DELETE | `/api/Message/Delete` | Remove specific message | Message Owner |
 
+### Medical Report System
+
+| HTTP Method | Endpoint | Description | Access Level |
+|-------------|----------|-------------|--------------|
+| POST | `/api/Report/CreateReport` | Create new medical report | Doctor |
+| POST | `/api/Report/UpdateReport` | Update existing report | Doctor |
+| GET | `/api/Report/GetReport` | Retrieve report by appointment ID | All Authenticated |
+
 ### Administrative Functions
 
 | HTTP Method | Endpoint | Description | Access Level |
 |-------------|----------|-------------|--------------|
 | GET | `/api/Admin/AdminProfilesList` | List all admin profiles | Admin |
-| GET | `/api/Doctor/DoctorProfilesList` | List all doctor profiles | Admin/Doctor |
+| GET | `/api/Doctor/DoctorProfilesList` | List all doctor profiles | All Authenticated |
 | GET | `/api/Patient/PatientProfilesList` | List all patient profiles | Admin/Doctor |
 | POST | `/api/Admin/CreateAdmin` | Create new admin account | Admin |
 | DELETE | `/api/Admin/Delete` | Remove admin account | Admin |
@@ -236,6 +244,12 @@ Comprehensive appointment system supporting booking, rescheduling, cancellation,
 - Message history preservation
 - File attachment support 
 - Real-time notification system 
+
+### Medical Report System
+- Doctor-created medical reports linked to appointments
+- Report creation and update functionality
+- Appointment-based report retrieval
+- Secure access control for sensitive medical data
 
 ### Administrative Tools
 - User role management

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cardiology-Department-System")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8a8485cff191dae403111d12a34e26262814bbb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a43abcc0b72c293ec91408cfb8ac253b1812ac6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cardiology-Department-System")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cardiology-Department-System")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

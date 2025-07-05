@@ -54,7 +54,7 @@
   {
     "ContainingType": "Caridology_Department_System.Controllers.AdminController",
     "Method": "CreateAdminAsync",
-    "RelativePath": "api/Admin/CreateAdmim",
+    "RelativePath": "api/Admin/CreateAdmin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -989,6 +989,54 @@
         "Name": "PhotoData",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.ReportController",
+    "Method": "CreateReport",
+    "RelativePath": "api/Report/CreateReport",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Caridology_Department_System.Requests.Report.ReportDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.ReportController",
+    "Method": "GetReport",
+    "RelativePath": "api/Report/GetReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Caridology_Department_System.Controllers.ReportController",
+    "Method": "UpdateReport",
+    "RelativePath": "api/Report/UpdateReport",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Caridology_Department_System.Requests.Report.ReportDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

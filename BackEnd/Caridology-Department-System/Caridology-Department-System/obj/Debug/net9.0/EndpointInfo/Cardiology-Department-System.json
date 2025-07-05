@@ -146,7 +146,7 @@
         }
       }
     },
-    "/api/Admin/CreateAdmim": {
+    "/api/Admin/CreateAdmin": {
       "post": {
         "tags": [
           "Admin"
@@ -1634,6 +1634,90 @@
           }
         }
       }
+    },
+    "/api/Report/CreateReport": {
+      "post": {
+        "tags": [
+          "Report"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Report/UpdateReport": {
+      "post": {
+        "tags": [
+          "Report"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Report/GetReport": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "parameters": [
+          {
+            "name": "appointmentID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1677,6 +1761,26 @@
             "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\da-zA-Z]).{8,}$",
             "type": "string",
             "format": "password"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReportDto": {
+        "required": [
+          "appointmentID",
+          "prescription"
+        ],
+        "type": "object",
+        "properties": {
+          "appointmentID": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "prescription": {
+            "minLength": 10,
+            "type": "string"
           }
         },
         "additionalProperties": false
